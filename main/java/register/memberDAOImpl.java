@@ -1,4 +1,4 @@
-package registerServlet;
+package register;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +20,7 @@ public class memberDAOImpl implements dao {
 			ds = (DataSource) context.lookup(GlobalService.getJndiDbName());
 			
 		} catch (NamingException e) {
-			
+		
 			e.printStackTrace();
 		}
 		

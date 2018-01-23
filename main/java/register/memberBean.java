@@ -1,4 +1,4 @@
-package registerServlet;
+package register;
 
 import java.sql.Date;
 
@@ -7,14 +7,14 @@ public class memberBean {
 	String mid ;
 	String mpass; 
 	String mname ;
-	java.sql.Date mbday ;
+	Date mbday ;
 	String memail ;
 	String mphone ;
-	java.sql.Date mregisterday ;
+	Date mregisterday ;
 	int mpid ;
 	public memberBean(){}
 	public memberBean(String mid, String mpass, String mname, Date mbday, String memail, String mphone,
-			java.sql.Date mregisterday, int mpid) {
+			Date mregisterday, int mpid) {
 		super();
 		this.mid = mid;
 		this.mpass = mpass;
@@ -43,10 +43,10 @@ public class memberBean {
 	public void setMname(String mname) {
 		this.mname = mname;
 	}
-	public java.sql.Date getMbday() {
+	public Date getMbday() {
 		return mbday;
 	}
-	public void setMbday(java.sql.Date mbday) {
+	public void setMbday(Date mbday) {
 		this.mbday = mbday;
 	}
 	public String getMemail() {
@@ -61,10 +61,10 @@ public class memberBean {
 	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
-	public java.sql.Date getMregisterday() {
+	public Date getMregisterday() {
 		return mregisterday;
 	}
-	public void setMregisterday(java.sql.Date mregisterday) {
+	public void setMregisterday(Date mregisterday) {
 		this.mregisterday = mregisterday;
 	}
 	public int getMpid() {
@@ -72,7 +72,7 @@ public class memberBean {
 	}
 	public void setMpid(int mpid) {
 		this.mpid = mpid;
-	};
+	}
 	
 	
 	

@@ -14,7 +14,7 @@ paddding:10px;
 }	
 span{
 display:inline-block;
-width:100px;
+width:80px;
 }
 form span,input{
 margin-top:10px;
@@ -28,15 +28,15 @@ margin-bottom:10px;
 </style>
 </head>
 <body>
-	<form method="post" action="/register/registerServlet">
+	<form method="post" name="form" action="registerServlet">
 		<div>
-			<span>帳號:</span><input type="text" name="account"><br>
-			<span>密碼:</span><input type="password" name="pas"><br>
-			<span>密碼確認:</span><input type="text" name="pasc"><br>
-			<span>姓名:</span><input type="text" name="name"><br>
-			<span>生日:</span><input type="text" name="bd"><br>
-			<span>電話:</span><input type="text" name="phone"><br> 
-			<span>信箱:</span><input type="text"name="email"><br>
+			<span>帳號:</span><input type="text" name="account">${errorMsg.accountError}<br>
+			<span>密碼:</span><input type="password" name="pas">${errorMsg.paswordError}<br>
+			<span>密碼確認:</span><input type="text" name="pasc">${errorMsg.paswordError2}<br>
+			<span>姓名:</span><input type="text" name="name">${errorMsg.nameError}<br>
+			<span>生日:</span><input type="text" name="bd">${errorMsg.bderror}<br>
+			<span>電話:</span><input type="text" name="phone">${errorMsg.phoneError}<br> 
+			<span>信箱:</span><input type="text"name="email">${errorMsg.emailError}<br>
 			<input type="submit" value="submit" >
 		</div>
 	</form>
