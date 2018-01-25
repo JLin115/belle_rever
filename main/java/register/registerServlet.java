@@ -19,7 +19,13 @@ import javax.servlet.http.HttpSession;
 import init.GlobalService;
 
 /**
- * Servlet implementation class registerServlet
+ * 此頁面為會員註冊頁面
+ * 基本功能其他基本架構出來要再修正
+ * 可能問題
+ * 1.使用Hibernate框架
+ * 2.轉頁尚未完成
+ * 3.須做選擇器讓登入後的會員不能來到此頁
+ * 
  */
 @WebServlet("/register/registerServlet")
 public class registerServlet extends HttpServlet {
@@ -43,10 +49,15 @@ public class registerServlet extends HttpServlet {
 		request.setAttribute("errorMsg", errorMsg);
 		memberBean mb = new memberBean();
 		memberDAOImpl mdao = new memberDAOImpl();
+		
+		
+		//得到帳號 並確認資料庫有無
 		String mid = request.getParameter("account");
 		if (mdao.getMember("mid") != null) {
 			errorMsg.put("accountError", "帳號重複");
 		}
+		
+		//如果資料庫沒有帳號才驗證
 		if (!errorMsg.containsKey("accountError")) {
 			if (!"".equals(mid)) {
 				if (mid.length() > 8) {
@@ -65,6 +76,7 @@ public class registerServlet extends HttpServlet {
 			}
 		}
 
+		//得到密碼 及 密碼確認 分兩階段驗證
 		String pas = request.getParameter("pas");
 		String pasc = request.getParameter("pasc");
 
@@ -95,7 +107,7 @@ public class registerServlet extends HttpServlet {
 				errorMsg.put("paswordError", "密碼含有特殊字元");
 			}
 		}
-
+		//得到名子並驗證
 		String mname = request.getParameter("name");
 		if (!"".equals(mname)) {
 			if (GlobalService.judgeInputSpecialSymbol(mname)) {
@@ -106,6 +118,7 @@ public class registerServlet extends HttpServlet {
 		} else {
 			errorMsg.put("nameError", "請輸入名子");
 		}
+		//得到生日 並用正規表達驗證
 		String bd = request.getParameter("bd");
 		String regbd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|("
 				+ "0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))";
@@ -128,7 +141,7 @@ public class registerServlet extends HttpServlet {
 		} else {
 			errorMsg.put("bderror", "請輸入生日");
 		}
-
+		//得到電話並用正規表達驗證
 		String phone = request.getParameter("phone");
 		String regph = "[0-9]{10}|[0-9]{4}\\-[0-9]{3}\\-[0-9]{3}|[0-9]{4}\\\\[0-9]{3}\\\\[0-9]{3}";
 
@@ -148,7 +161,7 @@ public class registerServlet extends HttpServlet {
 			errorMsg.put("phoneError", "請輸入電話");
 
 		}
-
+		//得到信箱 並用正規表達驗證
 		String email = request.getParameter("email");
 		String regemail = "^[a-zA-Z0-9]+[_|\\.]?[a-zA-Z0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+$";
 
@@ -166,6 +179,9 @@ public class registerServlet extends HttpServlet {
 		System.out.println(new Date(l));
 		mb.setMregisterday(new Date(l));
 
+		
+		
+		//轉頁部分
 		if (errorMsg.size() > 0) {
 			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
 			rd.forward(request, response);
