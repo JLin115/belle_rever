@@ -4,12 +4,14 @@ public class ItemValBean {
 	private String color;
 	private String size;
 	private int stock;
+
 	public ItemValBean (){}
 	public ItemValBean(String color, String size, int stock) {
 		super();
 		this.color = color;
 		this.size = size;
 		this.stock = stock;
+
 	}
 	public String getColor() {
 		return color;
@@ -29,6 +31,8 @@ public class ItemValBean {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+	
 	
 	
 }

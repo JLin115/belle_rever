@@ -100,7 +100,7 @@ public class itemBeanDaoImpl implements ItemBeanDAO {
 					ib.setPic3(rs.getString("Itempic3"));
 					ib.setPic4(rs.getString("Itempic4"));
 					ib.setPic5(rs.getString("Itempic5"));
-					ib.setItemstatusid(rs.getShort("smallint"));
+					ib.setItemstatusid(rs.getShort("Itemstatusid"));
 				}
 			}
 			con.commit();
