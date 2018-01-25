@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+	font-size:20px;
+}
+
+.content {
+    width: 1200px;
+    margin: 50px auto;
+    border: 1px solid black;
+		
+}
+.content::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+.d1,.d2 span,input,select,textarea{
+	margin-top:7px;
+	margin-bottom:7px;
+}
+.d1,.d2 {
+    width: 320px;
+    float: left;
+    margin: 5px;
+/*     border: 1px solid black; */
+}
+
+.d1{
+	width:580px;
+}
+.d1 textarea{
+		width:232px;
+	 resize : none;
+	 overflow-x:hidden;
+	 warp:break-word;
+}
+.d1 span:nth-of-type(5){
+float:left;
+margin-top:4px;
+}
+.d1 span{
+	display:inline-block;
+	width:80px;
+}
+.d1 input{
+	width:230px;
+	
+}
+.d1 input[type=file]{
+	width:200px;
+}
+
+
+
+.content  p{
+	display:inline-block;
+	margin-left:10px;
+	color:red;
+	font-size:12px;
+	width:100px;
+	
+	
+}
+.areap{
+    display: inline-block;
+    vertical-align :bottom;
+    margin-bottom: 6px;
+
+
+}
+
+.d2 {
+    float: left;
+    display: inline-block;
+}
+
+
+
+.d2 input{
+    width: 150px;
+}
+
+.b1 {
+    width: 230px;
+    float: right;
+    margin-right:20px;
+/*     border:1px solid black; */
+     margin-top:5px;
+}
+
+.b1 input {
+    margin-top: 8px;
+    margin-left:50px;
+    	 
+    width: 30px;
+}
+.b1 input[type="submit"] {
+    width: 100px;
+	 margin-left:30px;
+	
+}
+.b2{
+	 width: 230px;
+	  float: right;
+	  color:red;
+/* 	  border:1px solid black; */
+	 margin-top:25px;
+	 margin-right:20px;
+	 font-size:16px;
+}
+
+

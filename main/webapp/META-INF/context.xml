@@ -20,7 +20,7 @@
   <!--              MySQL(範例程式會用到的DataSource)              -->
  
   <Resource name="jdbc/Belle_ReverServer" type="javax.sql.DataSource"
-      username="root" password=""
+      username="root" password="password"
       driverClassName="com.mysql.jdbc.Driver"
       url="jdbc:mysql://127.0.0.1:3306/belle_rever"
       connectionProperties="useUnicode=yes;characterEncoding=utf8;useSSl=true;verifyServerCertificate=false;"

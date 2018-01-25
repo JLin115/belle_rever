@@ -1,5 +1,9 @@
 package init;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -8,11 +12,14 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+import javax.servlet.ServletContext;
+import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
 public class GlobalService {
 	//DB
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
+	private static String imgFolder ="C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\java\\manager\\itemImg";
 	
 	public static String getJndiDbName() {
 		return JNDI_DB_NAME;
@@ -93,6 +100,63 @@ public class GlobalService {
 				b = false;
 			}
 			return b;
+		}
+	
+		
+		public static char[] StringToCharArray(String s){
+			
+			char[] c= new char[s.length()];
+			
+			for(int i =0;i<s.length();i++){
+				c[i]=s.charAt(i);
+			}
+				
+			return c;
+		}
+		
+		public static String imgName(ServletContext sc ,Part p){
+			StringBuilder sb = new StringBuilder();
+			String mimeType=sc.getMimeType(getFileName(p));
+			int index = mimeType.indexOf("/")+1;
+			sb.append("\\");
+			sb.append(System.currentTimeMillis());
+			sb.append(".");
+			sb.append(mimeType.substring(index));
+			return sb.toString();
+		}
+		
+		public static String getFileName(final Part part) {
+			for (String content : part.getHeader("content-disposition").split(";")) {
+				if (content.trim().startsWith("filename")) {
+					return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+				}
+			}
+			return null;
+		}
+		static public void saveImgtofile(String imgName, InputStream is){
+			
+				
+			File dir = new File(imgFolder);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+			File file = new File(dir,imgName);
+			byte [] b =new byte[8291]; 
+			int len=0;
+			try(FileOutputStream fos  = new FileOutputStream(file);
+					
+					){
+				
+				while((len = is.read(b))!=-1){
+					fos.write(b, 0, len);
+				}
+				fos.flush();
+				
+			}catch(IOException e){
+				e.printStackTrace();
+				
+			}
+			
 		}
 	
 }
