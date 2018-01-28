@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Clob;
+import java.sql.SQLException;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -17,32 +21,35 @@ import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
 public class GlobalService {
-	//DB
+	// DB
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
-	private static String imgFolder ="C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\java\\manager\\itemImg";
-	
+	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg";
+	public final static int pageSize = 6;
+
 	public static String getJndiDbName() {
 		return JNDI_DB_NAME;
 	}
 
 	// 判斷輸入只能是 大小寫數字
 	public static boolean judgeInput(String str) {
-			boolean b = false;
-			if (str.length() != 0) {
-				for (int i = 0; i < str.length(); i++) {
-					Integer num = Integer.valueOf(str.charAt(i));
-					if ((num >= 49 && num <= 57) || (num >= 91 && num <= 122) || (num >= 65 && num <= 90) || num == 95) {
-						b = true;
-					} else {
-						b = false;
-					}
+		boolean b = false;
+		if (str.length() != 0) {
+			for (int i = 0; i < str.length(); i++) {
+				Integer num = Integer.valueOf(str.charAt(i));
+				if ((num >= 49 && num <= 57) || (num >= 91 && num <= 122) || (num >= 65 && num <= 90) || num == 95) {
+					b = true;
+				} else {
+					b = false;
 				}
-			} else {
-				b = false;
 			}
-			return b;
+		} else {
+			b = false;
 		}
+		return b;
+	}
+
 	static String KEY = "acegiklmprtvxzbd";
+
 	public static String encryptString(String message) {
 		// DES : Data Encryption Standard, 一種對稱式加密演算法。
 		// 美國聯邦政府於1976年定為聯邦資料處理標準(FIPS)，它的
@@ -81,82 +88,100 @@ public class GlobalService {
 		}
 		return encryptedString;
 	}
-	
-	
+
 	// 判斷特輸符號 有特殊符號傳回false
-		public static boolean judgeInputSpecialSymbol(String str) {
-			boolean b = false;
-			if (str.length() != 0) {
-				for (int i = 0; i < str.length(); i++) {
-					Integer num = Integer.valueOf(str.charAt(i));
-					if ((num >= 32 && num <= 47) || (num >= 58 && num <= 64) || (num >= 91 && num <= 94)
-							|| (num >= 123 && num <= 126) || num == 96) {
-						b = false;
-					} else {
-						b = true;
-					}
-				}
-			} else {
-				b = false;
-			}
-			return b;
-		}
-	
-		
-		public static char[] StringToCharArray(String s){
-			
-			char[] c= new char[s.length()];
-			
-			for(int i =0;i<s.length();i++){
-				c[i]=s.charAt(i);
-			}
-				
-			return c;
-		}
-		
-		public static String imgName(ServletContext sc ,Part p){
-			StringBuilder sb = new StringBuilder();
-			String mimeType=sc.getMimeType(getFileName(p));
-			int index = mimeType.indexOf("/")+1;
-			sb.append("\\");
-			sb.append(System.currentTimeMillis());
-			sb.append(".");
-			sb.append(mimeType.substring(index));
-			return sb.toString();
-		}
-		
-		public static String getFileName(final Part part) {
-			for (String content : part.getHeader("content-disposition").split(";")) {
-				if (content.trim().startsWith("filename")) {
-					return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+	public static boolean judgeInputSpecialSymbol(String str) {
+		boolean b = false;
+		if (str.length() != 0) {
+			for (int i = 0; i < str.length(); i++) {
+				Integer num = Integer.valueOf(str.charAt(i));
+				if ((num >= 32 && num <= 47) || (num >= 58 && num <= 64) || (num >= 91 && num <= 94)
+						|| (num >= 123 && num <= 126) || num == 96) {
+					b = false;
+				} else {
+					b = true;
 				}
 			}
-			return null;
+		} else {
+			b = false;
 		}
-		static public void saveImgtofile(String imgName, InputStream is){
-			
-				
-			File dir = new File(imgFolder);
-			if (!dir.exists()) {
-				dir.mkdirs();
-			}
-			File file = new File(dir,imgName);
-			byte [] b =new byte[8291]; 
-			int len=0;
-			try(FileOutputStream fos  = new FileOutputStream(file);
-					
-					){
-				
-				while((len = is.read(b))!=-1){
-					fos.write(b, 0, len);
-				}
-				fos.flush();
-				
-			}catch(IOException e){
-				e.printStackTrace();
-				
-			}
-			
+		return b;
+	}
+
+	public static char[] StringToCharArray(String s) {
+
+		char[] c = new char[s.length()];
+
+		for (int i = 0; i < s.length(); i++) {
+			c[i] = s.charAt(i);
 		}
-	
+
+		return c;
+	}
+
+	public static String clobToString(Clob c) {
+		String str = null;
+		try (Reader  is =  c.getCharacterStream();) {
+
+			char[] cc = new char[(int) c.length()];
+			is.read(cc);
+			str =String.valueOf(cc);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return str;
+
+	}
+
+	public static String imgName(ServletContext sc, Part p) {
+		StringBuilder sb = new StringBuilder();
+		String mimeType = sc.getMimeType(getFileName(p));
+		int index = mimeType.indexOf("/") + 1;
+		sb.append("\\");
+		sb.append(System.currentTimeMillis());
+		sb.append(".");
+		sb.append(mimeType.substring(index));
+		return sb.toString();
+	}
+
+	public static String getFileName(final Part part) {
+		for (String content : part.getHeader("content-disposition").split(";")) {
+			if (content.trim().startsWith("filename")) {
+				return content.substring(content.indexOf('=') + 1).trim().replace("\"", "");
+			}
+		}
+		return null;
+	}
+
+	static public void saveImgtofile(String imgName, InputStream is) {
+
+		File dir = new File(imgFolder);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		File file = new File(dir, imgName);
+		byte[] b = new byte[8291];
+		int len = 0;
+		try (FileOutputStream fos = new FileOutputStream(file);
+
+		) {
+
+			while ((len = is.read(b)) != -1) {
+				fos.write(b, 0, len);
+			}
+			fos.flush();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
+
+	}
+
 }

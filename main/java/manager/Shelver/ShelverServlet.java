@@ -155,7 +155,7 @@ public class ShelverServlet extends HttpServlet {
 					}
 					// itemval部分
 					if (name.startsWith("color")) {
-						int n1 = Integer.valueOf(name.substring(5));
+						short n1 = Short.valueOf(name.substring(5));
 						ItemValBean ivb = itemvals.get(n1);
 
 						if (!"".equals(value)) {
@@ -165,7 +165,7 @@ public class ShelverServlet extends HttpServlet {
 						}
 					}
 					if (name.startsWith("size")) {
-						int n1 = Integer.valueOf(name.substring(4));
+						short n1 = Short.valueOf(name.substring(4));
 						ItemValBean ivb = itemvals.get(n1);
 
 						if (!"".equals(value)) {
@@ -176,7 +176,7 @@ public class ShelverServlet extends HttpServlet {
 
 					}
 					if (name.startsWith("stock")) {
-						int n1 = Integer.valueOf(name.substring(5));
+						short n1 = Short.valueOf(name.substring(5));
 						ItemValBean ivb = itemvals.get(n1);
 						String regex = "[0-9]+";
 						if (!"".equals(value)) {
@@ -188,6 +188,10 @@ public class ShelverServlet extends HttpServlet {
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 						}
+						
+						//流水號取得
+						ivb.setSerialNumber(n1);
+						System.out.println(n1);
 
 					}
 

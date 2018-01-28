@@ -1,4 +1,4 @@
-package manager.Shelver;
+package manager.itemManager.model;
 
 public class ItemValBean {
 	private String color;

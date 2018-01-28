@@ -29,7 +29,7 @@ public class ItemValBeanDAOImpl implements ItemValBeanDAO {
 
 	@Override
 	public void setItemValBean(List<ItemValBean> ibvList, int id) {
-		String sql = "insert into item_val (Itemid,Itemcolor,Itemsize,Itemqty ) " + " values(?,?,?,?) ";
+		String sql = "insert into item_val (Itemid,itemSerialNumber,Itemcolor,Itemsize,Itemqty ) " + " values(?,?,?,?,?) ";
 		Connection con = null;
 		try {
 			con = ds.getConnection();
@@ -39,9 +39,10 @@ public class ItemValBeanDAOImpl implements ItemValBeanDAO {
 			System.out.println("狀態:開始寫入");
 			for (ItemValBean ibv : ibvList) {
 				ps.setInt(1, id);
-				ps.setString(2, ibv.getColor());
-				ps.setString(3, ibv.getSize());
-				ps.setInt(4, ibv.getStock());
+				ps.setShort(2, ibv.getSerialNumber());
+				ps.setString(3, ibv.getColor());
+				ps.setString(4, ibv.getSize());
+				ps.setInt(5, ibv.getStock());
 				ps.executeUpdate();
 			}
 			con.commit();
