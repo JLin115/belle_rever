@@ -3,7 +3,7 @@ package register;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class memberBean {
+public class MemberBean {
 
 	String mid ;
 	String mpass; 
@@ -13,8 +13,8 @@ public class memberBean {
 	String mphone ;
 	Timestamp mregisterday ;
 	int mpid ;
-	public memberBean(){}
-	public memberBean(String mid, String mpass, String mname, Date mbday, String memail, String mphone,
+	public MemberBean(){}
+	public MemberBean(String mid, String mpass, String mname, Date mbday, String memail, String mphone,
 			Timestamp mregisterday, int mpid) {
 		super();
 		this.mid = mid;

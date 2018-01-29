@@ -17,10 +17,10 @@ import manager.itemManager.model.ItemDAOImpl;
 /**
  * Servlet implementation class itemManagerServlet
  */
-@WebServlet("/manager/itemManager/itemManagerServlet")
-public class itemManagerServlet extends HttpServlet {
+@WebServlet("/manager/itemManager/ItemManagerServlet")
+public class ItemManagerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public itemManagerServlet() {
+    public ItemManagerServlet() {
         super();
     }
 

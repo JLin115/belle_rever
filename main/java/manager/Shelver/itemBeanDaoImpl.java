@@ -11,10 +11,10 @@ import javax.sql.DataSource;
 
 import init.GlobalService;
 
-public class itemBeanDaoImpl implements ItemBeanDAO {
+public class ItemBeanDaoImpl implements ItemBeanDAO {
 	DataSource ds = null;
 
-	public itemBeanDaoImpl() {
+	public ItemBeanDaoImpl() {
 		try {
 			InitialContext context = new InitialContext();
 			ds = (DataSource) context.lookup(GlobalService.JNDI_DB_NAME);

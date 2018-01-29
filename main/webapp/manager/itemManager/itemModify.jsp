@@ -13,7 +13,7 @@
 <title>Shelver</title>
 </head>
 <body>
-	<form enctype="multipart/form-data" name="form"method="POST" action="ShelverServlet" >
+	<form enctype="multipart/form-data" name="form"method="POST" action="ItemModify" >
 		<div class="content">					
 			<div class="d1">
 				<span>編號：</span><input type="text" name='id' value="${ib.itemID }" /><p>${errorMsg.idError}</p><br> 

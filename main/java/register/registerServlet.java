@@ -27,11 +27,11 @@ import init.GlobalService;
  * 3.須做選擇器讓登入後的會員不能來到此頁
  * 
  */
-@WebServlet("/register/registerServlet")
-public class registerServlet extends HttpServlet {
+@WebServlet("/register/RegisterServlet")
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public registerServlet() {
+	public RegisterServlet() {
 		super();
 	}
 
@@ -47,8 +47,8 @@ public class registerServlet extends HttpServlet {
 		Map<String, String> errorMsg = new HashMap<>();
 
 		request.setAttribute("errorMsg", errorMsg);
-		memberBean mb = new memberBean();
-		memberDAOImpl mdao = new memberDAOImpl();
+		MemberBean mb = new MemberBean();
+		MemberDAOImpl mdao = new MemberDAOImpl();
 		
 		
 		//得到帳號 並確認資料庫有無

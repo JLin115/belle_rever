@@ -17,11 +17,11 @@ import manager.itemManager.model.ItemValBean;
 /**
  * Servlet implementation class itemModify
  */
-@WebServlet("/manager/itemManager/itemModify")
-public class itemModify extends HttpServlet {
+@WebServlet("/manager/itemManager/ItemModify")
+public class ItemModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public itemModify() {
+    public ItemModify() {
       super();    
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

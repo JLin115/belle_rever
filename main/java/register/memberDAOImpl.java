@@ -11,10 +11,10 @@ import javax.sql.DataSource;
 
 import init.GlobalService;
 
-public class memberDAOImpl implements dao {
+public class MemberDAOImpl implements Dao {
 	DataSource ds=null;
 	
-	public memberDAOImpl(){
+	public MemberDAOImpl(){
 		try {
 			InitialContext context = new InitialContext();
 			ds = (DataSource) context.lookup(GlobalService.getJndiDbName());
@@ -27,15 +27,15 @@ public class memberDAOImpl implements dao {
 		
 	}
 	@Override
-	public memberBean getMember(String mid) {
+	public MemberBean getMember(String mid) {
 		String sql = "select * from member where mid = ?";
-		memberBean mb= null;
+		MemberBean mb= null;
 			try (Connection con= ds.getConnection();){
 				PreparedStatement ps = con.prepareStatement(sql);
 				ps.setString(1, mid);
 				try(ResultSet rs=ps.executeQuery();){
 				while(rs.next()){
-					mb=new memberBean();
+					mb=new MemberBean();
 					mb.setMid(rs.getString("mid"));
 					mb.setMpass(rs.getString("mpass "));
 					mb.setMname(rs.getString("mname "));
@@ -53,7 +53,7 @@ public class memberDAOImpl implements dao {
 	}
 
 	@Override
-	public void setMember(memberBean mb) {
+	public void setMember(MemberBean mb) {
 		String sql = "insert into member (mid,mpass,mname,mbday,memail,mphone,mregisterday) "
 				+ "values("
 				+ "?,?,?,?,?,?,?)";

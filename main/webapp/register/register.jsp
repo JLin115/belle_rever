@@ -28,7 +28,7 @@ margin-bottom:10px;
 </style>
 </head>
 <body>
-	<form method="post" name="form" action="registerServlet">
+	<form method="post" name="form" action="RegisterServlet">
 		<div>
 			<span>帳號:</span><input type="text" name="account">${errorMsg.accountError}<br>
 			<span>密碼:</span><input type="password" name="pas">${errorMsg.paswordError}<br>
