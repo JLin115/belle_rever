@@ -1,6 +1,7 @@
 package register;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class memberBean {
 
@@ -10,11 +11,11 @@ public class memberBean {
 	Date mbday ;
 	String memail ;
 	String mphone ;
-	Date mregisterday ;
+	Timestamp mregisterday ;
 	int mpid ;
 	public memberBean(){}
 	public memberBean(String mid, String mpass, String mname, Date mbday, String memail, String mphone,
-			Date mregisterday, int mpid) {
+			Timestamp mregisterday, int mpid) {
 		super();
 		this.mid = mid;
 		this.mpass = mpass;
@@ -61,10 +62,10 @@ public class memberBean {
 	public void setMphone(String mphone) {
 		this.mphone = mphone;
 	}
-	public Date getMregisterday() {
+	public Timestamp getMregisterday() {
 		return mregisterday;
 	}
-	public void setMregisterday(Date mregisterday) {
+	public void setMregisterday(Timestamp mregisterday) {
 		this.mregisterday = mregisterday;
 	}
 	public int getMpid() {

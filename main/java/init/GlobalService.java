@@ -23,7 +23,8 @@ import javax.xml.bind.DatatypeConverter;
 public class GlobalService {
 	// DB
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
-	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg";
+	private static String imgFolder = "C:\\_JSP2\\workspace22\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg";
+	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\manager\\itemImg";
 	public final static int pageSize = 6;
 
 	public static String getJndiDbName() {
@@ -165,14 +166,22 @@ public class GlobalService {
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
+		File tomCatDir = new File(TomCatFolder);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+		
+		
 		File file = new File(dir, imgName);
+		File tomCatfile = new File(tomCatDir, imgName);
 		byte[] b = new byte[8291];
 		int len = 0;
 		try (FileOutputStream fos = new FileOutputStream(file);
-
+			 FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);
 		) {
 
 			while ((len = is.read(b)) != -1) {
+				tomCatfos.write(b, 0, len);
 				fos.write(b, 0, len);
 			}
 			fos.flush();

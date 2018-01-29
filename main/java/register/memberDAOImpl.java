@@ -65,7 +65,7 @@ public class memberDAOImpl implements dao {
 			ps.setDate(4,mb.getMbday());
 			ps.setString(5, mb.getMemail());
 			ps.setString(6, mb.getMphone());
-			ps.setDate(7, mb.getMregisterday());
+			ps.setTimestamp(7, mb.getMregisterday());
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {

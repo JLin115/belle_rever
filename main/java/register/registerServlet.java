@@ -21,7 +21,7 @@ import init.GlobalService;
 /**
  * 此頁面為會員註冊頁面
  * 基本功能其他基本架構出來要再修正
- * 可能問題
+ * 可能問題或者更新
  * 1.使用Hibernate框架
  * 2.轉頁尚未完成
  * 3.須做選擇器讓登入後的會員不能來到此頁
@@ -175,10 +175,9 @@ public class registerServlet extends HttpServlet {
 			errorMsg.put("emailError", "請輸入電子郵件");
 		}
 
-		long l = System.currentTimeMillis();
-		System.out.println(new Date(l));
-		mb.setMregisterday(new Date(l));
-
+		
+		mb.setMregisterday(new Timestamp(System.currentTimeMillis()));
+		
 		
 		
 		//轉頁部分

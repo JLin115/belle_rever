@@ -29,7 +29,7 @@ import init.GlobalService;
  * 目前有問題的地方:
  * 上傳圖片後 伺服器須重整jsp的圖片才抓的到
  * 
- * 域記功能:
+ * 預計功能:
  * 判斷誰連到此網頁若是沒有管理者標籤一率轉出去
  */
 @WebServlet("/manager/Shelver/ShelverServlet")
@@ -200,11 +200,12 @@ public class ShelverServlet extends HttpServlet {
 
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
+								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
 								ib.setPic1(imgName);
 								System.out.println("存放完畢");
-
+								}
 							} else {
 								errorMsg.put("pic1Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
@@ -218,11 +219,12 @@ public class ShelverServlet extends HttpServlet {
 						
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
+								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
 								ib.setPic2(imgName);
 								System.out.println("存放完畢");
-
+								}
 							} else {
 								errorMsg.put("pic2Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
@@ -236,11 +238,12 @@ public class ShelverServlet extends HttpServlet {
 						
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
+								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
 								ib.setPic3(imgName);
 								System.out.println("存放完畢");
-
+								}
 							} else {
 								errorMsg.put("pic3Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
@@ -253,11 +256,12 @@ public class ShelverServlet extends HttpServlet {
 						
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
+								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
 								ib.setPic4(imgName);
 								System.out.println("存放完畢");
-
+								}
 							} else {
 								errorMsg.put("pic4Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
@@ -267,11 +271,12 @@ public class ShelverServlet extends HttpServlet {
 						
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
+								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
 								ib.setPic5(imgName);
 								System.out.println("存放完畢");
-
+								}
 							} else {
 								errorMsg.put("pic5Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
