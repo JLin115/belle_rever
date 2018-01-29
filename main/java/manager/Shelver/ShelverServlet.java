@@ -286,6 +286,10 @@ public class ShelverServlet extends HttpServlet {
 			}
 		}
 
+		
+		
+		
+		
 		if (errorMsg.size() > 0)
 
 		{

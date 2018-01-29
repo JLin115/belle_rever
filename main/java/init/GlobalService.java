@@ -159,6 +159,23 @@ public class GlobalService {
 		}
 		return null;
 	}
+	
+	static public void deleteImgInfile(String imgName) {
+		
+		File dir = new File(imgFolder,imgName);
+		if (dir.exists()) {
+			dir.delete();
+		}
+	
+		File tomCatDir = new File(TomCatFolder,imgName);
+		if (dir.exists()) {
+			tomCatDir.delete();
+		}
+	
+	
+	}
+	
+	
 
 	static public void saveImgtofile(String imgName, InputStream is) {
 
