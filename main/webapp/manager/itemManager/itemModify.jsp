@@ -24,7 +24,7 @@
 				<span>類型：</span><select name = "type" value="${ib.itid }">
 					<option value="0">請選擇類別</option>
 					<option value="1">a</option>
-					<option value="2">b</option>
+					<option value="2">b</option><!-- 從這邊下手 -->
 					<option value="3">c</option>
 				</select><p>${errorMsg.typeError}</p><br> 
 				<span>狀態:</span><select name="status">
