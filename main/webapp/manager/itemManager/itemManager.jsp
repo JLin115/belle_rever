@@ -29,7 +29,7 @@
 
 			<c:forEach var="items" items="${allItem}">
 
-				<a href="ItemModify?itemId=${items.itemID}">
+				<a href="ShowSingleItem?itemId=${items.itemID}">
 					<ul>
 						<li><img src="../itemImg/${items.pic1} "></li>
 						<li><div>商品ID:${items.itemID}</div>

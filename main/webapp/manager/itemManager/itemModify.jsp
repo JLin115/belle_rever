@@ -39,19 +39,21 @@
 			</div>
 			<div class="d2">
 
-				<input type="hidden" name="identify" id="identify" value="0" />
+				
 				<div class="auto">
 					
 				<c:forEach var ="x" items="${ivbList}" varStatus="s">
-				<div>
+				<div id="auto${x.serialNumber}">
 					<span>流水號：${x.serialNumber}</span><br>
 					<span> 顏色：</span><input type="text" name='color0' value="${x.color }" /><br> 
 					<span>尺寸：</span><input type="text" name='size0' value="${x.size }"/><br> 
 					<span> 庫存：</span><input type="text" name='stock0' value="${x.stock }"/>
-					<c:if test="${s.last}">
-					<input class="flag"type="hidden" value="${x.serialNumber}" />
-					</c:if>
+				
 				</div>
+					<c:if test="${s.last}">
+					 <input type="hidden" name="identify" id="identify" value="${x.serialNumber}" />
+					</c:if>
+				
 				</c:forEach>
 					
 					
