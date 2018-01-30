@@ -20,7 +20,7 @@
 				<span>價格：</span><input type="text" name='price' value="${ib.itemPrice }"/><p>${errorMsg.priceError}</p><br> 
 				<span>折扣：</span><input type="text" name='discount' value="${ib.itemdiscount }" /><p>${errorMsg.discountError}</p><br>  
 				<span>標頭：</span><input type="text" name='title' value="${ib.itemHeader}"/><p>${errorMsg.titleError}</p><br> 
-				<span>描述：</span><textarea class="des" name='des' maxlength='100'>${ibdes }</textarea><p class="areap">${errorMsg.desError}</p><br> 
+				<span>描述：</span><textarea class="des" name='des' maxlength='100'>${ib.itemDes }</textarea><p class="areap">${errorMsg.desError}</p><br> 
 				<span>類型：</span><select name = "type" value="${ib.itId }">
 					<option value="0">請選擇類別</option>
 					<option value="1">a</option>
