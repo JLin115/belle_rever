@@ -25,6 +25,6 @@ interface ItemDAO {
 	public void updateItem(manager.itemManager.model.ItemBean ib,int beforeItemId);
 	public void updateItemVal(List<ItemValBean> ivb,int beforeItemId);
 	public void setItemBean(ItemBean ib);
-	
+	public void deleteItemVal(int itemId);
 	
 }

@@ -136,28 +136,17 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 			e.printStackTrace();
 		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			close(con,ps);
 		}
 		return ibList;
 	}
 
 	@Override
 	public ItemBean getItem(int itemId) {
-
 		ItemBean ib =null;
 		String sql = "select * from item where itemid=?";
 		Connection con = null;
 		PreparedStatement ps = null;
-
 		try {
 			con = ds.getConnection();
 			ps = con.prepareStatement(sql);
@@ -179,7 +168,6 @@ public class ItemDAOImpl implements ItemDAO {
 					ib.setPic5(rs.getString("itempic5"));
 					ib.setItemstatusid(rs.getShort("itemstatusid"));
 				}
-
 			}
 			con.commit();
 		} catch (SQLException e) {
@@ -190,21 +178,9 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 			e.printStackTrace();
 		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
+			close(con,ps);
 		}
-
 		return ib;
-
 	}
 
 	@Override
@@ -230,10 +206,7 @@ public class ItemDAOImpl implements ItemDAO {
 				}
 			}
 			con.commit();
-
-		}
-
-		catch (SQLException e) {
+		}catch (SQLException e) {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
@@ -242,18 +215,8 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 			e.printStackTrace();
 		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			close(con,ps);
 		}
-
 		return ivbList;
 	}
 
@@ -287,31 +250,41 @@ public class ItemDAOImpl implements ItemDAO {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
 		}finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			close(con,ps);
 		}
-		
-		
 	}
 
 	@Override
 	public void updateItemVal(List<ItemValBean> ivb,int beforeItemId) {
-		// TODO Auto-generated method stub
+	
 		
 	}
+	@Override
+	public void deleteItemVal(int itemId) {
+		String sql ="delete from item_val where itemid = ?";
+		Connection con = null;
+		PreparedStatement ps = null;
+		try{
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, itemId);
+			
+			
+			
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			close(con,ps);
+		}
+		
+		
+	}
+		
 
 	@Override
 		public void setItemBean(ItemBean ib) {
@@ -343,25 +316,25 @@ public class ItemDAOImpl implements ItemDAO {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-
 				e.printStackTrace();
 				throw new RuntimeException("setItemBean寫入失敗:" + e.getMessage());
 			} finally {
-				try {
-					if (ps != null) {
-						ps.close();
-					}
-					if (con != null) {
-						con.close();
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-
+				close(con,ps);
 			}
-
 		}
-		
+		public void close(Connection con,PreparedStatement ps){
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 	
 
 }

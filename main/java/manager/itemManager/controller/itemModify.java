@@ -53,12 +53,7 @@ public class ItemModify extends HttpServlet {
 			ItemValBean ivb = new ItemValBean();
 			itemvals.add(ivb);
 		}
-		
 		ItemBean beforeIb= (ItemBean)request.getAttribute("ib");
-		
-		
-		
-
 		ItemDAOImpl id = new ItemDAOImpl();
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
