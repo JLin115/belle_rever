@@ -24,8 +24,8 @@ interface ItemDAO {
 	public List<ItemValBean> getItemVal(int itemId);
 	
 	
-	public void updateItem(ItemBean ib);
-	public void updateItemVal(List<ItemValBean> ivb);
+	public void updateItem(manager.Shelver.ItemBean ib,int beforeItemId);
+	public void updateItemVal(List<ItemValBean> ivb,int beforeItemId);
 	
 	
 	

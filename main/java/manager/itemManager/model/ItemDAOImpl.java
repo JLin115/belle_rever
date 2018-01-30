@@ -254,13 +254,57 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public void updateItem(ItemBean ib) {
-		// TODO Auto-generated method stub
+	public void updateItem(manager.Shelver.ItemBean ib,int beforeItemId) {
+		String sql =" update item set itemid=? ,itemheader=?,itemdes=?,itemprice=?,itid=?,itemdiscount=?, "
+				+ " itempic1=?,itempic2=?,itempic3=?,itempic4=?,itempic5=?,itemstatusid=? where itemid=?";
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con=ds.getConnection();
+			con.setAutoCommit(false);
+			ps= con.prepareStatement(sql);
+			ps.setInt(1, ib.getItemID());
+			ps.setString(2, ib.getItemHeader());
+			ps.setClob(3, ib.getItemDes());
+			ps.setInt(4, ib.getItemPrice());
+			ps.setShort(5, ib.getItId());
+			ps.setBigDecimal(6, ib.getItemdiscount());
+			ps.setString(7, ib.getPic1());
+			ps.setString(8, ib.getPic2());
+			ps.setString(9, ib.getPic3());
+			ps.setString(10, ib.getPic4());
+			ps.setString(11, ib.getPic5());
+			ps.setShort(12, ib.getItemstatusid());
+			ps.setInt(13,beforeItemId);
+			ps.executeUpdate();
+			con.commit();
+			System.err.println("Item 更新完成");
+		} catch (Exception e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		
 	}
 
 	@Override
-	public void updateItemVal(List<ItemValBean> ivb) {
+	public void updateItemVal(List<ItemValBean> ivb,int beforeItemId) {
 		// TODO Auto-generated method stub
 		
 	}
