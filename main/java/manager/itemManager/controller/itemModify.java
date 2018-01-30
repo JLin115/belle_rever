@@ -10,11 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
@@ -29,6 +32,7 @@ import manager.itemManager.model.ItemValBean;
  * Servlet implementation class ItemModify
  */
 @WebServlet("/manager/itemManager/ItemModify")
+@MultipartConfig
 public class ItemModify extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public ItemModify() {
@@ -38,7 +42,9 @@ public class ItemModify extends HttpServlet {
 		doPost(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("utf-8");
+		HttpSession s = request.getSession();
 		Map<String, String> errorMsg = new HashMap<>();
 		request.setAttribute("errorMsg", errorMsg);
 		Collection<Part> parts = request.getParts();
@@ -53,7 +59,8 @@ public class ItemModify extends HttpServlet {
 			ItemValBean ivb = new ItemValBean();
 			itemvals.add(ivb);
 		}
-		ItemBean beforeIb= (ItemBean)request.getAttribute("ib");
+		ItemBean beforeIb= (ItemBean)s.getAttribute("ib");
+		beforeIb.toString();
 		ItemDAOImpl id = new ItemDAOImpl();
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
@@ -66,7 +73,7 @@ public class ItemModify extends HttpServlet {
 					// itemBean部分
 
 					if (name.equals("id")) {
-						String regex = "[0-9]+";
+						String regex = "[0-9]{1,9}";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
 								if (id.getItem(Integer.valueOf(value)) == null
@@ -84,7 +91,7 @@ public class ItemModify extends HttpServlet {
 
 					}
 					if (name.equals("price")) {
-						String regex = "[0-9]+";
+						String regex = "[0-9]{1,9}";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
 								ib.setItemPrice(Integer.valueOf(value));
@@ -193,7 +200,9 @@ public class ItemModify extends HttpServlet {
 								errorMsg.put("pic1Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
 						} else {
+							
 							ib.setPic1(beforeIb.getPic1());
+							
 						}
 					}
 					if (name.equals("pic2")) {
@@ -273,6 +282,21 @@ public class ItemModify extends HttpServlet {
 		}
 		
 		
+		
+		if(errorMsg.size()>0){
+		RequestDispatcher rd = request.getRequestDispatcher("itemModify.jsp");
+		rd.forward(request, response);
+		return;
+		
+//		response.sendRedirect("itemModify.jsp");
+//		return;
+		}else{
+			ItemDAOImpl dao = new ItemDAOImpl();
+			dao.modifyItem(ib, itemvals, ib.getItemID(), beforeIb.getItemID());
+			s.removeAttribute("ib");
+			s.removeAttribute("ivbList");
+			
+		}
 		
 		
 		

@@ -27,7 +27,7 @@ import init.GlobalService;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
 import manager.itemManager.model.ItemValBean;
-import manager.itemManager.model.ItemValBeanDAOImpl;
+
 
 /**此為管理者上架主程式
  * 目前有問題的地方:
@@ -292,7 +292,7 @@ public class ShelverServlet extends HttpServlet {
 			return;
 		} else {
 			id.setItemBean(ib);
-			new ItemValBeanDAOImpl().setItemValBean(itemvals, ib.getItemID());
+			new ItemDAOImpl().setItemValBean(itemvals, ib.getItemID());
 			
 			
 			

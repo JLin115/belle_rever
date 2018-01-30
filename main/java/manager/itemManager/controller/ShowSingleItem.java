@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import init.GlobalService;
 import manager.itemManager.model.ItemBean;
@@ -27,15 +28,18 @@ public class ShowSingleItem extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		HttpSession s=request.getSession();
 		int itemId = Integer.valueOf(request.getParameter("itemId"));
 		ItemDAOImpl dao = new ItemDAOImpl();
 		ItemBean ib=dao.getItem(itemId);
 		List<ItemValBean> ivbList =dao.getItemVal(itemId);
-		request.setAttribute("ib", ib);
-		request.setAttribute("ivbList", ivbList);
+		s.setAttribute("ib", ib);
+		s.setAttribute("ivbList", ivbList);
 		RequestDispatcher rd = request.getRequestDispatcher("itemModify.jsp");
 		rd.forward(request, response);
-		return;
+		
+//		response.sendRedirect("itemModify.jsp");
+//		return;
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

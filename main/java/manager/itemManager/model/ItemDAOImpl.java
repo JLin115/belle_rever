@@ -123,7 +123,7 @@ public class ItemDAOImpl implements ItemDAO {
 					ib.setItemDes(GlobalService.clobToString(rs.getClob("itemdes")));
 					ib.setItId(rs.getShort("itid"));
 					ibList.add(ib);
-			
+
 				}
 			}
 			con.commit();
@@ -136,14 +136,14 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 			e.printStackTrace();
 		} finally {
-			close(con,ps);
+			close(con, ps);
 		}
 		return ibList;
 	}
 
 	@Override
 	public ItemBean getItem(int itemId) {
-		ItemBean ib =null;
+		ItemBean ib = null;
 		String sql = "select * from item where itemid=?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -178,7 +178,7 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 			e.printStackTrace();
 		} finally {
-			close(con,ps);
+			close(con, ps);
 		}
 		return ib;
 	}
@@ -206,7 +206,7 @@ public class ItemDAOImpl implements ItemDAO {
 				}
 			}
 			con.commit();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
@@ -215,24 +215,55 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 			e.printStackTrace();
 		} finally {
-			close(con,ps);
+			close(con, ps);
 		}
 		return ivbList;
 	}
-
+	
+//=========================================================================================
 	@Override
-	public void updateItem(manager.itemManager.model.ItemBean ib,int beforeItemId) {
-		String sql =" update item set itemid=? ,itemheader=?,itemdes=?,itemprice=?,itid=?,itemdiscount=?, "
-				+ " itempic1=?,itempic2=?,itempic3=?,itempic4=?,itempic5=?,itemstatusid=? where itemid=?";
+	public void modifyItem(ItemBean ib,List<ItemValBean> ibvList,int newItemId, int beforeItemId) {
 		Connection con = null;
-		PreparedStatement ps = null;
 		try {
-			con=ds.getConnection();
+			con = ds.getConnection();
 			con.setAutoCommit(false);
-			ps= con.prepareStatement(sql);
+			deleteItemVal(beforeItemId,con);
+			updateItem(ib,beforeItemId,con);
+			setItemValBean(ibvList, newItemId,con);
+			con.commit();
+			System.out.println("更新結束");
+		
+		
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}finally{
+			
+			try {
+				if(con!=null){con.close();}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+	
+	}
+	@Override
+	public void updateItem(ItemBean ib, int beforeItemId,Connection con) {
+		String sql = " update item set itemid=? ,itemheader=?,itemdes=?,itemprice=?,itid=?,itemdiscount=?, "
+				+ " itempic1=?,itempic2=?,itempic3=?,itempic4=?,itempic5=?,itemstatusid=? where itemid=?";
+	
+		try (PreparedStatement ps =con.prepareStatement(sql);){
 			ps.setInt(1, ib.getItemID());
 			ps.setString(2, ib.getItemHeader());
-			ps.setClob(3,new SerialClob( GlobalService.StringToCharArray(ib.getItemDes())));
+			ps.setClob(3, new SerialClob(GlobalService.StringToCharArray(ib.getItemDes())));
 			ps.setInt(4, ib.getItemPrice());
 			ps.setShort(5, ib.getItId());
 			ps.setBigDecimal(6, ib.getItemdiscount());
@@ -242,99 +273,131 @@ public class ItemDAOImpl implements ItemDAO {
 			ps.setString(10, ib.getPic4());
 			ps.setString(11, ib.getPic5());
 			ps.setShort(12, ib.getItemstatusid());
-			ps.setInt(13,beforeItemId);
+			ps.setInt(13, beforeItemId);
 			ps.executeUpdate();
-			con.commit();
-			System.err.println("Item 更新完成");
 		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+	}
+
+	
+	@Override
+	public void deleteItemVal(int itemId,Connection con) {
+		String sql = "delete from item_val where itemid = ?";
+		try (PreparedStatement ps =con.prepareStatement(sql)){
+			ps.setInt(1, itemId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	@Override
+	public void setItemValBean(List<ItemValBean> ibvList, int id,Connection con) {
+		String sql = "insert into item_val (Itemid,itemSerialNumber,Itemcolor,Itemsize,Itemqty ) " + " values(?,?,?,?,?) ";
+		try (PreparedStatement ps=con.prepareStatement(sql);){
+			for (ItemValBean ibv : ibvList) {
+				ps.setInt(1, id);
+				ps.setShort(2, ibv.getSerialNumber());
+				ps.setString(3, ibv.getColor());
+				ps.setString(4, ibv.getSize());
+				ps.setInt(5, ibv.getStock());
+				ps.executeUpdate();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+
+	}
+//=========================================================================================
+	@Override
+	public void setItemValBean(List<ItemValBean> ibvList, int id) {
+		String sql = "insert into item_val (Itemid,itemSerialNumber,Itemcolor,Itemsize,Itemqty ) " + " values(?,?,?,?,?) ";
+		Connection con = null;
+		PreparedStatement ps=null;
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			con.setAutoCommit(false);
+			System.out.println("狀態:開起交易控制");
+			System.out.println("狀態:開始寫入");
+			for (ItemValBean ibv : ibvList) {
+				ps.setInt(1, id);
+				ps.setShort(2, ibv.getSerialNumber());
+				ps.setString(3, ibv.getColor());
+				ps.setString(4, ibv.getSize());
+				ps.setInt(5, ibv.getStock());
+				ps.executeUpdate();
+			}
+			con.commit();
+			System.out.println("狀態:寫入成功");
+		} catch (SQLException e) {
+		
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				
+			e.printStackTrace();
+			throw new RuntimeException("寫入失敗:" + e.getMessage());
+		} finally {
+			close(con,ps);
+		}
+
+	}
+	@Override
+	public void setItemBean(ItemBean ib) {
+		String sql = "Insert into item values (?,?,?,?,?,?,?,?,?,?,?,?) ";
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = ds.getConnection();
+			ps = con.prepareStatement(sql);
+			con.setAutoCommit(false);
+			ps.setInt(1, ib.getItemID());
+			ps.setString(2, ib.getItemHeader());
+			ps.setClob(3, new SerialClob(GlobalService.StringToCharArray(ib.getItemDes())));
+			ps.setInt(4, ib.getItemPrice());
+			ps.setShort(5, ib.getItId());
+			ps.setBigDecimal(6, ib.getItemdiscount());
+			ps.setString(7, ib.getPic1());
+			ps.setString(8, ib.getPic2());
+			ps.setString(9, ib.getPic3());
+			ps.setString(10, ib.getPic4());
+			ps.setString(11, ib.getPic5());
+			ps.setShort(12, ib.getItemstatusid());
+			ps.executeUpdate();
+			con.commit();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
-		}finally {
-			close(con,ps);
+			throw new RuntimeException("setItemBean寫入失敗:" + e.getMessage());
+		} finally {
+			close(con, ps);
 		}
 	}
 
-	@Override
-	public void updateItemVal(List<ItemValBean> ivb,int beforeItemId) {
+	public void close(Connection con, PreparedStatement ps) {
+		try {
+			if (ps != null) {
+				ps.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 	
 		
-	}
-	@Override
-	public void deleteItemVal(int itemId) {
-		String sql ="delete from item_val where itemid = ?";
-		Connection con = null;
-		PreparedStatement ps = null;
-		try{
-			con = ds.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, itemId);
-			
-			
-			
-			
-		}catch (Exception e) {
-			// TODO: handle exception
-		}finally {
-			close(con,ps);
-		}
-		
-		
-	}
-		
-
-	@Override
-		public void setItemBean(ItemBean ib) {
-			String sql = "Insert into item values (?,?,?,?,?,?,?,?,?,?,?,?) ";
-			Connection con = null;
-			PreparedStatement ps = null;
-			try {
-				con = ds.getConnection();
-				ps = con.prepareStatement(sql);
-				con.setAutoCommit(false);
-				ps.setInt(1, ib.getItemID());
-				ps.setString(2, ib.getItemHeader());
-				ps.setClob(3, new SerialClob(GlobalService.StringToCharArray(ib.getItemDes())));
-				ps.setInt(4, ib.getItemPrice());
-				ps.setShort(5, ib.getItId());
-				ps.setBigDecimal(6, ib.getItemdiscount());
-				ps.setString(7, ib.getPic1());
-				ps.setString(8, ib.getPic2());
-				ps.setString(9, ib.getPic3());
-				ps.setString(10, ib.getPic4());
-				ps.setString(11, ib.getPic5());
-				ps.setShort(12, ib.getItemstatusid());
-				ps.executeUpdate();
-				con.commit();
-			} catch (SQLException e) {
-				try {
-					con.rollback();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				e.printStackTrace();
-				throw new RuntimeException("setItemBean寫入失敗:" + e.getMessage());
-			} finally {
-				close(con,ps);
-			}
-		}
-		public void close(Connection con,PreparedStatement ps){
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-				if (con != null) {
-					con.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
 	
 
 }
