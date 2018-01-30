@@ -253,4 +253,16 @@ public class ItemDAOImpl implements ItemDAO {
 		return ivbList;
 	}
 
+	@Override
+	public void updateItem(ItemBean ib) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateItemVal(List<ItemValBean> ivb) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

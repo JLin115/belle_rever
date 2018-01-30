@@ -37,11 +37,11 @@ public class MemberDAOImpl implements Dao {
 				while(rs.next()){
 					mb=new MemberBean();
 					mb.setMid(rs.getString("mid"));
-					mb.setMpass(rs.getString("mpass "));
-					mb.setMname(rs.getString("mname "));
+					mb.setMpass(rs.getString("mpass"));
+					mb.setMname(rs.getString("mname"));
 					mb.setMbday(rs.getDate("mbday"));
-					mb.setMemail(rs.getString("memail "));
-					mb.setMphone(rs.getString("mphone "));
+					mb.setMemail(rs.getString("memail"));
+					mb.setMphone(rs.getString("mphone"));
 				}	
 					
 				}

@@ -23,8 +23,8 @@ import javax.xml.bind.DatatypeConverter;
 public class GlobalService {
 	// DB
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
-	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg";
-	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\manager\\itemImg";
+	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg\\";
+	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\manager\\itemImg\\";
 	public final static int pageSize = 6; //管理員-管理商品-每頁幾筆
 
 	public static String getJndiDbName() {
@@ -144,10 +144,11 @@ public class GlobalService {
 		StringBuilder sb = new StringBuilder();
 		String mimeType = sc.getMimeType(getFileName(p));
 		int index = mimeType.indexOf("/") + 1;
-		sb.append("\\");
+		//sb.append("/");
 		sb.append(System.currentTimeMillis());
 		sb.append(".");
 		sb.append(mimeType.substring(index));
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 

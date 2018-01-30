@@ -50,18 +50,15 @@ public class RegisterServlet extends HttpServlet {
 		MemberBean mb = new MemberBean();
 		MemberDAOImpl mdao = new MemberDAOImpl();
 		
-		
+		String accountReg = "[\\w]+";
 		//得到帳號 並確認資料庫有無
 		String mid = request.getParameter("account");
-		if (mdao.getMember("mid") != null) {
+		if (mdao.getMember(mid) != null) {
 			errorMsg.put("accountError", "帳號重複");
-		}
-		
-		//如果資料庫沒有帳號才驗證
-		if (!errorMsg.containsKey("accountError")) {
+		}else{
 			if (!"".equals(mid)) {
 				if (mid.length() > 8) {
-					if (GlobalService.judgeInput(mid) == true) {
+					if (mid.matches(accountReg)) {
 						mb.setMid(mid);
 					} else {
 						errorMsg.put("accountError", "帳號含有特殊字元");
