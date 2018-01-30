@@ -48,7 +48,7 @@
 
 
 
-				<!--下面是分頁-->>
+				<!--下面是分頁-->
 			<div class="controlPage">
 
 		   <c:if test="${pageNow ==1 }">

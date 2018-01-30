@@ -11,6 +11,7 @@ import javax.management.RuntimeErrorException;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import javax.sql.rowset.serial.SerialClob;
 
 import init.GlobalService;
 
@@ -96,8 +97,7 @@ public class ItemDAOImpl implements ItemDAO {
 	@Override
 	public List<ItemBean> getAllItem() {
 		List<ItemBean> ibList = new ArrayList<>();
-		String sql = "select itemid,itemheader,itemprice,itemdiscount,itemstatusid,itempic1,itemdes,itid from item "
-				+ "where itid=?  order by itemid DESC LIMIT ?,?";
+		String sql = "select * from item where itid=?  order by itemid DESC LIMIT ?,?";
 		int startRecordNo = (pageNow - 1) * pageSize;
 		PreparedStatement ps = null;
 		Connection con = null;
@@ -118,9 +118,12 @@ public class ItemDAOImpl implements ItemDAO {
 					ib.setItemdiscount(rs.getBigDecimal("Itemdiscount"));
 					ib.setItemstatusid(rs.getShort("itemstatusid"));
 					ib.setPic1(rs.getString("itempic1"));
+					ib.setPic2(rs.getString("itempic2"));
+					ib.setPic3(rs.getString("itempic3"));
 					ib.setItemDes(GlobalService.clobToString(rs.getClob("itemdes")));
-					ib.setItid(rs.getShort("itid"));
+					ib.setItId(rs.getShort("itid"));
 					ibList.add(ib);
+			
 				}
 			}
 			con.commit();
@@ -150,7 +153,7 @@ public class ItemDAOImpl implements ItemDAO {
 	@Override
 	public ItemBean getItem(int itemId) {
 
-		ItemBean ib = new ItemBean();
+		ItemBean ib =null;
 		String sql = "select * from item where itemid=?";
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -162,11 +165,12 @@ public class ItemDAOImpl implements ItemDAO {
 			con.setAutoCommit(false);
 			try (ResultSet rs = ps.executeQuery();) {
 				while (rs.next()) {
+					ib = new ItemBean();
 					ib.setItemID(rs.getInt("itemid"));
 					ib.setItemHeader(rs.getString("Itemheader"));
 					ib.setItemDes(GlobalService.clobToString(rs.getClob("itemdes")));
 					ib.setItemPrice(rs.getInt("Itemprice"));
-					ib.setItid(rs.getShort("itid"));
+					ib.setItId(rs.getShort("itid"));
 					ib.setItemdiscount(rs.getBigDecimal("Itemdiscount"));
 					ib.setPic1(rs.getString("itempic1"));
 					ib.setPic2(rs.getString("itempic2"));
@@ -254,7 +258,7 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public void updateItem(manager.Shelver.ItemBean ib,int beforeItemId) {
+	public void updateItem(manager.itemManager.model.ItemBean ib,int beforeItemId) {
 		String sql =" update item set itemid=? ,itemheader=?,itemdes=?,itemprice=?,itid=?,itemdiscount=?, "
 				+ " itempic1=?,itempic2=?,itempic3=?,itempic4=?,itempic5=?,itemstatusid=? where itemid=?";
 		Connection con = null;
@@ -265,7 +269,7 @@ public class ItemDAOImpl implements ItemDAO {
 			ps= con.prepareStatement(sql);
 			ps.setInt(1, ib.getItemID());
 			ps.setString(2, ib.getItemHeader());
-			ps.setClob(3, ib.getItemDes());
+			ps.setClob(3,new SerialClob( GlobalService.StringToCharArray(ib.getItemDes())));
 			ps.setInt(4, ib.getItemPrice());
 			ps.setShort(5, ib.getItId());
 			ps.setBigDecimal(6, ib.getItemdiscount());
@@ -308,5 +312,56 @@ public class ItemDAOImpl implements ItemDAO {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+		public void setItemBean(ItemBean ib) {
+			String sql = "Insert into item values (?,?,?,?,?,?,?,?,?,?,?,?) ";
+			Connection con = null;
+			PreparedStatement ps = null;
+			try {
+				con = ds.getConnection();
+				ps = con.prepareStatement(sql);
+				con.setAutoCommit(false);
+				ps.setInt(1, ib.getItemID());
+				ps.setString(2, ib.getItemHeader());
+				ps.setClob(3, new SerialClob(GlobalService.StringToCharArray(ib.getItemDes())));
+				ps.setInt(4, ib.getItemPrice());
+				ps.setShort(5, ib.getItId());
+				ps.setBigDecimal(6, ib.getItemdiscount());
+				ps.setString(7, ib.getPic1());
+				ps.setString(8, ib.getPic2());
+				ps.setString(9, ib.getPic3());
+				ps.setString(10, ib.getPic4());
+				ps.setString(11, ib.getPic5());
+				ps.setShort(12, ib.getItemstatusid());
+				ps.executeUpdate();
+				con.commit();
+			} catch (SQLException e) {
+				try {
+					con.rollback();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
+				e.printStackTrace();
+				throw new RuntimeException("setItemBean寫入失敗:" + e.getMessage());
+			} finally {
+				try {
+					if (ps != null) {
+						ps.close();
+					}
+					if (con != null) {
+						con.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		}
+		
+	
 
 }

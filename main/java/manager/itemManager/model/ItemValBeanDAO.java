@@ -1,4 +1,4 @@
-package manager.Shelver;
+package manager.itemManager.model;
 
 import java.util.List;
 

@@ -1,15 +1,23 @@
 package manager.itemManager.model;
 
 import java.math.BigDecimal;
+import java.sql.Blob;
 import java.sql.Clob;
 
 public class ItemBean {
+	@Override
+	public String toString() {
+		return "ItemBean [itemID=" + itemID + ", itemHeader=" + itemHeader + ", itemDes=" + itemDes + ", itemPrice="
+				+ itemPrice + ", itId=" + itId + ", itemdiscount=" + itemdiscount + ", pic1=" + pic1 + ", pic2=" + pic2
+				+ ", pic3=" + pic3 + ", pic4=" + pic4 + ", pic5=" + pic5 + ", Itemstatusid=" + Itemstatusid + "]";
+	}
+
 
 	private int itemID;
 	private String itemHeader;
 	private String itemDes;
 	private int itemPrice;
-	private short itid;
+	private short itId;
 	private BigDecimal itemdiscount;
 	private String pic1;
 	private String pic2;
@@ -22,12 +30,14 @@ public class ItemBean {
 	public ItemBean(){}
 
 
-	public ItemBean(int itemID, String itemHeader, int itemPrice, BigDecimal itemdiscount, String pic1, String pic2,
-			String pic3, String pic4, String pic5, short itemstatusid, String itemDes, short itid) {
+	public ItemBean(int itemID, String itemHeader, String itemDes, int itemPrice, short itId, BigDecimal itemdiscount,
+			String pic1, String pic2, String pic3, String pic4, String pic5, short itemstatusid) {
 		super();
 		this.itemID = itemID;
 		this.itemHeader = itemHeader;
+		this.itemDes = itemDes;
 		this.itemPrice = itemPrice;
+		this.itId = itId;
 		this.itemdiscount = itemdiscount;
 		this.pic1 = pic1;
 		this.pic2 = pic2;
@@ -35,8 +45,6 @@ public class ItemBean {
 		this.pic4 = pic4;
 		this.pic5 = pic5;
 		Itemstatusid = itemstatusid;
-		this.itemDes = itemDes;
-		this.itid = itid;
 	}
 
 
@@ -80,13 +88,13 @@ public class ItemBean {
 	}
 
 
-	public short getItid() {
-		return itid;
+	public short getItId() {
+		return itId;
 	}
 
 
-	public void setItid(short itid) {
-		this.itid = itid;
+	public void setItId(short itId) {
+		this.itId = itId;
 	}
 
 
@@ -160,9 +168,7 @@ public class ItemBean {
 	}
 
 
-
-
-
+	
 	
 	
 	

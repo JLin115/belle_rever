@@ -20,9 +20,9 @@ import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
 
 import init.GlobalService;
-import manager.Shelver.ItemBean;
-import manager.Shelver.ItemBeanDaoImpl;
-import manager.Shelver.ItemValBean;
+import manager.itemManager.model.ItemBean;
+import manager.itemManager.model.ItemDAOImpl;
+import manager.itemManager.model.ItemValBean;
 
 
 /**
@@ -54,12 +54,12 @@ public class ItemModify extends HttpServlet {
 			itemvals.add(ivb);
 		}
 		
-		manager.itemManager.model.ItemBean beforeIb=  (manager.itemManager.model.ItemBean) request.getAttribute("ib");
+		ItemBean beforeIb= (ItemBean)request.getAttribute("ib");
 		
 		
 		
 
-		ItemBeanDaoImpl ibd = new ItemBeanDaoImpl();
+		ItemDAOImpl id = new ItemDAOImpl();
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
 		if (parts != null) {
@@ -74,7 +74,8 @@ public class ItemModify extends HttpServlet {
 						String regex = "[0-9]+";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
-								if (ibd.getItemBean(Integer.valueOf(value)) == null) {
+								if (id.getItem(Integer.valueOf(value)) == null
+										) {
 									ib.setItemID(Integer.valueOf(value));
 								} else {
 									errorMsg.put("idError", "商品序號以存在");
@@ -118,20 +119,10 @@ public class ItemModify extends HttpServlet {
 							errorMsg.put("titleError", "請輸入商品標頭");
 						}
 					}
+					//這邊可能要做限制
 					if (name.equals("des")) {
 						if (!"".equals(value)) {
-							char[] c = GlobalService.StringToCharArray(value);
-							Clob clob = null;
-							try {
-								clob = new SerialClob(c);
-							} catch (SerialException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							ib.setItemDes(clob);
+							ib.setItemDes(value);
 						} else {
 
 							errorMsg.put("desError", "請輸入商品描述");

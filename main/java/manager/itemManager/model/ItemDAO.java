@@ -22,11 +22,9 @@ interface ItemDAO {
 	public List<ItemBean> getAllItem ();
 	public ItemBean getItem(int itemId);
 	public List<ItemValBean> getItemVal(int itemId);
-	
-	
-	public void updateItem(manager.Shelver.ItemBean ib,int beforeItemId);
+	public void updateItem(manager.itemManager.model.ItemBean ib,int beforeItemId);
 	public void updateItemVal(List<ItemValBean> ivb,int beforeItemId);
-	
+	public void setItemBean(ItemBean ib);
 	
 	
 }

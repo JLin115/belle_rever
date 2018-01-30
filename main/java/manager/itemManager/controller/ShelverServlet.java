@@ -1,4 +1,4 @@
-package manager.Shelver;
+package manager.itemManager.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -24,6 +24,10 @@ import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
 
 import init.GlobalService;
+import manager.itemManager.model.ItemBean;
+import manager.itemManager.model.ItemDAOImpl;
+import manager.itemManager.model.ItemValBean;
+import manager.itemManager.model.ItemValBeanDAOImpl;
 
 /**此為管理者上架主程式
  * 目前有問題的地方:
@@ -32,7 +36,7 @@ import init.GlobalService;
  * 預計功能:
  * 判斷誰連到此網頁若是沒有管理者標籤一率轉出去
  */
-@WebServlet("/manager/Shelver/ShelverServlet")
+@WebServlet("/manager/itemManager/ShelverServlet")
 @MultipartConfig
 public class ShelverServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -64,7 +68,7 @@ public class ShelverServlet extends HttpServlet {
 			ItemValBean ivb = new ItemValBean();
 			itemvals.add(ivb);
 		}
-		ItemBeanDaoImpl ibd = new ItemBeanDaoImpl();
+		ItemDAOImpl id = new ItemDAOImpl();
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
 		if (parts != null) {
@@ -79,7 +83,7 @@ public class ShelverServlet extends HttpServlet {
 						String regex = "[0-9]+";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
-								if (ibd.getItemBean(Integer.valueOf(value)) == null) {
+								if (id.getItem(Integer.valueOf(value)) == null) {
 									ib.setItemID(Integer.valueOf(value));
 								} else {
 									errorMsg.put("idError", "商品序號以存在");
@@ -123,20 +127,10 @@ public class ShelverServlet extends HttpServlet {
 							errorMsg.put("titleError", "請輸入商品標頭");
 						}
 					}
+					//這邊可能要做輸入限制
 					if (name.equals("des")) {
 						if (!"".equals(value)) {
-							char[] c = GlobalService.StringToCharArray(value);
-							Clob clob = null;
-							try {
-								clob = new SerialClob(c);
-							} catch (SerialException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							} catch (SQLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							ib.setItemDes(clob);
+							ib.setItemDes(value);
 						} else {
 
 							errorMsg.put("desError", "請輸入商品描述");
@@ -297,7 +291,7 @@ public class ShelverServlet extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		} else {
-			ibd.setItemBean(ib);
+			id.setItemBean(ib);
 			new ItemValBeanDAOImpl().setItemValBean(itemvals, ib.getItemID());
 			
 			
