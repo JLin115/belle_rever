@@ -3,6 +3,7 @@ package manager.itemManager.model;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 interface ItemDAO {
 	
@@ -16,9 +17,7 @@ interface ItemDAO {
 	public void updateItem(ItemBean ib,int beforeItemId,Connection con);
 	public void setItemValBean (List<ItemValBean> ibvList ,int id,Connection con);
 	public void deleteItemVal(int itemId,Connection con);
-	
 	public void setItemBean(ItemBean ib);
-
 	public void setItemValBean (List<ItemValBean> ibvList ,int id);
-	
+	public Map<String,String> getAllItemType();
 }

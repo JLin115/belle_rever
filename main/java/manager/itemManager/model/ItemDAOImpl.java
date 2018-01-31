@@ -5,7 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.management.RuntimeErrorException;
 import javax.naming.InitialContext;
@@ -18,7 +21,7 @@ import init.GlobalService;
 public class ItemDAOImpl implements ItemDAO {
 
 	DataSource ds = null;
-	private int pageNow = 1;// 目前第幾頁 預設第一頁
+	private int pageNow = -1;// 目前第幾頁 預設第一頁
 	private int pageSize = GlobalService.pageSize;
 	private int totalPage = 0; // 總共幾頁
 	private short itid;
@@ -70,7 +73,7 @@ public class ItemDAOImpl implements ItemDAO {
 	@Override
 	public long getTotalRecords() {
 		String sql = "select count(*) from item where itid=" + itid;
-		long count = 0;
+		long count = 1;
 		try (Connection con = ds.getConnection();
 				PreparedStatement ps = con.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();) {
@@ -259,7 +262,7 @@ public class ItemDAOImpl implements ItemDAO {
 	public void updateItem(ItemBean ib, int beforeItemId,Connection con) {
 		String sql = " update item set itemid=? ,itemheader=?,itemdes=?,itemprice=?,itid=?,itemdiscount=?, "
 				+ " itempic1=?,itempic2=?,itempic3=?,itempic4=?,itempic5=?,itemstatusid=? where itemid=?";
-	
+		
 		try (PreparedStatement ps =con.prepareStatement(sql);){
 			ps.setInt(1, ib.getItemID());
 			ps.setString(2, ib.getItemHeader());
@@ -340,7 +343,7 @@ public class ItemDAOImpl implements ItemDAO {
 			}
 				
 			e.printStackTrace();
-			throw new RuntimeException("寫入失敗:" + e.getMessage());
+			throw new RuntimeException("setItemValBean失敗:" + e.getMessage());
 		} finally {
 			close(con,ps);
 		}
@@ -377,7 +380,7 @@ public class ItemDAOImpl implements ItemDAO {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
-			throw new RuntimeException("setItemBean寫入失敗:" + e.getMessage());
+			throw new RuntimeException("setItemBean失敗:" + e.getMessage());
 		} finally {
 			close(con, ps);
 		}
@@ -394,6 +397,36 @@ public class ItemDAOImpl implements ItemDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public Map<String,String> getAllItemType() {
+		String  sql = "select * from item_Type";
+		Map<String,String> AllItemtypes =new  HashMap<>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con=ds.getConnection();
+			ps =con.prepareStatement(sql);
+			con.setAutoCommit(false);
+			ResultSet rs =ps.executeQuery();
+			while(rs.next()){
+			AllItemtypes.put(String.valueOf(rs.getShort("itid")), rs.getString("Itemtype"));
+			}
+			con.commit();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			throw new RuntimeException("getAllItemType失敗:" + e.getMessage());
+		} finally {
+			close(con, ps);
+		}
+		return AllItemtypes;
 	}
 
 	

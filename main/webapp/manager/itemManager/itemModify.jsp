@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:useBean id="itemtype" class="manager.itemManager.model.ItemDAOImpl"></jsp:useBean>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -23,9 +24,10 @@
 				<span>描述：</span><textarea class="des" name='des' maxlength='100'>${ib.itemDes }</textarea><p class="areap">${errorMsg.desError}</p><br> 
 				<span>類型：</span><select name = "type" value="${ib.itId }">
 					<option value="0">請選擇類別</option>
-					<option value="1">a</option>
-					<option value="2">b</option><!-- 從這邊下手 -->
-					<option value="3">c</option>
+					
+					<c:forEach var="x" items="${itemtype.allItemType}">
+					<option value="${x.key}">${x.value}</option>
+					</c:forEach>
 				</select><p>${errorMsg.typeError}</p><br> 
 				<span>狀態:</span><select name="status">
 					<option value="1">上架</option>
@@ -38,8 +40,6 @@
 				<span>照片：</span><input type="file" name='pic5' /><br>${errorMsg.pic5Error }</p><br> 
 			</div>
 			<div class="d2">
-
-				
 				<div class="auto">
 					
 				<c:forEach var ="x" items="${ivbList}" varStatus="s">

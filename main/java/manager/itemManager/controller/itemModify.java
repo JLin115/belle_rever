@@ -61,7 +61,7 @@ public class ItemModify extends HttpServlet {
 		}
 		ItemBean beforeIb= (ItemBean)s.getAttribute("ib");
 		beforeIb.toString();
-		ItemDAOImpl id = new ItemDAOImpl();
+		ItemDAOImpl idao = new ItemDAOImpl();
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
 		if (parts != null) {
@@ -73,11 +73,14 @@ public class ItemModify extends HttpServlet {
 					// itemBean部分
 
 					if (name.equals("id")) {
+						boolean isExist=false;
+						if(String.valueOf(idao.getItem(Integer.valueOf(value)).getItemID()).equals(value)){
+							isExist=true;
+						}
 						String regex = "[0-9]{1,9}";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
-								if (id.getItem(Integer.valueOf(value)) == null
-										) {
+								if (idao.getItem(Integer.valueOf(value)) == null||isExist) {
 									ib.setItemID(Integer.valueOf(value));
 								} else {
 									errorMsg.put("idError", "商品序號以存在");
