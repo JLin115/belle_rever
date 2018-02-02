@@ -3,7 +3,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@	taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<jsp:useBean id="itemtype" class="manager.itemManager.model.ItemDAOImpl"></jsp:useBean>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,7 +11,7 @@
 </head>
 <body>
 	<ul class="navbar">
-		<li><a href="itemManager.jsp">商品管理</a></li>
+		<li><a href="ItemManager.jsp">商品管理</a></li>
 		<li><a href="#">訂單管理</a></li>
 		<li><a href="#">會員管理</a></li>
 	</ul>

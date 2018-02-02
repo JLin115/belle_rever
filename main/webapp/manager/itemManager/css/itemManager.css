@@ -14,13 +14,13 @@
 .navbar {
 	background-color: white;
 	text-align: center;
-	padding: 20 0 20 0;
+	padding: 20px 0 20px 0;
 	border: 1px solid black;
 }
 
 .navbar li {
 	display: inline-block;
-	padding: 0 30 0 30;
+	padding: 0 30px 0 30px;
 	border: 1px solid black;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .sidebar li {
-	padding: 15 0 15 0;
+	padding: 15px 0 15px 0;
 	border: 1px solid black;
 }
 
