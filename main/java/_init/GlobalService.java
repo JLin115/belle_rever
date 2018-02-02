@@ -1,4 +1,4 @@
-package init;
+package _init;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,6 +26,7 @@ public class GlobalService {
 	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg\\";
 	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\manager\\itemImg\\";
 	public final static int pageSize = 6; //管理員-管理商品-每頁幾筆
+	public final static int memberPageSize = 40; //管理員-會員管理-每頁幾筆
 
 	public static String getJndiDbName() {
 		return JNDI_DB_NAME;

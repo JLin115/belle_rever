@@ -1,4 +1,4 @@
-package init;
+package _init;
 
 import java.util.Map;
 

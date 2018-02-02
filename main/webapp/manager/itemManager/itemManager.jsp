@@ -13,7 +13,7 @@
 	<ul class="navbar">
 		<li><a href="ItemManager.jsp">商品管理</a></li>
 		<li><a href="#">訂單管理</a></li>
-		<li><a href="#">會員管理</a></li>
+		<li><a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1">會員管理</a></li>
 	</ul>
 	<div class="content">
 		<ul class="sidebar">

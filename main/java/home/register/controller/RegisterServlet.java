@@ -1,4 +1,4 @@
-package register;
+package home.register.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -19,7 +19,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
-import init.GlobalService;
+import _init.GlobalService;
+import home.register.model.*;
 
 /**
  * 此頁面為會員註冊頁面
@@ -30,7 +31,7 @@ import init.GlobalService;
  * 3.須做選擇器讓登入後的會員不能來到此頁
  * 
  */
-@WebServlet("/register/RegisterServlet")
+@WebServlet("/home/register/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -175,7 +176,7 @@ public class RegisterServlet extends HttpServlet {
 		mb.setMregisterday(new Timestamp(System.currentTimeMillis()));
 		//轉頁部分
 		if (errorMsg.size() > 0) {
-			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("Register.jsp");
 			rd.forward(request, response);
 			return;
 		} else {

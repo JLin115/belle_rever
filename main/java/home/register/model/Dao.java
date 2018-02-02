@@ -1,6 +1,6 @@
-package register;
+package home.register.model;
 
-interface Dao {
+public interface Dao {
 	public MemberBean getMember(String mid);
 	public void setMember(MemberBean mb);
 }

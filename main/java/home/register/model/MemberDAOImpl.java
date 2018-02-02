@@ -1,4 +1,4 @@
-package register;
+package home.register.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import init.GlobalService;
+import _init.GlobalService;
 
 @Component("MemberDAOImpl")
 public class MemberDAOImpl implements Dao {
