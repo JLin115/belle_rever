@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="itemtype" class="manager.itemManager.model.ItemDAOImpl"></jsp:useBean>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
 				<span>類型：</span><select name = "type" value="${ib.itId }">
 					<option value="0">請選擇類別</option>
 					
-					<c:forEach var="x" items="${itemtype.allItemType}">
+					<c:forEach var="x" items="${itemType}">
 					<option value="${x.key}">${x.value}</option>
 					</c:forEach>
 				</select><p>${errorMsg.typeError}</p><br> 
@@ -43,18 +43,25 @@
 				<div class="auto">
 					
 				<c:forEach var ="x" items="${ivbList}" varStatus="s">
-				<div id="auto${x.serialNumber}">
-					<span>流水號：${x.serialNumber}</span><br>
-					<span> 顏色：</span><input type="text" name='color0' value="${x.color }" /><br> 
-					<span>尺寸：</span><input type="text" name='size0' value="${x.size }"/><br> 
-					<span> 庫存：</span><input type="text" name='stock0' value="${x.stock }"/>
+				<div id="auto${x.itemSerialNumber}">
+					<span>流水號：${x.itemSerialNumber}</span><br>
+					<span> 顏色：</span><input type="text" name='color${x.itemSerialNumber}' value="${x.itemColor }" /><br> 
+					<span>尺寸：</span><input type="text" name='size${x.itemSerialNumber}' value="${x.itemSize }"/><br> 
+					<span> 庫存：</span><input type="text" name='stock${x.itemSerialNumber}' value="${x.itemQty }"/>
 				
 				</div>
 					<c:if test="${s.last}">
-					 <input type="hidden" name="identify" id="identify" value="${x.serialNumber}" />
+					 <input type="hidden" name="identify" id="identify" value="${x.itemSerialNumber}" />
 					</c:if>
 				
 				</c:forEach>
+				
+				
+				<c:if test="${empty ivbList}">
+				 <input type="hidden" name="identify" id="identify" value="-1" />
+				</c:if>
+					
+					
 					
 					
 				</div>

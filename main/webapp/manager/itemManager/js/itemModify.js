@@ -1,8 +1,15 @@
 	$(window).ready(function() {
 			
 			var i = $("#identify").val();
-			$("#add").click(function() {
+			if(isNaN(i))
+			{
+				
+				i=-1;
+			}
 			
+			
+			$("#add").click(function() {
+				i++;
 			var div = document.createElement("div");
 			div.id = "auto" + i
 			div.innerHTML = '<span>流水號：'+i+'</span><br><span>顏色：</span><input type=" text " name="color'+i+'" /><p></p><br>'
@@ -10,13 +17,13 @@
 			+ '<span>庫存：</span><input type="text" name="stock'+i+'" /><p></p> ';
 			$(".auto").append(div);
 			$("#identify").attr("value", i);
-			i++;
+
 			
 			});
 
 			$("#dec").click(function() {
 				
-					if (i > 0) {
+					if (i > -1) {
 						$("#auto" + i).remove();
 						i--;
 					}

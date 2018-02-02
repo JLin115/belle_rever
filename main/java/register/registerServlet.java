@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import init.GlobalService;
 
 /**
@@ -44,12 +47,13 @@ public class RegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
+		
+		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		Map<String, String> errorMsg = new HashMap<>();
 
 		request.setAttribute("errorMsg", errorMsg);
 		MemberBean mb = new MemberBean();
-		MemberDAOImpl mdao = new MemberDAOImpl();
-		
+		Dao mdao = (Dao) wctx.getBean("MemberDAOImpl");
 		String accountReg = "[\\w]+";
 		//得到帳號 並確認資料庫有無
 		String mid = request.getParameter("account");
@@ -63,12 +67,10 @@ public class RegisterServlet extends HttpServlet {
 					} else {
 						errorMsg.put("accountError", "帳號含有特殊字元");
 					}
-
 				} else {
 					errorMsg.put("accountError", "帳號長度小於八位元");
 				}
 			} else {
-
 				errorMsg.put("accountError", "請輸入帳號");
 			}
 		}
@@ -90,7 +92,6 @@ public class RegisterServlet extends HttpServlet {
 			if (pasc.length() > 0 && pasc.length() < 6) {
 				errorMsg.put("paswordError2", "密碼太短");
 			}
-
 		}
 		if (!errorMsg.containsKey("paswordError2") && !errorMsg.containsKey("paswordError")) {
 			if (GlobalService.judgeInput(pas) == true) {
@@ -171,12 +172,7 @@ public class RegisterServlet extends HttpServlet {
 		} else {
 			errorMsg.put("emailError", "請輸入電子郵件");
 		}
-
-		
 		mb.setMregisterday(new Timestamp(System.currentTimeMillis()));
-		
-		
-		
 		//轉頁部分
 		if (errorMsg.size() > 0) {
 			RequestDispatcher rd = request.getRequestDispatcher("register.jsp");
@@ -185,9 +181,6 @@ public class RegisterServlet extends HttpServlet {
 		} else {
 			response.sendRedirect("/index.jsp");
 			mdao.setMember(mb);
-
 		}
-
 	}
-
 }

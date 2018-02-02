@@ -23,6 +23,9 @@ import javax.servlet.http.Part;
 import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import init.GlobalService;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
@@ -52,6 +55,7 @@ public class ShelverServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		request.setCharacterEncoding("utf-8");
 		Map<String, String> errorMsg = new HashMap<>();
 		request.setAttribute("errorMsg", errorMsg);
@@ -68,7 +72,7 @@ public class ShelverServlet extends HttpServlet {
 			ItemValBean ivb = new ItemValBean();
 			itemvals.add(ivb);
 		}
-		ItemDAOImpl id = new ItemDAOImpl();
+		ItemDAOImpl id = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
 		if (parts != null) {
@@ -153,7 +157,7 @@ public class ShelverServlet extends HttpServlet {
 						ItemValBean ivb = itemvals.get(n1);
 
 						if (!"".equals(value)) {
-							ivb.setColor(value.trim());
+							ivb.setItemColor(value.trim());
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 						}
@@ -163,7 +167,7 @@ public class ShelverServlet extends HttpServlet {
 						ItemValBean ivb = itemvals.get(n1);
 
 						if (!"".equals(value)) {
-							ivb.setSize(value.trim());
+							ivb.setItemSize(value.trim());
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 						}
@@ -175,7 +179,7 @@ public class ShelverServlet extends HttpServlet {
 						String regex = "[0-9]+";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
-								ivb.setStock(Integer.valueOf(value));
+								ivb.setItemQty(Integer.valueOf(value));
 							} else {
 								errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 							}
@@ -184,7 +188,7 @@ public class ShelverServlet extends HttpServlet {
 						}
 						
 						//流水號取得
-						ivb.setSerialNumber(n1);
+						ivb.setItemSerialNumber(n1);
 						System.out.println(n1);
 
 					}
@@ -197,7 +201,7 @@ public class ShelverServlet extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic1(imgName);
+								ib.setItemPic1(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
@@ -216,7 +220,7 @@ public class ShelverServlet extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic2(imgName);
+								ib.setItemPic2(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
@@ -235,7 +239,7 @@ public class ShelverServlet extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic3(imgName);
+								ib.setItemPic3(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
@@ -253,7 +257,7 @@ public class ShelverServlet extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic4(imgName);
+								ib.setItemPic4(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
@@ -268,7 +272,7 @@ public class ShelverServlet extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic5(imgName);
+								ib.setItemPic5(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
@@ -292,7 +296,7 @@ public class ShelverServlet extends HttpServlet {
 			return;
 		} else {
 			id.setItemBean(ib);
-			new ItemDAOImpl().setItemValBean(itemvals, ib.getItemID());
+			id.setItemValBean(itemvals, ib.getItemID());
 			
 			
 			

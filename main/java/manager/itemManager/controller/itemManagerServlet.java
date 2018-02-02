@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
 
@@ -26,17 +29,18 @@ public class ItemManagerServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
+		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		short itid =Short.valueOf(request.getParameter("itid"));
 		int pageNow= Integer.valueOf(request.getParameter("pageNow"));
-		ItemDAOImpl idao = new ItemDAOImpl(itid);
+		ItemDAOImpl idao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
+		idao.setItid(itid);
 		idao.setPageNow(pageNow);
 		List<ItemBean> allItem=idao.getAllItem();
 		request.setAttribute("allItem", allItem);
 		request.setAttribute("itid", itid);
 		request.setAttribute("pageNow", idao.getPageNow());
 		request.setAttribute("totalPage", idao.getTotalPage());
-		RequestDispatcher rd = request.getRequestDispatcher("itemManager.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("ItemManager.jsp");
 		rd.forward(request, response);
 		return;
 		

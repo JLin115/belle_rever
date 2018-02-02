@@ -1,5 +1,7 @@
 package manager.itemManager.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Clob;
@@ -22,6 +24,9 @@ import javax.servlet.http.Part;
 import javax.sql.rowset.serial.SerialClob;
 import javax.sql.rowset.serial.SerialException;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import init.GlobalService;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
@@ -42,7 +47,7 @@ public class ItemModify extends HttpServlet {
 		doPost(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		request.setCharacterEncoding("utf-8");
 		HttpSession s = request.getSession();
 		Map<String, String> errorMsg = new HashMap<>();
@@ -61,7 +66,7 @@ public class ItemModify extends HttpServlet {
 		}
 		ItemBean beforeIb= (ItemBean)s.getAttribute("ib");
 		beforeIb.toString();
-		ItemDAOImpl idao = new ItemDAOImpl();
+		ItemDAOImpl idao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		String ColorSizeStockError = "請確實輸入顏色、尺寸、庫存<br>" + "EX：<br>" + "顏色：黑色<br>" + "尺寸：L<br>" + "庫存：100<br>"
 				+ "注意：請勿包含空格等特殊字元";
 		if (parts != null) {
@@ -74,14 +79,30 @@ public class ItemModify extends HttpServlet {
 
 					if (name.equals("id")) {
 						boolean isExist=false;
-						if(String.valueOf(idao.getItem(Integer.valueOf(value)).getItemID()).equals(value)){
+						
+						//beforeIb.getItemID()  舊
+						
+						if(Integer.valueOf(value).equals(beforeIb.getItemID())){
 							isExist=true;
+							
+						}else{
+							if(idao.getItem(Integer.valueOf(value)) == null){
+								isExist=true;
+								
+							}
+							
 						}
+						
+	
 						String regex = "[0-9]{1,9}";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
-								if (idao.getItem(Integer.valueOf(value)) == null||isExist) {
+								if (isExist) {
+									
+									
 									ib.setItemID(Integer.valueOf(value));
+									
+									
 								} else {
 									errorMsg.put("idError", "商品序號以存在");
 								}
@@ -150,7 +171,7 @@ public class ItemModify extends HttpServlet {
 						ItemValBean ivb = itemvals.get(n1);
 
 						if (!"".equals(value)) {
-							ivb.setColor(value.trim());
+							ivb.setItemColor(value.trim());
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 						}
@@ -160,7 +181,7 @@ public class ItemModify extends HttpServlet {
 						ItemValBean ivb = itemvals.get(n1);
 
 						if (!"".equals(value)) {
-							ivb.setSize(value.trim());
+							ivb.setItemSize(value.trim());
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 						}
@@ -172,7 +193,7 @@ public class ItemModify extends HttpServlet {
 						String regex = "[0-9]+";
 						if (!"".equals(value)) {
 							if (value.matches(regex)) {
-								ivb.setStock(Integer.valueOf(value));
+								ivb.setItemQty(Integer.valueOf(value));
 							} else {
 								errorMsg.put("ColorSizeStockError", ColorSizeStockError);
 							}
@@ -181,8 +202,10 @@ public class ItemModify extends HttpServlet {
 						}
 						
 						//流水號取得
-						ivb.setSerialNumber(n1);
-						System.out.println(n1);
+						System.out.println("name="+name);
+						ivb.setItemSerialNumber(n1);
+						System.out.println("n1="+n1);
+						
 
 					}
 
@@ -193,10 +216,10 @@ public class ItemModify extends HttpServlet {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
 									
-								GlobalService.deleteImgInfile(beforeIb.getPic1());	
+								GlobalService.deleteImgInfile(beforeIb.getItemPic1());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic1(imgName);
+								ib.setItemPic1(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
@@ -204,7 +227,7 @@ public class ItemModify extends HttpServlet {
 							}
 						} else {
 							
-							ib.setPic1(beforeIb.getPic1());
+							ib.setItemPic1(beforeIb.getItemPic1());
 							
 						}
 					}
@@ -213,17 +236,17 @@ public class ItemModify extends HttpServlet {
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
-								GlobalService.deleteImgInfile(beforeIb.getPic2());	
+								GlobalService.deleteImgInfile(beforeIb.getItemPic2());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic2(imgName);
+								ib.setItemPic2(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic2Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
 						} else {
-							ib.setPic2(beforeIb.getPic2());
+							ib.setItemPic2(beforeIb.getItemPic2());
 						}
 					}
 					if (name.equals("pic3")) {
@@ -231,17 +254,17 @@ public class ItemModify extends HttpServlet {
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
-								GlobalService.deleteImgInfile(beforeIb.getPic3());	
+								GlobalService.deleteImgInfile(beforeIb.getItemPic3());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic3(imgName);
+								ib.setItemPic3(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic3Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
 						} else {
-							ib.setPic3(beforeIb.getPic3());
+							ib.setItemPic3(beforeIb.getItemPic3());
 						}
 					}
 					if (name.equals("pic4")) {
@@ -249,17 +272,17 @@ public class ItemModify extends HttpServlet {
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
-								GlobalService.deleteImgInfile(beforeIb.getPic4());	
+								GlobalService.deleteImgInfile(beforeIb.getItemPic4());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic4(imgName);
+								ib.setItemPic4(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic4Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
 						}else{
-							ib.setPic4(beforeIb.getPic4());	
+							ib.setItemPic4(beforeIb.getItemPic4());	
 						}
 					}
 					if (name.equals("pic5")) {
@@ -267,17 +290,17 @@ public class ItemModify extends HttpServlet {
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
-								GlobalService.deleteImgInfile(beforeIb.getPic5());	
+								GlobalService.deleteImgInfile(beforeIb.getItemPic5());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream());
-								ib.setPic5(imgName);
+								ib.setItemPic5(imgName);
 								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic5Error", "圖片格式錯誤請確認是PNG、JPG檔");
 							}
 						} else{
-							ib.setPic5(beforeIb.getPic5());
+							ib.setItemPic5(beforeIb.getItemPic5());
 						}
 					}
 				}
@@ -287,17 +310,22 @@ public class ItemModify extends HttpServlet {
 		
 		
 		if(errorMsg.size()>0){
-		RequestDispatcher rd = request.getRequestDispatcher("itemModify.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("ItemModify.jsp");
 		rd.forward(request, response);
 		return;
 		
 //		response.sendRedirect("itemModify.jsp");
 //		return;
-		}else{
-			ItemDAOImpl dao = new ItemDAOImpl();
-			dao.modifyItem(ib, itemvals, ib.getItemID(), beforeIb.getItemID());
-			s.removeAttribute("ib");
-			s.removeAttribute("ivbList");
+		}else{	
+			for(ItemValBean ss :itemvals){
+				
+				System.out.println("最後"+ss.getItemSerialNumber());
+			}
+			idao.modifyItem(ib, itemvals, ib.getItemID(), beforeIb.getItemID());
+//			s.removeAttribute("ib");
+//			s.removeAttribute("ivbList");
+			//拿掉可以上ㄧ頁
+			//不拿上ㄧ頁送出會爆掉
 			
 		}
 		

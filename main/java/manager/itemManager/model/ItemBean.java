@@ -5,33 +5,38 @@ import java.sql.Blob;
 import java.sql.Clob;
 
 public class ItemBean {
+	
+
+
 	@Override
 	public String toString() {
 		return "ItemBean [itemID=" + itemID + ", itemHeader=" + itemHeader + ", itemDes=" + itemDes + ", itemPrice="
-				+ itemPrice + ", itId=" + itId + ", itemdiscount=" + itemdiscount + ", pic1=" + pic1 + ", pic2=" + pic2
-				+ ", pic3=" + pic3 + ", pic4=" + pic4 + ", pic5=" + pic5 + ", Itemstatusid=" + Itemstatusid + "]";
+				+ itemPrice + ", itId=" + itId + ", itemdiscount=" + itemdiscount + ", itemPic1=" + itemPic1
+				+ ", itemPic2=" + itemPic2 + ", itemPic3=" + itemPic3 + ", itemPic4=" + itemPic4 + ", itemPic51="
+				+ itemPic5 + ", Itemstatusid=" + Itemstatusid + "]";
 	}
 
 
-	private int itemID;
+	private Integer itemID;
 	private String itemHeader;
 	private String itemDes;
-	private int itemPrice;
-	private short itId;
+	private Integer itemPrice;
+	private Short itId;
 	private BigDecimal itemdiscount;
-	private String pic1;
-	private String pic2;
-	private String pic3;
-	private String pic4;
-	private String pic5;
-	private short Itemstatusid;
+	private String itemPic1;
+	private String itemPic2;
+	private String itemPic3;
+	private String itemPic4;
+	private String itemPic5;
+	private Short Itemstatusid;
 
 	
 	public ItemBean(){}
 
 
-	public ItemBean(int itemID, String itemHeader, String itemDes, int itemPrice, short itId, BigDecimal itemdiscount,
-			String pic1, String pic2, String pic3, String pic4, String pic5, short itemstatusid) {
+	public ItemBean(Integer itemID, String itemHeader, String itemDes, Integer itemPrice, Short itId,
+			BigDecimal itemdiscount, String itemPic1, String itemPic2, String itemPic3, String itemPic4,
+			String itemPic5, Short itemstatusid) {
 		super();
 		this.itemID = itemID;
 		this.itemHeader = itemHeader;
@@ -39,21 +44,21 @@ public class ItemBean {
 		this.itemPrice = itemPrice;
 		this.itId = itId;
 		this.itemdiscount = itemdiscount;
-		this.pic1 = pic1;
-		this.pic2 = pic2;
-		this.pic3 = pic3;
-		this.pic4 = pic4;
-		this.pic5 = pic5;
+		this.itemPic1 = itemPic1;
+		this.itemPic2 = itemPic2;
+		this.itemPic3 = itemPic3;
+		this.itemPic4 = itemPic4;
+		this.itemPic5 = itemPic5;
 		Itemstatusid = itemstatusid;
 	}
 
 
-	public int getItemID() {
+	public Integer getItemID() {
 		return itemID;
 	}
 
 
-	public void setItemID(int itemID) {
+	public void setItemID(Integer itemID) {
 		this.itemID = itemID;
 	}
 
@@ -78,22 +83,22 @@ public class ItemBean {
 	}
 
 
-	public int getItemPrice() {
+	public Integer getItemPrice() {
 		return itemPrice;
 	}
 
 
-	public void setItemPrice(int itemPrice) {
+	public void setItemPrice(Integer itemPrice) {
 		this.itemPrice = itemPrice;
 	}
 
 
-	public short getItId() {
+	public Short getItId() {
 		return itId;
 	}
 
 
-	public void setItId(short itId) {
+	public void setItId(Short itId) {
 		this.itId = itId;
 	}
 
@@ -108,64 +113,67 @@ public class ItemBean {
 	}
 
 
-	public String getPic1() {
-		return pic1;
+	public String getItemPic1() {
+		return itemPic1;
 	}
 
 
-	public void setPic1(String pic1) {
-		this.pic1 = pic1;
+	public void setItemPic1(String itemPic1) {
+		this.itemPic1 = itemPic1;
 	}
 
 
-	public String getPic2() {
-		return pic2;
+	public String getItemPic2() {
+		return itemPic2;
 	}
 
 
-	public void setPic2(String pic2) {
-		this.pic2 = pic2;
+	public void setItemPic2(String itemPic2) {
+		this.itemPic2 = itemPic2;
 	}
 
 
-	public String getPic3() {
-		return pic3;
+	public String getItemPic3() {
+		return itemPic3;
 	}
 
 
-	public void setPic3(String pic3) {
-		this.pic3 = pic3;
+	public void setItemPic3(String itemPic3) {
+		this.itemPic3 = itemPic3;
 	}
 
 
-	public String getPic4() {
-		return pic4;
+	public String getItemPic4() {
+		return itemPic4;
 	}
 
 
-	public void setPic4(String pic4) {
-		this.pic4 = pic4;
+	public void setItemPic4(String itemPic4) {
+		this.itemPic4 = itemPic4;
 	}
 
 
-	public String getPic5() {
-		return pic5;
+	public String getItemPic5() {
+		return itemPic5;
 	}
 
 
-	public void setPic5(String pic5) {
-		this.pic5 = pic5;
+	public void setItemPic5(String itemPic5) {
+		this.itemPic5 = itemPic5;
 	}
 
 
-	public short getItemstatusid() {
+	public Short getItemstatusid() {
 		return Itemstatusid;
 	}
 
 
-	public void setItemstatusid(short itemstatusid) {
+	public void setItemstatusid(Short itemstatusid) {
 		Itemstatusid = itemstatusid;
 	}
+
+
+
 
 
 	

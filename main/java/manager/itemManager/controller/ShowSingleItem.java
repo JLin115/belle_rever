@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import init.GlobalService;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
@@ -27,15 +30,19 @@ public class ShowSingleItem extends HttpServlet {
       super();    
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		request.setCharacterEncoding("utf-8");
 		HttpSession s=request.getSession();
 		int itemId = Integer.valueOf(request.getParameter("itemId"));
-		ItemDAOImpl dao = new ItemDAOImpl();
+		ItemDAOImpl dao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
+		
 		ItemBean ib=dao.getItem(itemId);
 		List<ItemValBean> ivbList =dao.getItemVal(itemId);
+
+		
 		s.setAttribute("ib", ib);
 		s.setAttribute("ivbList", ivbList);
-		RequestDispatcher rd = request.getRequestDispatcher("itemModify.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("ItemModify.jsp");
 		rd.forward(request, response);
 		
 //		response.sendRedirect("itemModify.jsp");
