@@ -26,29 +26,52 @@ import manager.itemManager.model.ItemValBean;
 public class ShowSingleItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public ShowSingleItem() {
-      super();    
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ShowSingleItem() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		request.setCharacterEncoding("utf-8");
-		HttpSession s=request.getSession();
-		int itemId = Integer.valueOf(request.getParameter("itemId"));
+		HttpSession s = request.getSession();
 		ItemDAOImpl dao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		
-		ItemBean ib=dao.getItem(itemId);
-		List<ItemValBean> ivbList =dao.getItemVal(itemId);
-
+		boolean b = true;
+		ItemBean ib = null;
+		int itemId = 0;
 		
-		s.setAttribute("ib", ib);
-		s.setAttribute("ivbList", ivbList);
-		RequestDispatcher rd = request.getRequestDispatcher("ItemModify.jsp");
-		rd.forward(request, response);
 		
-//		response.sendRedirect("itemModify.jsp");
-//		return;
+		try {
+			itemId = Integer.valueOf(request.getParameter("itemId"));
+		} catch (Exception e) {
+			b = false;
+		}
+		
+		
+		if (b) {
+			ib = dao.getItem(itemId);
+		}
+		
+		
+		
+		
+		if (ib != null) {
+			List<ItemValBean> ivbList = dao.getItemVal(itemId);
+			s.setAttribute("ib", ib);
+			s.setAttribute("ivbList", ivbList);
+			RequestDispatcher rd = request.getRequestDispatcher("ItemModify.jsp");
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect("ItemManager.jsp");
+			return;
+		}
+		// response.sendRedirect("itemModify.jsp");
+		// return;
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

@@ -78,7 +78,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	@Transactional
 	public List<MemberBean> getAllMember() {
-		String sql = "select * from member order by mid DESC LIMIT ?,?";
+		String sql = "select * from member where mpid not in (999) order by mid DESC LIMIT ?,?";
 		int startRecordNo = (pageNow - 1) * pageSize;
 		List<MemberBean> members = new ArrayList<>();
 		members = template.query(sql,new Object[]{startRecordNo,pageSize} , new BeanPropertyRowMapper<MemberBean>(MemberBean.class));

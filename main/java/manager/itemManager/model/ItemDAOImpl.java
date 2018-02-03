@@ -33,7 +33,7 @@ public class ItemDAOImpl implements ItemDAO {
 	JdbcTemplate template;
 	private int pageNow = -1;// 目前第幾頁 預設第一頁
 	private int pageSize = GlobalService.pageSize;
-	private int totalPage = -1; // 總共幾頁
+	private int totalPage = 0; // 總共幾頁
 	private short itid;
 	
 

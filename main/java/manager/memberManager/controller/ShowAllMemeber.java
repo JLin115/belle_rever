@@ -17,7 +17,6 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import home.register.model.MemberBean;
 import manager.memberManager.model.*;
 
-
 /**
  * Servlet implementation class ShowAllMemeber
  */
@@ -25,24 +24,48 @@ import manager.memberManager.model.*;
 public class ShowAllMemeber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
-		HttpSession s= request.getSession();
-		MemberDaoImpl dao  = (MemberDaoImpl) wctx.getBean("MemberDaoImpl");
-		int pageNow= Integer.valueOf(request.getParameter("pageNow"));
-		dao.setPageNow(pageNow);
-		List<MemberBean> members =dao.getAllMember();
-		request.setAttribute("members", members);
-		request.setAttribute("pageNow", dao.getPageNow());
-		request.setAttribute("totalPage", dao.getTotalPage());
-//		response.sendRedirect("MemberManager.jsp");
-		RequestDispatcher rd = request.getRequestDispatcher("MemberManager.jsp");
-		rd.forward(request, response);
-		return;
+		HttpSession s = request.getSession();
+		MemberDaoImpl dao = (MemberDaoImpl) wctx.getBean("MemberDaoImpl");
+		int pageNow;
+		try {
+			pageNow = Integer.valueOf(request.getParameter("pageNow"));
+		} catch (Exception e) {
+			System.out.println("輸入錯誤 自動導到會員管理首頁");
+			pageNow = 1;
+		}
+		String mid = request.getParameter("account");
+		MemberBean mb =dao.getMember(mid);
 		
+
+		if (mid == null || mid.equals("")|| mb==null) {
+			if(pageNow>dao.getTotalPage()){
+				pageNow=1;
+			}
+			dao.setPageNow(pageNow);
+			List<MemberBean> members = dao.getAllMember();
+			request.setAttribute("members", members);
+			request.setAttribute("pageNow", dao.getPageNow());
+			request.setAttribute("totalPage", dao.getTotalPage());
+			// response.sendRedirect("MemberManager.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("MemberManager.jsp");
+			rd.forward(request, response);
+			response.sendRedirect("MemberManager.jsp");
+			return;
+		} else {
+			request.setAttribute("mb", mb);
+			RequestDispatcher rd = request.getRequestDispatcher("ModifyMember.jsp");
+			rd.forward(request, response);
+			
+			return;
+		}
 	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

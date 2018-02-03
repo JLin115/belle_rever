@@ -38,13 +38,21 @@
 
 			<c:forEach var="m" items="${members}">
 				<tr>
-					<td><a href="#"><span>${m.mid}</span></td>
+					<td><a href="ShowAllMemeber?account=${m.mid}"><span>${m.mid}</span></td>
 					<td><span>${m.mname}</span></td>
 					<td><span>${m.mbday}</span></td>
 					<td><span>${m.memail}</span></td>
 					<td><span>${m.mphone}</span></td>
 					<td><span>${m.mregisterday}</span></td>
-					<td><span>${m.mpid}</span></td>
+					<td><span>
+					<c:choose>
+					<c:when test="${m.mpid == 1}">正常</c:when>
+					<c:otherwise>停權</c:otherwise>
+					
+					</c:choose>
+					
+					
+					</span></td>
 				</tr>
 			</c:forEach>
 		
