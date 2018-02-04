@@ -25,8 +25,8 @@ public class GlobalService {
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
 	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg\\";
 	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\manager\\itemImg\\";
-	public final static int pageSize = 6; //管理員-管理商品-每頁幾筆
-	public final static int memberPageSize = 40; //管理員-會員管理-每頁幾筆
+	public final static int pageSize = 6; // 管理員-管理商品-每頁幾筆
+	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 
 	public static String getJndiDbName() {
 		return JNDI_DB_NAME;
@@ -50,9 +50,24 @@ public class GlobalService {
 		return b;
 	}
 
-	static String KEY = "acegiklmprtvxzbd";
+	// 加密2.0
+	public static String encryptString2(String message, String id, String d) {
+		
+		String s1=encryptString(message, KEY);
+		String s2=encryptString(s1, getGKey(id, d));
+//		System.out.println(s1);
+//		System.out.println(s2);
+//		
+//		String s3=decryptString(s2, getGKey(id, d));
+//		String s4=decryptString(s3, KEY);
+//		System.out.println(s3);
+//		System.out.println(s4);
+		
+		
+		return s2;
+	}
 
-	public static String encryptString(String message) {
+	private static String encryptString(String message, String key) {
 		// DES : Data Encryption Standard, 一種對稱式加密演算法。
 		// 美國聯邦政府於1976年定為聯邦資料處理標準(FIPS)，它的
 		// 金鑰則必須是7個位元組、加密區塊(Cipher Block)固定為8個位元組。
@@ -74,7 +89,7 @@ public class GlobalService {
 		String encryptedString = "";
 		try {
 			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-			SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(), "AES");
+			SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "AES");
 			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 			encryptedString = DatatypeConverter.printBase64Binary(cipher.doFinal(message.getBytes()));
 		} catch (InvalidKeyException e) {
@@ -89,6 +104,51 @@ public class GlobalService {
 			e.printStackTrace();
 		}
 		return encryptedString;
+	}
+
+	private static String KEY = "acegiklmprtvxzbd";
+
+	private static String getGKey(String id, String d) {
+		StringBuilder gKey = new StringBuilder();
+		char[] ci = id.toCharArray();
+		char[] cd = d.toCharArray();
+		int bl = cd.length;
+		for (int x = 1; x < 6; x++) {
+			gKey.append(cd[bl - x]);
+			gKey.append(cd[bl - (x + 1)]);
+			gKey.append(ci[x]);
+		}
+		gKey.append(cd[bl - 1]);
+		return gKey.toString();
+	}
+
+	// 解密2.0
+	public static String decryptString2(String stringToDecrypt, String id, String d) {
+
+		return decryptString(decryptString(stringToDecrypt, getGKey(id, d)), KEY);
+
+	}
+
+	public static String decryptString(String stringToDecrypt, String key) {
+		String decryptedString = "";
+		try {
+			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+			SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "AES");
+			cipher.init(Cipher.DECRYPT_MODE, secretKey);
+			byte[] b = DatatypeConverter.parseBase64Binary(stringToDecrypt);
+			decryptedString = new String(cipher.doFinal(b));
+		} catch (InvalidKeyException e) {
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (NoSuchPaddingException e) {
+			e.printStackTrace();
+		} catch (IllegalBlockSizeException e) {
+			e.printStackTrace();
+		} catch (BadPaddingException e) {
+			e.printStackTrace();
+		}
+		return decryptedString;
 	}
 
 	// 判斷特輸符號 有特殊符號傳回false
@@ -123,11 +183,11 @@ public class GlobalService {
 
 	public static String clobToString(Clob c) {
 		String str = null;
-		try (Reader  is =  c.getCharacterStream();) {
+		try (Reader is = c.getCharacterStream();) {
 
 			char[] cc = new char[(int) c.length()];
 			is.read(cc);
-			str =String.valueOf(cc);
+			str = String.valueOf(cc);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -145,7 +205,7 @@ public class GlobalService {
 		StringBuilder sb = new StringBuilder();
 		String mimeType = sc.getMimeType(getFileName(p));
 		int index = mimeType.indexOf("/") + 1;
-		//sb.append("/");
+		// sb.append("/");
 		sb.append(System.currentTimeMillis());
 		sb.append(".");
 		sb.append(mimeType.substring(index));
@@ -161,23 +221,20 @@ public class GlobalService {
 		}
 		return null;
 	}
-	
+
 	static public void deleteImgInfile(String imgName) {
-		
-		File dir = new File(imgFolder,imgName);
+
+		File dir = new File(imgFolder, imgName);
 		if (dir.exists()) {
 			dir.delete();
 		}
-	
-		File tomCatDir = new File(TomCatFolder,imgName);
+
+		File tomCatDir = new File(TomCatFolder, imgName);
 		if (dir.exists()) {
 			tomCatDir.delete();
 		}
-	
-	
+
 	}
-	
-	
 
 	static public void saveImgtofile(String imgName, InputStream is) {
 
@@ -189,15 +246,13 @@ public class GlobalService {
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		
-		
+
 		File file = new File(dir, imgName);
 		File tomCatfile = new File(tomCatDir, imgName);
 		byte[] b = new byte[8291];
 		int len = 0;
 		try (FileOutputStream fos = new FileOutputStream(file);
-			 FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);
-		) {
+				FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);) {
 
 			while ((len = is.read(b)) != -1) {
 				tomCatfos.write(b, 0, len);

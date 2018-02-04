@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
 			errorMsg.put("accountError", "帳號重複");
 		}else{
 			if (!"".equals(mid)) {
-				if (mid.length() > 8) {
+				if (mid.length() >= 8) {
 					if (mid.matches(accountReg)) {
 						mb.setMid(mid);
 					} else {
@@ -75,6 +75,9 @@ public class RegisterServlet extends HttpServlet {
 				errorMsg.put("accountError", "請輸入帳號");
 			}
 		}
+		//註冊時間
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		mb.setMregisterday(ts);
 
 		//得到密碼 及 密碼確認 分兩階段驗證
 		String pas = request.getParameter("pas");
@@ -97,7 +100,12 @@ public class RegisterServlet extends HttpServlet {
 		if (!errorMsg.containsKey("paswordError2") && !errorMsg.containsKey("paswordError")) {
 			if (GlobalService.judgeInput(pas) == true) {
 				if (pas.equals(pasc)) {
-					mb.setMpass(GlobalService.encryptString(pas));
+					if(!(errorMsg.size()>0)){
+						System.out.println(mb.getMid()+","+mb.getMregisterday().toString());
+					String s = GlobalService.encryptString2(pas,mb.getMid(),mb.getMregisterday().toString());
+					System.out.println(s);
+					mb.setMpass(s);}
+					
 				} else {
 					errorMsg.put("paswordError", "密碼不一致");
 					errorMsg.put("paswordError2", "密碼不一致");
@@ -119,15 +127,25 @@ public class RegisterServlet extends HttpServlet {
 		}
 		//得到生日 並用正規表達驗證
 		String bd = request.getParameter("bd");
-		String regbd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|("
-				+ "0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))";
+		String regbd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|(0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))"
+				+ "|^((19)|2[0|1])[0-9]{2}(\\-)(((1[02]|(0?[13578]))(\\-)(10|20|3[01]|[012]?[1-9]))|(0?2(\\-)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))";
 		Date bdday = null;
 		if (!"".equals(bd)) {
 			if (bd.matches(regbd)) {
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+				SimpleDateFormat sdf = null;
 				try {
-					bdday = new Date(sdf.parse(bd).getTime());
-					mb.setMbday(bdday);
+					if(bd.contains("-")){
+						sdf =	new SimpleDateFormat("yyyy-MM-dd");
+						bdday = new Date(sdf.parse(bd).getTime());
+						mb.setMbday(bdday);
+						
+					}else{
+						sdf =	new SimpleDateFormat("yyyy/MM/dd");
+						bdday = new Date(sdf.parse(bd).getTime());
+						mb.setMbday(bdday);
+					}
+					
+				
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -173,7 +191,7 @@ public class RegisterServlet extends HttpServlet {
 		} else {
 			errorMsg.put("emailError", "請輸入電子郵件");
 		}
-		mb.setMregisterday(new Timestamp(System.currentTimeMillis()));
+
 		//轉頁部分
 		if (errorMsg.size() > 0) {
 			RequestDispatcher rd = request.getRequestDispatcher("Register.jsp");

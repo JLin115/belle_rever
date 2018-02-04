@@ -1,5 +1,6 @@
 package home.register.model;
 
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -73,6 +74,11 @@ public class MemberBean {
 	}
 	public void setMpid(int mpid) {
 		this.mpid = mpid;
+	}
+	@Override
+	public String toString() {
+		return "MemberBean [mid=" + mid + ", mpass=" + mpass + ", mname=" + mname + ", mbday=" + mbday + ", memail="
+				+ memail + ", mphone=" + mphone + ", mregisterday=" + mregisterday + ", mpid=" + mpid + "]";
 	}
 	
 	

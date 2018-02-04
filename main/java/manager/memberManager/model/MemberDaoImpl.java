@@ -2,6 +2,7 @@ package manager.memberManager.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -94,6 +95,7 @@ public class MemberDaoImpl implements MemberDao {
 		List<MemberBean> member = new ArrayList<>();
 		member = template.query(sql,new Object[]{mid} , new BeanPropertyRowMapper<MemberBean>(MemberBean.class));
 		if(member.isEmpty()){
+			System.out.println("null");
 			return null;
 		}
 		return member.get(0);
@@ -104,12 +106,33 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	@Transactional
 	public void updateMember(MemberBean mb) {
-		String sql ="update member set mpass=? , mname=? , mbday=? , memail = ? , mphone=? , mpid=? "
+		String sql ="update member set mname=? , mbday=? , memail = ? , mphone=? , mpid=? "
 				+ " where mid = ?";
-		template.update(sql,new Object[]{mb.getMpass(),mb.getMname(),mb.getMbday(),mb.getMemail(),mb.getMphone(),mb.getMid()});
+		template.update(sql,new Object[]{mb.getMname(),mb.getMbday(),mb.getMemail(),mb.getMphone(),mb.getMpid(),mb.getMid()});
 	}
+	@Override
+	public Boolean getAMemberPhone(String newPhone,String oldPhone) {
+		String sql = "select mphone from member where mphone = ?  and  mphone not in (?)";
+		Boolean b = false;
+		List<Map<String, Object>> l = new ArrayList<>();
+		l=template.queryForList(sql, new Object[]{newPhone,oldPhone});
+		if(l.isEmpty()){
+			b=true;
+		}
+		return b;
+	}
+	@Override
+	public Boolean getAMemberEmail(String newEmail,String oldEmail) {
+		String sql = "select memail from member where memail = ? and  memail not in (?)";
+		Boolean b = false;
+		List<Map<String, Object>> l = new ArrayList<>();
+		l=template.queryForList(sql, new Object[]{newEmail,oldEmail});
+		if(l.isEmpty()){
+			b=true;
+		}
+		return b;
 	
-	
+	}
 	
 	
 }

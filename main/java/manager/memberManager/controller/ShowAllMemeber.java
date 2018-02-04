@@ -34,12 +34,12 @@ public class ShowAllMemeber extends HttpServlet {
 		try {
 			pageNow = Integer.valueOf(request.getParameter("pageNow"));
 		} catch (Exception e) {
-			System.out.println("輸入錯誤 自動導到會員管理首頁");
+			System.out.println("輸入錯誤  /或者未輸入PageNow");
 			pageNow = 1;
 		}
 		String mid = request.getParameter("account");
 		MemberBean mb =dao.getMember(mid);
-		
+	
 
 		if (mid == null || mid.equals("")|| mb==null) {
 			if(pageNow>dao.getTotalPage()){
@@ -53,10 +53,10 @@ public class ShowAllMemeber extends HttpServlet {
 			// response.sendRedirect("MemberManager.jsp");
 			RequestDispatcher rd = request.getRequestDispatcher("MemberManager.jsp");
 			rd.forward(request, response);
-			response.sendRedirect("MemberManager.jsp");
+//			response.sendRedirect("MemberManager.jsp");
 			return;
 		} else {
-			request.setAttribute("mb", mb);
+			s.setAttribute("mb", mb);
 			RequestDispatcher rd = request.getRequestDispatcher("ModifyMember.jsp");
 			rd.forward(request, response);
 			

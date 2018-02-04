@@ -29,14 +29,14 @@ margin-bottom:10px;
 </style>
 </head>
 <body>
-	<form method="post" name="form" action="RegisterServlet">
+	<form method="post" name="form" action="modifyMember" enctype="multipart/form-data">
 		<div>
-			<span>帳號:</span><input type="text" name="account" value="${mb.mid}"  readonly>${errorMsg.accountError}<br>
+			<span>帳號:</span><input type="text" name="account" value="${mb.mid}"  readonly><br>
 			<span>姓名:</span><input type="text" name="name" value="${mb.mname} ">${errorMsg.nameError}<br>
 			<span>生日:</span><input type="text" name="bd" value="${mb.mbday }">${errorMsg.bderror}<br>
 			<span>電話:</span><input type="text" name="phone" value="${mb.mphone} ">${errorMsg.phoneError}<br> 
 			<span>信箱:</span><input type="text"name="email" value="${mb.memail} ">${errorMsg.emailError}<br>
-			<span>註冊日期:</span><input type="text"name="email" value="${mb.mregisterday}">
+			<span>註冊日期:</span><input type="text"name="mregisterday" value="${mb.mregisterday}" readonly><br>
 			<span>權限:</span><select name="status">
 								<c:if test="${mb.mpid ==1 }">
 								<option value="1">正常</option>

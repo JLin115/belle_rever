@@ -8,4 +8,6 @@ public interface MemberDao {
 	public void updateMember(MemberBean mb);
 	public long getTotalRecords();
 	public int getTotalPage();
+	public Boolean getAMemberPhone (String newPhone,String oldPhone);
+	public Boolean getAMemberEmail (String newEmail,String oldEmail );
 }

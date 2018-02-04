@@ -32,7 +32,7 @@ margin-bottom:10px;
 		<div>
 			<span>帳號:</span><input type="text" name="account">${errorMsg.accountError}<br>
 			<span>密碼:</span><input type="password" name="pas">${errorMsg.paswordError}<br>
-			<span>密碼確認:</span><input type="text" name="pasc">${errorMsg.paswordError2}<br>
+			<span>密碼確認:</span><input type="password" name="pasc">${errorMsg.paswordError2}<br>
 			<span>姓名:</span><input type="text" name="name">${errorMsg.nameError}<br>
 			<span>生日:</span><input type="text" name="bd">${errorMsg.bderror}<br>
 			<span>電話:</span><input type="text" name="phone">${errorMsg.phoneError}<br> 
