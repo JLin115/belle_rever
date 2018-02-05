@@ -230,7 +230,7 @@ public class GlobalService {
 		}
 
 		File tomCatDir = new File(TomCatFolder, imgName);
-		if (dir.exists()) {
+		if (tomCatDir.exists()) {
 			tomCatDir.delete();
 		}
 
@@ -240,11 +240,13 @@ public class GlobalService {
 
 		File dir = new File(imgFolder);
 		if (!dir.exists()) {
-			dir.mkdirs();
+			boolean b= dir.mkdirs();
+			System.out.println("是否建立資料夾:"+b);
 		}
 		File tomCatDir = new File(TomCatFolder);
-		if (!dir.exists()) {
-			dir.mkdirs();
+		if (!tomCatDir.exists()) {
+			boolean b=tomCatDir.mkdirs();
+			System.out.println("是否建立私服器端資料夾:"+b);
 		}
 
 		File file = new File(dir, imgName);

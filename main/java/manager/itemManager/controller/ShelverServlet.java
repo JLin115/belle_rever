@@ -291,6 +291,23 @@ public class ShelverServlet extends HttpServlet {
 		if (errorMsg.size() > 0)
 
 		{
+			if(ib.getItemPic1()!=null){
+			GlobalService.deleteImgInfile(ib.getItemPic1());}
+			
+			if(ib.getItemPic2()!=null){
+				GlobalService.deleteImgInfile(ib.getItemPic2());}
+			
+			if(ib.getItemPic3()!=null){
+				GlobalService.deleteImgInfile(ib.getItemPic3());}
+			
+			if(ib.getItemPic4()!=null){
+				GlobalService.deleteImgInfile(ib.getItemPic4());}
+			
+			if(ib.getItemPic5()!=null){
+				GlobalService.deleteImgInfile(ib.getItemPic5());}
+			
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("Shelver.jsp");
 			rd.forward(request, response);
 			return;
