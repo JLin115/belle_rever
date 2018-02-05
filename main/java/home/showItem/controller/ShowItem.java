@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import _init.GlobalService;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
 
@@ -37,8 +38,9 @@ public class ShowItem extends HttpServlet {
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		ItemDAOImpl idao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		Map<String, String> itemType = (Map<String, String>) request.getServletContext().getAttribute("itemType");
-
-
+		if(request.getServletPath().equals("/home/showItem/ShowItem")){
+			idao.setPageSize(GlobalService.getMpagesize());
+		}
 		short itid = 0;
 		int pageNow = 0;
 		boolean b = true;
@@ -47,10 +49,7 @@ public class ShowItem extends HttpServlet {
 			pageNow = Integer.valueOf(request.getParameter("pageNow"));
 			if(request.getParameter("pageNow").equals("") ||request.getParameter("itid").equals("")){
 				b = false;
-			}
-			
-			
-			
+			}	
 		} catch (Exception e) {
 			System.out.println("輸入有誤導回管理主頁");
 			b = false;
@@ -60,8 +59,8 @@ public class ShowItem extends HttpServlet {
 		}
 		if (pageNow <= idao.getTotalPage()&itemType.containsKey(String.valueOf(itid))&b) {
 
-			System.out.println(itid);
-			System.out.println(pageNow);
+//			System.out.println(itid);
+//			System.out.println(pageNow);
 
 			idao.setPageNow(pageNow);
 			List<ItemBean> allItem = idao.getAllItem();
@@ -79,7 +78,6 @@ public class ShowItem extends HttpServlet {
 //			RequestDispatcher rd = request.getRequestDispatcher("ItemManager.jsp");
 //			rd.forward(request, response);
 			
-
 		}
 	}
 

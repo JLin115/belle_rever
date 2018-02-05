@@ -20,13 +20,29 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
+
+/*請先在本地端配置staticRoute路徑上的資料夾 貨者修改staticRoute至指定資料夾
+ * 
+ * 
+ * 
+ * */
 public class GlobalService {
 	// DB
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
-	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\manager\\itemImg\\";
-	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\manager\\itemImg\\";
-	public final static int pageSize = 6; // 管理員-管理商品-每頁幾筆
+	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\itemImg\\";
+	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\itemImg\\";
+	private static String staticRoute = "C:\\_JSP\\Belle_reveImg";
+	public final static int pageSize = 8; // 管理員-管理商品-每頁幾筆
+	public final static int MpageSize = 6; // 管理員-管理商品-每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
+
+	public static int getPagesize() {
+		return pageSize;
+	}
+
+	public static int getMpagesize() {
+		return MpageSize;
+	}
 
 	public static String getJndiDbName() {
 		return JNDI_DB_NAME;
@@ -221,52 +237,88 @@ public class GlobalService {
 		}
 		return null;
 	}
-
 	static public void deleteImgInfile(String imgName) {
-
-		File dir = new File(imgFolder, imgName);
+		File dir = new File(staticRoute, imgName);
 		if (dir.exists()) {
 			dir.delete();
 		}
-
-		File tomCatDir = new File(TomCatFolder, imgName);
-		if (tomCatDir.exists()) {
-			tomCatDir.delete();
-		}
-
+		
 	}
+	
+	
+	
+//	static public void deleteImgInfile(String imgName) {
+//
+//		File dir = new File(imgFolder, imgName);
+//		if (dir.exists()) {
+//			dir.delete();
+//		}
+//
+//		File tomCatDir = new File(TomCatFolder, imgName);
+//		if (tomCatDir.exists()) {
+//			tomCatDir.delete();
+//			
+//		}
+//		System.out.println("以刪除");
+//
+//	}
 
+	
 	static public void saveImgtofile(String imgName, InputStream is) {
-
-		File dir = new File(imgFolder);
+		File dir = new File(staticRoute);
 		if (!dir.exists()) {
 			boolean b= dir.mkdirs();
 			System.out.println("是否建立資料夾:"+b);
 		}
-		File tomCatDir = new File(TomCatFolder);
-		if (!tomCatDir.exists()) {
-			boolean b=tomCatDir.mkdirs();
-			System.out.println("是否建立私服器端資料夾:"+b);
-		}
-
+		
 		File file = new File(dir, imgName);
-		File tomCatfile = new File(tomCatDir, imgName);
+
 		byte[] b = new byte[8291];
 		int len = 0;
-		try (FileOutputStream fos = new FileOutputStream(file);
-				FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);) {
-
+		try (FileOutputStream fos = new FileOutputStream(file);) {
 			while ((len = is.read(b)) != -1) {
-				tomCatfos.write(b, 0, len);
 				fos.write(b, 0, len);
 			}
 			fos.flush();
 
 		} catch (IOException e) {
 			e.printStackTrace();
-
 		}
-
 	}
+	
+	
+	
+//	static public void saveImgtofile(String imgName, InputStream is) {
+//
+//		File dir = new File(imgFolder);
+//		if (!dir.exists()) {
+//			boolean b= dir.mkdirs();
+//			System.out.println("是否建立資料夾:"+b);
+//		}
+//		File tomCatDir = new File(TomCatFolder);
+//		if (!tomCatDir.exists()) {
+//			boolean b=tomCatDir.mkdirs();
+//			System.out.println("是否建立私服器端資料夾:"+b);
+//		}
+//
+//		File file = new File(dir, imgName);
+//		File tomCatfile = new File(tomCatDir, imgName);
+//		byte[] b = new byte[8291];
+//		int len = 0;
+//		try (FileOutputStream fos = new FileOutputStream(file);
+//				FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);) {
+//
+//			while ((len = is.read(b)) != -1) {
+//				tomCatfos.write(b, 0, len);
+//				fos.write(b, 0, len);
+//			}
+//			fos.flush();
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//
+//		}
+//
+//	}
 
 }

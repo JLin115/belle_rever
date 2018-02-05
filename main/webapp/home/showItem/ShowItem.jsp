@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,35 +13,39 @@
 <title>Shelver</title>
 </head>
 <body>
+ 
 	<ul class="sidebar">
 		<li><form>
 				<input type="text"><input type="submit">
 			</form></li>
-
 		<c:forEach var="x" items="${itemType}">
 			<li><a href="ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li>
 		</c:forEach>
 	</ul>
-
-
 	<div class="show">
-		
+	${pageContext.request.contextPath}
 		<ul>
-			
 			<c:forEach var="items" items="${allItem}">
-				<a href="ShowSingleItem?itemId=${items.itemID}">
-
-					<li><img src="../itemImg/${items.itemPic1}">
-						<div>商品ID:${items.itemID}</div>
-						<div>商品標頭:${items.itemHeader}</div>
-						<div>商品價錢:${items.itemPrice}</div></li>
+				<a href="ShowSingleItem_home?itemId=${items.itemID}">
+					<li><img src="/bimg/${items.itemPic1}">
+						<div>${items.itemHeader}</div>
+						<fmt:formatNumber var="c" value="${items.itemPrice *items.itemdiscount.doubleValue()}" pattern="#"/>
+						<c:choose>
+							<c:when test="${items.itemdiscount.doubleValue()  eq 1.00 }">
+							NT:${c}
+							</c:when>
+							<c:when test="${items.itemdiscount.doubleValue()  > 1.00 }">
+							NT:${c}
+								</c:when>
+							<c:otherwise>
+							<div class="onsales">NT:${items.itemPrice}</div>
+							NT:${c}
+							</c:otherwise>
+						</c:choose>
+					</li>
 				</a>
-				
 			</c:forEach>
 		</ul>
-
-
-
 		<div class="controlPage">
 			<c:if test="${pageNow > 0}">
 				<div class="controlPage">

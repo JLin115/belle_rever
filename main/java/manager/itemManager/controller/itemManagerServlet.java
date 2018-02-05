@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import _init.GlobalService;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
 
@@ -34,8 +35,10 @@ public class ItemManagerServlet extends HttpServlet {
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		ItemDAOImpl idao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		Map<String, String> itemType = (Map<String, String>) request.getServletContext().getAttribute("itemType");
-
-
+		System.out.println(request.getContextPath()+","+request.getServletPath());
+		if(request.getServletPath().equals("/manager/itemManager/ItemManagerServlet")){
+			idao.setPageSize(GlobalService.getPagesize());
+		}
 		short itid = 0;
 		int pageNow = 0;
 		boolean b = true;
@@ -57,9 +60,7 @@ public class ItemManagerServlet extends HttpServlet {
 		}
 		if (pageNow <= idao.getTotalPage()&itemType.containsKey(String.valueOf(itid))&b) {
 
-			System.out.println(itid);
-			System.out.println(pageNow);
-
+			
 			idao.setPageNow(pageNow);
 			List<ItemBean> allItem = idao.getAllItem();
 			request.setAttribute("allItem", allItem);

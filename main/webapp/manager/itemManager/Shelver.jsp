@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -22,9 +23,9 @@
 				<span>描述：</span><textarea class="des" name='des' maxlength='100'>${param.des }</textarea><p class="areap">${errorMsg.desError}</p><br> 
 				<span>類型：</span><select name = "type">
 					<option value="0">請選擇類別</option>
-					<option value="1">a</option>
-					<option value="2">b</option>
-					<option value="3">c</option>
+					<c:forEach var="x" items="${itemType}">
+					<option value="${x.key}">${x.value}</option>
+					</c:forEach>
 				</select><p>${errorMsg.typeError}</p><br> 
 				<span>狀態:</span><select name="status">
 					<option value="1">上架</option>

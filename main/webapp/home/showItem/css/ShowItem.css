@@ -69,13 +69,19 @@
     border: 1px solid black;
     width: 480px;
     height: 746px;
-    margin:0 9px;
+    margin:10px 12px;
     float: left;    
+      color:black;
 }
 .show li img{
     width: 480px;
     height: 640px;
 }
+
+.show li div:nth-of-type(1){
+  color:black;
+}
+
 .controlPage::before{
     content: "";
     display: block;
@@ -87,4 +93,12 @@
 
 .controlPage{
 text-align: center;
+}
+
+.onsales{
+	color:red;
+	text-decoration:line-through;
+	
+	
+	
 }

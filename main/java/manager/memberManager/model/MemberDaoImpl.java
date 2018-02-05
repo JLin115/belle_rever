@@ -95,7 +95,7 @@ public class MemberDaoImpl implements MemberDao {
 		List<MemberBean> member = new ArrayList<>();
 		member = template.query(sql,new Object[]{mid} , new BeanPropertyRowMapper<MemberBean>(MemberBean.class));
 		if(member.isEmpty()){
-			System.out.println("null");
+			//System.out.println("null");
 			return null;
 		}
 		return member.get(0);

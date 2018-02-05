@@ -263,8 +263,8 @@ public class ItemDAOImpl implements ItemDAO {
 //=========================================================================================
 	@Override
 	public void modifyItem(ItemBean ib,List<ItemValBean> ibvList,int newItemId, int beforeItemId) {
-		System.out.println(newItemId);
-		System.out.println(beforeItemId);
+//		System.out.println(newItemId);
+//		System.out.println(beforeItemId);
 			deleteItemVal(beforeItemId);
 			updateItem(ib,beforeItemId);
 			setItemValBean(ibvList, newItemId);

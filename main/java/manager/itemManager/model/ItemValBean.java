@@ -54,4 +54,9 @@ public class ItemValBean {
 	public void setItemSold(Integer itemSold) {
 		this.itemSold = itemSold;
 	}
+	@Override
+	public String toString() {
+		return "ItemValBean [itemId=" + itemId + ", itemColor=" + itemColor + ", itemSize=" + itemSize + ", itemQty="
+				+ itemQty + ", itemSerialNumber=" + itemSerialNumber + ", itemSold=" + itemSold + "]";
+	}
 }

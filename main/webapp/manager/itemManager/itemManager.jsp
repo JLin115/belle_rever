@@ -10,6 +10,7 @@
 <title>Shelver</title>
 </head>
 <body>
+	 
 	<ul class="navbar">
 		<li><a href="ItemManager.jsp">商品管理</a></li>
 		<li><a href="#">訂單管理</a></li>
@@ -33,9 +34,20 @@
 
 				<a href="ShowSingleItem?itemId=${items.itemID}">
 					<ul>
-						<li><img src="../itemImg/${items.itemPic1} "> <img
-							src="../itemImg/${items.itemPic2} "> <img
-							src="../itemImg/${items.itemPic3} "></li>
+						<li><img src="/bimg/${items.itemPic1}">
+						 <img src="/bimg/${items.itemPic2} "> 
+						 <img src="/bimg/${items.itemPic3} ">
+							 <c:if test="${not empty items.itemPic4}">
+							  <img src="/bimg/${items.itemPic4} ">
+							 </c:if>
+							 <c:if test="${not empty items.itemPic5}">
+							   <img src="/bimg/${items.itemPic5} ">
+							 </c:if>
+							 
+							
+							
+			
+						</li>
 						<li><div>商品ID:${items.itemID}</div>
 							<div>商品標頭:${items.itemHeader}</div>
 							<div>商品價錢:${items.itemPrice}</div> <c:choose>
