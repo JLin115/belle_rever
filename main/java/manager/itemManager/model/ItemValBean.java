@@ -1,6 +1,8 @@
 package manager.itemManager.model;
 
-public class ItemValBean {
+import java.io.Serializable;
+
+public class ItemValBean implements Serializable{
 	private Integer itemId;
 	private String itemColor;
 	private String itemSize;

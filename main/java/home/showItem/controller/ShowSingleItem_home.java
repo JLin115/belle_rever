@@ -94,7 +94,7 @@ public class ShowSingleItem_home extends HttpServlet {
 				
 				Gson objGson = new GsonBuilder().setPrettyPrinting().create();
 				String json = objGson.toJson(ivbList);
-				System.out.println(json);
+//				System.out.println(json);
 				s.setAttribute("ib", ib);
 				s.setAttribute("ivbList", ivbList);
 				s.setAttribute("gson", json);

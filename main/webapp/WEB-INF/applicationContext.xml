@@ -35,5 +35,6 @@
 	<context:component-scan base-package="home.register.model"></context:component-scan>
 	<context:component-scan base-package="manager.itemManager.model"></context:component-scan>
 	<context:component-scan base-package="manager.memberManager.model"></context:component-scan>
-
+	<context:component-scan base-package="home.cart.model"></context:component-scan>
+	<context:component-scan base-package="home.purchase.model"></context:component-scan>
 </beans>

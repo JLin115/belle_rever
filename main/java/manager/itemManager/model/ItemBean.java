@@ -1,10 +1,11 @@
 package manager.itemManager.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.sql.Clob;
 
-public class ItemBean {
+public class ItemBean implements Serializable{
 	
 
 
