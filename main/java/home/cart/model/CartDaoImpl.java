@@ -37,7 +37,7 @@ public class CartDaoImpl implements CartDao {
 
 	@Override
 	public OrderValBean getAItem(Integer itemId, Short itemSerialNumber) {
-		 String sql = " SELECT i.itemDiscount,v.itemColor , i.itemPrice , v.itemSize , i.itemHeader , i.itemPic1 "
+		 String sql = " SELECT  v.itemQty,i.itemDiscount,v.itemColor , i.itemPrice , v.itemSize , i.itemHeader , i.itemPic1 "
 				+" FROM item i JOIN item_val v ON i.itemId = v.itemId  WHERE i.itemId = ? AND itemSerialNumber = ? ";
 		 List<OrderValBean> ibList = new ArrayList<>();
 		 ibList= template.query(sql , new Object[]{itemId,itemSerialNumber},new BeanPropertyRowMapper<OrderValBean>(OrderValBean.class));
