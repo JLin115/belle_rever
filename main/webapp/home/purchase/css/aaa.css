@@ -1,0 +1,16 @@
+.type1,.type2{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    line-height: 100px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 20px;
+}
+.type1:hover,.type2:hover{
+    border-color: aqua;
+    cursor: pointer;
+
+
+}

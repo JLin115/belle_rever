@@ -1,7 +1,7 @@
 table {
     border-collapse: collapse;
 
-    margin: 50px auto;
+   
 }
 table td{
     border-bottom: 1px solid gray;
@@ -47,4 +47,16 @@ table td:nth-of-type(7) {
 table td:nth-of-type(8) { 
 	
     width: 50px;
+}
+.total{
+
+	text-align:right;
+
+	
+	
+}
+.content{
+	width:50%;
+	
+	 margin: 50px auto;
 }

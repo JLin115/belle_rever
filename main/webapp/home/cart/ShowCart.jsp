@@ -13,6 +13,7 @@
 <title>Shelver</title>
 </head>
 <body>
+<div class="content">
 	<table>
 		<tr>
 			<td>商品名稱</td>
@@ -45,14 +46,15 @@
 				</c:if>
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
-				<td>${x.itemPrice * x.itemDiscount * x.ordQty}</td>
+				<td class="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
 				<td><a href="/Belle_Rever/home/Delete_qty?ordSerN=${x.ordSerialNumber}"><img class="delete" height="20px" src="/bimg/1.jpg"></a></td>
 			
 			</tr>
 
 		</c:forEach>
 	</table>
-
+	<div class="total"></div>
+</div>
 
 
 </body>
