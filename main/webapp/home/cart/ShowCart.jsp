@@ -30,7 +30,7 @@
 				<td>${x.itemColor}</td>
 				<td>${x.itemSize}</td>
 				<c:if test="${x.itemQty > 0 }">
-					<td><select class="qty" name="${x.itemSerialNumber}|${x.itemId}">
+					<td><select class="qty" name="${x.ordSerialNumber}">
 							<c:forEach var="y" begin="1" end="${x.itemQty}">
 								<c:choose>
 									<c:when test="${x.ordQty  == y  }">
@@ -46,7 +46,7 @@
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
 				<td>${x.itemPrice * x.itemDiscount * x.ordQty}</td>
-				<td><a href="/Belle_Rever/home/Delete_qty?${x.ordSerialNumber}"><img class="delete" height="20px" src="/bimg/1.jpg"></a></td>
+				<td><a href="/Belle_Rever/home/Delete_qty?ordSerN=${x.ordSerialNumber}"><img class="delete" height="20px" src="/bimg/1.jpg"></a></td>
 			
 			</tr>
 

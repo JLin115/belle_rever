@@ -56,7 +56,7 @@ public class AddCart extends HttpServlet {
 			boolean isNotE = true;
 			for (OrderValBean o : ordList) {
 				if (o.getItemId().equals(itemId) && o.getItemSerialNumber().equals(serN)) {
-System.out.println(serN);
+//					System.out.println(serN);
 					o.setOrdQty((short) (o.getOrdQty() + 1));
 					isNotE = false;
 				}
