@@ -1,4 +1,4 @@
-package _init;
+	package _init;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,19 +21,21 @@ import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
 
-/*請先在本地端配置staticRoute路徑上的資料夾 貨者修改staticRoute至指定資料夾
+/*請先在本地端配置staticRoute路徑上的資料夾 貨者修改staticRoute至指定資料夾//改版不用了
  * 
  * 
  * 
- * */
+ * 
+ */
+
 public class GlobalService {
 	// DB
 	public static final String JNDI_DB_NAME = "java:comp/env/jdbc/Belle_ReverServer";
 	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\itemImg\\";
 	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\itemImg\\";
 	private static String staticRoute = "C:\\_JSP\\Belle_reveImg";
-	public final static int pageSize = 8; // 管理員-管理商品-每頁幾筆
-	public final static int MpageSize = 6; // 管理員-管理商品-每頁幾筆
+	public final static int pageSize = 2; // 管理員-管理商品-每頁幾筆
+	public final static int MpageSize = 6; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 
 	public static int getPagesize() {
@@ -68,18 +70,14 @@ public class GlobalService {
 
 	// 加密2.0
 	public static String encryptString2(String message, String id, String d) {
-		
 		String s1=encryptString(message, KEY);
 		String s2=encryptString(s1, getGKey(id, d));
 //		System.out.println(s1);
 //		System.out.println(s2);
-//		
 //		String s3=decryptString(s2, getGKey(id, d));
 //		String s4=decryptString(s3, KEY);
 //		System.out.println(s3);
 //		System.out.println(s4);
-		
-		
 		return s2;
 	}
 
@@ -121,9 +119,7 @@ public class GlobalService {
 		}
 		return encryptedString;
 	}
-
 	private static String KEY = "acegiklmprtvxzbd";
-
 	private static String getGKey(String id, String d) {
 		StringBuilder gKey = new StringBuilder();
 		char[] ci = id.toCharArray();
@@ -140,12 +136,9 @@ public class GlobalService {
 
 	// 解密2.0
 	public static String decryptString2(String stringToDecrypt, String id, String d) {
-
 		return decryptString(decryptString(stringToDecrypt, getGKey(id, d)), KEY);
-
 	}
-
-	public static String decryptString(String stringToDecrypt, String key) {
+	private static String decryptString(String stringToDecrypt, String key) {
 		String decryptedString = "";
 		try {
 			Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");

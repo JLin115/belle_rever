@@ -22,10 +22,6 @@ public class MemberDaoImpl implements MemberDao {
 	private int totalPage = -1; // 總共幾頁
 	private String mid;
 	
-	
-	
-	
-	
 	public String getMid() {
 		return mid;
 	}
