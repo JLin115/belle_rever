@@ -1,3 +1,9 @@
+/*寄送方式*/
+.sType{
+	width:60%;
+	margin:0 auto;
+}
+
 .type1,.type2{
     display: inline-block;
     width: 100px;
@@ -13,4 +19,72 @@
     cursor: pointer;
 
 
+}
+.inputType {
+	padding:10px 0;
+	
+}
+.inputType input,.inputType span{
+	margin-bottom:5px;
+}
+
+
+
+/* 訂單資料 */
+.ordData{
+
+		width:60%;
+	margin:0 auto;
+	
+}
+
+table {
+    border-collapse: collapse;
+
+   
+}
+table td{
+    border-bottom: 1px solid gray;
+   padding: 5px;
+}
+
+table td:nth-of-type(1) {  
+    width: 350px;
+
+}table td:nth-of-type(1) img{  
+    height: 80px;
+    float:left; 
+    
+}
+table td:nth-of-type(1) span{  
+   
+    float:left;
+}
+table td:nth-of-type(1) span::after{  
+   content: "";
+   display: block;
+   clear: both;
+}
+table td:nth-of-type(2) {
+    width: 60px;
+}
+table td:nth-of-type(3) {  
+    width: 60px;
+}
+table td:nth-of-type(4) { 
+    width: 60px;
+}
+table td:nth-of-type(5) {
+
+    width: 60px;
+}
+table td:nth-of-type(6) { 
+    width: 60px;
+}
+table td:nth-of-type(7) {
+    width: 60px;
+}
+table td:nth-of-type(8) { 
+	
+    width: 50px;
 }

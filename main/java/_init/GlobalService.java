@@ -124,13 +124,14 @@ public class GlobalService {
 		StringBuilder gKey = new StringBuilder();
 		char[] ci = id.toCharArray();
 		char[] cd = d.toCharArray();
+		int dl = ci.length;
 		int bl = cd.length;
 		for (int x = 1; x < 6; x++) {
-			gKey.append(cd[bl - x]);
-			gKey.append(cd[bl - (x + 1)]);
-			gKey.append(ci[x]);
+			gKey.append(cd[x]);
+			gKey.append(cd[bl-4-x]);
+			gKey.append(ci[(int) (dl-x*1.4)]);
 		}
-		gKey.append(cd[bl - 1]);
+		gKey.append(cd[bl/2]);
 		return gKey.toString();
 	}
 

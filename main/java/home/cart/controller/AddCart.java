@@ -17,7 +17,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import home.cart.model.CartDao;
 import home.purchase.model.OrderValBean;
 
-@WebServlet("/home/AddCart")
+@WebServlet("/home/cart/AddCart")
 public class AddCart extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,9 +27,6 @@ public class AddCart extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setHeader("Pragma","no-cache"); 
-		response.setHeader("Cache-Control","no-cache"); 
-		response.setDateHeader("Expires", 0); 
 		request.setCharacterEncoding("utf8");
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		HttpSession session = request.getSession();
@@ -70,10 +67,19 @@ public class AddCart extends HttpServlet {
 				ovb.setItemId(Integer.valueOf(itemId));
 				ordList.add(ovb);
 			}
-
+			
+			String type=request.getParameter("type");
+			
+			if(type.equals("Purchase")){
+			session.setAttribute("Cart", ordList);
+			response.sendRedirect("/Belle_Rever/home/purchase/FillOrdInfo.jsp");
+			return;
+				
+				
+			}else{
 			session.setAttribute("Cart", ordList);
 			response.sendRedirect("/Belle_Rever/home/showItem/SingleItem.jsp");
-			return;
+			return;}
 
 		} else {
 			session.setAttribute("Cart", ordList);

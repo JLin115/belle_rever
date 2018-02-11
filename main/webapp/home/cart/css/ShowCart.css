@@ -60,3 +60,9 @@ table td:nth-of-type(8) {
 	
 	 margin: 50px auto;
 }
+
+
+input[type=button]{
+	float:right;
+	
+}

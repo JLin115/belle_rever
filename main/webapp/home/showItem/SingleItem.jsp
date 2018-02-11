@@ -26,7 +26,7 @@
 		<input type="hidden" name="serN" value="" />
 		<input type="button" name="Purchase" value="購買" />	
 		<input type="button" name="Cart" value="加入購物車" />	
-	
+		<input type="hidden" name="type" value="" />	
 	</div>
 	</form>
 

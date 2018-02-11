@@ -39,27 +39,64 @@ $(window).ready(function() {
 	}
 	})
 	})
-			
-	$("input[name = Purchase]").click(function(){
-	$("form[name=form]").attr("action","/Belle_Rever/home/Purchase");
-	if(
-	$("input[name=color]").is(':checked')
-	&&
-	$("input[name=size]").is(':checked')
-	){
-	$("form[name=form]").submit();
-	}
-	});
 	
-	$("input[name = Cart]").click(function(){
-	$("form[name=form]").attr("action","/Belle_Rever/home/AddCart");
+	
+	
+	
+	$("input[type = button]").click(function(){
+	
+	
+	$("form[name=form]").attr("action","/Belle_Rever/home/cart/AddCart");
 	if(
 	$("input[name=color]").is(':checked')
 	&&
 	$("input[name=size]").is(':checked')
 	){
+
+	if($(this).val()=="購買"){
+	$("input[name=type]").val("Purchase");
+	$("form[name=form]").submit();
+	}else{
+		$("input[name=type]").val("Cart");
 	$("form[name=form]").submit();}
-	});
+	
+	
+	
+	}
+	
+	
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+			
+<!-- 	$("input[name = Purchase]").click(function(){ -->
+<!-- 	$("form[name=form]").attr("action","/Belle_Rever/home/cart/AddCart"); -->
+<!-- 	if( -->
+<!-- 	$("input[name=color]").is(':checked') -->
+<!-- 	&& -->
+<!-- 	$("input[name=size]").is(':checked') -->
+<!-- 	){ -->
+<!-- 	$("input[name=type]").val("Purchase"); -->
+<!-- 	$("form[name=form]").submit(); -->
+<!-- 	} -->
+<!-- 	}); -->
+	
+<!-- 	$("input[name = Cart]").click(function(){ -->
+<!-- 	$("form[name=form]").attr("action","/Belle_Rever/home/cart/AddCart"); -->
+<!-- 	if( -->
+<!-- 	$("input[name=color]").is(':checked') -->
+<!-- 	&& -->
+<!-- 	$("input[name=size]").is(':checked') -->
+<!-- 	){ -->
+<!-- 	$("input[name=type]").val("Cart"); -->
+<!-- 	$("form[name=form]").submit();} -->
+<!-- 	}); -->
 	
 		
 })

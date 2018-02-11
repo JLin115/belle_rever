@@ -46,7 +46,7 @@
 				</c:if>
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
-				<td class="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
+				<td class="singlePrice" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
 				<td><a href="/Belle_Rever/home/Delete_qty?ordSerN=${x.ordSerialNumber}"><img class="delete" height="20px" src="/bimg/1.jpg"></a></td>
 			
 			</tr>
@@ -54,6 +54,7 @@
 		</c:forEach>
 	</table>
 	<div class="total"></div>
+	<div><input type="button" onclick="window.location.href =' /Belle_Rever/home/purchase/FillOrdInfo.jsp'" value="送出"></div>
 </div>
 
 

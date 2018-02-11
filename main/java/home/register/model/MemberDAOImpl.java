@@ -71,7 +71,7 @@ public class MemberDAOImpl implements Dao {
 	public MemberBean getMember(String mid) {
 		String sql = "select * from member where mid = ?";
 		List<MemberBean> mb =new  ArrayList<>();
-		 mb = template.queryForList(sql, new Object[] { mid }, MemberBean.class);
+		 mb = template.query(sql, new Object[] { mid },new BeanPropertyRowMapper<MemberBean>(MemberBean.class));
 		 if(mb.size()==0){
 			 return null;	 
 		 }

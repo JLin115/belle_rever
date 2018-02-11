@@ -101,9 +101,7 @@ public class RegisterServlet extends HttpServlet {
 			if (GlobalService.judgeInput(pas) == true) {
 				if (pas.equals(pasc)) {
 					if(!(errorMsg.size()>0)){
-						System.out.println(mb.getMid()+","+mb.getMregisterday().toString());
-					String s = GlobalService.encryptString2(pas,mb.getMid(),mb.getMregisterday().toString());
-					System.out.println(s);
+					String s = GlobalService.encryptString2(pas,mb.getMid(),String.valueOf(mb.getMregisterday().getTime()));
 					mb.setMpass(s);}
 					
 				} else {
@@ -149,7 +147,6 @@ public class RegisterServlet extends HttpServlet {
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					System.out.println("bb");
 				}
 
 			} else {
