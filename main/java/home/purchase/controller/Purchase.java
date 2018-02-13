@@ -103,8 +103,9 @@ public class Purchase extends HttpServlet {
 					ob.setOrderDate(new Timestamp(System.currentTimeMillis()));
 					try{
 						dao.setOrder(ob, ordList);
-					} catch (Exception e) {
 						
+					} catch (Exception e) {
+					e.printStackTrace();
 					}
 
 					session.removeAttribute("Cart");

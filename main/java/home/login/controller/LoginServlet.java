@@ -95,12 +95,14 @@ public class LoginServlet extends HttpServlet {
 		}
 		if (!(errorMsgMap.containsKey("accountError") || errorMsgMap.containsKey("passwordError"))) {
 			if (mb != null) {
+		
 				if (mb.getMpass().equals(GlobalService.encryptString2(password, userId, String.valueOf(mb.getMregisterday().getTime())))) {
 					if (mb.getMpid() == 0) {
 					} else if (mb.getMpid() == 1) {
 						session.setAttribute("LoginOK", mb);
 					} else if(mb.getMpid() == 999){
-						session.setAttribute("SuperUser", "SuperUser");
+						System.out.println("logServlet SuperUser");
+						session.setAttribute("SuperUser", mb);
 					}else{
 						errorMsgMap.put("accountError", "帳號異常,請洽客服");
 					}

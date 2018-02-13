@@ -456,45 +456,4 @@ public class ItemDAOImpl implements ItemDAO {
 		}
 	}
 
-	@Override
-	public Map<String,String> getAllItemType() {
-		String  sql = "select * from item_Type";
-		
-		Map<String, String> AllItemtypes =new  HashMap<>();
-		List<ItemTypeBean> itb =new ArrayList<>();
-		itb=template.query(sql,new Object[]{},new BeanPropertyRowMapper<ItemTypeBean>(ItemTypeBean.class));
-		for(ItemTypeBean i:itb){
-			AllItemtypes.put(String.valueOf(i.getItid()), i.getItemType());	
-		}
-		
-//		Connection con = null;
-//		PreparedStatement ps = null;
-//		try {
-//			con=ds.getConnection();
-//			ps =con.prepareStatement(sql);
-//			con.setAutoCommit(false);
-//			ResultSet rs =ps.executeQuery();
-//			while(rs.next()){
-//			AllItemtypes.put(String.valueOf(rs.getShort("itid")), rs.getString("Itemtype"));
-//			}
-//			con.commit();
-//		} catch (SQLException e) {
-//			try {
-//				con.rollback();
-//			} catch (SQLException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//			e.printStackTrace();
-//			throw new RuntimeException("getAllItemType失敗:" + e.getMessage());
-//		} finally {
-//			close(con, ps);
-//		}
-		return AllItemtypes;
-	}
-
-	
-		
-	
-
 }

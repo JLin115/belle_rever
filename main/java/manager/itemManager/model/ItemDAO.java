@@ -19,5 +19,5 @@ public interface ItemDAO {
 	public void deleteItemVal(int itemId);
 	public void setItemBean(ItemBean ib);
 	public void setItemValBean (List<ItemValBean> ibvList ,int id);
-	public Map<String,String> getAllItemType();
+
 }

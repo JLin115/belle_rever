@@ -36,8 +36,8 @@
 				<span>主照片：</span><input type="file" name='pic1' /><p>${errorMsg.pic1Error }</p><br>
 				<span>照片：</span><input type="file" name='pic2' /><p>${errorMsg.pic2Error }</p><br> 
 				<span>照片：</span><input type="file" name='pic3' /><p>${errorMsg.pic3Error }</p><br> 
-				<span>照片：</span><input type="file" name='pic4' /><br>${errorMsg.pic4Error }</p><br> 
-				<span>照片：</span><input type="file" name='pic5' /><br>${errorMsg.pic5Error }</p><br> 
+				<span>照片：</span><input type="file" name='pic4' /><br><p>${errorMsg.pic4Error }</p><br> 
+				<span>照片：</span><input type="file" name='pic5' /><br><p>${errorMsg.pic5Error }</p><br> 
 			</div>
 			<div class="d2">
 				<div class="auto">

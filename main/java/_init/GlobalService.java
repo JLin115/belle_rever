@@ -1,4 +1,4 @@
-	package _init;
+package _init;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -12,8 +12,10 @@ import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Clob;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -25,7 +27,6 @@ import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
 
 import home.purchase.model.CouponBean;
-
 
 /*請先在本地端配置staticRoute路徑上的資料夾 貨者修改staticRoute至指定資料夾//改版不用了
  * 
@@ -44,6 +45,7 @@ public class GlobalService {
 	public final static int MpageSize = 6; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index.jsp";
+
 	public static int getPagesize() {
 		return pageSize;
 	}
@@ -76,14 +78,15 @@ public class GlobalService {
 
 	// 加密2.0
 	public static String encryptString2(String message, String id, String d) {
-		String s1=encryptString(message, KEY);
-		String s2=encryptString(s1, getGKey(id, d));
-//		System.out.println(s1);
-//		System.out.println(s2);
-//		String s3=decryptString(s2, getGKey(id, d));
-//		String s4=decryptString(s3, KEY);
-//		System.out.println(s3);
-//		System.out.println(s4);
+		System.out.println(d);
+		String s1 = encryptString(message, KEY);
+		String s2 = encryptString(s1, getGKey(id, d));
+		// System.out.println(s1);
+		// System.out.println(s2);
+		// String s3=decryptString(s2, getGKey(id, d));
+		// String s4=decryptString(s3, KEY);
+		// System.out.println(s3);
+		// System.out.println(s4);
 		return s2;
 	}
 
@@ -125,7 +128,9 @@ public class GlobalService {
 		}
 		return encryptedString;
 	}
+
 	private static String KEY = "acegiklmprtvxzbd";
+
 	private static String getGKey(String id, String d) {
 		StringBuilder gKey = new StringBuilder();
 		char[] ci = id.toCharArray();
@@ -134,10 +139,10 @@ public class GlobalService {
 		int bl = cd.length;
 		for (int x = 1; x < 6; x++) {
 			gKey.append(cd[x]);
-			gKey.append(cd[bl-4-x]);
-			gKey.append(ci[(int) (dl-x*1.4)]);
+			gKey.append(cd[bl - 5 - x]);
+			gKey.append(ci[(int) (dl - x * 1.4)]);
 		}
-		gKey.append(cd[bl/2]);
+		gKey.append(cd[bl / 2]);
 		return gKey.toString();
 	}
 
@@ -145,6 +150,7 @@ public class GlobalService {
 	public static String decryptString2(String stringToDecrypt, String id, String d) {
 		return decryptString(decryptString(stringToDecrypt, getGKey(id, d)), KEY);
 	}
+
 	private static String decryptString(String stringToDecrypt, String key) {
 		String decryptedString = "";
 		try {
@@ -237,40 +243,38 @@ public class GlobalService {
 		}
 		return null;
 	}
+
 	static public void deleteImgInfile(String imgName) {
 		File dir = new File(staticRoute, imgName);
 		if (dir.exists()) {
 			dir.delete();
 		}
-		
-	}
-	
-	
-	
-//	static public void deleteImgInfile(String imgName) {
-//
-//		File dir = new File(imgFolder, imgName);
-//		if (dir.exists()) {
-//			dir.delete();
-//		}
-//
-//		File tomCatDir = new File(TomCatFolder, imgName);
-//		if (tomCatDir.exists()) {
-//			tomCatDir.delete();
-//			
-//		}
-//		System.out.println("以刪除");
-//
-//	}
 
-	
+	}
+
+	// static public void deleteImgInfile(String imgName) {
+	//
+	// File dir = new File(imgFolder, imgName);
+	// if (dir.exists()) {
+	// dir.delete();
+	// }
+	//
+	// File tomCatDir = new File(TomCatFolder, imgName);
+	// if (tomCatDir.exists()) {
+	// tomCatDir.delete();
+	//
+	// }
+	// System.out.println("以刪除");
+	//
+	// }
+
 	static public void saveImgtofile(String imgName, InputStream is) {
 		File dir = new File(staticRoute);
 		if (!dir.exists()) {
-			boolean b= dir.mkdirs();
-			System.out.println("是否建立資料夾:"+b);
+			boolean b = dir.mkdirs();
+			System.out.println("是否建立資料夾:" + b);
 		}
-		
+
 		File file = new File(dir, imgName);
 
 		byte[] b = new byte[8291];
@@ -285,56 +289,61 @@ public class GlobalService {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-//	static public void saveImgtofile(String imgName, InputStream is) {
-//
-//		File dir = new File(imgFolder);
-//		if (!dir.exists()) {
-//			boolean b= dir.mkdirs();
-//			System.out.println("是否建立資料夾:"+b);
-//		}
-//		File tomCatDir = new File(TomCatFolder);
-//		if (!tomCatDir.exists()) {
-//			boolean b=tomCatDir.mkdirs();
-//			System.out.println("是否建立私服器端資料夾:"+b);
-//		}
-//
-//		File file = new File(dir, imgName);
-//		File tomCatfile = new File(tomCatDir, imgName);
-//		byte[] b = new byte[8291];
-//		int len = 0;
-//		try (FileOutputStream fos = new FileOutputStream(file);
-//				FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);) {
-//
-//			while ((len = is.read(b)) != -1) {
-//				tomCatfos.write(b, 0, len);
-//				fos.write(b, 0, len);
-//			}
-//			fos.flush();
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//
-//		}
-//
-//	}
-	
-	static public String cpIsValid(CouponBean cb){
+
+	// static public void saveImgtofile(String imgName, InputStream is) {
+	//
+	// File dir = new File(imgFolder);
+	// if (!dir.exists()) {
+	// boolean b= dir.mkdirs();
+	// System.out.println("是否建立資料夾:"+b);
+	// }
+	// File tomCatDir = new File(TomCatFolder);
+	// if (!tomCatDir.exists()) {
+	// boolean b=tomCatDir.mkdirs();
+	// System.out.println("是否建立私服器端資料夾:"+b);
+	// }
+	//
+	// File file = new File(dir, imgName);
+	// File tomCatfile = new File(tomCatDir, imgName);
+	// byte[] b = new byte[8291];
+	// int len = 0;
+	// try (FileOutputStream fos = new FileOutputStream(file);
+	// FileOutputStream tomCatfos = new FileOutputStream(tomCatfile);) {
+	//
+	// while ((len = is.read(b)) != -1) {
+	// tomCatfos.write(b, 0, len);
+	// fos.write(b, 0, len);
+	// }
+	// fos.flush();
+	//
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	//
+	// }
+	//
+	// }
+
+	static public String cpIsValid(CouponBean cb) {
 		Timestamp now = new Timestamp(System.currentTimeMillis());
-		
-		if(cb.getValid().getTime() >now.getTime()){	
-			return  "折價券尚未開始";		
+
+		if (cb.getValid().getTime() > now.getTime()) {
+			return "折價券尚未開始";
 		}
-		
-		if(now.getTime()>cb.getInvalid().getTime()){
-			
+
+		if (now.getTime() > cb.getInvalid().getTime()) {
+
 			return "折價券以結束";
 		}
-		
+
 		return "true";
 	}
-	
-	
+
+	public static void main(String[] args) {
+		Timestamp ts = Timestamp.valueOf("2018-02-13 11:42:12.000");
+		System.out.println(String.valueOf(ts.getTime()));
+		// System.out.println(String.valueOf(ts.getTime()));
+		System.out.println(encryptString2("SuperUser", "SuperUser", String.valueOf(ts.getTime())));
+
+	}
+
 }

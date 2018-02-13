@@ -44,15 +44,8 @@ public class LoginFilterManager implements Filter {
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
 					//System.out.println("需要登入，已經登入");
-					System.out.println(servletPath);
-					if(servletPath.equals("/home/purchase/FillOrdInfo.jsp")){
-						HttpSession session = req.getSession();
-						List<OrderValBean> cart=(List<OrderValBean>) session.getAttribute("Cart");
-						if(cart.size()==0 ){
-							res.sendRedirect(GlobalService.index);
-							return;
-						}
-					}
+			
+					
 					
 					
 					chain.doFilter(request, response);

@@ -78,6 +78,7 @@ public class RegisterServlet extends HttpServlet {
 		//註冊時間
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		mb.setMregisterday(ts);
+//		System.out.println(mb.getMregisterday());
 
 		//得到密碼 及 密碼確認 分兩階段驗證
 		String pas = request.getParameter("pas");

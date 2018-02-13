@@ -46,4 +46,6 @@
 	<context:component-scan base-package="manager.memberManager.model"></context:component-scan>
 	<context:component-scan base-package="home.cart.model"></context:component-scan>
 	<context:component-scan base-package="home.purchase.model"></context:component-scan>
+	<context:component-scan base-package="manager.orderManager.model"></context:component-scan>
+	<context:component-scan base-package="_init.model"></context:component-scan>
 </beans>

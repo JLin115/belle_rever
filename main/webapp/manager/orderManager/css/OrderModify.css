@@ -1,0 +1,169 @@
+*{
+    list-style: none;
+    font-family: monospace;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+.navbar a{
+    text-decoration: none;
+    color: #07bca1;
+}
+.navbar{
+    background-color: white;
+    text-align: center;
+    padding: 20 0 20 0;
+    border: 1px solid black;
+}
+.navbar li{
+    display: inline-block;
+    padding: 0 30 0 30;
+    border: 1px solid black;
+}
+.navbar li a:hover{
+    color:#058471;
+}
+.ordStatus{
+    background-color: white;
+    text-align: center;
+    padding: 5 0 5 0;
+}
+.ordStatus li{
+    display: inline-block;
+    padding: 0 30 0 30;
+}
+.ordStatus a{
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
+}
+.ord{
+width:70%;
+margin:20px auto;
+}
+
+.ord div{
+  display: inline-block;
+ vertical-align:top;
+}
+
+.ord div:nth-of-type(1){
+width:40%;
+}
+.ord div:nth-of-type(2){
+    width:56%;
+}
+
+.ord span{
+    display: inline-block;
+    vertical-align:top;
+    margin:2.5px 0px;
+}
+.title{
+width: 20%;
+}
+.value{
+width: 65%;
+}
+.sd {
+    width:120px;
+}
+
+.ord div:nth-of-type(1) .value{
+
+    width: 35%;
+}
+
+.ord div:nth-of-type(1) .title{
+  margin-left: 100px;
+
+}
+
+.form{
+	float:right;
+	margin-right:100px;
+	
+}
+.form:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  table{
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+.ord_val td{
+    border-bottom: 1px solid gray;
+   padding: 5px;
+}
+
+.ord_val td:nth-of-type(1) {  
+    width: 350px;
+
+}.ord_val td:nth-of-type(1) img{  
+    height: 80px;
+    float:left; 
+    
+}
+.ord_val td:nth-of-type(1) span{  
+   
+    float:left;
+}
+.ord_val td:nth-of-type(1) span::after{  
+   content: "";
+   display: block;
+   clear: both;
+}
+.ord_val td:nth-of-type(2) {
+    width: 60px;
+}
+.ord_val td:nth-of-type(3) {  
+    width: 60px;
+}
+.ord_val td:nth-of-type(4) { 
+    width: 60px;
+}
+.ord_val td:nth-of-type(5) {
+
+    width: 60px;
+}
+.ord_val td:nth-of-type(6) { 
+    width: 60px;
+}
+.ord_val td:nth-of-type(7) {
+    width: 60px;
+}
+.ord_val td:nth-of-type(8) { 
+	
+    width: 50px;
+}
+
+.content{
+    width: 80%;
+    border: 1px solid black;
+    margin: 0 auto;
+}
+.content::after{
+content: "";
+display: block;
+clear: both;
+
+
+}
+
+
+

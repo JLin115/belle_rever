@@ -1,4 +1,4 @@
-package manager.itemManager.model;
+package _init.model;
 
 public class ItemTypeBean {
 private Short itid;

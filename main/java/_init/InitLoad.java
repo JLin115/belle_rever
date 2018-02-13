@@ -1,16 +1,15 @@
 package _init;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import manager.itemManager.model.ItemDAO;
-import manager.itemManager.model.ItemDAOImpl;
+import _init.model.InitLoadDao;
 
 /**
  * Application Lifecycle Listener implementation class initload
@@ -19,19 +18,25 @@ import manager.itemManager.model.ItemDAOImpl;
 @WebListener
 public class InitLoad implements ServletContextListener {
 
-    public void contextDestroyed(ServletContextEvent sce)  { 
-    	sce.getServletContext().removeAttribute("itemType");
-    }
-    public void contextInitialized(ServletContextEvent sce)  { 
-   	try{
-    WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sce.getServletContext());
-   	ItemDAO dao= (ItemDAO) ctx.getBean("ItemDAOImpl");
-   	Map<String,String> itemType=dao.getAllItemType();
-   	sce.getServletContext().setAttribute("itemType", itemType);}catch (Exception e) {
-		// TODO: handle exception
-   		e.printStackTrace();
+	public void contextDestroyed(ServletContextEvent sce) {
+		sce.getServletContext().removeAttribute("itemType");
 	}
-   	System.out.println("itemType載入");
-    }
-	
+
+	public void contextInitialized(ServletContextEvent sce) {
+		try {
+			WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(sce.getServletContext());
+			InitLoadDao dao = (InitLoadDao) ctx.getBean("InitLoadDaoImpl");
+			LinkedHashMap<String, String> itemType = dao.getAllItemType();
+			LinkedHashMap<String, String> ordStat = dao.getAllOrdStat();
+			sce.getServletContext().setAttribute("itemType", itemType);
+			sce.getServletContext().setAttribute("ordStat", ordStat);
+			System.out.println("itemType載入");
+			System.out.println("ordStat載入");
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+
 }
