@@ -1,7 +1,7 @@
 package home.purchase.model;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class OrderBean implements Serializable{
 private Integer ordId;

@@ -6,7 +6,7 @@
   </welcome-file-list>
   <context-param>
     <param-name>applicationContext</param-name>
-    <param-value>/WEB-INF/applicationContext.xml /WEB-INF/Beans.xml</param-value>
+    <param-value>/WEB-INF/applicationContext.xml</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

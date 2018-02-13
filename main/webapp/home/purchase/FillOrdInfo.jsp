@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" %>
+	<%response.setCharacterEncoding("big5"); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -15,12 +16,15 @@
 	
 	
 	<div class="sType">
-		<form action="" name="form" method="get">
+		<form action="Purchase" name="form" method="get">
 			<div class="type1">超商取貨</div>
 			<div class="type2">宅配</div>
-			<input type="hidden" name="stype" value="">
-			<div class="inputType">
-				<c:if test="${param.st_cate!=TOK }">
+			
+			<input type="hidden" name="stype" value="${param.webtemp}">
+			
+		
+			<div class="inputType">${errorMsg.typeError}
+				<c:if test="${ not empty param.webtemp }">
 					<span>超商名稱:</span>
 					<input type="text" name="st_name" value="${param.st_name}" readonly>
 					<br>
@@ -28,8 +32,12 @@
 					<input type="text" name="st_addr" value="${param.st_addr}" readonly>
 				</c:if>
 			</div>
+			
+			折價券:<div><input type="text" name="coupon" ></div>${errorMsg.couponError}<br>
+			<input type="submit" value="送出">
 		</form>
 	</div>
+
 
 
 
@@ -59,7 +67,7 @@
 			</c:forEach>
 		</table>
 	</div>
-
+	
 
 </body>
 </html>

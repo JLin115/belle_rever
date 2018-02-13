@@ -6,10 +6,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Clob;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -19,6 +23,8 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 import javax.xml.bind.DatatypeConverter;
+
+import home.purchase.model.CouponBean;
 
 
 /*請先在本地端配置staticRoute路徑上的資料夾 貨者修改staticRoute至指定資料夾//改版不用了
@@ -37,7 +43,7 @@ public class GlobalService {
 	public final static int pageSize = 2; // 管理員-管理商品-每頁幾筆
 	public final static int MpageSize = 6; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
-
+	public final static String index = "/Belle_Rever/home/index.jsp";
 	public static int getPagesize() {
 		return pageSize;
 	}
@@ -314,5 +320,21 @@ public class GlobalService {
 //		}
 //
 //	}
-
+	
+	static public String cpIsValid(CouponBean cb){
+		Timestamp now = new Timestamp(System.currentTimeMillis());
+		
+		if(cb.getValid().getTime() >now.getTime()){	
+			return  "折價券尚未開始";		
+		}
+		
+		if(now.getTime()>cb.getInvalid().getTime()){
+			
+			return "折價券以結束";
+		}
+		
+		return "true";
+	}
+	
+	
 }

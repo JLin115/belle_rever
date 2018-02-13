@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import _init.GlobalService;
+import home.purchase.model.OrderValBean;
 import home.register.model.*;;
 
 //@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f1", value = "/register/*") })
@@ -41,6 +44,17 @@ public class LoginFilterManager implements Filter {
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
 					//System.out.println("需要登入，已經登入");
+					System.out.println(servletPath);
+					if(servletPath.equals("/home/purchase/FillOrdInfo.jsp")){
+						HttpSession session = req.getSession();
+						List<OrderValBean> cart=(List<OrderValBean>) session.getAttribute("Cart");
+						if(cart.size()==0 ){
+							res.sendRedirect(GlobalService.index);
+							return;
+						}
+					}
+					
+					
 					chain.doFilter(request, response);
 				} else {
 					HttpSession session = req.getSession();
