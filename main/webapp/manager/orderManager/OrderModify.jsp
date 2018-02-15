@@ -22,7 +22,7 @@
 
 		<ul class="ordStatus">
 			<c:forEach var="x" items="${ordStat}">
-				<li><a href="ordList?type=${x.key}">${x.value}</a></li>
+				<li><a href="OrdList?type=${x.key}">${x.value}</a></li>
 			</c:forEach>
 		</ul>
 
@@ -31,7 +31,7 @@
 				<span class="title">訂單編號</span><span class="value">:${ob.ordId}</span><br>
 				<span class="title">訂單人</span><span class="value">:${ob.mId}</span><br>
 				<span class="title">訂購日期</span><span class="value">:<fmt:formatDate value="${ob.orderDate}" pattern="yyyy-MM-dd"/></span><br>
-				<span class="title">出貨日期 </span><span class="value">:<input type="text" class="sd" value=""></span><br> 
+				<span class="title">出貨日期 </span><span class="value">:<input type="text" class="sd" value="<fmt:formatDate value="${ob.shipDate }" pattern="yyyy-MM-dd"/>">${errorMsg.shipDateError }</span><br> 
 					<span class="title">運送方式 </span><span class="value">:${ob.shipType}</span><br>
 			</div>
 
@@ -39,7 +39,7 @@
 
 				<span class="title">運送地址</span><span class="value">:${ob.shipAddr}</span><br>
 				<span class="title">折價券編號</span><span class="value">:<input
-					type="text" class="cp" value="${ob.cpId}"></span><br>
+					type="text" class="cp" value="${ob.cpId}">${errorMsg.CouponError }</span><br>
 				<span class="title">訂單狀態</span><span class="value">:<select class="stat">
 						<c:forEach var="x" items="${ordStat}" >
 						<c:choose>
@@ -58,11 +58,12 @@
 				
 				
 				<br> <span class="title">訂單總價</span><span class="value">:${ob.ordTotal}</span><br>
-				<form class="form"action="" method="GET">
+				<form class="form"action="CheckOrd" method="GET">
+				<input type="hidden" name="ordid" value="${ob.ordId}">
 				<input type="hidden" name="coupon" value="">
 				<input type="hidden" name="sDate" value="">
 				<input type="hidden" name="stat" value="">
-				<input class="button" type="button" value="確認">
+				<input class="button" type="submit" value="確認">
 				</form>
 				
 			</div>
@@ -88,9 +89,9 @@
 				<td><img src="/bimg/${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
 				<td>${x.itemColor}</td>
 				<td>${x.itemSize}</td>
-				<td><input type="hidden" name="ordId" value="${x.ordId}" /></td>
-				<c:if test="${x.itemQty > 0 }">
-					<td><select class="qty" name="${x.ordSerialNumber}">
+				<td></td><c:if test="${x.itemQty > 0 }">
+				<td><input type="hidden" name="ordId" value="${x.ordId}" />
+				<select class="qty" name="${x.ordSerialNumber}">
 							<c:forEach var="y" begin="1" end="${x.itemQty}">
 								<c:choose>
 									<c:when test="${x.ordQty  == y  }">
@@ -106,7 +107,7 @@
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
 				<td class="singlePrice" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
-				<td><a href="/Belle_Rever/home/Delete_qty?ordSerN=${x.ordSerialNumber}"><img class="delete" height="20px" src="/bimg/1.jpg"></a></td>
+				<td><input type="hidden" name="${x.ordSerialNumber}" value="${x.ordId}" /><img class="delete"  height="20px" src="/bimg/1.jpg"></td>
 			
 			</tr>
 

@@ -33,7 +33,6 @@ public class LoginFilter implements Filter {
 
 	}
 
-
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		if (request instanceof HttpServletRequest && response instanceof HttpServletResponse) {
@@ -47,10 +46,12 @@ public class LoginFilter implements Filter {
 					if(servletPath.equals("/home/purchase/FillOrdInfo.jsp")){
 						HttpSession session = req.getSession();
 						List<OrderValBean> cart=(List<OrderValBean>) session.getAttribute("Cart");
+						if(cart!=null){
 						if(cart.size()==0 ){
 							res.sendRedirect(GlobalService.index);
 							return;
-						}
+						}}
+						
 					}
 					
 					
@@ -85,18 +86,18 @@ public class LoginFilter implements Filter {
 	private boolean mustLogin(String servletPath) {
 		boolean login = false;
 		for (String sURL : url) {
-			//去掉星號
+			// 去掉星號
 			if (sURL.endsWith("*")) {
 				sURL = sURL.substring(0, sURL.length() - 1);
 				if (servletPath.startsWith(sURL)) {
-					//System.out.println(servletPath);
-					//System.out.println(sURL);
+					// System.out.println(servletPath);
+					// System.out.println(sURL);
 					login = true;
 					break;
-				}else {
+				} else {
 					if (servletPath.equals(sURL)) {
 						login = true;
-						//System.out.println(sURL);
+						// System.out.println(sURL);
 						break;
 					}
 				}

@@ -47,7 +47,7 @@
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
 				<td class="singlePrice" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
-				<td><a href="/Belle_Rever/home/Delete_qty?ordSerN=${x.ordSerialNumber}"><img class="delete" height="20px" src="/bimg/1.jpg"></a></td>
+				<td><img class="delete" name="${x.ordSerialNumber}" height="20px" src="/bimg/1.jpg"></td>
 			
 			</tr>
 

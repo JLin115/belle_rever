@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -33,6 +34,8 @@ public class ModifyOrd extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		OrdManagerDao dao = (OrdManagerDao) ctx.getBean("OrdManagerDaoImpl");
+		HttpSession session= request.getSession(false);
+		session.setMaxInactiveInterval(180);
 		Integer ordId = null;
 		try {
 			ordId = Integer.valueOf(request.getParameter("id"));
@@ -42,8 +45,8 @@ public class ModifyOrd extends HttpServlet {
 		if (ordId != null) {
 			OrderBean ob = dao.getAOrd(ordId);
 			List<OrderValBean> ovb = dao.getOrdVal(ordId);
-			request.setAttribute("ob", ob);
-			request.setAttribute("ovb", ovb);
+			session.setAttribute("ob", ob);
+			session.setAttribute("ovb", ovb);
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher("OrderModify.jsp");

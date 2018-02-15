@@ -18,17 +18,15 @@
 	<div class="div"></div>
 	<div class="div2"></div>
 	
-	
-	<form name="form"method="GET" action="">
+
 	<div class="d1">
 	${ib.itemHeader }
 		<span>編號：</span><input type="text" name='id' value="${ib.itemID }" /><br>
 		<input type="hidden" name="serN" value="" />
 		<input type="button" name="Purchase" value="購買" />	
 		<input type="button" name="Cart" value="加入購物車" />	
-		<input type="hidden" name="type" value="" />	
 	</div>
-	</form>
+
 
 </body>
 </html>

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -18,13 +17,14 @@ import home.purchase.model.OrderValBean;
 import manager.orderManager.model.OrdManagerDao;
 
 /**
- * Servlet implementation class ModifyItem
+ * Servlet implementation class DeleteOVItem
  */
-@WebServlet("/manager/orderManager/ModifyItem")
-public class ModifyItem extends HttpServlet {
+@WebServlet("/manager/orderManager/DeleteOVItem")
+public class DeleteOVItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ModifyItem() {
+	public DeleteOVItem() {
+		super();
 
 	}
 
@@ -35,52 +35,54 @@ public class ModifyItem extends HttpServlet {
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		session.setMaxInactiveInterval(180);
 		List<OrderValBean> ovbL = (List<OrderValBean>) session.getAttribute("ovb");
-		Short qty = null;
 		Short ordSerN = null;
 		Integer ordId = null;
 
 		if (session != null && ovbL != null) {
-			OrdManagerDao dao = (OrdManagerDao) ctx.getBean("OrdManagerDaoImpl");
-			OrderValBean ovb = null;
 			try {
-				qty = Short.valueOf(request.getParameter("qty"));
 				ordSerN = Short.valueOf(request.getParameter("ordSerN"));
 				ordId = Integer.valueOf(request.getParameter("ordId"));
 
-				if (ovbL.size() > 0 && qty > 0 && ordSerN > 0 && ordSerN <= ovbL.size()) {
-					ovb = ovbL.get(ordSerN - 1);
+				// 重置訂單編號
+				if (ordSerN <= ovbL.size() && ordSerN > 0 && ovbL.size() > 0) {
+					OrderValBean ovb = ovbL.get(ordSerN - 1);
+					ovbL.remove(ordSerN - 1);
+					short i = 1;
+					for (OrderValBean o : ovbL) {
+						o.setOrdSerialNumber(i);
+						i++;
+					}
+
+					// 重置價錢
 					Integer total = 0;
 					for (OrderValBean o : ovbL) {
-						if (o.getOrdSerialNumber() == ordSerN) {
-							total = (int) (qty * o.getItemPrice() * o.getItemDiscount().doubleValue());
-						} else {
-							total = (int) (o.getOrdQty() * o.getItemPrice() * o.getItemDiscount().doubleValue());
-						}
+							total += (int) (o.getOrdQty() * o.getItemPrice() * o.getItemDiscount().doubleValue());
 					}
-
-					if (qty < ovb.getItemQty()) {
-						dao.upadteOrdValQty(ordId, ordSerN, qty);
-						dao.updateOrdTotal(ordId, total);
-						response.setContentType("text/html;charset=UTF-8");
-						response.getWriter().write("修改成功");
-					} else {//商品數量有誤
-						response.setContentType("text/html;charset=UTF-8");
-						response.getWriter().write("修改失敗,數量錯誤");
-					}
-
-				} else {//查詢字串輸入有誤
+					OrdManagerDao dao = (OrdManagerDao)	ctx.getBean("OrdManagerDaoImpl");
+					if(ovbL.size() >0){
+					dao.deleteOVItem(ovbL, total, ovb);
 					response.setContentType("text/html;charset=UTF-8");
-					response.getWriter().write("修改失敗");
-				}
+					response.getWriter().write("刪除成功");
+					}else{
+					dao.deleteOrd(ovb.getOrdId(), ovb);
+					response.setContentType("text/html;charset=UTF-8");
+					response.getWriter().write("刪除成功 ,訂單以刪除");
 
-			} catch (Exception e) {//查詢字串輸入有誤
-				System.out.println("ModifyItem Error");
+					}
+					
+			
+				}else{//查詢字串有誤
+					response.setContentType("text/html;charset=UTF-8");
+					response.getWriter().write("刪除失敗1");
+				}
+			} catch (Exception e) {//查詢字串有誤
+				e.printStackTrace();
 				response.setContentType("text/html;charset=UTF-8");
-				response.getWriter().write("修改失敗");
+				response.getWriter().write("刪除失敗2");
 			}
-		} else {//session異常
+		} else {//session有誤
 			response.setContentType("text/html;charset=UTF-8");
-			response.getWriter().write("修改失敗");
+			response.getWriter().write("刪除失敗3");
 		}
 
 	}

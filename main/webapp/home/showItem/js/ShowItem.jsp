@@ -32,71 +32,62 @@ $(window).ready(function() {
 			}
 		})
 	})
+	
+	
+	
+	
 	$("body").on('click','.size',function (){
 	x.forEach(item =>{
 	if((item.itemColor==$("input[name=color]:checked").val()) && (item.itemSize ==$("input[name=size]:checked").val()) ){
 	$("input[name=serN]").attr('value',item.itemSerialNumber);
 	}
 	})
+	
 	})
 	
 	
-	
-	
-	$("input[type = button]").click(function(){
-	
-	
-	$("form[name=form]").attr("action","/Belle_Rever/home/cart/AddCart");
-	if(
-	$("input[name=color]").is(':checked')
-	&&
-	$("input[name=size]").is(':checked')
-	){
+	$("input[type=button]").click(function(){
 
-	if($(this).val()=="購買"){
-	$("input[name=type]").val("Purchase");
-	$("form[name=form]").submit();
-	}else{
-		$("input[name=type]").val("Cart");
-	$("form[name=form]").submit();}
+		if( $("input[name=color]").is(':checked') && $("input[name=size]").is(':checked') ){
+		
+		var itemId = $("input[name=id]").val();
+		var itemSerN = $("input[name=serN]").val();
+		type=$(this).attr("name");
 	
-	
-	
-	}
-	
-	
-	})
-	
-	
-	
-	
-	
-	
-	
-	
+		$.ajax({
+			'type':'GET',
+			'url':'/Belle_Rever/home/cart/AddCart',
+			'datatype':'text',
+			'data':{
+				'itemId':itemId,
+				'itemSerN':itemSerN,
+				'type':type
+			},
+			'success':function(data ){
+			alert(data.status)
+			if(type=='Cart'){
+				alert(data)
+				window.location.reload();
+			}else if(type=='Purchase'){
+			window.location='/Belle_Rever/home/purchase/FillOrdInfo.jsp';
+			}
+<!-- 			else if(xhr.status ==301){ -->
+<!-- 			alert(); -->
+<!-- 			} -->
 			
-<!-- 	$("input[name = Purchase]").click(function(){ -->
-<!-- 	$("form[name=form]").attr("action","/Belle_Rever/home/cart/AddCart"); -->
-<!-- 	if( -->
-<!-- 	$("input[name=color]").is(':checked') -->
-<!-- 	&& -->
-<!-- 	$("input[name=size]").is(':checked') -->
-<!-- 	){ -->
-<!-- 	$("input[name=type]").val("Purchase"); -->
-<!-- 	$("form[name=form]").submit(); -->
-<!-- 	} -->
-<!-- 	}); -->
+			}
+		 	})
+	   }
+		})
+
 	
-<!-- 	$("input[name = Cart]").click(function(){ -->
-<!-- 	$("form[name=form]").attr("action","/Belle_Rever/home/cart/AddCart"); -->
-<!-- 	if( -->
-<!-- 	$("input[name=color]").is(':checked') -->
-<!-- 	&& -->
-<!-- 	$("input[name=size]").is(':checked') -->
-<!-- 	){ -->
-<!-- 	$("input[name=type]").val("Cart"); -->
-<!-- 	$("form[name=form]").submit();} -->
-<!-- 	}); -->
+	
+	
+<!-- 	$("input[name=Purchase]").click(){ -->
+	
+	
+<!-- 	} -->
+
 	
 		
 })

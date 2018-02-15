@@ -6,27 +6,46 @@ $(window).ready(function() {
 	});
 	
 	
+	
+	$(".delete").click(function () {
+		var ordId= $(this.previousSibling).val();
+		var ordSerN =$(this.previousSibling).attr("name");
+		$.ajax({
+			'type':'GET',
+			'url':'DeleteOVItem',
+			'datatype':'text',
+			'data':{
+				'ordId':ordId,
+				'ordSerN':ordSerN
+			},
+			'success':function(data){
+				alert(data)
+				if(data == "刪除成功 ,訂單以刪除"){
+				location.href="OrderManager.jsp";
+				}else{
+				window.location.reload();
+				}
+			}
+		})
+	})
+	
 	$(".qty").change(function(){
 		var qty =$(this).val()
 		var ordSerN =$(this).attr("name");
-		var ordId=$(this.parentNode.previousSibling.firstChild).val();
-//		
-//		window.location.href = "/Belle_Rever/home/Delete_qty?ordSerN="+ordSerN+"&qty="+qty;
-//		a
-		alert(ordId)
+		var ordId=$(this.parentNode.firstChild).val();
 		$.ajax({
 			'type':'GET',
 			'url':'ModifyItem',
-			'datatype':'JSON',
-			'data':{'qty:':qty,'ordSerN':ordSerN},
-			'success':function(){
+			'datatype':'text',
+			'data':{
+				'qty':qty,
+				'ordId':ordId,
+				'ordSerN':ordSerN
+			},
+			'success':function(data){
+				alert(data)
 				window.location.reload();
-			}			
-			
-			
+			}	
 		})
-		
 	});
-	
-	
 });

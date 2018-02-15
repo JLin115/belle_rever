@@ -51,7 +51,6 @@
 				<td>單價</td>
 				<td>折扣</td>
 				<td>小計</td>
-				<td>刪除</td>
 			</tr>
 			<c:forEach items="${Cart}" var="x">
 				<tr>

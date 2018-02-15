@@ -4,26 +4,43 @@ $(window).ready(function() {
 	
 	
 	
+	
 	$(".qty").change(function(){
+		getTotal();
 		var qty =$(this).val()
 		var ordSerN =$(this).attr("name");
-		
-		window.location.href = "/Belle_Rever/home/Delete_qty?ordSerN="+ordSerN+"&qty="+qty;
-		
+		$.ajax({
+			'type':'GET',
+			'url':'ChangeQty',
+			'datatype':'text',
+			'data':{
+				'ordSerN':ordSerN,
+				'qty':qty,
+			},
+			'success':function(data){
+				alert(data)
+				window.location.reload();
+			}	
+		})
 	});
-	
-	
-	
-	$("qty").change(function() {
-		
-		getTotal();
 
-	})
 	
-	$("delete").click(function() {
+	$(".delete").click(function(){
 		getTotal();
-
-	})
+		var ordSerN =$(this).attr("name");
+		$.ajax({
+			'type':'GET',
+			'url':'DeleteAOrdVal',
+			'datatype':'text',
+			'data':{
+				'ordSerN':ordSerN,
+			},
+			'success':function(data){
+				alert(data)
+				window.location.reload();
+			}	
+		})
+	});
 	
 	
 

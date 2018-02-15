@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import home.purchase.model.OrderValBean;
 import manager.itemManager.model.ItemBean;
+import manager.itemManager.model.ItemValBean;
 
 @Component("CartDao")
 public class CartDaoImpl implements CartDao {
@@ -36,7 +37,7 @@ public class CartDaoImpl implements CartDao {
 	
 
 	@Override
-	public OrderValBean getAItem(Integer itemId, Short itemSerialNumber) {
+	public OrderValBean getAOrderVal(Integer itemId, Short itemSerialNumber) {
 		 String sql = " SELECT  v.itemQty,i.itemDiscount,v.itemColor , i.itemPrice , v.itemSize , i.itemHeader , i.itemPic1 "
 				+" FROM item i JOIN item_val v ON i.itemId = v.itemId  WHERE i.itemId = ? AND itemSerialNumber = ? ";
 		 List<OrderValBean> ibList = new ArrayList<>();
@@ -49,6 +50,12 @@ public class CartDaoImpl implements CartDao {
 //		 }
 //		
 		return ibList.get(0);
+	}
+
+	@Override
+	public ItemValBean getAItem(Integer itemId, Short itemSerialNumber) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

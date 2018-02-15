@@ -50,7 +50,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 
 	}
 	
-	@Override
+	@Override //傳入商品細項  把商品細項內的東西 從資料庫抓一份出來比對 商品數量大於訂單數量 就寫入
 	public void checkSetQty(List<OrderValBean> ovb) {
 		String sql ="select * from item_val where  itemid=? and itemSerialNumber=? ";
 		

@@ -19,7 +19,7 @@ import manager.orderManager.model.OrdManagerDao;
 /**
  * Servlet implementation class ordList
  */
-@WebServlet("/manager/orderManager/ordList")
+@WebServlet("/manager/orderManager/OrdList")
 public class OrdList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
