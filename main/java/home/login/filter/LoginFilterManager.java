@@ -45,9 +45,6 @@ public class LoginFilterManager implements Filter {
 				if (checkLogin(req)) {
 					//System.out.println("需要登入，已經登入");
 			
-					
-					
-					
 					chain.doFilter(request, response);
 				} else {
 					HttpSession session = req.getSession();
@@ -56,7 +53,7 @@ public class LoginFilterManager implements Filter {
 				
 					res.sendRedirect(req.getContextPath()+"/home/login/login.jsp");
 				
-				
+	
 					return;
 				}
 			} else {

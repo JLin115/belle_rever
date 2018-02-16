@@ -23,7 +23,6 @@ import home.login.model.LoginService;
 import home.login.model.LoginServiceImpl;
 import home.register.model.*;
 
-
 @WebServlet("/home/login/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,52 +41,52 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("errorMsgkEY", errorMsgMap);
 		// 讀取使用者輸入資料
 		String userId = request.getParameter("userId");
-		String password = request.getParameter("pswd");
-//		String rm = request.getParameter("rememberMe");
-//		String requestURI = (String) session.getAttribute("requestURI");
-//		int mpid = -1;
+		String password = request.getParameter("pswd").trim();
+		// String rm = request.getParameter("rememberMe");
+		// String requestURI = (String) session.getAttribute("requestURI");
+		// int mpid = -1;
 		// *Remember Me*//
-//		Cookie cookieUser = null;
-//		Cookie cookiePassword = null;
-//		Cookie cookieRememberMe = null;
-//
-//		if (rm != null) { // rm存放瀏覽器送來之RememberMe的選項
-//			cookieUser = new Cookie("user", userId);
-//			cookieUser.setMaxAge(30 * 60 * 60);
-//			cookieUser.setPath(request.getContextPath());
-//			String encodePassword = GlobalService.encryptString(password);
-//			cookiePassword = new Cookie("password", encodePassword);
-//			cookiePassword.setMaxAge(30 * 60 * 60);
-//			cookiePassword.setPath(request.getContextPath());
-//			cookieRememberMe = new Cookie("rm", "true");
-//			cookieRememberMe.setMaxAge(30 * 60 * 60);
-//			cookieRememberMe.setPath(request.getContextPath());
-//		} else {
-//			cookieUser = new Cookie("user", userId);
-//			cookieUser.setMaxAge(0); // MaxAge==0 表示要請瀏覽器刪除此Cookie
-//			cookieUser.setPath(request.getContextPath());
-////			String encodePassword = DatatypeConverter.printBase64Binary(password.getBytes());
-//			String encodePassword = GlobalService.encryptString(password);
-//			cookiePassword = new Cookie("password", encodePassword);
-//			cookiePassword.setMaxAge(0);
-//			cookiePassword.setPath(request.getContextPath());
-//			cookieRememberMe = new Cookie("rm", "false");
-//			cookieRememberMe.setMaxAge(30 * 60 * 60);
-//			cookieRememberMe.setPath(request.getContextPath());
-//		}
-//		response.addCookie(cookieUser);
-//		response.addCookie(cookiePassword);
-//		response.addCookie(cookieRememberMe);
-		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext()); 
+		// Cookie cookieUser = null;
+		// Cookie cookiePassword = null;
+		// Cookie cookieRememberMe = null;
+		//
+		// if (rm != null) { // rm存放瀏覽器送來之RememberMe的選項
+		// cookieUser = new Cookie("user", userId);
+		// cookieUser.setMaxAge(30 * 60 * 60);
+		// cookieUser.setPath(request.getContextPath());
+		// String encodePassword = GlobalService.encryptString(password);
+		// cookiePassword = new Cookie("password", encodePassword);
+		// cookiePassword.setMaxAge(30 * 60 * 60);
+		// cookiePassword.setPath(request.getContextPath());
+		// cookieRememberMe = new Cookie("rm", "true");
+		// cookieRememberMe.setMaxAge(30 * 60 * 60);
+		// cookieRememberMe.setPath(request.getContextPath());
+		// } else {
+		// cookieUser = new Cookie("user", userId);
+		// cookieUser.setMaxAge(0); // MaxAge==0 表示要請瀏覽器刪除此Cookie
+		// cookieUser.setPath(request.getContextPath());
+		//// String encodePassword =
+		// DatatypeConverter.printBase64Binary(password.getBytes());
+		// String encodePassword = GlobalService.encryptString(password);
+		// cookiePassword = new Cookie("password", encodePassword);
+		// cookiePassword.setMaxAge(0);
+		// cookiePassword.setPath(request.getContextPath());
+		// cookieRememberMe = new Cookie("rm", "false");
+		// cookieRememberMe.setMaxAge(30 * 60 * 60);
+		// cookieRememberMe.setPath(request.getContextPath());
+		// }
+		// response.addCookie(cookieUser);
+		// response.addCookie(cookiePassword);
+		// response.addCookie(cookieRememberMe);
+		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		MemberDAOImpl dao = (MemberDAOImpl) wctx.getBean("MemberDAOImpl");
-		MemberBean mb =null;
+		MemberBean mb = null;
 
 		if ("".equals(userId)) {
 			errorMsgMap.put("accountError", "請輸入帳號");
 
-		}else{
-			System.out.println(userId);
-			mb =dao.getMember(userId);
+		} else {
+			mb = dao.getMember(userId);
 		}
 		if ("".equals(password)) {
 			errorMsgMap.put("passwordError", "請輸入密碼");
@@ -95,19 +94,25 @@ public class LoginServlet extends HttpServlet {
 		}
 		if (!(errorMsgMap.containsKey("accountError") || errorMsgMap.containsKey("passwordError"))) {
 			if (mb != null) {
-		
-				if (mb.getMpass().equals(GlobalService.encryptString2(password, userId, String.valueOf(mb.getMregisterday().getTime())))) {
+				
+//				System.out.println(mb.getMregisterday());
+//				System.out.println(String.valueOf(mb.getMregisterday().getTime()));
+				// System.out.println(String.valueOf(mb.getMregisterday().getTime()));
+				String p = GlobalService.encryptString2(password, mb.getMid(),String.valueOf(mb.getMregisterday().getTime()));
+				System.out.println(p);
+				if (mb.getMpass().equals(p)) {
 					if (mb.getMpid() == 0) {
 					} else if (mb.getMpid() == 1) {
 						session.setAttribute("LoginOK", mb);
-					} else if(mb.getMpid() == 999){
+					} else if (mb.getMpid() == 999) {
 						System.out.println("logServlet SuperUser");
 						session.setAttribute("SuperUser", mb);
-					}else{
+					} else {
 						errorMsgMap.put("accountError", "帳號異常,請洽客服");
 					}
 				} else {
-					System.out.println(GlobalService.encryptString2(password, userId, String.valueOf(mb.getMregisterday().getTime())));
+					// System.out.println(GlobalService.encryptString2(password,
+					// userId, String.valueOf(mb.getMregisterday().getTime())));
 					errorMsgMap.put("passwordError", "帳號或密碼錯誤");
 				}
 			} else {
@@ -121,8 +126,6 @@ public class LoginServlet extends HttpServlet {
 			return;
 		} else {
 			String str = (String) session.getAttribute("target");
-			System.out.println(str);
-			System.out.println(request.getContextPath());
 			response.sendRedirect(str);
 			return;
 		}

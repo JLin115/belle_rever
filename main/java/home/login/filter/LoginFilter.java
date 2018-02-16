@@ -24,7 +24,8 @@ import home.purchase.model.OrderValBean;
 import home.register.model.*;;
 
 //@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f1", value = "/register/*") })
-@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f2", value = "/home/purchase/*") })
+@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f2", value = "/home/purchase/*"),
+												  @WebInitParam(name = "f3", value = "/member/*")})
 
 public class LoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();

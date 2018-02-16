@@ -1,6 +1,7 @@
 package home.cart.controller;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import _init.GlobalService;
 import home.cart.model.CartDao;
 import home.purchase.model.OrderValBean;
 
@@ -89,7 +91,8 @@ public class AddCart extends HttpServlet {
 			e.printStackTrace();
 //			response.setContentType("text/html;charset=UTF-8");
 //			response.getWriter().write("異常");
-			response.setStatus(301);
+//			response.getWriter().write("<script>location.replace='"+GlobalService.index+"'</script>");
+			 response.setStatus(304);
 		}
 
 	}

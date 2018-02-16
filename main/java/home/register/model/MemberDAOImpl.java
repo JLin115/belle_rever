@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import _init.GlobalService;
+import home.purchase.model.OrderBean;
 
 @Component("MemberDAOImpl")
 public class MemberDAOImpl implements Dao {
@@ -70,11 +71,11 @@ public class MemberDAOImpl implements Dao {
 	@Override
 	public MemberBean getMember(String mid) {
 		String sql = "select * from member where mid = ?";
-		List<MemberBean> mb =new  ArrayList<>();
-		 mb = template.query(sql, new Object[] { mid },new BeanPropertyRowMapper<MemberBean>(MemberBean.class));
-		 if(mb.size()==0){
-			 return null;	 
-		 }
+		List<MemberBean> mb = new ArrayList<>();
+		mb = template.query(sql, new Object[] { mid }, new BeanPropertyRowMapper<MemberBean>(MemberBean.class));
+		if (mb.size() == 0) {
+			return null;
+		}
 		return mb.get(0);
 		// try (Connection con = ds.getConnection();) {
 		// PreparedStatement ps = con.prepareStatement(sql);
@@ -94,7 +95,7 @@ public class MemberDAOImpl implements Dao {
 		// } catch (SQLException e) {
 		// e.printStackTrace();
 		// }
-		
+
 	}
 
 	@Override
@@ -122,6 +123,33 @@ public class MemberDAOImpl implements Dao {
 		// e.printStackTrace();
 		// }
 
+	}
+
+	@Override
+	public void updateMember(MemberBean mb) {
+		String sql = "update member set mname = ?,mbday =?,memail=?,mphone=? where mid  = ? ";
+		System.out.println(mb.getMname()+","+mb.getMbday()+","+ mb.getMemail()+","+ mb.getMphone()+","+ mb.getMid());
+		template.update(sql, mb.getMname(), mb.getMbday(), mb.getMemail(), mb.getMphone(), mb.getMid());
+		
+	}
+
+	@Override
+	public void updatePswd(MemberBean mb) {
+		String sql = "update member set mpass =? where mid  = ? ";
+		template.update(sql,  mb.getMpass(), mb.getMid());
+		
+	}
+	@Override
+	
+	public List<OrderBean> getOrd(Short osId,String mid) {
+		String sql = "Select *  from ord where osid = ? and mid = ? ";
+		List<OrderBean> obList = new ArrayList<>();
+		obList = template.query(sql, new Object[] { osId,mid }, new BeanPropertyRowMapper<OrderBean>(OrderBean.class));
+		if (obList.isEmpty()) {
+			return null;
+		}
+
+		return obList;
 	}
 
 }

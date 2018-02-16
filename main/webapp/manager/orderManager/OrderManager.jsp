@@ -35,17 +35,13 @@
 				<td><span>訂單金額</span></td>
 				<td><span>訂單日期</span></td>
 			</tr>
-
-
 			<c:forEach var="x" items="${allOrder}">
-				
 			<tr>
 				<td><span><a href="ModifyOrd?id=${x.ordId}"> ${x.ordId}</a></span></td>
 				<td><span>${x.mId}</span></td>
 				<td><span>${x.ordTotal}</span></td>
 				<td><span>${x.orderDate}</span></td>
 			</tr>
-			
 			</c:forEach>
 
 

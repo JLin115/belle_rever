@@ -70,10 +70,8 @@ $(window).ready(function() {
 				window.location.reload();
 			}else if(type=='Purchase'){
 			window.location='/Belle_Rever/home/purchase/FillOrdInfo.jsp';
-			}
-<!-- 			else if(xhr.status ==301){ -->
-<!-- 			alert(); -->
-<!-- 			} -->
+				}
+<!-- 			
 			
 			}
 		 	})

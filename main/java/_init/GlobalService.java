@@ -4,18 +4,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Clob;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.sql.Date;
+import java.util.TimeZone;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -78,7 +76,6 @@ public class GlobalService {
 
 	// 加密2.0
 	public static String encryptString2(String message, String id, String d) {
-		System.out.println(d);
 		String s1 = encryptString(message, KEY);
 		String s2 = encryptString(s1, getGKey(id, d));
 		// System.out.println(s1);
@@ -337,13 +334,14 @@ public class GlobalService {
 
 		return "true";
 	}
+	
 
-	public static void main(String[] args) {
-		Timestamp ts = Timestamp.valueOf("2018-02-13 11:42:12.000");
-		System.out.println(String.valueOf(ts.getTime()));
-		// System.out.println(String.valueOf(ts.getTime()));
-		System.out.println(encryptString2("SuperUser", "SuperUser", String.valueOf(ts.getTime())));
-
+	public static void main(String[] args) throws ParseException {
+//		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		sd.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+		String s =sd.format(System.currentTimeMillis());
+		System.out.println(s);
 	}
 
 }
