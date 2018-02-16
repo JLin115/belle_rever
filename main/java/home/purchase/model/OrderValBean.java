@@ -16,13 +16,14 @@ private String itemHeader;
 private String itemPic1;
 private BigDecimal itemDiscount;
 private Integer itemQty;
+private Boolean isFeedBack;
 public OrderValBean(){
 	ordQty = 0 ;
 	
 }
 public OrderValBean(Integer ordId, Short ordSerialNumber, Integer itemId, Short ordQty, Short itemSerialNumber,
 		String itemColor, Integer itemPrice, String itemSize, String itemHeader, String itemPic1,
-		BigDecimal itemDiscount, Integer itemQty) {
+		BigDecimal itemDiscount, Integer itemQty, Boolean isFeedBack) {
 	super();
 	this.ordId = ordId;
 	this.ordSerialNumber = ordSerialNumber;
@@ -36,14 +37,8 @@ public OrderValBean(Integer ordId, Short ordSerialNumber, Integer itemId, Short 
 	this.itemPic1 = itemPic1;
 	this.itemDiscount = itemDiscount;
 	this.itemQty = itemQty;
-	ordQty = 0 ;
-}
-@Override
-public String toString() {
-	return "OrderValBean [ordId=" + ordId + ", ordSerialNumber=" + ordSerialNumber + ", itemId=" + itemId + ", ordQty="
-			+ ordQty + ", itemSerialNumber=" + itemSerialNumber + ", itemColor=" + itemColor + ", itemPrice="
-			+ itemPrice + ", itemSize=" + itemSize + ", itemHeader=" + itemHeader + ", itemPic1=" + itemPic1
-			+ ", itemDiscount=" + itemDiscount + ", itemQty=" + itemQty + "]";
+	this.isFeedBack = isFeedBack;
+
 }
 public Integer getOrdId() {
 	return ordId;
@@ -117,7 +112,12 @@ public Integer getItemQty() {
 public void setItemQty(Integer itemQty) {
 	this.itemQty = itemQty;
 }
-
+public Boolean getIsFeedBack() {
+	return isFeedBack;
+}
+public void setIsFeedBack(Boolean isFeedBack) {
+	this.isFeedBack = isFeedBack;
+}
 
 
 

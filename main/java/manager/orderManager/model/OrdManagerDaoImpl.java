@@ -52,7 +52,7 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 
 	@Override
 	public List<OrderValBean> getOrdVal(Integer ordId) {
-		String sql = " SELECT   o.ordid , o.ordSerialNumber , i.itemId , o.ordQty , v.itemSerialNumber ,o.itemColor, "
+		String sql = " SELECT   o.isFeedBack, o.ordid , o.ordSerialNumber , i.itemId , o.ordQty , v.itemSerialNumber ,o.itemColor, "
 				+ " o.itemPrice,o.itemSize,o.itemHeader,o.itemPic1,i.itemDiscount,v.itemQty "
 				+ " FROM ord_val o JOIN item i  ON i.itemId = o.itemId "
 				+ " JOIN item_val v ON  o.itemSerialNumber = v.itemSerialNumber AND o.itemId =v.itemId "

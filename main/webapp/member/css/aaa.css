@@ -43,11 +43,11 @@ a{
 .ordStatus{
     background-color: white;
     text-align: center;
-    padding: 5 0 5 0;
+    padding: 5px 0 5px 0;
 }
 .ordStatus li{
     display: inline-block;
-    padding: 0 30 0 30;
+    padding: 0 30px 0 30px;
 }
 .ordStatus a{
     text-decoration: none;
@@ -58,7 +58,7 @@ a{
 
 .show{
 background: rgb(223, 199, 203);
-width: 60%;
+width: 70%;
 height: 800px;
 margin: 20px auto;
 padding-top: 10px;
@@ -95,4 +95,97 @@ height: 20px;
     height: 20px;
 
  }
+ 
+ 
+
+  table{
+    border-collapse: collapse;
+    margin: 50px auto;
+}
+
+.ord_val td{
+    border-bottom: 1px solid gray;
+   padding: 5px;
+}
+
+.ord_val td:nth-of-type(1) {  
+    width: 350px;
+
+}.ord_val td:nth-of-type(1) img{  
+    height: 80px;
+    float:left; 
+    
+}
+.ord_val td:nth-of-type(1) span{  
+   
+    float:left;
+}
+.ord_val td:nth-of-type(1) span::after{  
+   content: "";
+   display: block;
+   clear: both;
+}
+.ord_val td:nth-of-type(2) {
+    width: 60px;
+}
+.ord_val td:nth-of-type(3) {  
+    width: 60px;
+}
+.ord_val td:nth-of-type(4) { 
+    width: 60px;
+}
+.ord_val td:nth-of-type(5) {
+
+    width: 60px;
+}
+.ord_val td:nth-of-type(6) { 
+    width: 60px;
+}
+.ord_val td:nth-of-type(7) {
+    width: 60px;
+}
+.ord_val td:nth-of-type(8) { 
+	
+    width: 50px;
+}
+
+.ord{
+width:75%;
+margin:20px auto;
+}
+
+.ord div{
+  display: inline-block;
+ vertical-align:top;
+}
+
+.ord div:nth-of-type(1){
+width:45%;
+}
+.ord div:nth-of-type(2){
+    width:45%;
+}
+
+.ord span{
+    display: inline-block;
+    vertical-align:top;
+    margin:2.5px 0px;
+}
+.title{
+width: 20%;
+/* border:1px solid black; */
+}
+.value{
+width: 65%;
+}
+
+.ord div:nth-of-type(1) .value{
+
+    width: 32%;
+}
+
+.ord div:nth-of-type(1) .title{
+  margin-left: 100px;
+
+}
 

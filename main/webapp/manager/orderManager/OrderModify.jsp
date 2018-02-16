@@ -32,7 +32,7 @@
 				<span class="title">訂單人</span><span class="value">:${ob.mId}</span><br>
 				<span class="title">訂購日期</span><span class="value">:<fmt:formatDate value="${ob.orderDate}" pattern="yyyy-MM-dd"/></span><br>
 				<span class="title">出貨日期 </span><span class="value">:<input type="text" class="sd" value="<fmt:formatDate value="${ob.shipDate }" pattern="yyyy-MM-dd"/>">${errorMsg.shipDateError }</span><br> 
-					<span class="title">運送方式 </span><span class="value">:${ob.shipType}</span><br>
+				<span class="title">運送方式 </span><span class="value">:${ob.shipType}</span><br>
 			</div>
 
 			<div>

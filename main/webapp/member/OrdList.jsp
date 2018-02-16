@@ -25,7 +25,7 @@
 	</ul>
 	<div class="show">
 		<c:forEach var="x" items="${ordList}">
-			<a href="#">
+			<a href="OrdDetail?ordId=${x.ordId}">
 				<div class="content">
 
 					<div>
