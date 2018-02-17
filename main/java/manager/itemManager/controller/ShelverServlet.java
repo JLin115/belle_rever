@@ -200,7 +200,7 @@ public class ShelverServlet extends HttpServlet {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic1(imgName);
 								System.out.println("存放完畢");
 								}
@@ -219,7 +219,7 @@ public class ShelverServlet extends HttpServlet {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic2(imgName);
 								System.out.println("存放完畢");
 								}
@@ -238,7 +238,7 @@ public class ShelverServlet extends HttpServlet {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic3(imgName);
 								System.out.println("存放完畢");
 								}
@@ -256,7 +256,7 @@ public class ShelverServlet extends HttpServlet {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic4(imgName);
 								System.out.println("存放完畢");
 								}
@@ -271,7 +271,7 @@ public class ShelverServlet extends HttpServlet {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic5(imgName);
 								System.out.println("存放完畢");
 								}

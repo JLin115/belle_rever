@@ -34,14 +34,14 @@
 
 				<a href="ShowSingleItem?itemId=${items.itemID}">
 					<ul>
-						<li><img src="/bimg/${items.itemPic1}">
-						 <img src="/bimg/${items.itemPic2} "> 
-						 <img src="/bimg/${items.itemPic3} ">
+						<li><img src="${initParam['itemImgRoute']}${items.itemPic1}">
+						 <img src="${initParam['itemImgRoute']}${items.itemPic2} "> 
+						 <img src="${initParam['itemImgRoute']}${items.itemPic3} ">
 							 <c:if test="${not empty items.itemPic4}">
-							  <img src="/bimg/${items.itemPic4} ">
+							  <img src="${initParam['itemImgRoute']}${items.itemPic4} ">
 							 </c:if>
 							 <c:if test="${not empty items.itemPic5}">
-							   <img src="/bimg/${items.itemPic5} ">
+							   <img src="${initParam['itemImgRoute']}${items.itemPic5} ">
 							 </c:if>
 							 
 							

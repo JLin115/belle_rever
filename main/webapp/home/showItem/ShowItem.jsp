@@ -27,7 +27,7 @@
 		<ul>
 			<c:forEach var="items" items="${allItem}">
 				<a href="ShowSingleItem_home?itemId=${items.itemID}">
-					<li><img src="/bimg/${items.itemPic1}">
+					<li><img src="${initParam['itemImgRoute']}${items.itemPic1}">
 						<div>${items.itemHeader}</div>
 						<fmt:formatNumber var="c" value="${items.itemPrice *items.itemdiscount.doubleValue()}" pattern="#"/>
 						<c:choose>

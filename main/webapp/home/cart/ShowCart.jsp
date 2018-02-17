@@ -27,7 +27,7 @@
 		</tr>
 		<c:forEach items="${Cart}" var="x">
 			<tr>
-				<td><img src="/bimg/${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
+				<td><img src="${initParam['itemImgRoute']}${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
 				<td>${x.itemColor}</td>
 				<td>${x.itemSize}</td>
 				<c:if test="${x.itemQty > 0 }">

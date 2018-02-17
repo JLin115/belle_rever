@@ -218,7 +218,7 @@ public class ItemModify extends HttpServlet {
 									
 								GlobalService.deleteImgInfile(beforeIb.getItemPic1());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic1(imgName);
 								System.out.println("存放完畢");
 								}
@@ -238,7 +238,7 @@ public class ItemModify extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								GlobalService.deleteImgInfile(beforeIb.getItemPic2());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic2(imgName);
 								System.out.println("存放完畢");
 								}
@@ -256,7 +256,7 @@ public class ItemModify extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								GlobalService.deleteImgInfile(beforeIb.getItemPic3());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic3(imgName);
 								System.out.println("存放完畢");
 								}
@@ -274,7 +274,7 @@ public class ItemModify extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								GlobalService.deleteImgInfile(beforeIb.getItemPic4());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic4(imgName);
 								System.out.println("存放完畢");
 								}
@@ -292,7 +292,7 @@ public class ItemModify extends HttpServlet {
 								if(errorMsg.isEmpty()){
 								GlobalService.deleteImgInfile(beforeIb.getItemPic5());	
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
-								GlobalService.saveImgtofile(imgName, p.getInputStream());
+								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic5(imgName);
 								System.out.println("存放完畢");
 								}

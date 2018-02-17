@@ -1,0 +1,49 @@
+*{
+	font-size: 18px;
+	padding: 0;
+	margin: 0;
+	
+}
+.textarea{
+	width:192px;
+	height:120px;
+	resize : none;
+ 
+}
+form div{
+	display:inline-block;
+	vertical-align: top;
+	padding:3px;
+	width:195px;
+	margin-right:-5px;
+}
+#file{
+	display: none;
+}
+.button{
+/*     display: inline-block; */
+ 
+/* 	width:70px; */
+	border:1px solid black;
+	background:#e0e3e5;
+	border-color: #bbbdbf;
+
+}
+.button:hover{
+	cursor: pointer;
+}
+.button,.submit{
+	margin:10px 17px;
+	
+}
+.img{
+	display: inline-block;
+	margin:0 auto;
+}
+.commemtError,.picError{
+	color:red;
+	font-size: 10px;
+	
+}
+
+    

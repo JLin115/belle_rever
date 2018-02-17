@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Clob;
@@ -39,10 +40,20 @@ public class GlobalService {
 	private static String imgFolder = "C:\\_JSP\\workspace\\Belle_Rever\\src\\main\\webapp\\itemImg\\";
 	private static String TomCatFolder = "C:\\_JSP\\tomcat8\\webapps\\Belle_Rever\\itemImg\\";
 	private static String staticRoute = "C:\\_JSP\\Belle_reveImg";
+	private static String staticRoute_itemImg = "C:\\_JSP\\Belle_reveImg\\itemImg";
+	private static String staticRoute_commemtImg = "C:\\_JSP\\Belle_reveImg\\commemtImg";
 	public final static int pageSize = 2; // 管理員-管理商品-每頁幾筆
 	public final static int MpageSize = 6; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index.jsp";
+
+	public static String getStaticRoute_itemImg() {
+		return staticRoute_itemImg;
+	}
+
+	public static String getStaticRoute_commemtImg() {
+		return staticRoute_commemtImg;
+	}
 
 	public static int getPagesize() {
 		return pageSize;
@@ -265,8 +276,8 @@ public class GlobalService {
 	//
 	// }
 
-	static public void saveImgtofile(String imgName, InputStream is) {
-		File dir = new File(staticRoute);
+	static public void saveImgtofile(String imgName, InputStream is,String route) {
+		File dir = new File(route);
 		if (!dir.exists()) {
 			boolean b = dir.mkdirs();
 			System.out.println("是否建立資料夾:" + b);
@@ -338,10 +349,20 @@ public class GlobalService {
 
 	public static void main(String[] args) throws ParseException {
 //		Timestamp ts = new Timestamp(System.currentTimeMillis());
-		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		sd.setTimeZone(TimeZone.getTimeZone("GMT+8"));
-		String s =sd.format(System.currentTimeMillis());
+//		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		sd.setTimeZone(TimeZone.getTimeZone("GMT+8"));
+//		String s =sd.format(System.currentTimeMillis());
+//		System.out.println(s);
+		String x = "%A4%E5%A4%73%A4%5B%B1%64%A9%B1";
+		String s="";
+		try {
+			 s = java.net.URLDecoder.decode(x,"big5");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(s);
+		
 	}
 
 }

@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/comment.js"></script>
+<script type="text/javascript" src="js/comment.js" ></script>
 </head>
 <body>
 	<ul class="navbar">
@@ -70,19 +70,19 @@
 
 			<c:forEach items="${ovb}" var="x">
 				<tr>
-					<td><img src="/bimg/${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
+					<td><img src="${initParam['itemImgRoute']}${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
 					<td>${x.itemColor}</td>
 					<td>${x.itemSize}</td>
 					<td>${x.ordQty}</td>
 					<td>${x.itemPrice}</td>
 					<td>${x.itemPrice * x.itemDiscount}</td>
 					<td class="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
-					<td><input type="hidden" class="${x.itemId}" name="${ob.mId}">
+					<td><input type="hidden" class="${x.itemId}" name="${ob.mId}"><input type="hidden" class="ordId" value="${ob.ordId}"><input type="hidden" class="ordSern" value="${x.ordSerialNumber}">
 					<c:if test="${x.isFeedBack eq true}">
-						<input class="comment" type="button" value="評價" >
+						<input class="comment" name="${x.itemHeader}" type="button" value="評價" >
 					</c:if>
 					<c:if test="${x.isFeedBack eq false}">
-					 	<input class="comment" type="button" value="評價"  disabled="disabled">
+					 	<input class="comment" name="${x.itemHeader}" type="button" value="評價"  disabled="disabled">
 					</c:if>
 					</td>
 					

@@ -1,6 +1,10 @@
+<%@page import="java.net.URLEncoder"%>
+<%@page import="java.net.URLDecoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" %>
-	<%response.setCharacterEncoding("big5"); %>
+	<%
+	request.setCharacterEncoding("Big5");
+	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -13,8 +17,7 @@
 <link rel="stylesheet" href="css/aaa.css" />
 </head>
 <body>
-	
-	
+
 	<div class="sType">
 		<form action="Purchase" name="form" method="get">
 			<div class="type1">超商取貨</div>
@@ -54,7 +57,7 @@
 			</tr>
 			<c:forEach items="${Cart}" var="x">
 				<tr>
-					<td><img src="/bimg/${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
+					<td><img src="${initParam['itemImgRoute']}${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
 					<td>${x.itemColor}</td>
 					<td>${x.itemSize}</td>
 					<td>${x.ordQty}</td>
