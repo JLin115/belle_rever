@@ -12,15 +12,7 @@
 <title>MemberManager</title>
 </head>
 <body>
-	<ul class="navbar">
-		<li><a
-			href="${pageContext.request.contextPath}/manager/itemManager/ItemManager.jsp">商品管理</a></li>
-		<li><a href="#">訂單管理</a></li>
-		<li><a
-			href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1">會員管理</a></li>
-	</ul>
-
-
+	<%@include file="../nav/nav.jsp" %>
 	<div class="show">
 		<div class="serch">
 			<input type="text"><input type="submit" value="送出">

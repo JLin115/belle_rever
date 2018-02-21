@@ -13,6 +13,7 @@
 <title>Shelver</title>
 </head>
 <body>
+<%@include file="../nav/nav.jsp" %>
 	<form enctype="multipart/form-data" name="form"method="POST" action="ShelverServlet" >
 		<div class="content">					
 			<div class="d1">

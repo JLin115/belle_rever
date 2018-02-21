@@ -46,7 +46,6 @@ $(".slide").on("mouseleave",function () {
 		</li>
 	</ul>
 	<div class="show">
-	${pageContext.request.contextPath}
 		<ul>
 			<c:forEach var="items" items="${allItem}">
 				<a href="ShowSingleItem_home?itemId=${items.itemID}">

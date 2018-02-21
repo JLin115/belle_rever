@@ -13,21 +13,13 @@
 <title>Shelver</title>
 </head>
 <body>
-	<ul class="navbar">
-		<li><a href="#">商品管理</a></li>
-		<li><a href="OrdList?type=1">訂單管理</a></li>
-		<li><a href="#">會員管理</a></li>
-	</ul>
+	<%@include file="../nav/nav.jsp" %>
 	<div class="content">
 	<ul class="ordStatus">
 		<c:forEach var="x" items="${ordStat}">
 		<li><a href="OrdList?type=${x.key}">${x.value}</a></li>
 		</c:forEach>
 	</ul>
-
-	
-	
-
 		<table>
 			<tr>
 				<td><span>訂單編號</span></td>

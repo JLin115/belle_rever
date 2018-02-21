@@ -10,12 +10,8 @@
 <title>Shelver</title>
 </head>
 <body>
-	 
-	<ul class="navbar">
-		<li><a href="ItemManager.jsp">商品管理</a></li>
-		<li><a href="#">訂單管理</a></li>
-		<li><a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1">會員管理</a></li>
-	</ul>
+	<%@include file="../nav/nav.jsp" %>
+<%-- 	 <jsp:include page="../nav/nav.jsp"></jsp:include> --%>
 	<div class="content">
 		<ul class="sidebar">
 			<li><form>
