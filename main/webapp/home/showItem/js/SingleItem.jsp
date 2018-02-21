@@ -4,6 +4,10 @@
 var x = ${gson};
 $(window).ready(function() {
 
+	
+
+
+
 	var length = x.length;
 	var color = new Set();
 	

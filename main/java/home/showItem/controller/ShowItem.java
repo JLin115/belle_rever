@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -22,6 +23,7 @@ import manager.itemManager.model.ItemDAOImpl;
  * Servlet implementation class ShowItem
  */
 @WebServlet("/home/showItem/ShowItem")
+@Controller
 public class ShowItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

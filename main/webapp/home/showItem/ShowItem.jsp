@@ -10,6 +10,22 @@
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/ShowItem.css" />
+<link rel="stylesheet" href="css/ShowCart.css" />
+
+<script type="text/javascript">
+$(window).ready(function(){
+$(".slide").on("mouseenter",function () {
+	$(".inner").stop();
+	$(".inner").slideDown(500);
+	
+})
+
+$(".slide").on("mouseleave",function () {
+	$(".inner").stop();
+	$(".inner").slideUp(500);
+})
+})
+</script>
 <title>Shelver</title>
 </head>
 <body>
@@ -21,13 +37,20 @@
 		<c:forEach var="x" items="${itemType}">
 			<li><a href="ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li>
 		</c:forEach>
+		<li class="slide">
+		 購物車 
+		<div class="inner">
+<%-- 		<%@include file="Cart.jsp" %> --%>
+		<jsp:include page="Cart.jsp"></jsp:include>
+		</div>
+		</li>
 	</ul>
 	<div class="show">
 	${pageContext.request.contextPath}
 		<ul>
 			<c:forEach var="items" items="${allItem}">
 				<a href="ShowSingleItem_home?itemId=${items.itemID}">
-					<li><img src="${initParam['itemImgRoute']}${items.itemPic1}">
+					<li><img src="${initParam['itemImgRoute']}${items.itemPic1}"/>
 						<div>${items.itemHeader}</div>
 						<fmt:formatNumber var="c" value="${items.itemPrice *items.itemdiscount.doubleValue()}" pattern="#"/>
 						<c:choose>
