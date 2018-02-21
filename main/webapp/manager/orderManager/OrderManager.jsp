@@ -10,6 +10,8 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/aaa.js"></script>
 <link rel="stylesheet" href="css/orderManager.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/styles.css"/>
 <title>Shelver</title>
 </head>
 <body>

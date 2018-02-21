@@ -60,7 +60,6 @@ tr td:nth-of-type(3) span{
 
 .content{
     width: 80%;
-    border: 1px solid black;
     margin: 0 auto;
 }
 .content::after{

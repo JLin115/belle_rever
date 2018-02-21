@@ -59,6 +59,8 @@ public class ShowItem extends HttpServlet {
 		if (b) {
 			idao.setItid(itid);
 		}
+		System.out.println(itemType.size());
+		
 		if (pageNow <= idao.getTotalPage()&itemType.containsKey(String.valueOf(itid))&b) {
 
 //			System.out.println(itid);

@@ -28,35 +28,26 @@
 	width: 80px;
 	height: 48px;
 	float: left;
-	margin-bottom: 15px;
 /* 	overflow:hidden; */
 
 }
-
 .sidebar li:NTH-OF-TYPE(1) {
 	width: 150px;
 }
-
 .sidebar::after {
 	content: "";
 	display: block;
 	clear: both;
 }
-
 .sidebar input[type="text"] {
 	width: 100px;
-}
-
-
-
+} 
 .inner {
 	position: relative;	
-	top: 10px;
-	/* 	left: */
-
+	top:5px;
 	border: 1px solid black;
 	width: 400px;
-	height: 200px;
+	height: 400px;
 	margin-left: -88px;
 	display: none;
 	background: white;

@@ -9,6 +9,8 @@
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/MemberManager.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/styles.css"/>
 <title>MemberManager</title>
 </head>
 <body>

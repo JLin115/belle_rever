@@ -86,7 +86,7 @@ public class PasswordModifyServlet extends HttpServlet {
 
 			mdao.updatePswd(mb);
 			response.sendRedirect("../index.jsp");
-			mdao.setMember(mb);
+			
 		}
 	}
 

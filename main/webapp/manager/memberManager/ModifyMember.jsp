@@ -24,8 +24,6 @@ input[type="submit"]{
 margin-left:200px;
 margin-bottom:10px;
 }
-
-
 </style>
 </head>
 <body>

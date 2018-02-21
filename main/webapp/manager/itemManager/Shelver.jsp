@@ -10,6 +10,8 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript"src="js/Shelver.js"></script>
 <link rel="stylesheet" href="css/Shelver.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/styles.css"/>
 <title>Shelver</title>
 </head>
 <body>

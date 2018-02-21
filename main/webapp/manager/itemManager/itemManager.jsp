@@ -7,11 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/itemManager.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/styles.css"/>
 <title>Shelver</title>
 </head>
 <body>
-	<%@include file="../nav/nav.jsp" %>
-<%-- 	 <jsp:include page="../nav/nav.jsp"></jsp:include> --%>
+<%-- 	<%@include file="../nav/nav.jsp" %> --%>
+	 <jsp:include page="../nav/nav.jsp"></jsp:include>
 	<div class="content">
 		<ul class="sidebar">
 			<li><form>

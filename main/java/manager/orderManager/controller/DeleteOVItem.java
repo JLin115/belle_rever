@@ -83,6 +83,7 @@ public class DeleteOVItem extends HttpServlet {
 		} else {//session有誤
 			response.setContentType("text/html;charset=UTF-8");
 			response.getWriter().write("刪除失敗3");
+			
 		}
 
 	}
