@@ -5,10 +5,11 @@
 	margin: 0px;
 	text-decoration: none;
 	color: black;
+		font-family: 'Shadows Into Light', cursive;
 }
 
 .nav {
-	background:#f9dede;
+	background:#fcf4f4;
 	height: 110px;
 	text-align: center;
 }
@@ -17,7 +18,7 @@
 	font-size: 80px;
 	line-height: 110px;
 
-	font-family: 'Shadows Into Light', cursive;
+
 }
 
 .icon-login {
@@ -41,7 +42,7 @@ margin-right:10px;
 }
 
 .navbar {
-	background-color: white;
+	background-color: transparent;
 	text-align: center;
 	padding: 20px 0 20px 0;
  
@@ -53,7 +54,7 @@ margin-right:10px;
 
 }
 .navbar a{
-color: #07bca1;}
+ }
 .navbar li a:hover {
 	color: #058471;
 }

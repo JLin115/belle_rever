@@ -10,7 +10,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" href="css/MemberManager.css" />
 <link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
-<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/styles.css"/>
+<link rel="stylesheet" href="/Belle_Rever/css/styles.css"/>
 <title>MemberManager</title>
 </head>
 <body>
