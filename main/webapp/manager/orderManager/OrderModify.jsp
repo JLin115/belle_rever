@@ -89,7 +89,7 @@
 				<td><img src="${initParam['itemImgRoute']}${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
 				<td>${x.itemColor}</td>
 				<td>${x.itemSize}</td>
-				<td></td><c:if test="${x.itemQty > 0 }">
+				<c:if test="${x.itemQty > 0 }">
 				<td><input type="hidden" name="ordId" value="${x.ordId}" />
 				<select class="qty" name="${x.ordSerialNumber}">
 							<c:forEach var="y" begin="1" end="${x.itemQty}">

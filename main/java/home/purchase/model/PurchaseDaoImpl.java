@@ -78,16 +78,27 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	}
 	@Override
 	public void setOrdVal(List<OrderValBean> ovb,Integer ordId) {
-		String sql = "insert into ord_val (Ordid,OrdSerialNumber,Itemid,Ordqty,itemSerialNumber,Itemcolor,Itemprice,Itemsize,Itemheader,Itempic1) "
-				+ " values (?,?,?,?,?,?,?,?,?,?);";
+		String sql = "insert into ord_val (Ordid,OrdSerialNumber,Itemid,Ordqty,itemSerialNumber) "
+				+ " values (?,?,?,?,?);";
 		
 		for(OrderValBean o :ovb){
-			template.update(sql,ordId,o.getOrdSerialNumber(),o.getItemId(),o.getOrdQty(),o.getItemSerialNumber(),o.getItemColor(),o.getItemPrice(),o.getItemSize(),o.getItemHeader(),o.getItemPic1());
+			template.update(sql,ordId,o.getOrdSerialNumber(),o.getItemId(),o.getOrdQty(),o.getItemSerialNumber());
 		}
 		
 		
 	}
 
+//	@Override
+//	public void setOrdVal(List<OrderValBean> ovb,Integer ordId) {
+//		String sql = "insert into ord_val (Ordid,OrdSerialNumber,Itemid,Ordqty,itemSerialNumber,Itemcolor,Itemprice,Itemsize,Itemheader,Itempic1) "
+//				+ " values (?,?,?,?,?,?,?,?,?,?);";
+//		
+//		for(OrderValBean o :ovb){
+//			template.update(sql,ordId,o.getOrdSerialNumber(),o.getItemId(),o.getOrdQty(),o.getItemSerialNumber(),o.getItemColor(),o.getItemPrice(),o.getItemSize(),o.getItemHeader(),o.getItemPic1());
+//		}
+//		
+//		
+//	}
 	
 	
 	
