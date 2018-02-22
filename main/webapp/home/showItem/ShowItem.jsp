@@ -31,9 +31,8 @@ $(".slide").on("mouseleave",function () {
 <body>
  
 	<ul class="sidebar">
-		<li><form>
-				<input type="text"><input type="submit">
-			</form></li>
+		<li><form><input type="text"><input type="submit"></form></li>
+		
 		<c:forEach var="x" items="${itemType}">
 			<li><a href="ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li>
 		</c:forEach>

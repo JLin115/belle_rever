@@ -16,10 +16,11 @@
 <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
 <script src="owl.carousel/owl.carousel.min.js"></script>
-<script src="a.js"></script>
+
 <!--icon    -->
 <link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
+
  
 
 <script>
@@ -35,7 +36,12 @@ autoplay:true,  /* 自動輪播 */
 autoplayTimeout:1000,  /* 輪播速度 */
 autoplayHoverPause:true
 });
+    
+
+
+
 })
+
 </script>
 </head>
 <body>
@@ -54,5 +60,6 @@ autoplayHoverPause:true
     </div>
 <script src="./bootstrap/bootstrap.js"></script>
 <jsp:include page="../footer/footer.jsp"></jsp:include>
+<script src="js/index.js"></script>
 </body>
 </html>
