@@ -9,17 +9,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
 
+<!-- 輪播 -->
 <link rel="stylesheet" href="owl.carousel/owl.carousel.min.css"></link>
 <link rel="stylesheet" href="owl.carousel/owl.theme.default.min.css"></link>
-<link rel="stylesheet" href="bootstrap/animate.css">
-<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js'></script>
 <script src="owl.carousel/owl.carousel.min.js"></script>
+
 
 <!--icon    -->
 <link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
-<link href="css/index.css" rel="stylesheet">
+<!-- 頁首頁尾 -->
+<link href="${initParam['header_footer_css']}" rel="stylesheet">
 
  
 
@@ -45,7 +48,7 @@ autoplayHoverPause:true
 </script>
 </head>
 <body>
-<jsp:include page="../header/header.jsp"></jsp:include>
+<jsp:include page="${initParam['header']}"></jsp:include>
           <!--輪播-->
 <div class="coustom">
     <div class="col-md-12 owl-carousel owl-theme ">
@@ -59,7 +62,9 @@ autoplayHoverPause:true
      </div>
     </div>
 <script src="./bootstrap/bootstrap.js"></script>
-<jsp:include page="../footer/footer.jsp"></jsp:include>
-<script src="js/index.js"></script>
+<jsp:include page="${initParam['footer']}"></jsp:include>
+
+<!-- 頁首頁尾js -->
+<script src="${initParam['header_footer_js']}"></script>
 </body>
 </html>

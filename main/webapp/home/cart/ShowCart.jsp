@@ -5,14 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
+
+<!--icon    -->
+<link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
+<!-- 頁首頁尾 -->
+<link href="${initParam['header_footer_css']}" rel="stylesheet">
+
+
+
 <script type="text/javascript" src="js/ShowCart.js"></script>
 <link rel="stylesheet" href="css/ShowCart.css" />
 <title>Shelver</title>
 </head>
 <body>
+<jsp:include page="${initParam['header']}"></jsp:include>
 <div class="content">
 	<table>
 		<tr>
@@ -46,17 +55,20 @@
 				</c:if>
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
-				<td class="singlePrice" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
-				<td><img class="delete" name="${x.ordSerialNumber}" height="20px" src="/bimg/1.jpg"></td>
+				<td class="singlePrice2" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
+				<td><img class="delete" name="${x.ordSerialNumber}" height="20px" src="/bimg/itemImg/1.jpg"></td>
 			
 			</tr>
 
 		</c:forEach>
 	</table>
 	<div class="total"></div>
-	<div><input type="button" onclick="window.location.href =' /Belle_Rever/home/purchase/FillOrdInfo.jsp'" value="送出"></div>
+	<div><input type="button" class="confirmOrd" value="送出"></div>
+	 
 </div>
+<jsp:include page="${initParam['footer']}"></jsp:include>
 
-
+<!-- 頁首頁尾js -->
+<script src="${initParam['header_footer_js']}"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ package home.cart.controller;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +43,7 @@ public class AddCart extends HttpServlet {
 	
 		List<OrderValBean> ordList = (List<OrderValBean>) session.getAttribute("Cart");
 		if (ordList == null) {
+//			ordList = new LinkedList<>();
 			ordList = new ArrayList<>();
 		}
 		try {

@@ -21,6 +21,7 @@
 	
 	<div class="reg_content">
 <!-- RegisterServlet -->
+	<form class="Register" enctype="application/x-www-form-urlencoded">
 		<div class="log_content_title">會員註冊<br>Join</div>
 		<div><input type="text" name="account"   placeholder="會員帳號 Account"></div>
 		<div><input type="password" name="pas"   placeholder="會員密碼 Password">	</div>
@@ -29,7 +30,8 @@
 		<div><input type="text" name="bd"   placeholder="生日 Birthday "></div>
 		<div><input type="text" name="email"   placeholder="信箱 E-mail"></div>
 		<div><input type="text" name="phone"   placeholder="手機 Telephone"></div>
-		<div class="join"><input type="button" value="Join">	</div>
+		<div class="join"><input type="button" value="Join" class="JoinB">	</div>
+		</form>
 	</div>
 	
 </div>
@@ -41,6 +43,7 @@
 
 	<table class="cartT">
 		<tr>
+		    <td></td>
 			<td>商品名稱</td>
 			<td>顏色</td>
 			<td>尺寸</td>
@@ -49,7 +52,8 @@
 		</tr>
 		<c:forEach items="${Cart}" var="x">
 			<tr>
-				<td><img src="${initParam['itemImgRoute']}${x.itemPic1}" alt=""><span>${x.itemHeader}</span></td>
+				<td><img src="${initParam['itemImgRoute']}${x.itemPic1}" alt=""></td>
+				<td><span>${x.itemHeader}</span></td>
 				<td>${x.itemColor}</td>
 				<td>${x.itemSize}</td>
 				<td>${x.ordQty}</td>
@@ -57,6 +61,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<div class="cartButton">Check Cart</div>	
 </div>
 
 <!--title-->
@@ -82,7 +87,7 @@
 				</c:if>
 				
 				<c:if test="${not empty LoginOK  }">
-				<li><a class="loginB" style="padding: 0; margin: 0; line-height: 27px; color: white;">Logout</a></li>
+				<li><a class="logout" style="padding: 0; margin: 0; line-height: 27px; color: white;">Logout</a></li>
 				</c:if>
 				
 				<li><span style="padding: 0; margin-left: 20px; margin-right: 20px; line-height: 27px; color: white;">/</span></li>

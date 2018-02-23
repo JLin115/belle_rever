@@ -19,13 +19,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import _init.GlobalService;
 import home.purchase.model.OrderValBean;
 import home.register.model.*;;
 
 //@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f1", value = "/register/*") })
 @WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f2", value = "/home/purchase/*"),
-												  @WebInitParam(name = "f3", value = "/member/*")})
+		@WebInitParam(name = "f3", value = "/member/*") })
 
 public class LoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
@@ -40,35 +43,51 @@ public class LoginFilter implements Filter {
 			HttpServletRequest req = (HttpServletRequest) request;
 			HttpServletResponse res = (HttpServletResponse) response;
 			String servletPath = req.getServletPath();
-			//System.out.println(servletPath+"now");
+			// System.out.println(servletPath+"now");
+			res.setCharacterEncoding("utf-8");
+			res.setContentType("application/json");
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
-					//System.out.println("需要登入，已經登入");
-					if(servletPath.equals("/home/purchase/FillOrdInfo.jsp")){
+					// System.out.println("需要登入，已經登入");
+					if (servletPath.equals("/home/purchase/FillOrdInfo.jsp")) {
 						HttpSession session = req.getSession();
-						List<OrderValBean> cart=(List<OrderValBean>) session.getAttribute("Cart");
-						if(cart!=null){
-						if(cart.size()==0 ){
-							res.sendRedirect(GlobalService.index);
+						List<OrderValBean> cart = (List<OrderValBean>) session.getAttribute("Cart");
+						if (cart != null) {
+							if (cart.size() == 0) {
+								res.setStatus(401);
+								String str = "{\"status\":\"cartEmpty\",\"url\":\"" + GlobalService.index + "\"}";
+								res.getWriter().write(str);
+								return;
+							}
+						} else {
+							res.setStatus(401);
+							String str = "{\"status\":\"cartEmpty\",\"url\":\"" + GlobalService.index + "\"}";
+							res.getWriter().write(str);
 							return;
-						}}
-						
+
+						}
 					}
-					
-					
+
+					// String str =
+					// "{\"status\":\"alreadyLog\",\"url\":\""+req.getRequestURI()+"\"}";
+					// String str =reQ.GETREQUESTURI();
+					// RES.GETWRITER().WRITE(STR);
+					// return;
 					chain.doFilter(request, response);
 				} else {
 					HttpSession session = req.getSession();
 					session.setAttribute("target", req.getRequestURI());
-					//System.out.println("需要登入，還未登入");
-				
-					res.sendRedirect(req.getContextPath()+"/home/login/login.jsp");
-				
-				
+					// System.out.println("需要登入，還未登入");
+					String str = "{\"status\":\"toLogin\"}";
+					res.setStatus(401);
+					res.getWriter().write(str);
+
+					// res.sendRedirect(req.getContextPath()+"/home/login/login.jsp");
+
 					return;
 				}
 			} else {
-				//System.out.println("不需要登入");
+				// System.out.println("不需要登入");
 				chain.doFilter(request, response);
 			}
 		}

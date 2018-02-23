@@ -20,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.google.gson.Gson;
+
 import _init.GlobalService;
 import home.register.model.*;
 
@@ -52,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		Map<String, String> errorMsg = new HashMap<>();
-
+		HttpSession session = request.getSession();
 		request.setAttribute("errorMsg", errorMsg);
 		MemberBean mb = new MemberBean();
 		Dao mdao = (Dao) wctx.getBean("MemberDAOImpl");
@@ -93,10 +95,10 @@ public class RegisterServlet extends HttpServlet {
 			}
 		}
 		if ("".equals(pasc)) {
-			errorMsg.put("paswordError2", "請輸入密碼");
+			errorMsg.put("paswordError2", "請輸入確認密碼");
 		} else {
 			if (pasc.length() > 0 && pasc.length() < 6) {
-				errorMsg.put("paswordError2", "密碼太短");
+				errorMsg.put("paswordError2", "確認密碼太短");
 			}
 		}
 		if (!errorMsg.containsKey("paswordError2") && !errorMsg.containsKey("paswordError")) {
@@ -192,13 +194,39 @@ public class RegisterServlet extends HttpServlet {
 		}
 
 		//轉頁部分
+		System.out.println(mid);
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		
+	
 		if (errorMsg.size() > 0) {
-			RequestDispatcher rd = request.getRequestDispatcher("Register.jsp");
-			rd.forward(request, response);
+//			RequestDispatcher rd = request.getRequestDispatcher("Register.jsp");
+//			rd.forward(request, response);
+			Gson gson = new Gson();
+			String errorMsgJson = gson.toJson(errorMsg);
+			System.out.println(errorMsgJson);
+			response.setStatus(401);
+			response.getWriter().write(errorMsgJson);
+			
 			return;
 		} else {
-			response.sendRedirect("/index.jsp");
+			
+			
+//			response.sendRedirect("/index.jsp");
 			mdao.setMember(mb);
+			session.setAttribute("LoginOK", mb);
+			
+			String str = (String) session.getAttribute("target");
+			if(str == null || str.equals("")){
+				str  =GlobalService.index;
+			}
+			System.out.println(str);
+			String url ="{\"url\" :\""+str+"\"}";
+			System.out.println(url);
+			response.getWriter().write(url);
+			return; 
+			
+			
 		}
 	}
 }
