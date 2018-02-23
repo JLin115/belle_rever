@@ -3,7 +3,7 @@
         font-family: 'Bellefair', serif;
     }
     
-body{ margin: 0; padding: 0; height: 100%; border:none; }
+body{ margin: 0; padding: 0; height: 100%; border:none; overflow:scroll;}
 
 .aboutMe_inner{
     width: 400px;
@@ -18,21 +18,88 @@ body{ margin: 0; padding: 0; height: 100%; border:none; }
 /*login*/
 
 
+.errorText{
+
+	position:absolute;
+	z-index:201;
+    width:100px;
+    height:20px;
+    background:yellow;
+    color:red;
+    display: none;
+	
+}
 .newlo{
+
+	margin:0;
+	padding:0;
     width:100%;
     height:100%;
     z-index:110;
     position: absolute;
-    background:rgba(211, 207, 207,0.5);
+    background:rgba(211, 207, 207,0.7	);
     display: none;
 }
 .innerlo{
+	position: absolute;
+	z-index:200;
     width: 600px;
     height: 400px;
-    background: black;
-    margin: 15% auto;
+    background: white;
+    margin-top:15%;
+     border:  3px solid gray;
+     display: none;
 
 }
+
+.innerlo input[type=text],.innerlo input[type=password]{
+        width: 80%;
+        height: 20px;
+    }
+
+
+
+
+    .log_content,.reg_content{
+        margin-right: -5px;
+        height: 400px;
+        width: 49.8%;
+        display: inline-block;
+        text-align: center;
+   
+        vertical-align: top;
+        font-size: 19px;
+        
+    }
+
+    .log_content div, .reg_content div{
+        width: 90%;
+        margin-top: 5px;
+         display: inline-block;
+
+    }
+    .log_content_title{
+
+        line-height: 30px;
+        padding-top: 24px;
+        padding-bottom: 40px;  
+
+    }
+
+    .forget{
+        font-size: 10px;
+    }    
+    .forget_sign{
+        padding-top: 15px;
+        padding-left: 18%;
+
+    }
+    .join{
+        padding-top: 10px;
+        padding-left: 29%;
+
+    }
+
 /*cart*/
 .cart{
 z-index:50;
@@ -129,6 +196,12 @@ border-radius: 0;
    
    text-align: center;
 
+}
+
+.header_fix{
+	padding:0;
+	maring:0;
+	
 }
 
 /*footer*/

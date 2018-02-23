@@ -18,6 +18,8 @@ import javax.xml.bind.DatatypeConverter;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.google.gson.Gson;
+
 import _init.GlobalService;
 import home.login.model.LoginService;
 import home.login.model.LoginServiceImpl;
@@ -38,10 +40,13 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		// 準備存放錯誤訊息的Map物件
 		Map<String, String> errorMsgMap = new HashMap<String, String>();
-		request.setAttribute("errorMsgkEY", errorMsgMap);
+		// request.setAttribute("errorMsgkEY", errorMsgMap);
 		// 讀取使用者輸入資料
 		String userId = request.getParameter("userId");
-		String password = request.getParameter("pswd").trim();
+		String password = request.getParameter("pswd");
+		if (password != null) {
+			password.trim();
+		}
 		// String rm = request.getParameter("rememberMe");
 		// String requestURI = (String) session.getAttribute("requestURI");
 		// int mpid = -1;
@@ -82,23 +87,26 @@ public class LoginServlet extends HttpServlet {
 		MemberDAOImpl dao = (MemberDAOImpl) wctx.getBean("MemberDAOImpl");
 		MemberBean mb = null;
 
-		if ("".equals(userId)) {
+		if (userId == null || "".equals(userId)) {
 			errorMsgMap.put("accountError", "請輸入帳號");
 
 		} else {
 			mb = dao.getMember(userId);
 		}
-		if ("".equals(password)) {
-			errorMsgMap.put("passwordError", "請輸入密碼");
 
+		if (password == null || "".equals(password)) {
+			errorMsgMap.put("passwordError", "請輸入密碼");
 		}
+		System.err.println(userId);
+		System.out.println(password);
 		if (!(errorMsgMap.containsKey("accountError") || errorMsgMap.containsKey("passwordError"))) {
 			if (mb != null) {
-				
-//				System.out.println(mb.getMregisterday());
-//				System.out.println(String.valueOf(mb.getMregisterday().getTime()));
+
+				// System.out.println(mb.getMregisterday());
 				// System.out.println(String.valueOf(mb.getMregisterday().getTime()));
-				String p = GlobalService.encryptString2(password, mb.getMid(),String.valueOf(mb.getMregisterday().getTime()));
+				// System.out.println(String.valueOf(mb.getMregisterday().getTime()));
+				String p = GlobalService.encryptString2(password, mb.getMid(),
+				String.valueOf(mb.getMregisterday().getTime()));
 				System.out.println(p);
 				if (mb.getMpass().equals(p)) {
 					if (mb.getMpid() == 0) {
@@ -116,18 +124,32 @@ public class LoginServlet extends HttpServlet {
 					errorMsgMap.put("passwordError", "帳號或密碼錯誤");
 				}
 			} else {
-				errorMsgMap.put("accountError", "帳號或密碼錯誤");
+				errorMsgMap.put("passwordError", "帳號或密碼錯誤");
 			}
 		}
 
+		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("application/json");
+		Gson gson = new Gson();
 		if (!errorMsgMap.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-			rd.forward(request, response);
+//			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			
+			String json = gson.toJson(errorMsgMap);
+			response.setStatus(401);
+			response.getWriter().write(json);
+
 			return;
 		} else {
 			String str = (String) session.getAttribute("target");
-			response.sendRedirect(str);
-			return;
+			if(str == null || str.equals("")){
+				str  =GlobalService.index;
+			}
+			System.out.println(str);
+			String url ="{\"url\" :\""+str+"\"}";
+			System.out.println(url);
+			response.getWriter().write(url);
+			return; 
 		}
 
 	}
