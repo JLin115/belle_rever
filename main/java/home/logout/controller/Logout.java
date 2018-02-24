@@ -25,15 +25,16 @@ public class Logout extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
+		
 
 		try {
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				session.invalidate();
 			}
-
+			response.setContentType("application/x-www-form-urlencoded");
 			response.getWriter().write(GlobalService.index);
-
+			return ;
 		} catch (Exception e) {
 			e.printStackTrace();
 			response.setStatus(401);

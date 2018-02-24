@@ -23,7 +23,7 @@
 <body>
 <jsp:include page="${initParam['header']}"></jsp:include>
 <div class="content">
-	<table>
+	<table class="showCart">
 		<tr>
 			<td>商品名稱</td>
 			<td>顏色</td>
@@ -57,13 +57,12 @@
 				<td>${x.itemPrice * x.itemDiscount}</td>
 				<td class="singlePrice2" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
 				<td><img class="delete" name="${x.ordSerialNumber}" height="20px" src="/bimg/itemImg/1.jpg"></td>
-			
 			</tr>
 
 		</c:forEach>
 	</table>
-	<div class="total"></div>
-	<div><input type="button" class="confirmOrd" value="送出"></div>
+	<div class="total_showCart"></div>
+	<div><input type="button" class="confirmOrd_showCart" value="送出"></div>
 	 
 </div>
 <jsp:include page="${initParam['footer']}"></jsp:include>

@@ -30,7 +30,7 @@
 		<div><input type="text" name="bd"   placeholder="生日 Birthday "></div>
 		<div><input type="text" name="email"   placeholder="信箱 E-mail"></div>
 		<div><input type="text" name="phone"   placeholder="手機 Telephone"></div>
-		<div class="join"><input type="button" value="Join" class="JoinB">	</div>
+		<div class="JoinB"><input type="button" value="Join"  >	</div>
 		</form>
 	</div>
 	
@@ -87,7 +87,7 @@
 				</c:if>
 				
 				<c:if test="${not empty LoginOK  }">
-				<li><a class="logout" style="padding: 0; margin: 0; line-height: 27px; color: white;">Logout</a></li>
+				<li><a class="logout" style="padding: 0; margin: 0; line-height: 27px; color: white;" href="#">Logout</a></li>
 				</c:if>
 				
 				<li><span style="padding: 0; margin-left: 20px; margin-right: 20px; line-height: 27px; color: white;">/</span></li>

@@ -48,11 +48,11 @@ $(window).ready(function() {
 		$(".singlePrice2").each(function() {
 		total += parseInt($(this).html());	
 		})
-		$(".total").attr("value",total);
-		$(".total").html("Total:"+total);
+		$(".total_showCart").attr("value",total);
+		$(".total_showCart").html("Total:"+total);
 	}
 	
-	$('.confirmOrd').on('click',function(){
+	$('.confirmOrd_showCart').on('click',function(){
    	      $.ajax({
    			type:'GET',
    			url:'/Belle_Rever/home/purchase/FillOrdInfo.jsp',
@@ -62,10 +62,9 @@ $(window).ready(function() {
 // data:"userId="+userId+"&pswd="+pswd,
    			datatype:'JSON',
    			success:function(data){
-   				alert("true")
-   			    var url = data.url;
-   			    window.location.href=url
-   			    return
+   				alert(data)
+   				 window.location.href="/Belle_Rever/home/purchase/FillOrdInfo.jsp"
+   			    return	
    			},error:function(data){
    				alert("false")
    				 if(data.responseJSON.status == "toLogin"){

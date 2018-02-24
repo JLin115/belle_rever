@@ -46,11 +46,12 @@ public class LoginFilter implements Filter {
 			// System.out.println(servletPath+"now");
 			res.setCharacterEncoding("utf-8");
 			res.setContentType("application/json");
+			HttpSession session = req.getSession(false);
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
 					// System.out.println("需要登入，已經登入");
 					if (servletPath.equals("/home/purchase/FillOrdInfo.jsp")) {
-						HttpSession session = req.getSession();
+					
 						List<OrderValBean> cart = (List<OrderValBean>) session.getAttribute("Cart");
 						if (cart != null) {
 							if (cart.size() == 0) {
@@ -68,14 +69,10 @@ public class LoginFilter implements Filter {
 						}
 					}
 
-					// String str =
-					// "{\"status\":\"alreadyLog\",\"url\":\""+req.getRequestURI()+"\"}";
-					// String str =reQ.GETREQUESTURI();
-					// RES.GETWRITER().WRITE(STR);
-					// return;
 					chain.doFilter(request, response);
+ 					
 				} else {
-					HttpSession session = req.getSession();
+					 
 					session.setAttribute("target", req.getRequestURI());
 					// System.out.println("需要登入，還未登入");
 					String str = "{\"status\":\"toLogin\"}";

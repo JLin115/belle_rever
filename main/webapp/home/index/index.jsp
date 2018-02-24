@@ -61,7 +61,7 @@ autoplayHoverPause:true
         <div class="item" style="max-width: 425px; "><a href="#7"><img src="img/18.jpg"></a></div>
      </div>
     </div>
-<script src="./bootstrap/bootstrap.js"></script>
+<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
 <jsp:include page="${initParam['footer']}"></jsp:include>
 
 <!-- 頁首頁尾js -->

@@ -1,0 +1,144 @@
+* {
+	font-family: 'Bellefair', serif;
+}
+
+.coustom {
+	width: 90%;
+	margin: 40px auto;
+}
+
+/* .form { */
+/* 	display: inline-block; */
+/* 	border: 1p */
+/* } */
+.sType div[class^=type]{
+	
+	
+ 
+}
+
+
+
+/* main content */
+.sType {
+	margin:0 auto;
+	width:50%;
+	margin-top: 1%;
+ 
+}
+
+
+.sType span {
+	font-family: 微軟正黑體;
+	padding-top: 1%;
+	/* border: 1px solid black; */
+}
+.sType div span:NTH-OF-TYPE(1){
+	width:100px;
+	background: red;
+}
+
+.inputType span {
+	font-family: 微軟正黑體;
+	/* mpadding-top: 1%; */
+	/* border: 1px solid black;     */
+}
+
+.type1 {
+	/* border: 1px solid black; */
+	margin-top: 1%;
+}
+
+.type2 {
+	/* border: 1px solid black; */
+	margin-top: 1%;
+}
+
+.type3 {
+	/* border: 1px solid black; */
+	margin-top: 1%;
+}
+
+.type4 {
+	/* border: 1px solid black; */
+	margin-top: 1%;
+}
+
+/* check order */
+.checkorder {
+	width:70%;
+	font-family: 微軟正黑體;
+	font-weight: bold;
+	margin:20px  auto;
+	
+
+	/* border: 1px solid black; */
+}
+
+.ordData {
+	margin-top: 5px;
+ 
+}
+
+.ordData td {
+	font-family: 微軟正黑體;
+
+	/* border: 1px solid black; */
+}
+
+.pname {
+	padding-right: 120px;
+}
+
+.table_FillOrdInfo {
+
+    border-collapse: collapse;
+	margin : 0 auto;
+   
+}
+.table_FillOrdInfo td{
+    border-bottom: 1px solid gray;
+   padding: 5px;
+}
+
+.table_FillOrdInfo td:nth-of-type(1) {  
+    width: 350px;
+
+}.table_FillOrdInfo td:nth-of-type(1) img{  
+    height: 80px;
+    float:left; 
+    
+}
+.table_FillOrdInfo td:nth-of-type(1) span{  
+   
+    float:left;
+}
+.table_FillOrdInfo td:nth-of-type(1) span::after{  
+   content: "";
+   display: block;
+   clear: both;
+}
+.table_FillOrdInfo td:nth-of-type(2) {
+    width: 60px;
+}
+.table_FillOrdInfo td:nth-of-type(3) {  
+    width: 60px;
+}
+.table_FillOrdInfo td:nth-of-type(4) { 
+    width: 60px;
+}
+.table_FillOrdInfo td:nth-of-type(5) {
+
+    width: 60px;
+}
+.table_FillOrdInfo td:nth-of-type(6) { 
+    width: 60px;
+}
+.table_FillOrdInfo td:nth-of-type(7) {
+    width: 60px;
+}
+.table_FillOrdInfo td:nth-of-type(8) { 
+	
+    width: 50px;
+}
+

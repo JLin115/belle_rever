@@ -28,7 +28,6 @@ public class test1 {
 	    HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
 		
 	    String s = request.getParameter("aaa");
-	    
 	    System.out.println(s);
 		System.out.println("success");
 		

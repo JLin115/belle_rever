@@ -1,67 +1,59 @@
-table {
+.showCart {
     border-collapse: collapse;
 
    
 }
-table td{
+.showCart td{
     border-bottom: 1px solid gray;
    padding: 5px;
 }
 
-table td:nth-of-type(1) {  
+.showCart td:nth-of-type(1) {  
     width: 350px;
 
-}table td:nth-of-type(1) img{  
+}.showCart td:nth-of-type(1) img{  
     height: 80px;
     float:left; 
     
 }
-table td:nth-of-type(1) span{  
+.showCart td:nth-of-type(1) span{  
    
     float:left;
 }
-table td:nth-of-type(1) span::after{  
+.showCart td:nth-of-type(1) span::after{  
    content: "";
    display: block;
    clear: both;
 }
-table td:nth-of-type(2) {
+.showCart td:nth-of-type(2) {
     width: 60px;
 }
-table td:nth-of-type(3) {  
+.showCart td:nth-of-type(3) {  
     width: 60px;
 }
-table td:nth-of-type(4) { 
+.showCart td:nth-of-type(4) { 
     width: 60px;
 }
-table td:nth-of-type(5) {
+.showCart td:nth-of-type(5) {
 
     width: 60px;
 }
-table td:nth-of-type(6) { 
+.showCart td:nth-of-type(6) { 
     width: 60px;
 }
-table td:nth-of-type(7) {
+.showCart td:nth-of-type(7) {
     width: 60px;
 }
-table td:nth-of-type(8) { 
-	
+.showCart td:nth-of-type(8) {
     width: 50px;
 }
-.total{
-
-	text-align:right;
-
-	
-	
+.total_showCart{
+	text-align:right; 
 }
 .content{
 	width:50%;
-	
-	 margin: 50px auto;
+	margin: 50px auto;
 }
-
-
 input[type=button]{
 	float:right;
 	
