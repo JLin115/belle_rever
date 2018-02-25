@@ -2,15 +2,12 @@ package manager.itemManager.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Clob;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
+ 
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,8 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import javax.sql.rowset.serial.SerialClob;
-import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -31,14 +26,6 @@ import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
 import manager.itemManager.model.ItemValBean;
 
-
-/**此為管理者上架主程式
- * 目前有問題的地方:
- * 上傳圖片後 伺服器須重整jsp的圖片才抓的到
- * 
- * 預計功能:
- * 判斷誰連到此網頁若是沒有管理者標籤一率轉出去
- */
 @WebServlet("/manager/itemManager/ShelverServlet")
 @MultipartConfig
 public class ShelverServlet extends HttpServlet {
@@ -78,14 +65,19 @@ public class ShelverServlet extends HttpServlet {
 		if (parts != null) {
 			for (Part p : parts) {
 				String name = p.getName();
-				String value = request.getParameter(name);
-
+				String value= null;
+				try{
+				  value = new String(request.getParameter(name).getBytes("ISO-8859-1"),"utf-8");
+				}catch (Exception e) {
+					
+				}
+				System.out.println(value);
 				if (p.getContentType() == null) {// 抓一般輸入
 					// itemBean部分
 
 					if (name.equals("id")) {
 						String regex = "[0-9]+";
-						if (!"".equals(value)) {
+						if (value!=null & !"".equals(value)) {
 							if (value.matches(regex)) {
 								if (id.getItem(Integer.valueOf(value)) == null) {
 									ib.setItemID(Integer.valueOf(value));
@@ -102,7 +94,7 @@ public class ShelverServlet extends HttpServlet {
 					}
 					if (name.equals("price")) {
 						String regex = "[0-9]+";
-						if (!"".equals(value)) {
+						if (value!=null & !"".equals(value)) {
 							if (value.matches(regex)) {
 								ib.setItemPrice(Integer.valueOf(value));
 							} else {
@@ -114,7 +106,7 @@ public class ShelverServlet extends HttpServlet {
 					}
 					if (name.equals("discount")) {
 						String regex = "[0-9]{1,3}\\.[0-9]{1,2}";
-						if (!"".equals(value)) {
+						if (value!=null &!"".equals(value)) {
 							if (value.matches(regex)) {
 								ib.setItemdiscount(BigDecimal.valueOf(Double.valueOf(value)));
 							} else {
@@ -125,7 +117,7 @@ public class ShelverServlet extends HttpServlet {
 						}
 					}
 					if (name.equals("title")) {
-						if (!"".equals(value)) {
+						if (value!=null &!"".equals(value)) {
 							ib.setItemHeader(value);
 						} else {
 							errorMsg.put("titleError", "請輸入商品標頭");
@@ -133,7 +125,7 @@ public class ShelverServlet extends HttpServlet {
 					}
 					//這邊可能要做輸入限制
 					if (name.equals("des")) {
-						if (!"".equals(value)) {
+						if (value!=null &!"".equals(value)) {
 							ib.setItemDes(value);
 						} else {
 
@@ -142,12 +134,13 @@ public class ShelverServlet extends HttpServlet {
 
 					}
 					if (name.equals("type")) {
-						if (!value.equals("0")) {
+						if (value!=null &!"0".equals(value)) {
 							ib.setItId(Short.valueOf(value));
 						} else {
 							errorMsg.put("typeError", "請選擇商品類別");
 						}
 					}
+				
 					if (name.equals("status")) {
 						ib.setItemstatusid(Short.valueOf(value));
 					}
@@ -156,7 +149,7 @@ public class ShelverServlet extends HttpServlet {
 						short n1 = Short.valueOf(name.substring(5));
 						ItemValBean ivb = itemvals.get(n1);
 
-						if (!"".equals(value)) {
+						if (value!=null &!"".equals(value)) {
 							ivb.setItemColor(value.trim());
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
@@ -166,7 +159,7 @@ public class ShelverServlet extends HttpServlet {
 						short n1 = Short.valueOf(name.substring(4));
 						ItemValBean ivb = itemvals.get(n1);
 
-						if (!"".equals(value)) {
+						if (value!=null &!"".equals(value)) {
 							ivb.setItemSize(value.trim());
 						} else {
 							errorMsg.put("ColorSizeStockError", ColorSizeStockError);
@@ -177,7 +170,7 @@ public class ShelverServlet extends HttpServlet {
 						short n1 = Short.valueOf(name.substring(5));
 						ItemValBean ivb = itemvals.get(n1);
 						String regex = "[0-9]+";
-						if (!"".equals(value)) {
+						if (value!=null &!"".equals(value)) {
 							if (value.matches(regex)) {
 								ivb.setItemQty(Integer.valueOf(value));
 							} else {

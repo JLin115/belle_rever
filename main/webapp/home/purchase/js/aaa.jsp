@@ -16,6 +16,11 @@ $(window).ready(function(){
         $("input[name=stype]").val("Delivery");
 
       })
+      $('.FillOrdInfo_submit').on('click',function(){
+      	$('form[action=Purchase]').submit();
+
+      
+      })
 
 
 })

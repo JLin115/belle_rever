@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html lang="en">
+<html >
 <head>
-    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--     <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
@@ -28,8 +29,7 @@
 
 <script>
 $(window).ready(function (params) {
-   
-    $('.owl-carousel').owlCarousel({
+$('.owl-carousel').owlCarousel({
 loop:true,
 margin:0,
  /*nav:true,   控制列 */
@@ -39,10 +39,6 @@ autoplay:true,  /* 自動輪播 */
 autoplayTimeout:1000,  /* 輪播速度 */
 autoplayHoverPause:true
 });
-    
-
-
-
 })
 
 </script>
@@ -61,6 +57,8 @@ autoplayHoverPause:true
         <div class="item" style="max-width: 425px; "><a href="#7"><img src="img/18.jpg"></a></div>
      </div>
     </div>
+    
+    
 <script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
 <jsp:include page="${initParam['footer']}"></jsp:include>
 

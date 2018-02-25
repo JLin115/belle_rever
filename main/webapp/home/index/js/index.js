@@ -1,6 +1,51 @@
 $(window).ready(function () {
-/*login*/
-	/*popup */
+
+	
+	
+	
+	/* navbar */
+	$('.coustom_navbar_js a').on('mouseenter',function(){
+		var objW=$(this).width()
+        var nextSiblingwidth = $(this.nextSibling).width()
+        var w=( objW/2)-nextSiblingwidth/2	;
+        var h = $(this).outerHeight()-2 ;
+		 $(this.nextSibling).on('mouseenter', function(){
+			 $(this).css({
+					'left':w+'px',
+					'top':h+'px',
+					'display':'block'
+				})
+		 })
+			$(this.nextSibling).css({
+					'left':w+'px',
+					'top':h+'px',
+					'display':'block'
+				})
+	})
+	
+	
+		$('.coustom_navbar_js a').on('mouseleave',function(){
+			$(this.nextSibling).on('mouseleave',function(){
+				$(this).unbind();
+				$(this).css({
+					'display':'none'
+				})	
+			})
+		$(this.nextSibling).css({
+			'display':'none'
+		})
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	/* login */
+	/* popup */
     $(".loginB").on('click',function () {
         $('.newlo').stop();
     	var w = $('.innerlo').outerWidth() ;
@@ -24,7 +69,7 @@ $(window).ready(function () {
         $('.newlo').css({'display':'none'});
         $('.innerlo').css({'display':'none'});
     })
-    /*login*/
+    /* login */
     $('.signin').on('click',function(){
     	      var userId = $('input[name=userId]').val();
     	      var pswd = $('input[name=pswd]').val();
@@ -33,7 +78,7 @@ $(window).ready(function () {
     			url:'/Belle_Rever/home/login/LoginServlet',
     			cache: false,
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-//    			async: false,
+// async: false,
     			data:"userId="+userId+"&pswd="+pswd,
     			datatype:'JSON',
     			success:function(data){
@@ -62,7 +107,7 @@ $(window).ready(function () {
     			})
     })
 
-    /*logout*/
+    /* logout */
      $(".logout").on('click',function () {
     	
     	 $.ajax({
@@ -82,7 +127,7 @@ $(window).ready(function () {
  			})
      })
     
-    /*cart*/
+    /* cart */
 
      $('.cartButton').on('click',function(){
     	 window.location.href=("/Belle_Rever/home/cart/ShowCart.jsp");
@@ -95,8 +140,8 @@ $(window).ready(function () {
            var h = $(this).offset().top;
            var objW=$(this).outerWidth() ;
            var objH=$(this).outerHeight() ;
-           var w=(w + objW/2) -300;
-           var h =h + objH ; 
+            w=(w + objW/2) -300;
+             h =h + objH ; 
            $(".cart").css({'left':w+'px','top':h+'px' })
            $('.cart').slideDown(500);
         })
@@ -121,7 +166,7 @@ $(window).ready(function () {
         })
         
         
-        /*Register*/
+        /* Register */
         
   
         
@@ -140,7 +185,7 @@ $(window).ready(function () {
     			url:'/Belle_Rever/home/register/RegisterServlet',
     			cache: false,
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-//    			async: false,
+// async: false,
     			data:data,
     			datatype:'JSON',
     			success:function(data){
@@ -218,6 +263,8 @@ $(window).ready(function () {
     			}
     			})
     })
+    
+    $('.newlo')
         
         
 	  

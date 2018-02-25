@@ -2,10 +2,7 @@
 	font-family: 'Bellefair', serif;
 }
 
-.coustom {
-	width: 90%;
-	margin: 40px auto;
-}
+ 
 
 /* .form { */
 /* 	display: inline-block; */
@@ -17,8 +14,6 @@
  
 }
 
-
-
 /* main content */
 .sType {
 	margin:0 auto;
@@ -26,7 +21,9 @@
 	margin-top: 1%;
  
 }
-
+.FillOrdInfo_cp{
+	margin-top: 1%;
+}
 
 .sType span {
 	font-family: 微軟正黑體;
@@ -34,39 +31,39 @@
 	/* border: 1px solid black; */
 }
 .sType div span:NTH-OF-TYPE(1){
+	display:inline-block;
 	width:100px;
-	background: red;
-}
 
+}
 .inputType span {
 	font-family: 微軟正黑體;
 	/* mpadding-top: 1%; */
 	/* border: 1px solid black;     */
 }
 
-.type1 {
+.FillOrdInfo_type1 {
 	/* border: 1px solid black; */
 	margin-top: 1%;
 }
 
-.type2 {
+.FillOrdInfo_type2 {
 	/* border: 1px solid black; */
 	margin-top: 1%;
 }
 
-.type3 {
+.FillOrdInfo_type3 {
 	/* border: 1px solid black; */
 	margin-top: 1%;
 }
 
-.type4 {
+.FillOrdInfo_type4 {
 	/* border: 1px solid black; */
 	margin-top: 1%;
 }
 
 /* check order */
 .checkorder {
-	width:70%;
+ 	text-align:center;
 	font-family: 微軟正黑體;
 	font-weight: bold;
 	margin:20px  auto;
@@ -74,7 +71,10 @@
 
 	/* border: 1px solid black; */
 }
-
+.inner_checkorder{
+	width:inline-block;
+	
+}
 .ordData {
 	margin-top: 5px;
  
@@ -86,8 +86,9 @@
 	/* border: 1px solid black; */
 }
 
-.pname {
+.FillOrdInfo_pname {
 	padding-right: 120px;
+	 
 }
 
 .table_FillOrdInfo {

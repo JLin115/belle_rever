@@ -3,7 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<div class="newlo"></div>
+<div class="newlo">    </div>
+<!-- <div style="background-image:url('img/17.jpg'); height:100% ; width:100%; position: absolute; z-index: 2;"> </div> -->
 <div class="innerlo">
 <!-- LoginServlet -->
 	<div class="log_content" >
@@ -18,7 +19,7 @@
 		<div class="forget_sign"><span class="forget">忘記密碼</span> <input type="button" class="signin" value="Sign In"></div>
 		</form>
 	</div>
-	
+<!-- 	<div style="background-image:url('img/17.jpg'); height:100% ; width:100%; position: absolute; z-index: 30;"> </div> -->
 	<div class="reg_content">
 <!-- RegisterServlet -->
 	<form class="Register" enctype="application/x-www-form-urlencoded">
@@ -114,36 +115,33 @@
 		<center>
 			<div class="collapse navbar-collapse coustom_navbar_div"
 				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav nav_ul ">
+				<ul class="nav navbar-nav nav_ul coustom_navbar_js coustom_navbar_li">
 
-					<li><a class="customerService"
-						style="padding: 0; margin: 0; line-height: 30px;">NEW IN</a>
-						<div class="customerService_inner"></div></li>
+					<li><a class="header_NewIn" style="padding: 0; margin: 0; line-height: 30px;">NEW IN</a></li>
 
 
-					<li><a class="clothes"
-						style="padding: 0; margin: 0; line-height: 30px;">Clothes</a>
-						<div class="clothes_inner"></div></li>
-					<li><a class="customerService"
-						style="padding: 0; margin: 0; line-height: 30px;">Shoes</a>
-						<div class="customerService_inner"></div></li>
+					<li><a class="header_Clothes" style="padding: 0; margin: 0; line-height: 30px;">Clothes</a><div class="header_clothes_inner">
+						<ul style="padding: 0;">
+						<c:forEach var="x" items="${itemType}">
+							<li  ><a href="/Belle_Rever/home/showItem/ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li>
+						</c:forEach>
+						</ul>
+						
+						
+						</div>
+					</li>
+					
+					<li><a class="header_Shoes" style="padding: 0; margin: 0; line-height: 30px;">Shoes</a><div class="header_Shoes_inner"></div></li>
 
-					<li><a class="customerService"
-						style="padding: 0; margin: 0; line-height: 30px;">Accessories</a>
-						<div class="customerService_inner"></div></li>
+					<li><a class="header_Accessories" style="padding: 0; margin: 0; line-height: 30px;">Accessories</a><div class="header_Accessories_inner"></div></li>
 
-					<li><a class="aboutMe"
-						style="padding: 0; margin: 0; line-height: 30px;">Bags</a>
-						<div class="aboutMe_inner"></div></li>
+					<li><a class="header_Bags" style="padding: 0; margin: 0; line-height: 30px;">Bags</a><div class="header_Bags_inner"></div></li>
 
-					<li><a class="customerService"
-						style="padding: 0; margin: 0; line-height: 30px; color: red;">Sale</a>
-						<div class="customerService_inner"></div></li>
-					<li><div
-							style="border-bottom: 1px solid black; display: inline-block; padding-bottom: 0px; line-height: 30px; margin-left: 110%;">
-							<span class="icon-search" /><input type="text"
-								class="coustom_text" placeholder="Search">
-						</div></li>
+					<li><a class="header_Sale" style="padding: 0; margin: 0; line-height: 30px; color: red;">Sale</a></li>
+					
+					
+					<li><div style="border-bottom: 1px solid black; display: inline-block; padding-bottom: 0px; line-height: 30px; margin-left: 110%;">
+					<span class="icon-search" /><input type="text" class="coustom_text" placeholder="Search"></div></li>
 				</ul>
 
 			</div>

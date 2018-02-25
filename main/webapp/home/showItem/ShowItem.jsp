@@ -6,45 +6,32 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	crossorigin="anonymous"></script>
-<link rel="stylesheet" href="css/ShowItem.css" />
-<link rel="stylesheet" href="css/ShowCart.css" />
-
-<script type="text/javascript">
-$(window).ready(function(){
-$(".slide").on("mouseenter",function () {
-	$(".inner").stop();
-	$(".inner").slideDown(500);
 	
-})
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>	
+	
+<!--icon    -->
+<link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
+<!-- 頁首頁尾 -->
+<link href="${initParam['header_footer_css']}" rel="stylesheet">
+<link rel="stylesheet" href="css/ShowItem.css" />
 
-$(".slide").on("mouseleave",function () {
-	$(".inner").stop();
-	$(".inner").slideUp(500);
-})
-})
-</script>
 <title>Shelver</title>
 </head>
 <body>
  
-	<ul class="sidebar">
-		<li><form><input type="text"><input type="submit"></form></li>
+ 
+<!-- 	<ul class="sidebar"> -->
+<!-- 		<li><form><input type="text"><input type="submit"></form></li> -->
 		
-		<c:forEach var="x" items="${itemType}">
-			<li><a href="ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li>
-		</c:forEach>
-		<li class="slide">
-		 購物車 
-		<div class="inner">
-<%-- 		<%@include file="Cart.jsp" %> --%>
-		<jsp:include page="Cart.jsp"></jsp:include>
-		</div>
-		</li>
-	</ul>
-	<div class="show">
+<%-- 		<c:forEach var="x" items="${itemType}"> --%>
+<%-- 			<li><a href="ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li> --%>
+<%-- 		</c:forEach> --%>
+<!-- 	</ul> -->
+
+<jsp:include page="${initParam['header']}"></jsp:include>
+	<div class="ShowItem_show">
 		<ul>
 			<c:forEach var="items" items="${allItem}">
 				<a href="ShowSingleItem_home?itemId=${items.itemID}">
@@ -122,6 +109,17 @@ $(".slide").on("mouseleave",function () {
 				</div>
 			</c:if>
 		</div>
+		
+		
+
 	</div>
+	
+	<jsp:include page="${initParam['footer']}"></jsp:include>
+	
+	
+	<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
+	<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
+	<!-- 頁首頁尾js -->
+	<script src="${initParam['header_footer_js']}"></script>
 </body>
 </html>

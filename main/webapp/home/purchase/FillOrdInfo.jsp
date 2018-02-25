@@ -30,33 +30,35 @@
             <img src="	/Belle_Rever/home/home_img/process.png" style="width:100%;">
         </div>
         <div class="sType">
-            <form action="Purchase" name="form" method="get">
-                <div class="type1">
-                    <span class="shipping" style="margin-right:12.2%; ">宅配貨到付款</span>
+            <form class="form_Purchase"action="Purchase" name="form" method="get">
+                <div class="FillOrdInfo_type1">
+                    <span class="shipping">宅配貨到付款</span>
                     <span>全館消費滿 NT.699元可享免運。</span>
                     <span style="color:red;">(「貨到付款」服務僅限台灣本島)</span>
                 </div>
 
-                <div class="type2">
-                    <span class=  "convient"style="margin-right:15%; ">超商取貨</span>
+                <div class="FillOrdInfo_type2">
+                    <span class="convient"  >超商取貨</span>
                     <span>全館消費滿 NT.699元可享免運。</span>
                 </div>
 
                 <input type="hidden" name="stype" value="${param.webtemp}">
+               
                 <div class="inputType">
                     <!-- ${errorMsg.typeError} -->
                     <c:if test="${ not empty param.webtemp }">
-                        <div class="type3">
+                        <div class="FillOrdInfo_type3">
                             <span>超商名稱:</span>
                             <input type="text" name="st_name" value="${param.st_name}" readonly>
                         </div>
-                        <div class="type4">
+                        <div class="FillOrdInfo_type4">
                             <span>超商地址:</span>
                             <input type="text" name="st_addr" value="${param.st_addr}" style="width:50%; margin-bottom:1%" readonly>
                         </div>
                     </c:if>
                 </div>
-				折價券:<div><input type="text" name="coupon" style=" width: 15%; background:transparent;"> </div><br>
+                
+				<div class="FillOrdInfo_cp"><span>折價券:</span><input type="text" name="coupon" style=" width: 15%; background:transparent;"> </div><br>
                 <!-- ${errorMsg.couponError} -->
             </form>
         </div>
@@ -64,10 +66,10 @@
         <hr style="border:solid 0.5px; color:#d6d1d1; height:0.05%; margin-bottom:0.5%">
        
         <div class="ordData">
-          <div class="checkorder"> <div ><i class="icon-check-circle"></i> CHECK YOUR ORDER 確認購買明細</div></div>
+          <div class="checkorder"><div class="inner_checkorder"><i class="icon-check-circle"></i> CHECK YOUR ORDER 確認購買明細</div></div>
             <table style="margin-top:3%;" class="table_FillOrdInfo">
                 <tr>
-                    <td class="pname">商品名稱</td>
+                    <td class="FillOrdInfo_pname">商品名稱</td>
                     <td>顏色</td>
                     <td>尺寸</td>
                     <td>數量</td>
@@ -93,7 +95,7 @@
             </table>
         </div>
 
-        <input type="submit" value="確認送出" style="margin-top:3%; font-family: 微軟正黑體; font-weight:bold; border:none; margin-left:47%; ">
+        <input class="FillOrdInfo_submit" type="submit" value="確認送出" style="margin-top:3%; font-family: 微軟正黑體; font-weight:bold; border:none; margin-left:47%; ">
     </div>
 	<!-- 
 	<div class="sType">

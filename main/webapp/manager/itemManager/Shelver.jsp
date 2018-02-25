@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
@@ -17,7 +19,7 @@
 <body>
 <%@include file="../nav/nav.jsp" %>
 	<form enctype="multipart/form-data" name="form"method="POST" action="ShelverServlet" >
-		<div class="content">					
+		<div class="content"> 
 			<div class="d1">
 				<span>編號：</span><input type="text" name='id' value="${param.id }" /><p>${errorMsg.idError}</p><br> 
 				<span>價格：</span><input type="text" name='price' value="${param.price }"/><p>${errorMsg.priceError}</p><br> 

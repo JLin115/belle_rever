@@ -43,7 +43,7 @@ public class GlobalService {
 	private static String staticRoute_itemImg = "C:\\_JSP\\Belle_reveImg\\itemImg";
 	private static String staticRoute_commemtImg = "C:\\_JSP\\Belle_reveImg\\commemtImg";
 	public final static int pageSize = 2; // 管理員-管理商品-每頁幾筆
-	public final static int MpageSize = 6; // 展示商品每頁幾筆
+	public final static int MpageSize = 8	; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index/index.jsp";
 
