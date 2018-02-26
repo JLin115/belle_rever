@@ -11,9 +11,22 @@
 
 <link rel="stylesheet" href="css/aaa.css" />
 <title>Shelver</title>
+
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
+<!--icon    -->
+<link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
+<!-- 頁首頁尾 -->
+<link href="${initParam['header_footer_css']}" rel="stylesheet">
+<link rel="stylesheet" href="css/aaa.css" />
 </head>
 <body>
-	<ul class="navbar">
+
+<jsp:include page="${initParam['header']}"></jsp:include>
+
+<div  style="margin:10px auto; margin-bottom:10%;width:50%;">
+	<ul class="member_navbar">
 		<li><a href="MemberModify.jsp">會員資料</a></li>
 		<li><a href="ShowOrdList?type=1">訂單查詢</a></li>
 
@@ -23,10 +36,10 @@
 			<li><a href="ShowOrdList?type=${x.key}">${x.value}</a></li>
 		</c:forEach>
 	</ul>
-	<div class="show">
+	<div class="ordlist_show">
 		<c:forEach var="x" items="${ordList}">
 			<a href="OrdDetail?ordId=${x.ordId}">
-				<div class="content">
+				<div class="ordlist_content">
 
 					<div>
 						<span>訂單編號</span><span>:${x.ordId}</span>
@@ -37,23 +50,24 @@
 							</c:if>
 						</c:forEach>
 						
-						
-						
 						<span>訂單金額</span><span>:${x.ordTotal}</span>
 					</div>
-
 					<div>
 						<span>訂購日期</span><span>:${x.orderDate}</span> 
 						<span>出貨日期</span><span>:${x.shipDate}</span>
 					</div>
-
 				</div>
 			</a>
 		</c:forEach>
-
 	</div>
+</div>
 
 
+<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
+<jsp:include page="${initParam['footer']}"></jsp:include>
+
+<!-- 頁首頁尾js -->
+<script src="${initParam['header_footer_js']}"></script>
 
 </body>
 </html>

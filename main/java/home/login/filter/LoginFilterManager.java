@@ -51,7 +51,7 @@ public class LoginFilterManager implements Filter {
 					session.setAttribute("target", req.getRequestURI());
 					//System.out.println("需要登入，還未登入");
 				
-					res.sendRedirect(req.getContextPath()+"/home/login/login.jsp");
+					res.sendRedirect(GlobalService.index);
 				
 	
 					return;

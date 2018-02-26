@@ -5,7 +5,10 @@
 	margin: 0px;
 	text-decoration: none;
 	color: black;
-		font-family: 'Shadows Into Light', cursive;
+	font-family: 'Shadows Into Light', cursive;
+}
+.logoutSpan:hover{
+	cursor: pointer;
 }
 
 .nav {
@@ -29,7 +32,7 @@
 	border: 1px solid transparent;
 }
 
-.loginSpan {
+.logoutSpan {
 margin-right:10px;
 	float: right;
 }
@@ -38,20 +41,15 @@ margin-right:10px;
 	content: '';
 	display: block;
 	clear: both;
-
 }
-
 .navbar {
 	background-color: transparent;
 	text-align: center;
 	padding: 20px 0 20px 0;
- 
 }
-
 .navbar li {
 	display: inline-block;
 	padding: 0 30px 0 30px;
-
 }
 .navbar a{
  }

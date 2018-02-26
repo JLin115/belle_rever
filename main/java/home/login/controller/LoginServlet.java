@@ -113,8 +113,10 @@ public class LoginServlet extends HttpServlet {
 					} else if (mb.getMpid() == 1) {
 						session.setAttribute("LoginOK", mb);
 					} else if (mb.getMpid() == 999) {
+						
 						System.out.println("logServlet SuperUser");
 						session.setAttribute("SuperUser", mb);
+						
 					} else {
 						errorMsgMap.put("accountError", "帳號異常,請洽客服");
 					}
@@ -145,6 +147,10 @@ public class LoginServlet extends HttpServlet {
 			if(str == null || str.equals("")){
 				str  =GlobalService.index;
 			}
+			if(mb.getMpid() == 999){
+				str=GlobalService.mangerIndex;
+			}
+			
 			System.out.println(str);
 			String url ="{\"url\" :\""+str+"\"}";
 			System.out.println(url);

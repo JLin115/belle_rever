@@ -36,7 +36,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	public CouponBean getCoupon(String cpid) {
 		String sql = "Select * from coupon where cpid= ?";
 		List<CouponBean> cbList  =new ArrayList<>();
-		cbList=template.query(sql, new Object[]{} , new BeanPropertyRowMapper<CouponBean>(CouponBean.class));
+		cbList=template.query(sql, new Object[]{cpid} , new BeanPropertyRowMapper<CouponBean>(CouponBean.class));
 		if(cbList.isEmpty()){
 			return null;
 		}

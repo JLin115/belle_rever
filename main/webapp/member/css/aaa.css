@@ -1,7 +1,7 @@
 *{
     list-style: none;
     font-family: monospace;
-    font-size: 18px;
+ 
     padding: 0;
     margin: 0;
 
@@ -9,36 +9,30 @@
 }
 a{
 	    text-decoration: none;
-	    color:black;
+	  
 }
-.navbar a,.sidebar a{
+.member_navbar a,.sidebar a{
 	color: #07bca1;
 
 }
-.navbar{
+.member_navbar{
     background-color: white;
     text-align: center;
     padding: 20px 0 20px 0;
     border: 1px solid black;
  
 }
-.navbar li{
+.member_navbar li{
     display: inline-block;
     padding: 0 30px 0 30px;
     border: 1px solid black;
 
 }
-.navbar li a:hover{
+.member_navbar li a:hover{
     color:#058471;
 
 }
 
-.serch{
-    border: 1px solid black;
-    margin-left: 5.1%;
-    display: inline-block;
-    float: left;
-}
 
 .ordStatus{
     background-color: white;
@@ -56,7 +50,7 @@ a{
 }
 
 
-.show{
+.ordlist_show{
 background: rgb(223, 199, 203);
 width: 70%;
 height: 800px;
@@ -64,14 +58,14 @@ margin: 20px auto;
 padding-top: 10px;
 }
 
-.content{
+.ordlist_content{
 width: 70%;
 height: 80px;
 border: 1px solid black;
 padding: 5px;
 margin: 10px auto;
 }
-.content div{
+.ordlist_content div{
  padding: 0;
 display: inline-block;
 width: 45%;
@@ -79,18 +73,18 @@ vertical-align: top;
 
 
 }
-.content span{
+.ordlist_content span{
     display: inline-block;
     vertical-align: top;
 }
-.content span:nth-of-type(1n){
+.ordlist_content span:nth-of-type(1n){
 
 width: 80px;
 height: 20px;
 
 
 }
-.content span:nth-of-type(2n){
+.ordlist_content span:nth-of-type(2n){
     width:65%;
     height: 20px;
 
@@ -98,7 +92,7 @@ height: 20px;
  
  
 
-  table{
+.ord_val{
     border-collapse: collapse;
     margin: 50px auto;
 }
@@ -149,42 +143,42 @@ height: 20px;
     width: 50px;
 }
 
-.ord{
+.orderdetail_ord{
 width:75%;
 margin:20px auto;
 }
 
-.ord div{
+.orderdetail_ord div{
   display: inline-block;
  vertical-align:top;
 }
 
-.ord div:nth-of-type(1){
+.orderdetail_ord div:nth-of-type(1){
 width:45%;
 }
-.ord div:nth-of-type(2){
+.orderdetail_ord div:nth-of-type(2){
     width:45%;
 }
 
-.ord span{
+.orderdetail_ord span{
     display: inline-block;
     vertical-align:top;
     margin:2.5px 0px;
 }
-.title{
+.ordlist_title{
 width: 20%;
 /* border:1px solid black; */
 }
-.value{
+.ordlist_value{
 width: 65%;
 }
 
-.ord div:nth-of-type(1) .value{
+.orderdetail_ord div:nth-of-type(1) .value{
 
     width: 32%;
 }
 
-.ord div:nth-of-type(1) .title{
+.orderdetail_ord div:nth-of-type(1) .title{
   margin-left: 100px;
 
 }

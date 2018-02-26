@@ -46,7 +46,7 @@ public class GlobalService {
 	public final static int MpageSize = 8	; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index/index.jsp";
-
+	public final static String mangerIndex = "/Belle_Rever/manager/itemManager/ItemManager.jsp";
 	public static String getStaticRoute_itemImg() {
 		return staticRoute_itemImg;
 	}

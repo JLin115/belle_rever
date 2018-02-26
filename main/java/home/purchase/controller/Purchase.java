@@ -61,7 +61,7 @@ public class Purchase extends HttpServlet {
 				String coupon = request.getParameter("coupon");
 
 				
-				if (!shipType.equals("")) {
+				if (shipType!=null & !shipType.equals("")) {
 					if (shipType.equals("convenience")) {
 						shipAddr = shipAddr + "/" + shipType;
 					}
@@ -72,7 +72,7 @@ public class Purchase extends HttpServlet {
 				
 				OrderBean ob = new OrderBean();
 				ob.setOrdTotal(total);
-				if (!coupon.equals("")) {
+				if (coupon!=null &!coupon.equals("")) {
 					
 					CouponBean cb = dao.getCoupon(coupon);
 					if (cb != null) {

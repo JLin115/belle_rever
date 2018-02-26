@@ -84,17 +84,17 @@
 			<ul class="nav navbar-nav navbar-right">
 			
 				<c:if test="${empty LoginOK  }">
-				<li><a class="loginB" style="padding: 0; margin: 0; line-height: 27px; color: white;">Login</a></li>
+				<li><a id="loginStatus"class="loginB" style="padding: 0; margin: 0; line-height: 27px; color: white;cursor: pointer;">Login</a></li>
 				</c:if>
 				
 				<c:if test="${not empty LoginOK  }">
-				<li><a class="logout" style="padding: 0; margin: 0; line-height: 27px; color: white;" href="#">Logout</a></li>
+				<li><a id="loginStatus" class="logout" style="padding: 0; margin: 0; line-height: 27px; color: white;cursor: pointer;" href="#">Logout</a></li>
 				</c:if>
 				
 				<li><span style="padding: 0; margin-left: 20px; margin-right: 20px; line-height: 27px; color: white;">/</span></li>
-				<li><a class="memberB" style="padding: 0; margin: 0; line-height: 27px; color: white;">Member</a></li>
+				<li><a class="memberB" style="padding: 0; margin: 0; line-height: 27px; color: white;cursor: pointer;">Member</a></li>
 				<li><span style="padding: 0; margin-left: 20px; margin-right: 20px; line-height: 27px; color: white;">/</span></li>
-				<li><a class="cartB" style="padding: 0; margin: 0; margin-right: 20%; line-height: 27px; color: white;">Cart</a></li>
+				<li><a class="cartB" style="padding: 0; margin: 0; margin-right: 20%; line-height: 27px; color: white;cursor: pointer;">Cart</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -103,7 +103,7 @@
 </nav>
 <!--頁首-->
 <div class="page-header page_header">
-	<span>Belle_Rêver</span>
+	<span ><a class="header_title" href="${param['index']}">Belle_Rêver</a></span>
 </div>
 
 

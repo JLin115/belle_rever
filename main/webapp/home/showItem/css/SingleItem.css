@@ -1,0 +1,213 @@
+/*主體*/
+.singleitem_content {
+	border-top: 3px dashed #7c6d6d;
+	border-bottom: 3px dashed black;
+	height: 750px;
+	width: 70%;
+	margin: 3% auto;
+	margin-bottom: 9%;
+}
+
+.singleitemimgcontent {
+	padding-top: 3%;
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+
+.singleitembig {
+	text-align: center;
+	/* border: 1px solid green; */
+	height: 80%;
+	width: 100%;
+}
+
+.singleitemsmall {
+	width: 100%;
+	margin-top: 2%;
+	text-align: center;
+
+	/* border: 1px solid yellow; */
+}
+
+.singleitembig img {
+	max-width: 100%;
+	border: solid 1px black;
+	max-height: 100%;
+}
+
+.singleitemsmall img {
+	border: solid 1px black;
+	width: 11%;
+}
+
+.singleitem_content::after, .singleitempurchase_button::after {
+	content: ' ';
+	display: block;
+	clear: both;
+}
+
+.singleitembuycontent {
+	width: 49.6%;
+	height: 100%;
+	float: left;
+	/*border: solid 1px 	black;
+    background: rgb(175, 0, 0); 
+  */
+}
+
+.singleitemitemdesc {
+	width: 70%;
+	height: 40%;
+	margin: 0 auto;
+	margin-bottom: 15px;
+}
+
+.singleitemitemdesc div:nth-of-type(1) {
+	padding: 4% 5%;
+	font-size: 32px;
+	text-align: center;
+	/*border: solid 1px 	black;
+background: purple;
+*/
+}
+
+.singleitemitemdesc div:nth-of-type(2) {
+	padding: 2% 0 2% 20%;
+	/*border: solid 1px 	black;
+background: green;
+*/
+}
+
+.singleitemitemdesc div:nth-of-type(2) span:first-child {
+	text-decoration: line-through;
+}
+
+.singleitemitemdesc div:nth-of-type(3) {
+	padding: 0% 0 0% 20%;
+	height:32%;
+
+	/*
+	  border: solid 1px 	black;
+  background: yellow;;
+  */
+}
+
+.singleitemitemdesc div:nth-of-type(4) {
+	/*
+  background: black;
+  border: solid 1px 	black;
+*/
+	
+}
+
+.singleitempurchase_addCart, .singleitempurchase_purchase ,.toPurchase{
+	font-size: 15px;
+	width: 35%;
+	/*border:1px solid black;
+*/
+	border-radius: 8px;
+	height: 32px;
+	line-height: 32px;
+	background: rgb(77, 63, 48);
+	color: white;
+	text-align: center;
+	float: left;
+}
+
+.singleitempurchase_addCart:hover, .singleitempurchase_purchase:hover ,.toPurchase:hover{
+	cursor: pointer;
+}
+
+.singleitempurchase_addCart {
+	margin: 3% 3% 3% 12%;
+}
+
+.singleitempurchase_purchase,.toPurchase {
+	margin: 3% 3% 3% 3%;
+}
+
+/* 頁籤(簡介/評價) */
+.singleitemgrade {
+	width: 100%;
+	height: 55%;
+}
+
+#tab {
+	width: 70%;
+	margin: 3% auto;
+	/* height: 150%; */
+	background: transparent;
+	border: solid 1px black;
+}
+/* 頁籤ul */
+#tab>ul {
+	overflow: hidden;
+	margin: 0;
+	padding: 10px 20px 0 20px;
+}
+
+#tab>ul>li {
+	list-style-type: none;
+}
+
+#tab>ul>li>a {
+	text-decoration: none;
+	font-size: 13px;
+	color: #333;
+	float: left;
+	padding: 10px;
+	margin-left: 5px;
+}
+
+/*頁籤div內容*/
+#tab>div {
+	clear: both;
+	padding: 2px 15px;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	-webkit-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+/* span:target */
+#tab-1:target, #tab-2:target, #tab-3:target, #tab-4:target {
+	/* border: solid 1px red; */
+	
+}
+
+/*第一筆的底色*/
+span:target ~ #tab>ul li:first-child a {
+	background: #FF8888;
+}
+
+span:target ~ #tab>div:first-of-type {
+	visibility: hidden;
+	height: 0;
+	padding: 0 15px;
+}
+
+/*頁籤變換&第一筆*/
+span ~ #tab>ul li:first-child a, #tab-1:target ~ #tab>ul li a[href$="#tab-1"],
+	#tab-2:target ~ #tab>ul li a[href$="#tab-2"], #tab-3:target ~ #tab>ul li a[href$="#tab-3"],
+	#tab-4:target ~ #tab>ul li a[href$="#tab-4"] {
+	background: #fff;
+}
+
+/*頁籤內容顯示&第一筆*/
+span ~ #tab>div:first-of-type, #tab-1:target ~ #tab>div.tab-content-1,
+	#tab-2:target ~ #tab>div.tab-content-2, #tab-3:target ~ #tab>div.tab-content-3,
+	#tab-4:target ~ #tab>div.tab-content-4 {
+	visibility: visible;
+	height: 300px;
+	background: #fff;
+}
+
+/*警告字樣*/
+.onsales {
+	color: red;
+}

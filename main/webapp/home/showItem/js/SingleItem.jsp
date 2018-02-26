@@ -12,7 +12,8 @@ $(window).ready(function() {
 	})
 	
  	color.forEach(item => {
- 		$(".div").append('<input type="radio" class="color"  name="color" value="'+item+ '"/>'+item);
+ 		$(".div").append('<input type="radio" class="color"  name="color" value="'+item+ '"/>'+item+'&nbsp;');
+ 		
 	})
 	
 	
@@ -24,9 +25,9 @@ $(window).ready(function() {
 			if(item.itemColor == temp){
 	
 				if(item.itemQty>0){
-				$(".div2").append('<span class="size"><input type="radio"  name="size" value="'+item.itemSize+ '"/>'+item.itemSize+'</span>');
+				$(".div2").append('<span class="size"><input type="radio"  name="size" value="'+item.itemSize+ '"/>'+item.itemSize+'</span>&nbsp;');
 				}else{
-				$(".div2").append('<span class="size"><input type="radio"  name="size" disabled value="'+item.itemSize+ '"/>'+item.itemSize+'</span>');
+				$(".div2").append('<span class="size"><input type="radio"  name="size" disabled value="'+item.itemSize+ '"/>'+item.itemSize+'</span>&nbsp;');
 				}
 			}
 		})
@@ -45,7 +46,7 @@ $(window).ready(function() {
 	})
 	
 	
-	$("input[type=button]").click(function(){
+	$(".singleitempurchase_addCart , .singleitempurchase_purchase").click(function(){
 
 		if( $("input[name=color]").is(':checked') && $("input[name=size]").is(':checked') ){
 		
@@ -63,20 +64,41 @@ $(window).ready(function() {
 				'type':type
 			},
 			'success':function(data ){
-			alert(data.status)
 			if(type=='Cart'){
-				alert(data)
-				window.location.reload();
+			window.location.reload();
 			}else if(type=='Purchase'){
-			window.location='/Belle_Rever/home/purchase/FillOrdInfo.jsp';
-				}
-<!-- 			
-			
-			}
-		 	})
-	   }
+			toFillOrdInfo()
+			 }
+			    }
+		 	 })
+	 	   }
 		})
 
+	
+	function toFillOrdInfo(){
+	
+	$.ajax({
+   			type:'GET',
+   			url:'/Belle_Rever/home/purchase/FillOrdInfo.jsp',
+   			cache: false,
+   			datatype:'JSON',
+   			success:function(data){
+   				window.location.href="/Belle_Rever/home/purchase/FillOrdInfo.jsp"
+   			    return	
+   			},error:function(data){
+   				 if(data.responseJSON.status == "toLogin"){
+   				 $('.loginB').trigger('click')
+   				 return
+   				}
+   				if(data.responseJSON.status == "cartEmpty"){
+   				 alert(data.responseJSON.url);
+   				 window.location.href=data.responseJSON.url
+   				 return
+      			}
+   			}
+   			})
+	}
+	
 	
 	
 	

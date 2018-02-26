@@ -47,6 +47,8 @@ public class LoginFilter implements Filter {
 			res.setCharacterEncoding("utf-8");
 			res.setContentType("application/json");
 			HttpSession session = req.getSession(false);
+			
+			try{
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
 					// System.out.println("需要登入，已經登入");
@@ -86,7 +88,16 @@ public class LoginFilter implements Filter {
 			} else {
 				// System.out.println("不需要登入");
 				chain.doFilter(request, response);
+			}}catch (Exception e) {
+				e.printStackTrace();
+				res.sendRedirect(GlobalService.index);
+				return;
 			}
+			
+			
+			
+			
+			
 		}
 	}
 

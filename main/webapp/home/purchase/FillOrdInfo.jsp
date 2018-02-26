@@ -25,21 +25,19 @@
 <body>
 <jsp:include page="${initParam['header']}"></jsp:include>
 
-	<div style="border:1px solid transparent;  width:70% ; height:700px; margin : 0 auto;">
+	<div style="border:1px solid transparent;  width:70% ; height:700px; margin : 0 auto; margin-bottom:10%;">
         <div class="processphoto">
             <img src="	/Belle_Rever/home/home_img/process.png" style="width:100%;">
         </div>
         <div class="sType">
             <form class="form_Purchase"action="Purchase" name="form" method="get">
                 <div class="FillOrdInfo_type1">
-                    <span class="shipping">宅配貨到付款</span>
-                    <span>全館消費滿 NT.699元可享免運。</span>
-                    <span style="color:red;">(「貨到付款」服務僅限台灣本島)</span>
+                    <span class="shipping">宅配貨到付款</span><span>全館消費滿 NT.699元可享免運。</span><span style="color:red;">(「貨到付款」服務僅限台灣本島)</span>
+                    <span class="errorMsg">${errorMsg.typeError }</span>
                 </div>
 
                 <div class="FillOrdInfo_type2">
-                    <span class="convient"  >超商取貨</span>
-                    <span>全館消費滿 NT.699元可享免運。</span>
+                    <span class="convient">超商取貨</span><span>全館消費滿 NT.699元可享免運。</span><span class="errorMsg">${errorMsg.typeError }</span>
                 </div>
 
                 <input type="hidden" name="stype" value="${param.webtemp}">
@@ -58,7 +56,7 @@
                     </c:if>
                 </div>
                 
-				<div class="FillOrdInfo_cp"><span>折價券:</span><input type="text" name="coupon" style=" width: 15%; background:transparent;"> </div><br>
+				<div class="FillOrdInfo_cp"><span>折價券:</span><input type="text" name="coupon" style=" width: 15%; background:transparent;"><span class="errorMsg">${errorMsg.couponError }</span></div><br>
                 <!-- ${errorMsg.couponError} -->
             </form>
         </div>

@@ -22,6 +22,12 @@ body {
 	width: 100%;
 }
 
+/*title*/
+.header_title , .header_title:hover , .header_title:visited{
+	text-decoration: none;
+	color:rgb(245, 181, 192);
+}
+
 /*login*/
 .errorText {
 	position: relative;
@@ -287,7 +293,7 @@ body {
 	padding: 0;
 	margin: 0 auto;
 	font-size: 10px;
-	width: 55%;
+	width: 70%;
 	height: 100%;
 	/* border: 1px solid black; */
 }

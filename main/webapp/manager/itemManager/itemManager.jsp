@@ -9,11 +9,14 @@
 <link rel="stylesheet" href="css/itemManager.css" />
 <link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
 <link rel="stylesheet" href="/Belle_Rever/css/styles.css"/>
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
+<script type="text/javascript" src="../nav/js/nav.js"></script>
 <title>Shelver</title>
 </head>
 <body>
 <%-- 	<%@include file="../nav/nav.jsp" %> --%>
 	 <jsp:include page="../nav/nav.jsp"></jsp:include>
+	 
 	<div class="content">
 		<ul class="sidebar">
 			<li><form>

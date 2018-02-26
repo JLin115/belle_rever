@@ -79,12 +79,15 @@ $(window).ready(function () {
     			cache: false,
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
 // async: false,
+    		    echo:true,
     			data:"userId="+userId+"&pswd="+pswd,
     			datatype:'JSON',
     			success:function(data){
     				alert("登入成功")
-    				window.location.replace(data.url);
-    				location.reload()
+    			 
+//    				window.location.replace(data.url);
+//    				window.location.href=data.url;
+    				window.location.assign(data.url); 
     			return
     			
     			},error:function(data){
@@ -140,7 +143,7 @@ $(window).ready(function () {
            var h = $(this).offset().top;
            var objW=$(this).outerWidth() ;
            var objH=$(this).outerHeight() ;
-            w=(w + objW/2) -300;
+            w=(w + objW/2) -200;
              h =h + objH ; 
            $(".cart").css({'left':w+'px','top':h+'px' })
            $('.cart').slideDown(500);
@@ -264,7 +267,25 @@ $(window).ready(function () {
     			})
     })
     
-    $('.newlo')
+    $('.memberB').on('click' , function () {
+		
+    	
+    	$.ajax({
+       			type:'GET',
+       			url:'/Belle_Rever/member/Member.jsp',
+       			cache: false,
+       			datatype:'JSON',
+       			success:function(data){
+       			    return	
+       			},error:function(data){
+       				 if(data.responseJSON.status == "toLogin"){
+       				 $('.loginB').trigger('click')
+       				 return
+       				}
+       			}
+       			})
+    	
+	})
         
         
 	  

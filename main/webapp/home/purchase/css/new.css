@@ -142,4 +142,6 @@
 	
     width: 50px;
 }
-
+.errorMsg{
+	color:red;
+}

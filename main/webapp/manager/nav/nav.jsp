@@ -3,7 +3,7 @@
 
 <div class="nav">
 <a class="navA" href="#">Belle_Rever網站管理</a>
-<span class="loginSpan" ><span class="icon-login"></span></span>
+<span class="logoutSpan" ><span class="icon-login"></span></span>
 </div>
 <ul class="navbar">
 	<li><a href="${pageContext.request.contextPath}/manager/itemManager/ItemManager.jsp">商品管理</a></li>

@@ -15,9 +15,9 @@
 <script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
 
 <!-- 輪播 -->
-<link rel="stylesheet" href="owl.carousel/owl.carousel.min.css"></link>
-<link rel="stylesheet" href="owl.carousel/owl.theme.default.min.css"></link>
-<script src="owl.carousel/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="/Belle_Rever/home/index/owl.carousel/owl.carousel.min.css"></link>
+<link rel="stylesheet" href="/Belle_Rever/home/index/owl.carousel/owl.theme.default.min.css"></link>
+<script src="/Belle_Rever/home/index/owl.carousel/owl.carousel.min.js"></script>
 
 
 <!--icon    -->
@@ -48,13 +48,13 @@ autoplayHoverPause:true
           <!--輪播-->
 <div class="coustom">
     <div class="col-md-12 owl-carousel owl-theme ">
-        <div class="item" style="max-width: 425px; "><a href="#1"><img src="img/15.jpg"></a></div>
-        <div class="item" style="max-width: 425px; "><a href="#2"><img src="img/16.jpg"></a></div>
-        <div class="item" style="max-width: 425px; "><a href="#3"><img src="img/17.jpg"></a></div>
-        <div class="item" style="max-width: 425px; "><a href="#4"><img src="img/18.jpg"></a></div>
-        <div class="item" style="max-width: 425px; "><a href="#5"><img src="img/16.jpg"></a></div>
-        <div class="item" style="max-width: 425px; "><a href="#6"><img src="img/17.jpg"></a></div>
-        <div class="item" style="max-width: 425px; "><a href="#7"><img src="img/18.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#1"><img src="${initParam['showImgRoute']}15.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#2"><img src="${initParam['showImgRoute']}16.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#3"><img src="${initParam['showImgRoute']}17.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#4"><img src="${initParam['showImgRoute']}18.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#5"><img src="${initParam['showImgRoute']}16.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#6"><img src="${initParam['showImgRoute']}17.jpg"></a></div>
+        <div class="item" style="max-width: 425px; "><a href="#7"><img src="${initParam['showImgRoute']}18.jpg"></a></div>
      </div>
     </div>
     
