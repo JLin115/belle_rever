@@ -16,4 +16,11 @@ public interface Dao {
 	public void getCommemt(Integer itemId,String mId);
 	
 	public void setIsFeedBack(Integer ordId,Short ordSern);
+	
+	public int getTotalPage();
+	public long getTotalRecords();
+	public void setPageNow(int pageNow);
+	public int getPageNow();
+	public void setOsid(short osid);
+	
 }

@@ -8,7 +8,7 @@
 
 }
 a{
-	    text-decoration: none;
+	 text-decoration: none;
 	  
 }
 .member_navbar a,.sidebar a{
@@ -180,6 +180,11 @@ width: 65%;
 
 .orderdetail_ord div:nth-of-type(1) .title{
   margin-left: 100px;
+
+}
+.controlPage{
+text-align: center;
+ 
 
 }
 

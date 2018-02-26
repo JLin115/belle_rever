@@ -24,5 +24,11 @@ public interface OrdManagerDao {
 	public CouponBean checkCoupon(String cpid);
 	public void updateOrd(OrderBean ob);
 	
+	public int getTotalPage();
+	public long getTotalRecords();
+	public void setPageNow(int pageNow);
+	public int getPageNow();
+	public void setOsid(short osid);
+	
 	
 }

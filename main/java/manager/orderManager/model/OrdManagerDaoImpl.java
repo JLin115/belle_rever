@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import _init.GlobalService;
 import home.purchase.model.CouponBean;
 import home.purchase.model.OrderBean;
 import home.purchase.model.OrderValBean;
@@ -21,28 +22,74 @@ import manager.itemManager.model.ItemValBean;
 public class OrdManagerDaoImpl implements OrdManagerDao {
 	@Resource(name = "template")
 	JdbcTemplate template;
-
+	private int pageNow = -1;// 目前第幾頁 預設第一頁
+	private int pageSize = GlobalService.manager_ord_PageSize;
+	private int totalPage = 0; // 總共幾頁
+	private short osid;
 	public OrdManagerDaoImpl() {
 	};
-
 	public OrdManagerDaoImpl(JdbcTemplate template) {
 		super();
 		this.template = template;
 	}
-
 	public JdbcTemplate getTemplate() {
 		return template;
 	}
-
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
 
+	public int getPageNow() {
+		return pageNow;
+	}
+
+	public void setPageNow(int pageNow) {
+		this.pageNow = pageNow;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public short getOsid() {
+		return osid;
+	}
+
+	@Override
+	public void setOsid(short osid) {
+		this.osid = osid;
+	}
+
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+	
+	
+	@Override
+	public long getTotalRecords() {
+		String sql = "select count(*) from ord where osid= ?";
+		Long count = 0L;
+		count=template.queryForObject(sql , new Object[]{osid} ,  Long.class );
+		return count;
+
+	}
+	
+	@Override
+	public int getTotalPage() {
+		totalPage = (int) (Math.ceil(getTotalRecords() / (double) pageSize));
+		return totalPage;
+	}
+	
 	@Override
 	public List<OrderBean> getOrd(Short osId) {
-		String sql = "Select *  from ord where osid = ?";
+		String sql = "SELECT * FROM ORD WHERE osid = ? ORDER BY orderdate ASC LIMIT ? ,?";
 		List<OrderBean> obList = new ArrayList<>();
-		obList = template.query(sql, new Object[] { osId }, new BeanPropertyRowMapper<OrderBean>(OrderBean.class));
+		int startRecordNo = (pageNow - 1) * pageSize;
+		obList = template.query(sql, new Object[] { osId,startRecordNo,pageSize }, new BeanPropertyRowMapper<OrderBean>(OrderBean.class));
 		if (obList.isEmpty()) {
 			return null;
 		}

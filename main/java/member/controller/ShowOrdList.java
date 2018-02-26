@@ -39,13 +39,41 @@ public class ShowOrdList extends HttpServlet {
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		if (mb != null) {
 			try {
-				Short osId = Short.valueOf(request.getParameter("type"));
 				Dao dao = (Dao) ctx.getBean("MemberDAOImpl");
-				List<OrderBean> ordList = dao.getOrd(osId, mb.getMid());
-				request.setAttribute("ordList", ordList);
-				RequestDispatcher rd = request.getRequestDispatcher("OrdList.jsp");
-				rd.forward(request, response);
-				return;
+				int pageNow = 0;
+				boolean b = true;
+				Short osId = null;
+				try {
+
+					osId = Short.valueOf(request.getParameter("type"));
+					pageNow = Integer.valueOf(request.getParameter("pageNow"));
+					if (request.getParameter("pageNow").equals("")) {
+						b = false;
+					}
+
+					dao.setPageNow(pageNow);
+					dao.setOsid(osId);
+				} catch (Exception e) {
+					e.printStackTrace();
+					e.printStackTrace();
+					response.sendRedirect("OrdList.jsp");
+					return;
+				}
+
+				if (pageNow <= dao.getTotalPage() & b) {
+					List<OrderBean> ordList = dao.getOrd(osId, mb.getMid());
+					request.setAttribute("osId", osId);
+					request.setAttribute("ordList", ordList);
+					request.setAttribute("pageNow", dao.getPageNow());
+					request.setAttribute("totalPage", dao.getTotalPage());
+					RequestDispatcher rd = request.getRequestDispatcher("OrdList.jsp");
+					rd.forward(request, response);
+					return;
+				} else {
+					response.sendRedirect("OrdList.jsp");
+					return;
+				}
+
 			} catch (Exception e) {// 90%處理查詢字串有誤
 				e.printStackTrace();
 				response.sendRedirect("Member.jsp");

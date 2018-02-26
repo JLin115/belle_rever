@@ -22,12 +22,10 @@ import manager.orderManager.model.OrdManagerDao;
 @WebServlet("/manager/orderManager/DeleteOVItem")
 public class DeleteOVItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	public DeleteOVItem() {
 		super();
 
 	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -52,7 +50,6 @@ public class DeleteOVItem extends HttpServlet {
 						o.setOrdSerialNumber(i);
 						i++;
 					}
-
 					// 重置價錢
 					Integer total = 0;
 					for (OrderValBean o : ovbL) {
@@ -69,7 +66,7 @@ public class DeleteOVItem extends HttpServlet {
 					response.getWriter().write("刪除成功 ,訂單以刪除");
 
 					}
-					
+				
 			
 				}else{//查詢字串有誤
 					response.setContentType("text/html;charset=UTF-8");

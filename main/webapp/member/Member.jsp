@@ -23,7 +23,7 @@
 
 	<ul class="member_navbar">
 		<li><a href="MemberModify.jsp">會員資料</a></li>
-		<li><a href="ShowOrdList?type=1">訂單查詢</a></li>
+		<li><a href="ShowOrdList?type=1&pageNow=1">訂單查詢</a></li>
 	</ul>
 <!-- 	<ul class="ordStatus"> -->
 <%-- 		<c:forEach var="x" items="${ordStat}"> --%>

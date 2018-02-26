@@ -48,16 +48,17 @@ public class ItemManagerServlet extends HttpServlet {
 			if(request.getParameter("pageNow").equals("") ||request.getParameter("itid").equals("")){
 				b = false;
 			}
-			
-			
-			
 		} catch (Exception e) {
 			System.out.println("輸入有誤導回管理主頁");
 			b = false;
 		}
+		
+		
 		if (b) {
 			idao.setItid(itid);
 		}
+		
+		
 		if (pageNow <= idao.getTotalPage()&itemType.containsKey(String.valueOf(itid))&b) {
 
 			

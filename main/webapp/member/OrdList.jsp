@@ -25,15 +25,15 @@
 
 <jsp:include page="${initParam['header']}"></jsp:include>
 
-<div  style="margin:10px auto; margin-bottom:10%;width:50%;">
+<div  style="margin:10px auto; margin-bottom:10%;width:80%;">
 	<ul class="member_navbar">
 		<li><a href="MemberModify.jsp">會員資料</a></li>
-		<li><a href="ShowOrdList?type=1">訂單查詢</a></li>
+		<li><a href="ShowOrdList?type=1&pageNow=1">訂單查詢</a></li>
 
 	</ul>
 	<ul class="ordStatus">
 		<c:forEach var="x" items="${ordStat}">
-			<li><a href="ShowOrdList?type=${x.key}">${x.value}</a></li>
+			<li><a href="ShowOrdList?type=${x.key}&pageNow=1">${x.value}</a></li>
 		</c:forEach>
 	</ul>
 	<div class="ordlist_show">
@@ -49,7 +49,6 @@
 								<span>訂單狀態</span><span>:${y.value}</span>
 							</c:if>
 						</c:forEach>
-						
 						<span>訂單金額</span><span>:${x.ordTotal}</span>
 					</div>
 					<div>
@@ -60,7 +59,68 @@
 			</a>
 		</c:forEach>
 	</div>
+	
+	
+	
+	<c:if test="${pageNow > 0}">
+				<div class="controlPage">
+
+					<c:if test="${pageNow ==1 }">
+						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow }">
+							PREV <</a>
+					</c:if>
+
+					<c:if test="${pageNow >1 }">
+						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow -1}">PREV
+							<</a>
+					</c:if>
+
+					<c:if test="${totalPage <5}">
+						<c:forEach var="x" begin="1" end="${totalPage}">
+							<a href="ShowOrdList?type=${osId}&pageNow=${x}">${x}</a>
+						</c:forEach>
+					</c:if>
+
+					<c:if test="${totalPage > 5}">
+						<c:if test="${pageNow > 3}">
+							<c:if test="${totalPage - pageNow > 2}">
+								<c:forEach var="x" begin="${pageNow-2 }" end="${pageNow+2 }">
+									<a href="ShowOrdList?type=${osId}&pageNow=${x}">${x}</a>
+								</c:forEach>
+							</c:if>
+
+							<c:if test="${totalPage - pageNow < 3}">
+								<c:forEach var="x" begin="${totalPage-4 }" end="${totalPage }">
+									<a href="ShowOrdList?type=${osId}&pageNow=${x}">${x}</a>
+								</c:forEach>
+							</c:if>
+						</c:if>
+						<c:if test="${pageNow < 4}">
+							<c:forEach var="x" begin="1" end="5">
+								<a href="ShowOrdList?type=${osId}&pageNow=${x}">${x}</a>
+							</c:forEach>
+						</c:if>
+					</c:if>
+
+			
+					<c:if test="${pageNow==totalPage}">
+						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow }">
+							>NEXT</a>
+					</c:if>
+					<c:if test="${pageNow <totalPage }">
+						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow +1}">
+							>NEXT</a>
+					</c:if>
+					<c:if test="${totalPage ==0 }">
+						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow}">
+							>NEXT</a>
+					
+			</c:if>
+				</div>
+			</c:if>
+	
 </div>
+
 
 
 <script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
