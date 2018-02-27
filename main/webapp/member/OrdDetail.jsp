@@ -24,12 +24,12 @@
 	<div style="margin:10px auto; margin-bottom:10%;width:80%;">
 	<ul class="member_navbar">
 		<li><a href="MemberModify.jsp">會員資料</a></li>
-		<li><a href="ShowOrdList?type=1">訂單查詢</a></li>
+		<li><a href="ShowOrdList?type=1&pageNow=1">訂單查詢</a></li>
 
 	</ul>
 	<ul class="ordStatus">
 		<c:forEach var="x" items="${ordStat}">
-			<li><a href="ShowOrdList?type=${x.key}">${x.value}</a></li>
+			<li><a href="ShowOrdList?type=${x.key}&pageNow=1">${x.value}</a></li>
 		</c:forEach>
 	</ul>
 
@@ -93,13 +93,22 @@
 					<td><input type="hidden" class="${x.itemId}" name="${ob.mId}"><input
 						type="hidden" class="ordId" value="${ob.ordId}"><input
 						type="hidden" class="ordSern" value="${x.ordSerialNumber}">
+						
 						<c:if test="${x.isFeedBack eq true}">
+						<c:if test="${type eq 3}">
 							<input class="comment" name="${x.itemHeader}" type="button"
 								value="評價">
-						</c:if> <c:if test="${x.isFeedBack eq false}">
-							<input class="comment" name="${x.itemHeader}" type="button"
-								value="評價" disabled="disabled">
-						</c:if></td>
+						</c:if> 
+						<c:if test="${type ne 3}">
+							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled">
+						</c:if>
+						</c:if>
+						
+						<c:if test="${x.isFeedBack eq false }">
+							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled">
+						</c:if>
+						
+						</td>
 
 
 				</tr>
@@ -108,7 +117,7 @@
 		</table>
 
 
-
+${type}
 	</div>
 
 </div>

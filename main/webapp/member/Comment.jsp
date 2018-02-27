@@ -10,10 +10,20 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="js/comment.js" charset="utf-8"></script>
+
 <link rel="stylesheet" href="css/Comment.css">
+<script type="text/javascript" src="js/comment.js" charset="utf-8"></script>
+
+<script type="text/javascript">
+$(window).on('unload', function() {
+	window.opener.onChildClosed()
+});
+
+</script>	
 </head>
-<body>
+
+
+<body class="comment_body"  >
 	<form method="post" action="InsertCommemt" enctype="multipart/form-data">
 		<div>
 			<span>${param.title}</span><br>

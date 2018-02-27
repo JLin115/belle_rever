@@ -79,12 +79,13 @@ $(window).ready(function () {
     			cache: false,
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
 // async: false,
+    		
     		    echo:true,
     			data:"userId="+userId+"&pswd="+pswd,
     			datatype:'JSON',
     			success:function(data){
     				alert("登入成功")
-    			 
+    				alert(data.url)
 //    				window.location.replace(data.url);
 //    				window.location.href=data.url;
     				window.location.assign(data.url); 
@@ -276,6 +277,9 @@ $(window).ready(function () {
        			cache: false,
        			datatype:'JSON',
        			success:function(data){
+       				alert(data)
+       				 
+       			window.location.href='/Belle_Rever/member/Member.jsp'; 
        			    return	
        			},error:function(data){
        				 if(data.responseJSON.status == "toLogin"){

@@ -39,7 +39,10 @@ public class OrdDetail extends HttpServlet {
 				Integer ordId =  Integer.valueOf(request.getParameter("ordId"));
 				OrdManagerDao dao = (OrdManagerDao)ctx.getBean("OrdManagerDaoImpl");
 				List<OrderValBean> ovb = dao.getOrdVal(ordId);
+				Short type = dao.getOrdStatus(ordId);
+				ovb.get(0).getIsFeedBack();
 				OrderBean ob = dao.getAOrd(ordId);
+				request.setAttribute("type",type);
 				request.setAttribute("ob", ob);
 				request.setAttribute("ovb", ovb);
 				RequestDispatcher rd = request.getRequestDispatcher("OrdDetail.jsp");
@@ -47,6 +50,9 @@ public class OrdDetail extends HttpServlet {
 				return;
 			}catch (Exception e){
 				e.printStackTrace();
+				RequestDispatcher rd = request.getRequestDispatcher("OrdList.jsp");
+				rd.forward(request, response);
+				return;
 			}
 			
 		}else{

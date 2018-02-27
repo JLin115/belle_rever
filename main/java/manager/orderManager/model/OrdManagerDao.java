@@ -23,6 +23,7 @@ public interface OrdManagerDao {
 	public void deleteOrd(Integer ordid,OrderValBean o);
 	public CouponBean checkCoupon(String cpid);
 	public void updateOrd(OrderBean ob);
+	public Short getOrdStatus(Integer ordid);
 	
 	public int getTotalPage();
 	public long getTotalRecords();

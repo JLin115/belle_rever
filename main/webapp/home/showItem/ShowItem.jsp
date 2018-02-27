@@ -18,6 +18,12 @@
 <link rel="stylesheet" href="css/ShowItem.css" />
 
 <title>Shelver</title>
+<script type="text/javascript">
+$(window).readry(function() {
+ 
+	alert(jsessionID)
+})
+</script>
 </head>
 <body>
  
@@ -34,7 +40,7 @@
 	<div class="ShowItem_show">
 		<ul>
 			<c:forEach var="items" items="${allItem}">
-				<a href="ShowSingleItem_home?itemId=${items.itemID}">
+				<a href=" <c:url value="ShowSingleItem_home?itemId=${items.itemID}"/>">
 					<li><img src="${initParam['itemImgRoute']}${items.itemPic1}"/>
 						<div>${items.itemHeader}</div>
 						<fmt:formatNumber var="c" value="${items.itemPrice *items.itemdiscount.doubleValue()}" pattern="#"/>

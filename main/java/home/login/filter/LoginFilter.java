@@ -28,7 +28,7 @@ import home.register.model.*;;
 
 //@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f1", value = "/register/*") })
 @WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f2", value = "/home/purchase/*"),
-		@WebInitParam(name = "f3", value = "/member/*") })
+												  @WebInitParam(name = "f3", value = "/member/*") })
 
 public class LoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
@@ -47,7 +47,7 @@ public class LoginFilter implements Filter {
 			res.setCharacterEncoding("utf-8");
 			res.setContentType("application/json");
 			HttpSession session = req.getSession(false);
-			
+			System.out.println(req.getHeader("X-Requested-With"));
 			try{
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {
@@ -57,32 +57,45 @@ public class LoginFilter implements Filter {
 						List<OrderValBean> cart = (List<OrderValBean>) session.getAttribute("Cart");
 						if (cart != null) {
 							if (cart.size() == 0) {
+								if(req.getHeader("X-Requested-With") == "XmlHttpRequest"){
 								res.setStatus(401);
 								String str = "{\"status\":\"cartEmpty\",\"url\":\"" + GlobalService.index + "\"}";
 								res.getWriter().write(str);
 								return;
+								}else{
+									res.sendRedirect(GlobalService.index);
+									return;
+								}
 							}
 						} else {
+							if(req.getHeader("X-Requested-With") == "XmlHttpRequest"){
 							res.setStatus(401);
 							String str = "{\"status\":\"cartEmpty\",\"url\":\"" + GlobalService.index + "\"}";
 							res.getWriter().write(str);
 							return;
-
+							}else{
+								res.sendRedirect(GlobalService.index);
+								return;
+							}
+				
 						}
 					}
-
+					
+			
+					
 					chain.doFilter(request, response);
  					
 				} else {
-					 
-					session.setAttribute("target", req.getRequestURI());
+					if(req.getHeader("X-Requested-With") != "XmlHttpRequest"){
+						res.sendRedirect(GlobalService.index);
+						return;
+					}
+					req.setAttribute("target", req.getRequestURI());
 					// System.out.println("需要登入，還未登入");
 					String str = "{\"status\":\"toLogin\"}";
 					res.setStatus(401);
 					res.getWriter().write(str);
-
 					// res.sendRedirect(req.getContextPath()+"/home/login/login.jsp");
-
 					return;
 				}
 			} else {

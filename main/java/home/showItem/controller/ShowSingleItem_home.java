@@ -40,7 +40,8 @@ public class ShowSingleItem_home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		request.setCharacterEncoding("utf-8");
-		HttpSession s = request.getSession();
+		HttpSession s = request.getSession(false);
+		System.out.println(s.getId());
 		ItemDAOImpl dao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		boolean b = true;
 		ItemBean ib = null;
@@ -98,6 +99,8 @@ public class ShowSingleItem_home extends HttpServlet {
 				s.setAttribute("ib", ib);
 				s.setAttribute("ivbList", ivbList);
 				s.setAttribute("gson", json);
+				
+			 
 				RequestDispatcher rd = request.getRequestDispatcher("SingleItem.jsp");
 				rd.forward(request, response);
 			} else {

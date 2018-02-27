@@ -9,6 +9,7 @@ import javax.swing.text.TabExpander;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.transaction.annotation.Transactional;
 
 import _init.GlobalService;
@@ -113,6 +114,9 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 		}
 		return obList;
 	}
+	
+	
+	
 
 	@Override
 	public OrderBean getAOrd(Integer ordId) {
@@ -203,6 +207,14 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 	public void updateOrd(OrderBean ob) {
 		String sql ="update ord set shipDate= ?,cpId=?,osId=?,ordTotal=? where ordId= ?";
 		template.update(sql,ob.getShipDate(),ob.getCpId(),ob.getOsId(),ob.getOrdTotal(),ob.getOrdId());
+	}
+	@Override
+	public Short getOrdStatus(Integer ordid) {
+		 String sql = "Select osid  from ord where ordid  = ?" ;
+		
+		 List<OrderBean> status = template.query(sql ,new Object[]{ordid},new BeanPropertyRowMapper<OrderBean>(OrderBean.class));
+		 
+		return status.get(0).getOsId();
 	}
 	
 	

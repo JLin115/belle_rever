@@ -103,7 +103,7 @@
 </nav>
 <!--頁首-->
 <div class="page-header page_header">
-	<span ><a class="header_title" href="${param['index']}">Belle_Rêver</a></span>
+	<span ><a class="header_title" href="<c:url value="${initParam['index']}" />">Belle_Rêver</a></span>
 </div>
 
 
@@ -123,7 +123,7 @@
 					<li><a class="header_Clothes" style="padding: 0; margin: 0; line-height: 30px;">Clothes</a><div class="header_clothes_inner">
 						<ul style="padding: 0;">
 						<c:forEach var="x" items="${itemType}">
-							<li  ><a href="/Belle_Rever/home/showItem/ShowItem?itid=${x.key }&pageNow=1">${x.value}</a></li>
+							<li  ><a href="  <c:url  value="/home/showItem/ShowItem?itid=${x.key }&pageNow=1" />  ">${x.value}</a></li>
 						</c:forEach>
 						</ul>
 						

@@ -19,9 +19,6 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  
-  
-   
   <context-param>
     <param-name>showImgRoute</param-name>
     <param-value>/bimg/showImg/</param-value>
@@ -34,32 +31,26 @@
     <param-name>commemtImgRoute</param-name>
     <param-value>/bimg/commemtImg/</param-value>
   </context-param>
-   <context-param>
+  <context-param>
     <param-name>header_footer_js</param-name>
     <param-value>/Belle_Rever/home/index/js/index.js</param-value>
   </context-param>
-    <context-param>
+  <context-param>
     <param-name>header_footer_css</param-name>
     <param-value>/Belle_Rever/home/index/css/index.css</param-value>
   </context-param>
-
   <context-param>
     <param-name>header</param-name>
     <param-value>/WEB-INF/home/header/header.jsp</param-value>
   </context-param>
- 
   <context-param>
     <param-name>footer</param-name>
     <param-value>/WEB-INF/home/footer/footer.jsp</param-value>
   </context-param>
-  
-   <context-param>
+  <context-param>
     <param-name>index</param-name>
-    <param-value>/WEB-INF/home/index/index.jsp</param-value>
+    <param-value>/home/index/index.jsp</param-value>
   </context-param>
- 
-  
-  
   <servlet>
     <servlet-name>springDispatcherServlet</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

@@ -26,10 +26,9 @@
 
 
 <link rel="stylesheet" href="css/SingleItem.css">
-<script src='js/SingleItem.jsp'></script>
+<script src=' <c:url value="js/SingleItem.jsp"/> '></script>
 </head>
 <body>
-
 
 	<jsp:include page="${initParam['header']}"></jsp:include>
 	<!-- 	<div class="div"></div> -->

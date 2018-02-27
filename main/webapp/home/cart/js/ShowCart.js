@@ -61,6 +61,7 @@ $(window).ready(function() {
 // async: false,
 // data:"userId="+userId+"&pswd="+pswd,
    			datatype:'JSON',
+   			headers:{"X-Requested-With": "XmlHttpRequest"},
    			success:function(data){
    				alert(data)
    				 window.location.href="/Belle_Rever/home/purchase/FillOrdInfo.jsp"

@@ -54,7 +54,7 @@ public class ShowOrdList extends HttpServlet {
 					dao.setPageNow(pageNow);
 					dao.setOsid(osId);
 				} catch (Exception e) {
-					e.printStackTrace();
+	
 					e.printStackTrace();
 					response.sendRedirect("OrdList.jsp");
 					return;

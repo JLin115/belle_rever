@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.WebApplicationContext;
@@ -36,6 +37,7 @@ public class ShowItem extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		HttpSession session = request.getSession();
 		request.setCharacterEncoding("utf-8");
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		ItemDAOImpl idao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
@@ -77,6 +79,7 @@ public class ShowItem extends HttpServlet {
 			return;
 		} else {
 			System.out.println("正在導回主頁");
+			
 			response.sendRedirect("ShowItem.jsp");
 			return;
 //			RequestDispatcher rd = request.getRequestDispatcher("ItemManager.jsp");

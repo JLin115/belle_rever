@@ -1,7 +1,6 @@
 
 $(window).ready(function () {
 	
-	
 	$(".comment").click(function () {
 	$(this).attr("disabled","disabled")
 	var height =280
@@ -36,7 +35,7 @@ $(window).ready(function () {
 		datatype:'JSON',
 		processData: false,
 		success:function(data){
-		window.opener.onChildClosed()
+		
 		window.close();
 		return
 		},error:function(data){
@@ -47,6 +46,7 @@ $(window).ready(function () {
 			 $(".picError").text(errors.picError)
 		}
 		})
+		window.opener.onChildClosed()
 	
 	  })
       
@@ -64,7 +64,11 @@ $(window).ready(function () {
     reader.readAsDataURL(input.files[0]);
   }
 }
+	
+	
+	
 	 window.onChildClosed = function () {
+		 
 		 window.location.reload();
 	}
 	
