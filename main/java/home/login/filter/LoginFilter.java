@@ -86,12 +86,15 @@ public class LoginFilter implements Filter {
 					chain.doFilter(request, response);
  					
 				} else {
-					if(req.getHeader("X-Requested-With") != "XmlHttpRequest"){
+					if( req.getHeader("X-Requested-With") == null ){
+						if(req.getHeader("X-Requested-With") != "XmlHttpRequest"){
 						res.sendRedirect(GlobalService.index);
 						return;
+						}
 					}
-					req.setAttribute("target", req.getRequestURI());
-					// System.out.println("需要登入，還未登入");
+					session.setAttribute("target", req.getRequestURI());
+					 System.out.println("需要登入，還未登入");
+					
 					String str = "{\"status\":\"toLogin\"}";
 					res.setStatus(401);
 					res.getWriter().write(str);

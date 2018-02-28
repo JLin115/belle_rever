@@ -66,9 +66,9 @@ public class InsertComment extends HttpServlet {
 				if (parts != null) {
 					for (Part p : parts) {
 						String name = p.getName();
-						String value = request.getParameter(name);
-
 						if (p.getContentType() == null) {
+							
+							String value = new String(request.getParameter(name).getBytes("ISO-8859-1"),"utf-8");
 							if (name.equals("commemt")) {
 								if (!"".equals(value)) {
 									if (value.length() > 10) {
@@ -106,20 +106,21 @@ public class InsertComment extends HttpServlet {
 		} else {// session 為空
 			errorMsg.put("Error", "Error");
 		}
-		System.out.println(ordId+"."+ordSern);
+ 
 		response.setCharacterEncoding("utf-8");
-		if(errorMsg.size()>0){
-			 Gson gson = new GsonBuilder().setPrettyPrinting()
-	                    .create();
-	            String json = gson.toJson(errorMsg);
-			System.out.println(json);
+		if(errorMsg.size()>0){	response.setContentType("application/json");
+			Gson gson = new Gson();
+	        String json = gson.toJson(errorMsg);
+			System.out.println("InsertComment_error");
 			response.getWriter().write(json);
 			response.setStatus(400);
-
+			return;
 		}else{
+			response.setContentType("text/html");
+			response.getWriter().write("評價成功");
 			dao.insertCommemt(cb);
 			dao.setIsFeedBack(ordId, ordSern);
-			response.setStatus(200);
+			return;
 		}
 		
 		

@@ -1,6 +1,6 @@
 
 $(window).ready(function () {
-	
+
 	$(".comment").click(function () {
 	$(this).attr("disabled","disabled")
 	var height =280
@@ -21,24 +21,30 @@ $(window).ready(function () {
 	$("#file").change(function () {
 		readURL(this)
 	})
+	
 	  $("form").submit(function(evt){	 
       evt.preventDefault();
       var formData = new FormData($(this)[0]);
       $.ajax({
-		type:'Post',
-		url:'InsertCommemt',
-		cache: false,
-	    contentType: false,
-	    enctype: 'multipart/form-data',
-		async: false,
-		data:	formData,
-		datatype:'JSON',
-		processData: false,
-		success:function(data){
+		'type':'Post',
+		'url':'InsertCommemt',
+		'cache': false,
+	    'contentType': false,
+	    'enctype': 'multipart/form-data',
+		'headers':{"X-Requested-With": "XmlHttpRequest"},
+		'async': false,
+		'data':	formData,
+		'datatype':'JSON',
+		'processData': false,
+		success:function(data){ 
 		
+		window.opener.onChildClosed()
+		alert(data)
 		window.close();
+
 		return
 		},error:function(data){
+			window.opener.onChildClosed()
 			alert("");
 			console.log(data)
 			var errors = data.responseJSON;
@@ -46,7 +52,7 @@ $(window).ready(function () {
 			 $(".picError").text(errors.picError)
 		}
 		})
-		window.opener.onChildClosed()
+	
 	
 	  })
       

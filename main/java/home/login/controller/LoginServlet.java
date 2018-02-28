@@ -97,8 +97,7 @@ public class LoginServlet extends HttpServlet {
 		if (password == null || "".equals(password)) {
 			errorMsgMap.put("passwordError", "請輸入密碼");
 		}
-		System.err.println(userId);
-		System.out.println(password);
+ 
 		if (!(errorMsgMap.containsKey("accountError") || errorMsgMap.containsKey("passwordError"))) {
 			if (mb != null) {
 
@@ -107,7 +106,7 @@ public class LoginServlet extends HttpServlet {
 				// System.out.println(String.valueOf(mb.getMregisterday().getTime()));
 				String p = GlobalService.encryptString2(password, mb.getMid(),
 				String.valueOf(mb.getMregisterday().getTime()));
-				System.out.println(p);
+ 
 				if (mb.getMpass().equals(p)) {
 					if (mb.getMpid() == 0) {
 					} else if (mb.getMpid() == 1) {

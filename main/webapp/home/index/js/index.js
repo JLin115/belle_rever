@@ -77,9 +77,9 @@ $(window).ready(function () {
     			type:'Post',
     			url:'/Belle_Rever/home/login/LoginServlet',
     			cache: false,
+    			headers:{"X-Requested-With": "XmlHttpRequest"},
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
 // async: false,
-    		
     		    echo:true,
     			data:"userId="+userId+"&pswd="+pswd,
     			datatype:'JSON',
@@ -118,7 +118,8 @@ $(window).ready(function () {
  			type:'Post',
  			url:'/Belle_Rever/home/logout/Logout',
  			cache: false,
- 			 contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+ 			headers:{"X-Requested-With": "XmlHttpRequest"},
+ 			contentType: 'application/x-www-form-urlencoded;charset=utf-8',
  			success:function(data){
  				alert("登出成功")
  				window.location.replace(data);
@@ -190,6 +191,7 @@ $(window).ready(function () {
     			cache: false,
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
 // async: false,
+    		    headers:{"X-Requested-With": "XmlHttpRequest"},
     			data:data,
     			datatype:'JSON',
     			success:function(data){
@@ -276,6 +278,7 @@ $(window).ready(function () {
        			url:'/Belle_Rever/member/Member.jsp',
        			cache: false,
        			datatype:'JSON',
+       			headers:{"X-Requested-With": "XmlHttpRequest"},
        			success:function(data){
        				alert(data)
        				 

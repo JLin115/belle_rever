@@ -57,6 +57,7 @@ $(window).ready(function() {
 			'type':'GET',
 			'url':'/Belle_Rever/home/cart/AddCart',
 			'datatype':'text',
+			'headers':{"X-Requested-With": "XmlHttpRequest"},
 			'data':{
 				'itemId':itemId,
 				'itemSerN':itemSerN,
@@ -77,10 +78,11 @@ $(window).ready(function() {
 	function toFillOrdInfo(){
 	
 	$.ajax({
-   			type:'GET',
-   			url:'/Belle_Rever/home/purchase/FillOrdInfo.jsp',
-   			cache: false,
-   			datatype:'JSON',
+   			'type':'GET',
+   			'url':'/Belle_Rever/home/purchase/FillOrdInfo.jsp',
+   			'cache': false,
+   			'datatype':'JSON',
+   			'headers':{"X-Requested-With": "XmlHttpRequest"},
    			success:function(data){
    				window.location.href="/Belle_Rever/home/purchase/FillOrdInfo.jsp"
    			    return	

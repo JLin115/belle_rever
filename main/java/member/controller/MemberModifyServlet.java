@@ -50,7 +50,7 @@ public class MemberModifyServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		MemberBean mb =(MemberBean) session.getAttribute("LoginOK");
 		//得到名子並驗證
-				String mname = request.getParameter("name");
+				String mname =new String(request.getParameter("name").getBytes("ISO-8859-1"),"utf-8");
 				System.out.println(mname);
 				if (mname != null && !"".equals(mname)   ) {
 					if (GlobalService.judgeInputSpecialSymbol(mname)) {
@@ -136,8 +136,8 @@ public class MemberModifyServlet extends HttpServlet {
 //					JOptionPane.showMessageDialog(null, "更改會員資料成功!");
 //					mb = new MemberBean(mid, mpass, mname, mbday, memail, mphone, mregisterday, mpid);
 					mdao.updateMember(mb);
-//					response.sendRedirect("../index.jsp");
-//					mdao.setMember(mb);
+					response.sendRedirect("MemberModify.jsp");
+					return;
 				}
 				
 				

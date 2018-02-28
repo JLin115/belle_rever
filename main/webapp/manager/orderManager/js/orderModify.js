@@ -14,6 +14,7 @@ $(window).ready(function() {
 			'type':'GET',
 			'url':'DeleteOVItem',
 			'datatype':'text',
+			'headers':{"X-Requested-With": "XmlHttpRequest"},
 			'data':{
 				'ordId':ordId,
 				'ordSerN':ordSerN
@@ -37,6 +38,7 @@ $(window).ready(function() {
 			'type':'GET',
 			'url':'ModifyItem',
 			'datatype':'text',
+			'headers':{"X-Requested-With": "XmlHttpRequest"},
 			'data':{
 				'qty':qty,
 				'ordId':ordId,

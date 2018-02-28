@@ -1,188 +1,241 @@
-*{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-
-}
-a{
-	 text-decoration: none;
-	  
-}
-.member_navbar a,.sidebar a{
-	color: #07bca1;
-
-}
-.member_navbar{
-    background-color: white;
-    text-align: center;
-    padding: 20px 0 20px 0;
-    border: 1px solid black;
- 
-}
-.member_navbar li{
-    display: inline-block;
-    padding: 0 30px 0 30px;
-    border: 1px solid black;
-
-}
-.member_navbar li a:hover{
-    color:#058471;
-
+* {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
-
-.ordStatus{
-    background-color: white;
-    text-align: center;
-    padding: 5px 0 5px 0;
+a {
+	text-decoration: none;
 }
-.ordStatus li{
-    display: inline-block;
-    padding: 0 30px 0 30px;
-}
-.ordStatus a{
-    text-decoration: none;
-    color: black;
-    font-size: 11px;
-}
-
-
-.ordlist_show{
-background: rgb(223, 199, 203);
-width: 70%;
-height: 800px;
-margin: 20px auto;
-padding-top: 10px;
-}
-
-.ordlist_content{
-width: 70%;
-height: 80px;
-border: 1px solid black;
-padding: 5px;
-margin: 10px auto;
-}
-.ordlist_content div{
- padding: 0;
-display: inline-block;
-width: 45%;
-vertical-align: top;
-
-
-}
-.ordlist_content span{
-    display: inline-block;
-    vertical-align: top;
-}
-.ordlist_content span:nth-of-type(1n){
-
-width: 80px;
-height: 20px;
-
-
-}
-.ordlist_content span:nth-of-type(2n){
-    width:65%;
-    height: 20px;
-
- }
- 
- 
-
-.ord_val{
-    border-collapse: collapse;
-    margin: 50px auto;
-}
-
-.ord_val td{
-    border-bottom: 1px solid gray;
-   padding: 5px;
-}
-
-.ord_val td:nth-of-type(1) {  
-    width: 350px;
-
-}.ord_val td:nth-of-type(1) img{  
-    height: 80px;
-    float:left; 
-    
-}
-.ord_val td:nth-of-type(1) span{  
-   
-    float:left;
-}
-.ord_val td:nth-of-type(1) span::after{  
-   content: "";
-   display: block;
-   clear: both;
-}
-.ord_val td:nth-of-type(2) {
-    width: 60px;
-}
-.ord_val td:nth-of-type(3) {  
-    width: 60px;
-}
-.ord_val td:nth-of-type(4) { 
-    width: 60px;
-}
-.ord_val td:nth-of-type(5) {
-
-    width: 60px;
-}
-.ord_val td:nth-of-type(6) { 
-    width: 60px;
-}
-.ord_val td:nth-of-type(7) {
-    width: 60px;
-}
-.ord_val td:nth-of-type(8) { 
+#member_content *{
+ 	font-family: 微軟正黑體;
 	
-    width: 50px;
+	}
+
+.ordStatus {
+	background-color: white;
+	text-align: center;
+	padding: 5px 0 5px 0;
 }
 
-.orderdetail_ord{
-width:75%;
-margin:20px auto;
+.ordStatus li {
+	display: inline-block;
+	padding: 0 30px 0 30px;
 }
 
-.orderdetail_ord div{
-  display: inline-block;
- vertical-align:top;
+.ordStatus a {
+	text-decoration: none;
+	color: black;
+	font-size: 11px;
 }
 
-.orderdetail_ord div:nth-of-type(1){
-width:45%;
-}
-.orderdetail_ord div:nth-of-type(2){
-    width:45%;
-}
-
-.orderdetail_ord span{
-    display: inline-block;
-    vertical-align:top;
-    margin:2.5px 0px;
-}
-.ordlist_title{
-width: 20%;
-/* border:1px solid black; */
-}
-.ordlist_value{
-width: 65%;
-}
-
-.orderdetail_ord div:nth-of-type(1) .value{
-
-    width: 32%;
-}
-
-.orderdetail_ord div:nth-of-type(1) .title{
-  margin-left: 100px;
-
-}
-.controlPage{
-text-align: center;
+.ordlist_show {
+	 	border: 1px solid black;
  
-
 }
 
+.ordlist_content {
+	width: 70%;
+	height: 80px;
+	border: 1px solid black;
+	padding: 5px;
+	margin: 10px auto;
+}
+
+.ordlist_content div {
+	padding: 0;
+	display: inline-block;
+	width: 45%;
+	vertical-align: top;
+}
+
+.ordlist_content span {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.ordlist_content span:nth-of-type(1n) {
+	width: 80px;
+	height: 20px;
+}
+
+.ordlist_content span:nth-of-type(2n) {
+	width: 65%;
+	height: 20px;
+}
+
+.ord_val {
+	border-collapse: collapse;
+	margin: 50px auto;
+}
+
+.ord_val td {
+	border-bottom: 1px solid gray;
+	padding: 5px;
+}
+
+.ord_val td:nth-of-type(1) {
+	width: 350px;
+}
+
+.ord_val td:nth-of-type(1) img {
+	height: 80px;
+	float: left;
+}
+
+.ord_val td:nth-of-type(1) span {
+	float: left;
+}
+
+.ord_val td:nth-of-type(1) span::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.ord_val td:nth-of-type(2) {
+	width: 60px;
+}
+
+.ord_val td:nth-of-type(3) {
+	width: 60px;
+}
+
+.ord_val td:nth-of-type(4) {
+	width: 60px;
+}
+
+.ord_val td:nth-of-type(5) {
+	width: 60px;
+}
+
+.ord_val td:nth-of-type(6) {
+	width: 60px;
+}
+
+.ord_val td:nth-of-type(7) {
+	width: 60px;
+}
+
+.ord_val td:nth-of-type(8) {
+	width: 50px;
+}
+
+.orderdetail_ord {
+	width: 75%;
+	margin: 20px auto;
+}
+
+.orderdetail_ord div {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.orderdetail_ord div:nth-of-type(1) {
+	width: 45%;
+}
+
+.orderdetail_ord div:nth-of-type(2) {
+	width: 45%;
+}
+
+.orderdetail_ord span {
+	display: inline-block;
+	vertical-align: top;
+	margin: 2.5px 0px;
+}
+
+.ordlist_title {
+	width: 20%;
+	/* border:1px solid black; */
+}
+
+.ordlist_value {
+	width: 65%;
+}
+
+.orderdetail_ord div:nth-of-type(1) .value {
+	width: 32%;
+}
+
+.orderdetail_ord div:nth-of-type(1) .title {
+	margin-left: 100px;
+}
+
+.controlPage{
+	text-align: center;
+}
+.controlPage a{
+	
+	font-size: 17px;
+	padding:0 5px;
+}
+
+/*member.jsp*/
+.member_center {
+	border: 1px solid black;
+	padding-bottom: 13px;
+
+}
+ 
+.content_menu {
+	width: 20%;
+	border: 1px solid black;
+	float: left;
+	padding-top: 20px;
+	height: 75%;
+}
+
+.content_menu li {
+	text-align: center;
+	padding: 8px 0;
+}
+
+.member_content {
+	width: 80%;
+	border: 1px solid black;
+	float: left;
+	height: 75%;
+}
+
+.MemberModify_content_left {
+	padding: 5%  0 0  10%;
+	float : left;
+	width: 50%;
+	border: 1px solid black;
+	height: 80%;
+	float: left;
+}
+
+.MemberModify_content_right {
+	padding: 5%  0 0  10%;
+	float: left;
+	width: 50%;
+	border: 1px solid black;
+	height: 80%;
+}
+
+.MemberModify_content_right:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.MemberModify_content_left span, .MemberModify_content_right span {
+	display: inline-block;
+	width: 80px;
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+
+.MemberModify_content_left input, .MemberModify_content_right input {
+	margin-bottom: 3px;
+	margin-top: 3px;
+}
+
+.errorMsg{
+	padding-left:5px;
+	color:red;
+	font-size: 8px;
+	
+}

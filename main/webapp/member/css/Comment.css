@@ -37,6 +37,8 @@ form div{
 	
 }
 .img{
+	width:100%;
+	
 	display: inline-block;
 	margin:0 auto;
 }

@@ -13,6 +13,7 @@ $(window).ready(function() {
 			'type':'GET',
 			'url':'ChangeQty',
 			'datatype':'text',
+			'headers':{"X-Requested-With": "XmlHttpRequest"},
 			'data':{
 				'ordSerN':ordSerN,
 				'qty':qty,
@@ -31,6 +32,7 @@ $(window).ready(function() {
 		$.ajax({
 			'type':'GET',
 			'url':'DeleteAOrdVal',
+			'headers':{"X-Requested-With": "XmlHttpRequest"},
 			'datatype':'text',
 			'data':{
 				'ordSerN':ordSerN,

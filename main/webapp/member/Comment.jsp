@@ -38,7 +38,7 @@ $(window).on('unload', function() {
 		</div>
 		<div>
 			<input type="file" id="file" name="file" accept=" image/jpeg, image/png"> 
-			<img class="img" src="">
+			<img class="img" src="" >
 			<span class="picError"></span>
 		</div>
 		<br>

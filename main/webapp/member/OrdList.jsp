@@ -5,13 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://code.jquery.com/jquery-2.2.4.min.js"
-	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-	crossorigin="anonymous"></script>
-
-<link rel="stylesheet" href="css/aaa.css" />
-<title>Shelver</title>
-
+<title>Member_ord</title>
 <link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
 <link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
 <script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
@@ -20,18 +14,32 @@
 <!-- 頁首頁尾 -->
 <link href="${initParam['header_footer_css']}" rel="stylesheet">
 <link rel="stylesheet" href="css/aaa.css" />
+<script type="text/javascript">
+$(window).ready(function () {
+	var pageNow =  $('.hidden_pageNow').val();
+	var controllBar_a = $('.controlPage a');
+	$('.member_title_img').attr('src',"${initParam['showImgRoute']}ord_top.png")
+	 $('.controlPage a').each(function () {
+		 if($(this).text().trim()  == pageNow){
+			 $(this).css({
+				'text-decoration': 'underline' 
+			 }) 
+		 }
+	})
+})
+
+
+</script>
 
 </head>
 <body>
 
 <jsp:include page="${initParam['header']}"></jsp:include>
+	<jsp:include page="${initParam['member_header']}"></jsp:include>
 
-<div  style="margin:10px auto; margin-bottom:10%;width:80%;">
-	<ul class="member_navbar">
-		<li><a href="MemberModify.jsp">會員資料</a></li>
-		<li><a href="ShowOrdList?type=1&pageNow=1">訂單查詢</a></li>
 
-	</ul>
+<div class="member_content">
+
 	<ul class="ordStatus">
 		<c:forEach var="x" items="${ordStat}">
 			<li><a href="ShowOrdList?type=${x.key}&pageNow=1">${x.value}</a></li>
@@ -41,7 +49,6 @@
 		<c:forEach var="x" items="${ordList}">
 			<a href="OrdDetail?ordId=${x.ordId}">
 				<div class="ordlist_content">
-
 					<div>
 						<span>訂單編號</span><span>:${x.ordId}</span>
 						
@@ -61,11 +68,9 @@
 		</c:forEach>
 	</div>
 	
-	
-	
 	<c:if test="${pageNow > 0}">
+				<input type="hidden" class="hidden_pageNow" value="${pageNow}">
 				<div class="controlPage">
-
 					<c:if test="${pageNow ==1 }">
 						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow }">
 							PREV <</a>
@@ -75,13 +80,14 @@
 						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow -1}">PREV
 							<</a>
 					</c:if>
+					
+					
 
 					<c:if test="${totalPage <5}">
 						<c:forEach var="x" begin="1" end="${totalPage}">
 							<a href="ShowOrdList?type=${osId}&pageNow=${x}">${x}</a>
 						</c:forEach>
 					</c:if>
-
 					<c:if test="${totalPage > 5}">
 						<c:if test="${pageNow > 3}">
 							<c:if test="${totalPage - pageNow > 2}">
@@ -102,8 +108,9 @@
 							</c:forEach>
 						</c:if>
 					</c:if>
-
-			
+					
+					
+					
 					<c:if test="${pageNow==totalPage}">
 						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow }">
 							>NEXT</a>
@@ -114,16 +121,14 @@
 					</c:if>
 					<c:if test="${totalPage ==0 }">
 						<a href="ShowOrdList?type=${osId}&pageNow=${pageNow}">
-							>NEXT</a>
-					
-			</c:if>
+							>NEXT</a>	
+					</c:if>
 				</div>
 			</c:if>
-	
 </div>
 
 
-
+<jsp:include page="${initParam['member_footer']}"></jsp:include>
 <script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
 <jsp:include page="${initParam['footer']}"></jsp:include>
 

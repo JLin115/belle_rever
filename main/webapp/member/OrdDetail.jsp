@@ -18,20 +18,25 @@
 
 <link rel="stylesheet" href="css/aaa.css">
 <script type="text/javascript" src="js/comment.js"></script>
+<script type="text/javascript">
+$(window).ready(function() {
+	$('.member_title_img').attr('src',"${initParam['showImgRoute']}ord_top.png")
+})
+</script>
 </head>
 <body>
 <jsp:include page="${initParam['header']}"></jsp:include>
-	<div style="margin:10px auto; margin-bottom:10%;width:80%;">
-	<ul class="member_navbar">
-		<li><a href="MemberModify.jsp">會員資料</a></li>
-		<li><a href="ShowOrdList?type=1&pageNow=1">訂單查詢</a></li>
+	<jsp:include page="${initParam['member_header']}"></jsp:include>
 
-	</ul>
+
+
+	<div class="member_content" style="overflow-y:scroll;">
 	<ul class="ordStatus">
 		<c:forEach var="x" items="${ordStat}">
 			<li><a href="ShowOrdList?type=${x.key}&pageNow=1">${x.value}</a></li>
 		</c:forEach>
 	</ul>
+	<span><img src=""></span>
 
 	<div class="ordlist_show">
 		<div class="orderdetail_ord">
@@ -43,8 +48,6 @@
 					class="ordlist_title">出貨日期</span><span class="ordlist_value">:<fmt:formatDate
 						value="${ob.shipDate }" pattern="yyyy-MM-dd" /></span><br> <span
 					class="ordlist_title">折價券編號</span><span class="ordlist_value">:${ob.cpId}</span><br>
-
-
 			</div>
 			<div>
 				<span class="ordlist_title">運送方式 </span><span class="ordlist_value">:${ob.shipType}</span><br>
@@ -60,14 +63,8 @@
 								${y.value}
 							</c:if>
 				</c:forEach>
-
 			</div>
-
 		</div>
-
-
-
-
 		<table class="ord_val">
 			<tr>
 				<td>商品名稱</td>
@@ -100,28 +97,28 @@
 								value="評價">
 						</c:if> 
 						<c:if test="${type ne 3}">
-							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled">
+							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled" style="color:gray;">
 						</c:if>
 						</c:if>
 						
 						<c:if test="${x.isFeedBack eq false }">
-							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled">
+							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled" style="color:gray;">
 						</c:if>
 						
 						</td>
-
-
 				</tr>
-
 			</c:forEach>
 		</table>
 
 
-${type}
+
 	</div>
 
 </div>
 
+
+
+	<jsp:include page="${initParam['member_footer']}"></jsp:include>
 	<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
 	<jsp:include page="${initParam['footer']}"></jsp:include>
 	<!-- 頁首頁尾js -->

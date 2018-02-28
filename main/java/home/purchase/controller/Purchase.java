@@ -102,13 +102,13 @@ public class Purchase extends HttpServlet {
 					ob.setShipType(shipType);
 					ob.setOrderDate(new Timestamp(System.currentTimeMillis()));
 					try{
-						dao.setOrder(ob, ordList);
-						
+						dao.setOrder(ob, ordList); 
 					} catch (Exception e) {
 					e.printStackTrace();
-					}
-
+					} 
 					session.removeAttribute("Cart");
+					response.sendRedirect("PurchaseSuccess.jsp");
+					return;
 					
 				}
 				
