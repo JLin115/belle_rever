@@ -42,11 +42,11 @@ public class GlobalService {
 	private static String staticRoute = "C:\\_JSP\\Belle_reveImg";
 	private static String staticRoute_itemImg = "C:\\_JSP\\Belle_reveImg\\itemImg";
 	private static String staticRoute_commemtImg = "C:\\_JSP\\Belle_reveImg\\commemtImg";
-	public final static int pageSize = 2; // 管理員-管理商品-每頁幾筆
+	public final static int pageSize = 4; // 管理員-管理商品-每頁幾筆
 	public final static int MpageSize = 8	; // 展示商品每頁幾筆
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 	public final static int manager_ord_PageSize = 8; // 管理員-訂單管理-每頁幾筆
-	public final static int member_ord_PageSize = 1; // 會員-訂單-每頁幾筆
+	public final static int member_ord_PageSize = 5; // 會員-訂單-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index/index.jsp";
 	public final static String mangerIndex = "/Belle_Rever/manager/itemManager/ItemManager.jsp";
 	public static String getStaticRoute_itemImg() {

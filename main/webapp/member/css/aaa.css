@@ -30,16 +30,17 @@ a {
 }
 
 .ordlist_show {
-	 	border: 1px solid black;
+	 	
  
 }
 
 .ordlist_content {
 	width: 70%;
 	height: 80px;
-	border: 1px solid black;
+	border: 2px solid #7a7979;
 	padding: 5px;
 	margin: 10px auto;
+	color:#514f4f;
 }
 
 .ordlist_content div {
@@ -173,14 +174,14 @@ a {
 
 /*member.jsp*/
 .member_center {
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	padding-bottom: 13px;
 
 }
  
 .content_menu {
 	width: 20%;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	float: left;
 	padding-top: 20px;
 	height: 75%;
@@ -193,7 +194,7 @@ a {
 
 .member_content {
 	width: 80%;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	float: left;
 	height: 75%;
 }
@@ -202,7 +203,7 @@ a {
 	padding: 5%  0 0  10%;
 	float : left;
 	width: 50%;
-	border: 1px solid black;
+/* 	border: 1px solid black; */
 	height: 80%;
 	float: left;
 }
@@ -211,7 +212,7 @@ a {
 	padding: 5%  0 0  10%;
 	float: left;
 	width: 50%;
-	border: 1px solid black;
+/* 	BORDER: 1PX SOLID BLACK; */
 	height: 80%;
 }
 

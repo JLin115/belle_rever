@@ -28,7 +28,7 @@
 }
 
 .ShowItem_show li {
-	border: 1px solid black;
+	border: 1px solid transparent;
 	text-align: center;
 	display: inline-block;
 	width: 24.57%;
@@ -37,6 +37,9 @@
 	margin: 0.5% 0.2%;
 	float: left;
 	color: black;
+}
+.ShowItem_show li:hover{
+	border: 2px solid #eddada;
 }
 
 .ShowItem_show li img {

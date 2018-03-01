@@ -42,7 +42,7 @@ $(window).ready(function() {
 	</form>
 	</div>
 
-	<div class="MemberModify_content_right">
+	<div class="MemberModify_content_right" >
 	<form method="post" name="form" action="PasswordModifyServlet">
 		<div>
 			<span>修改密碼:</span><input type="password" name="pas"><span class="errorMsg">${errorMsg.paswordError}</span><br>

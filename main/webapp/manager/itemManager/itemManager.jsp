@@ -57,10 +57,101 @@
 						<td>材質:滌綸100% 產地:中國 彈性:無 內裡:有 透光度:不透 商品描述:拉鍊設計/不規則裙襬</td>
 
 					</tr>
+
+					<c:forEach var="items" items="${allItem}">
+						
+						<tr>
+							<td> <a href="ShowSingleItem?itemId=${items.itemID}" /> ${items.itemID}</td>
+							<td> <img src="${initParam['itemImgRoute']}${items.itemPic1}">  </td>
+							<td> ${items.itemHeader} </td>
+							<td> ${items.itemPrice} </td>
+							<td>	<c:choose> 
+										<c:when test="${items.itemstatusid == 1}">
+											<span>上架</span>
+										</c:when>
+										<c:otherwise>
+											<span>下架</span>
+										</c:otherwise>
+									</c:choose>
+							</td>
+							<td> ${items.itemdiscount} </td>
+							<td> ${items.itemDes} </td>
+						</tr>
+					</c:forEach>
+					
+					
 				</tbody>
-
-
 			</table>
+			
+			
+			
+			<c:if test="${pageNow > 0}">
+					<div class="controlPage">
+
+						<c:if test="${pageNow ==1 }">
+							<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow }">
+								PREV <</a>
+						</c:if>
+
+						<c:if test="${pageNow >1 }">
+							<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow -1}">PREV
+								<</a>
+						</c:if>
+
+
+
+						<c:if test="${totalPage <5}">
+							<c:forEach var="x" begin="1" end="${totalPage}">
+								<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a>
+							</c:forEach>
+						</c:if>
+
+						<c:if test="${totalPage > 5}">
+							<c:if test="${pageNow > 3}">
+								<c:if test="${totalPage - pageNow > 2}">
+									<c:forEach var="x" begin="${pageNow-2 }" end="${pageNow+2 }">
+										<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a>
+									</c:forEach>
+								</c:if>
+
+								<c:if test="${totalPage - pageNow < 3}">
+									<c:forEach var="x" begin="${totalPage-4 }" end="${totalPage }">
+										<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a>
+									</c:forEach>
+								</c:if>
+							</c:if>
+							<c:if test="${pageNow < 4}">
+								<c:forEach var="x" begin="1" end="5">
+									<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a>
+								</c:forEach>
+							</c:if>
+						</c:if>
+
+
+						<c:if test="${pageNow==totalPage}">
+							<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow }">
+								>NEXT</a>
+						</c:if>
+						<c:if test="${pageNow <totalPage }">
+							<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow +1}">
+								>NEXT</a>
+						</c:if>
+						<c:if test="${totalPage ==0 }">
+							<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow}">
+								>NEXT</a>
+
+				</c:if>
+					</div>
+				</c:if>
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 		</div>
 	</div>
@@ -105,14 +196,15 @@
 	<!-- 						</li> -->
 	<%-- 						<li><div>商品ID:${items.itemID}</div> --%>
 	<%-- 							<div>商品標頭:${items.itemHeader}</div> --%>
-	<%-- 							<div>商品價錢:${items.itemPrice}</div> <c:choose> --%>
-	<%-- 								<c:when test="${items.itemstatusid == 1}"> --%>
-	<!-- 									<div>商品狀態:上架</div> -->
-	<%-- 								</c:when> --%>
-	<%-- 								<c:otherwise> --%>
-	<!-- 									<div>商品狀態:下架</div> -->
-	<%-- 								</c:otherwise> --%>
-	<%-- 							</c:choose> --%>
+	<%-- 							<div>商品價錢:${items.itemPrice}</div> --%>
+<%-- 										<c:choose>  --%>
+<%-- 									<c:when test="${items.itemstatusid == 1}"> --%>
+<!-- 										<div>商品狀態:上架</div> -->
+<%-- 									</c:when> --%>
+<%-- 									<c:otherwise> --%>
+<!-- 										<div>商品狀態:下架</div> -->
+<%-- 									</c:otherwise> --%>
+<%-- 									</c:choose> --%>
 	<%-- 							<div>商品折扣:${items.itemdiscount}</div></li> --%>
 	<!-- 						<li> -->
 	<!-- 							<div> -->
@@ -126,66 +218,8 @@
 
 
 	<!-- 			<!--下面是分頁-->
-	-->
-	<%-- 			<c:if test="${pageNow > 0}"> --%>
-	<!-- 				<div class="controlPage"> -->
-
-	<%-- 					<c:if test="${pageNow ==1 }"> --%>
-	<%-- 						<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow }"> --%>
-	<!-- 							PREV <</a> -->
-	<%-- 					</c:if> --%>
-
-	<%-- 					<c:if test="${pageNow >1 }"> --%>
-	<%-- 						<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow -1}">PREV --%>
-	<!-- 							<</a> -->
-	<%-- 					</c:if> --%>
-
-
-
-	<%-- 					<c:if test="${totalPage <5}"> --%>
-	<%-- 						<c:forEach var="x" begin="1" end="${totalPage}"> --%>
-	<%-- 							<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a> --%>
-	<%-- 						</c:forEach> --%>
-	<%-- 					</c:if> --%>
-
-	<%-- 					<c:if test="${totalPage > 5}"> --%>
-	<%-- 						<c:if test="${pageNow > 3}"> --%>
-	<%-- 							<c:if test="${totalPage - pageNow > 2}"> --%>
-	<%-- 								<c:forEach var="x" begin="${pageNow-2 }" end="${pageNow+2 }"> --%>
-	<%-- 									<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a> --%>
-	<%-- 								</c:forEach> --%>
-	<%-- 							</c:if> --%>
-
-	<%-- 							<c:if test="${totalPage - pageNow < 3}"> --%>
-	<%-- 								<c:forEach var="x" begin="${totalPage-4 }" end="${totalPage }"> --%>
-	<%-- 									<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a> --%>
-	<%-- 								</c:forEach> --%>
-	<%-- 							</c:if> --%>
-	<%-- 						</c:if> --%>
-	<%-- 						<c:if test="${pageNow < 4}"> --%>
-	<%-- 							<c:forEach var="x" begin="1" end="5"> --%>
-	<%-- 								<a href="ItemManagerServlet?itid=${itid}&pageNow=${x}">${x}</a> --%>
-	<%-- 							</c:forEach> --%>
-	<%-- 						</c:if> --%>
-	<%-- 					</c:if> --%>
-
-
-	<%-- 					<c:if test="${pageNow==totalPage}"> --%>
-	<%-- 						<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow }"> --%>
-	<!-- 							>NEXT</a> -->
-	<%-- 					</c:if> --%>
-	<%-- 					<c:if test="${pageNow <totalPage }"> --%>
-	<%-- 						<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow +1}"> --%>
-	<!-- 							>NEXT</a> -->
-	<%-- 					</c:if> --%>
-	<%-- 					<c:if test="${totalPage ==0 }"> --%>
-	<%-- 						<a href="ItemManagerServlet?itid=${itid}&pageNow=${pageNow}"> --%>
-	<!-- 							>NEXT</a> -->
-
-	<%-- 			</c:if> --%>
-	<!-- 				</div> -->
-	<%-- 			</c:if> --%>
-
+ 
+				
 
 
 
