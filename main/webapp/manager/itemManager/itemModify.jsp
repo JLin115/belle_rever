@@ -16,7 +16,7 @@
 <title>Shelver</title>
 </head>
 <body>
-<%@include file="../nav/nav.jsp" %>
+<%@include file="../nav/Nav.jsp" %>
 	<form enctype="multipart/form-data" name="form"method="POST" action="ItemModify" >
 		<div class="content">					
 			<div class="d1">

@@ -47,7 +47,7 @@ public class LoginFilter implements Filter {
 			res.setCharacterEncoding("utf-8");
 			res.setContentType("application/json");
 			HttpSession session = req.getSession(false);
-			System.out.println(req.getHeader("X-Requested-With"));
+ 
 			try{
 			if (mustLogin(servletPath)) {
 				if (checkLogin(req)) {

@@ -1,7 +1,7 @@
 $(window).ready(function () {
 	/* logout */
 	
-    $(".logoutSpan").on('click',function () {
+    $(".manager_logoutSpan").on('click',function () {
    	
    	 $.ajax({
 			'type':'Post',

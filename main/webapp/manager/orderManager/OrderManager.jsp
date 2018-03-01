@@ -15,7 +15,7 @@
 <title>Shelver</title>
 </head>
 <body>
-	<%@include file="../nav/nav.jsp" %>
+	<%@include file="../nav/Nav.jsp" %>
 	<div class="content">
 	<ul class="ordStatus">
 		<c:forEach var="x" items="${ordStat}">

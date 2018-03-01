@@ -14,7 +14,7 @@
 <title>MemberManager</title>
 </head>
 <body>
-	<%@include file="../nav/nav.jsp" %>
+	<%@include file="../nav/Nav.jsp" %>
 	<div class="show">
 		<div class="serch">
 			<input type="text"><input type="submit" value="送出">
