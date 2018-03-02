@@ -16,9 +16,14 @@
 <!-- 頁首頁尾 -->
 <link href="${initParam['header_footer_css']}" rel="stylesheet">
 <link rel="stylesheet" href="css/aaa.css" />
+<script src='js/member.js'></script>
 <script type="text/javascript">
 $(window).load(function() {
 	$('.member_title_img').attr('src',"${initParam['showImgRoute']}member_top.png")
+	$('.member_content').css({
+		'background-image':'url(1112.png)',
+		'-webkit-background-size':'100% 105%'  
+	})   
 })</script>
 </head>
 <body>
@@ -26,11 +31,7 @@ $(window).load(function() {
 	<jsp:include page="${initParam['member_header']}"></jsp:include>
 
 		<div class="member_content">
-			<ul >
-				<c:forEach var="x" items="${ordStat}">
-					<li><a href="ShowOrdList?type=${x.key}">${x.value}</a></li>
-				</c:forEach>
-			</ul>
+		 
 		</div>
 
 	<jsp:include page="${initParam['member_footer']}"></jsp:include>

@@ -17,6 +17,10 @@
 <script type="text/javascript">
 $(window).ready(function() {
 	$('.member_title_img').attr('src',"${initParam['showImgRoute']}member_modify.png")
+	$('.member_content').css({
+		'background-image':'url(1112.png)',
+		'-webkit-background-size':'100% 105%'
+	})
 })
 
 </script>
@@ -27,7 +31,7 @@ $(window).ready(function() {
 	
 	
 	<div class="member_content" >
-	<div style=" padding:20px ;"></div>
+
 	
 	<div class="MemberModify_content_left">
 	<form method="post" name="form" action="MemberModifyServlet" >

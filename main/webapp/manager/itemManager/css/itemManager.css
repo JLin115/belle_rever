@@ -2,7 +2,7 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	font-family: 'Shadows Into Light', cursive;
+	font-size: 18px;
 }
 
 .sidebar a {
@@ -16,15 +16,13 @@
 .sidebar {
 	background-color: white;
 	text-align: center;
-	width:100%;
+	width: 100%;
 	float: left;
 }
 
 .sidebar li {
 	padding: 15px 0 15px 0;
- 
 }
- 
 
 .sidebar input[type="text"] {
 	width: 100px;
@@ -35,57 +33,52 @@
 }
 
 .itemManger_show_table {
-	width:90%;
+	width: 90%;
 	border: 1px solid black;
 	margin: 20px auto;
-	font-size: 18px;
 	text-align: center;
-	border-spacing:0;
+	border-spacing: 0;
 	padding: 0;
 }
 
-.itemManger_show_table th,.itemManger_show_table td{
+.itemManger_show_table th, .itemManger_show_table td {
 	border: 1px solid black;
-	
-	
 }
-.itemManger_show_table img { 
-		max-height:200px;
-	
+
+.itemManger_show_table img {
+	max-height: 200px;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(1) {
-	width:13%;
+	width: 13%;
 	background: red;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(2) {
-	width:19%; 
+	width: 19%;
 	background: green;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(3) {
-	width:19%;
-
+	width: 19%;
 	background: yellow;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(4) {
-	width:9%;
+	width: 9%;
 	background: black;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(5) {
-	width:9%;
-	background: pink; 
+	width: 9%;
+	background: pink;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(6) {
-	width:9%;
- 
+	width: 9%;
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(7) {
-	width:25%;
+	width: 25%;
 	background: brown;
 }

@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
+<script type="text/javascript"src="../nav/js/nav.js"></script>
 <script type="text/javascript"src="js/Shelver.js"></script>
 <link rel="stylesheet" href="css/Shelver.css" />
 <link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />

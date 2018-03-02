@@ -20,7 +20,7 @@
 
 	<div class="maneger_index_show">
 
-		<div class="maneger_index_show_title_img"></div>
+		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }manage_product.png"/></div>
 		<div class="maneger_index_show_left">
 
 			<ul class="sidebar">
@@ -32,7 +32,7 @@
 				</c:forEach>
 			</ul>
 		</div>
-		<div class="maneger_index_show_right">
+		<div class="maneger_index_show_right">  
 
 			<table class="itemManger_show_table">
 				<thead>
@@ -86,6 +86,7 @@
 			
 			
 			<c:if test="${pageNow > 0}">
+			<input type="hidden" class="hidden_pageNow" value="${pageNow}">
 					<div class="controlPage">
 
 						<c:if test="${pageNow ==1 }">

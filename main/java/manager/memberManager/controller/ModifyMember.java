@@ -62,9 +62,10 @@ public class ModifyMember extends HttpServlet {
 				for (Part p : parts) {
 
 					String name = p.getName();
-					String value = (String) request.getParameter(name).trim();
+			
 
 					if (p.getContentType() == null) {
+						String value =new String(request.getParameter(name).trim().getBytes("ISO-8859-1"),"utf-8");
 						if (name.equals("name")) {
 							if (!"".equals(value)) {
 							

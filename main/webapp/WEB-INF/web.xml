@@ -47,7 +47,6 @@
     <param-name>footer</param-name>
     <param-value>/WEB-INF/home/footer/footer.jsp</param-value>
   </context-param>
-  
   <context-param>
     <param-name>member_header</param-name>
     <param-value>/WEB-INF/member/header/member_header.jsp</param-value>
@@ -56,13 +55,6 @@
     <param-name>member_footer</param-name>
     <param-value>/WEB-INF/member/footer/member_footer.jsp</param-value>
   </context-param>
-  
-  
-  
-  
-  
-  
-  
   <context-param>
     <param-name>index</param-name>
     <param-value>/home/index/index.jsp</param-value>

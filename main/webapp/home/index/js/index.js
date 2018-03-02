@@ -9,19 +9,20 @@ $(window).ready(function () {
         var nextSiblingwidth = $(this.nextSibling).width()
         var w=( objW/2)-nextSiblingwidth/2	;
         var h = $(this).outerHeight()-2 ;
+  
 		 $(this.nextSibling).on('mouseenter', function(){
-			 $(this).css({
+			 $(this).css({  
 					'left':w+'px',
 					'top':h+'px',
 					'display':'block'
 				})
-		 })
+		 })  
 			$(this.nextSibling).css({
 					'left':w+'px',
 					'top':h+'px',
 					'display':'block'
 				})
-	})
+	})    
 	
 	
 		$('.coustom_navbar_js a').on('mouseleave',function(){

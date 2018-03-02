@@ -11,16 +11,20 @@ public interface Dao {
 	public void updateMember(MemberBean mb);
 	public void updatePswd(MemberBean mb);
 	public List<OrderBean> getOrd(Short osId,String mid);
+	public List<OrderBean> getOrdMember(String mid);
 	
 	public void insertCommemt(CommemtBean cb);
 	public void getCommemt(Integer itemId,String mId);
 	
 	public void setIsFeedBack(Integer ordId,Short ordSern);
-	
+
 	public int getTotalPage();
 	public long getTotalRecords();
 	public void setPageNow(int pageNow);
 	public int getPageNow();
 	public void setOsid(short osid);
+	
+	
+
 	
 }

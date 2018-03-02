@@ -43,11 +43,17 @@ $(window).ready(function() {
 			<div>
 				<span class="ordlist_title">訂單編號</span><span class="ordlist_value">:${ob.ordId}</span><br>
 				<span class="ordlist_title">訂單人</span><span class="ordlist_value">:${ob.mId}</span><br>
-				<span class="ordlist_title">訂購日期</span><span class="ordlist_value">:<fmt:formatDate
-						value="${ob.orderDate}" pattern="yyyy-MM-dd" /></span><br> <span
-					class="ordlist_title">出貨日期</span><span class="ordlist_value">:<fmt:formatDate
-						value="${ob.shipDate }" pattern="yyyy-MM-dd" /></span><br> <span
-					class="ordlist_title">折價券編號</span><span class="ordlist_value">:${ob.cpId}</span><br>
+				<span class="ordlist_title">訂購日期</span><span class="ordlist_value">:<fmt:formatDate value="${ob.orderDate}" pattern="yyyy-MM-dd" /></span><br> 
+				<span class="ordlist_title">出貨日期</span><span class="ordlist_value">:
+				
+					<c:if test="${ob.shipDate eq '1990-01-01 00:00:00.0'}"></c:if>
+					<c:if test="${ob.shipDate ne '1990-01-01 00:00:00.0'}">
+					<fmt:formatDate value="${ob.shipDate}" pattern="yyyy-MM-dd" />
+					</c:if>
+				
+				</span><br>
+				 
+				<span class="ordlist_title">折價券編號</span><span class="ordlist_value">:${ob.cpId}</span><br>
 			</div>
 			<div>
 				<span class="ordlist_title">運送方式 </span><span class="ordlist_value">:${ob.shipType}</span><br>

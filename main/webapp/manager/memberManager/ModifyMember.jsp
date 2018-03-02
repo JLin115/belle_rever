@@ -5,29 +5,38 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
+<link rel="stylesheet" href="/Belle_Rever/manager/nav/css/nav.css" />
+<link rel="stylesheet" href="/Belle_Rever/css/styles.css" />
+<script type="text/javascript"src="../nav/js/nav.js"></script>
 <title>register</title>
 <style type="text/css">
-form div{
-width:400px;
+ 
+.ModifyMember_form div{
+width:20%;
 margin:50px auto;
 border:1px solid black;
-paddding:10px;
+ padding: 3%;
 }	
-span{
+.ModifyMember_form span{
 display:inline-block;
 width:80px;
 }
-form span,input{
+.ModifyMember_form span,input{
 margin-top:10px;
 }
-input[type="submit"]{
+.ModifyMember_form input[type="submit"]{
 margin-left:200px;
 margin-bottom:10px;
 }
 </style>
 </head>
 <body>
-	<form method="post" name="form" action="modifyMember" enctype="multipart/form-data">
+<%@include file="../nav/Nav.jsp"%>
+<div class="maneger_index_show">
+		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }member_manage_top.png"/></div>
+		<div class="maneger_index_show_right" style="margin-left: 6%;width:88%">
+	<form class="ModifyMember_form" method="post" name="form" action="modifyMember" enctype="multipart/form-data">
 		<div>
 			<span>帳號:</span><input type="text" name="account" value="${mb.mid}"  readonly><br>
 			<span>姓名:</span><input type="text" name="name" value="${mb.mname} ">${errorMsg.nameError}<br>
@@ -44,13 +53,12 @@ margin-bottom:10px;
 								<option value="0">停權</option>
 								<option value="1">正常</option>
 								</c:if>
-							
 							</select>
 			<input type="submit" value="submit" >
 		</div>
 	</form>
-
-
+</div>
+</div>
 
 </body>
 </html>

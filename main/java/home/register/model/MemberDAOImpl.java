@@ -221,5 +221,17 @@ public class MemberDAOImpl implements Dao {
 		 template.update(sql,0,ordId,ordSern);
 		
 	}
+	
+	@Override
+	public List<OrderBean> getOrdMember(String mid) {
+		String sql = "SELECT * FROM ORD WHERE osid = 1 and mid = ? ORDER BY orderdate DESC LIMIT 0 ,3";
+		List<OrderBean> obList = new ArrayList<>();
+		obList = template.query(sql, new Object[] { mid}, new BeanPropertyRowMapper<OrderBean>(OrderBean.class));
+		if (obList.isEmpty()) {
+			return null;
+		}
+
+		return obList;
+	}
 
 }

@@ -2,11 +2,11 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	 text-decoration: none;
 }
 
-a {
-	text-decoration: none;
-}
+
+
 #member_content *{
  	font-family: 微軟正黑體;
 	
@@ -29,8 +29,8 @@ a {
 	font-size: 11px;
 }
 
-.ordlist_show {
-	 	
+.ordlist_show a{
+	 text-decoration: none;
  
 }
 
@@ -185,22 +185,29 @@ a {
 	float: left;
 	padding-top: 20px;
 	height: 75%;
+
 }
 
 .content_menu li {
 	text-align: center;
 	padding: 8px 0;
+	
+}
+.content_menu a{
+	 color:#514f4f;
+	 text-decoration: none;
 }
 
 .member_content {
-	width: 80%;
-/* 	border: 1px solid black; */
+	width: 77%;
+	border: 1px solid #e0dede;
 	float: left;
 	height: 75%;
 }
 
+
 .MemberModify_content_left {
-	padding: 5%  0 0  10%;
+	padding: 3%  0 0  12%;
 	float : left;
 	width: 50%;
 /* 	border: 1px solid black; */
@@ -209,7 +216,7 @@ a {
 }
 
 .MemberModify_content_right {
-	padding: 5%  0 0  10%;
+	padding: 3%  0 0  6%;
 	float: left;
 	width: 50%;
 /* 	BORDER: 1PX SOLID BLACK; */
