@@ -18,7 +18,7 @@
 
 	<div class="maneger_index_show">
 		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }member_manage_top.png"/></div>
-		<div class="maneger_index_show_right" style="margin-left: 6%;width:88%;">
+		<div class="maneger_index_show_right" style="margin-left: 6%;width:88%; border:2px solid #d8d0d0;">
 			<div class="show">  
 <!-- 				<div class="serch"> -->
 <!-- 					<input type="text"><input type="submit" value="送出"> -->

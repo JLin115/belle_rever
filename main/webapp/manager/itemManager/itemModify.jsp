@@ -25,7 +25,7 @@
 		<div class="maneger_index_show_right" style="width:90%; margin-left:5%; ">
    
 	<form enctype="multipart/form-data" name="form"method="POST" action="ItemModify" >
-		<div class="content">					
+		<div class="content" style="border: 2px solid #d8d0d0;">					
 			<div class="d1">
 				<span>編號：</span><input type="text" name='id' value="${ib.itemID }" /><p>${errorMsg.idError}</p><br> 
 				<span>價格：</span><input type="text" name='price' value="${ib.itemPrice }"/><p>${errorMsg.priceError}</p><br> 

@@ -1,15 +1,15 @@
 * {
 	margin: 0;
 	padding: 0;
- 	list-style: none;
+	list-style: none;
+	font-size: 18px;
 }
 
 .content {
 	width: 85%;
-	margin: 50px auto;
-	max-height:60%;
-	border: 1px solid #e0dede;
-	padding:1%;
+	margin: 5px auto;
+	border: 2px solid #ebcdcd;
+	padding: 1%;
 }
 
 .content::after {
@@ -24,19 +24,15 @@
 }
 
 .d1, .d2 {
-	width: 32%;
 	float: left;
-	margin: 5px;
+	margin: 1%;
 /* 	border: 1px solid black; */
 }
-.d1{
-	margin-left: 15%;
-}
-.d2{
-	width: 25%;
 
+.d1 {
+	width: 42%;
+	margin-left: 3%;
 }
- 
 
 .d1 textarea {
 	width: 41%;
@@ -68,8 +64,8 @@
 	display: inline-block;
 	margin-left: 10px;
 	color: red;
-	font-size: 12px;
 	width: 100px;
+	font-size: 12px;
 }
 
 .areap {
@@ -79,40 +75,38 @@
 }
 
 .d2 {
+	width: 25%;
 	float: left;
 	display: inline-block;
 }
 
 .d2 input {
-width: 30%;
+	width: 50%;
 }
 
 .b1 {
-	width:22%;   
-	float: right;  
-	margin-right: 3%;     
-/* 	border:1px solid black; */
-	margin-top: 3%;
+	width: 22%;
+	float: right;
+	margin-right: 3%;
+/* 	border: 1px solid black; */
+	margin-top: 1%;
 }
+
 .b1 input {
 	margin-top: 8px;
- 
 	width: 30px;
 }
+
 .b1 input[type="submit"] {
 	width: 100px;
 }
+
 .b2 {
-	width:22%;
+	width: 22%;
 	float: right;
 	color: red;
-/* 	border:1px solid black; */
-	margin-top: 3%;
+/* 	border: 1px solid black; */
+	margin-top: 1%;
 	margin-right: 3%;
 	font-size: 16px;
-}
-
-.d2 div {
-	margin-top: 15px;
-	margin-bottom: 15px;
 }

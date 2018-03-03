@@ -18,7 +18,7 @@
 
 	<div class="maneger_index_show">
 		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }manage_ord.png"/></div>
-		<div class="maneger_index_show_right" style="margin-left: 10%;">
+		<div class="maneger_index_show_right" style="margin-left: 10%;border:2px solid #d8d0d0;">
 			<div class="content">
 				<!-- 		<ul class="ordStatus"> -->
 				<%-- 			<c:forEach var="x" items="${ordStat}"> --%>

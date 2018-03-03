@@ -89,11 +89,11 @@
 
 /*index*/
 .maneger_index_show{
-	border:1px solid black;
+ 
 	height: 800px;
 	margin: 1% auto;
 	width: 77%;
-	
+	font-family: '微軟正黑體';
 	
 	
 }

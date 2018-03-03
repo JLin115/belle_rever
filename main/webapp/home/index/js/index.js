@@ -1,7 +1,15 @@
 $(window).ready(function () {
+/*search*/
+	
+	
+	$('.icon-search').on('click', function(){
+		alert()
+		
+		
+		
+		
+	})
 
-	
-	
 	
 	/* navbar */
 	$('.coustom_navbar_js a').on('mouseenter',function(){

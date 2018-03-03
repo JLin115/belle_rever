@@ -22,7 +22,7 @@
 <!-- 	<div style="background-image:url('img/17.jpg'); height:100% ; width:100%; position: absolute; z-index: 30;"> </div> -->
 	<div class="reg_content">
 <!-- RegisterServlet -->
-	<form class="Register" enctype="application/x-www-form-urlencoded">
+	<form class="Register" enctype="application/x-www-form-urlencoded" style="font-family: '微軟正黑體';">
 		<div class="log_content_title">會員註冊<br>Join</div>
 		<div><input type="text" name="account"   placeholder="會員帳號 Account"></div>
 		<div><input type="password" name="pas"   placeholder="會員密碼 Password">	</div>

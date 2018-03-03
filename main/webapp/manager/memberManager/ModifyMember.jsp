@@ -35,9 +35,9 @@ margin-bottom:10px;
 <%@include file="../nav/Nav.jsp"%>
 <div class="maneger_index_show">
 		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }member_manage_top.png"/></div>
-		<div class="maneger_index_show_right" style="margin-left: 6%;width:88%">
+		<div class="maneger_index_show_right" style="margin-left: 6%;width:88% ;">
 	<form class="ModifyMember_form" method="post" name="form" action="modifyMember" enctype="multipart/form-data">
-		<div>
+		<div style="border:2px solid #d8d0d0;">
 			<span>帳號:</span><input type="text" name="account" value="${mb.mid}"  readonly><br>
 			<span>姓名:</span><input type="text" name="name" value="${mb.mname} ">${errorMsg.nameError}<br>
 			<span>生日:</span><input type="text" name="bd" value="${mb.mbday }">${errorMsg.bderror}<br>

@@ -7,9 +7,10 @@
 
 
 .content {
-    width: 1200px;
-    margin: 50px auto;
-    border: 1px solid black;
+    width: 85%;
+    margin: 5px auto;
+    border: 2px solid #d8d0d0;
+    padding: 1%;
 		
 }
 .content::after {
@@ -24,20 +25,22 @@
 	margin-bottom:7px;
 }
 .d1,.d2 {
-    width: 320px;
+ 
     float: left;
-    margin: 5px;
+    margin: 1%;
 /*     border: 1px solid black; */
 }
 
 .d1{
-	width:580px;
+	width:42%;
+	margin-left: 3%;
 }
 .d1 textarea{
-		width:232px;
+	width:41%;
 	 resize : none;
 	 overflow-x:hidden;
 	 warp:break-word;
+	 height: 80px;
 }
 .d1 span:nth-of-type(5){
 float:left;
@@ -48,7 +51,7 @@ margin-top:4px;
 	width:80px;
 }
 .d1 input{
-	width:230px;
+	width:40%;
 	
 }
 .d1 input[type=file]{
@@ -70,47 +73,48 @@ margin-top:4px;
     display: inline-block;
     vertical-align :bottom;
     margin-bottom: 6px;
-
-
 }
 
 .d2 {
+	width:25%;
     float: left;
     display: inline-block;
 }
 
-
-
 .d2 input{
-    width: 150px;
+    width: 50%;
+}
+
+.b1,.b2{
+	margin-right: 3%;
+	
 }
 
 .b1 {
-    width: 230px;
+    width: 22%;
     float: right;
-    margin-right:20px;
+    margin-right:3%;
 /*     border:1px solid black; */
-     margin-top:5px;
+     margin-top:1%;
 }
 
 .b1 input {
     margin-top: 8px;
-    margin-left:50px;
-    	 
+/*     margin-left:50px;  */
     width: 30px;
 }
 .b1 input[type="submit"] {
     width: 100px;
-	 margin-left:30px;
+/* 	 margin-left:30px; */
 	
 }
 .b2{
-	 width: 230px;
-	  float: right;
-	  color:red;
-/* 	  border:1px solid black; */
-	 margin-top:25px;
-	 margin-right:20px;
+	 width: 22%;
+	 float: right;
+	 color:red;
+/* 	 border:1px solid black; */
+	 margin-top:1%;
+    margin-right:3%;
 	 font-size:16px;
 }
 

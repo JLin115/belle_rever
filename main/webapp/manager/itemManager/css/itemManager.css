@@ -34,7 +34,7 @@
 
 .itemManger_show_table {
 	width: 90%;
-	border: 1px solid black;
+	border: 1px solid #633434;
 	margin: 20px auto;
 	text-align: center;
 	border-spacing: 0;
@@ -42,36 +42,40 @@
 }
 
 .itemManger_show_table th, .itemManger_show_table td {
-	border: 1px solid black;
+	border: 1px solid #633434;
 }
 
 .itemManger_show_table img {
 	max-height: 200px;
 }
+.itemManger_show_table tr th{
+	 
+	background:#efe6e6; 
+}
 
 .itemManger_show_table tr th:NTH-OF-TYPE(1) {
 	width: 13%;
-	background: red;
+	 
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(2) {
 	width: 19%;
-	background: green;
+	 
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(3) {
 	width: 19%;
-	background: yellow;
+ 
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(4) {
 	width: 9%;
-	background: black;
+	 
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(5) {
 	width: 9%;
-	background: pink;
+	 
 }
 
 .itemManger_show_table tr th:NTH-OF-TYPE(6) {
@@ -80,5 +84,5 @@
 
 .itemManger_show_table tr th:NTH-OF-TYPE(7) {
 	width: 25%;
-	background: brown;
+	 
 }

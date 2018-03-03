@@ -19,6 +19,14 @@
 </head>
 <body>
 <%@include file="../nav/Nav.jsp" %>
+
+	<div class="maneger_index_show">
+
+		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }manage_product.png"/></div>
+		<div class="maneger_index_show_right" style="width:90%; margin-left:5%; ">
+
+
+
 	<form enctype="multipart/form-data" name="form"method="POST" action="ShelverServlet" >
 		<div class="content"> 
 			<div class="d1">
@@ -62,6 +70,8 @@
 			<div class="b2">${errorMsg.ColorSizeStockError}</div>
 		</div>
 	</form>
+		</div>
+			</div>
 
 </body>
 </html>
