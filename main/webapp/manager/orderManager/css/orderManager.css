@@ -22,30 +22,31 @@
 }
 
 table{
+	width:90%;
     border-collapse: collapse;
     margin: 20px auto;
 
 }
 table tr:nth-of-type(1) td{
-    background-color:#e0dede;    
+    background-color:#efe6e6;    
 
 }
-tr span{
+tr td{
     display: inline-block;
     border-bottom: 1px solid black;
 }
-tr td:nth-of-type(1) span{
-    width: 150px;
+tr td:nth-of-type(1) {
+    width: 20%;
  } 
    
-tr td:nth-of-type(2) span{
-    width: 120px;
+tr td:nth-of-type(2) {
+    width:20%;
  } 
-tr td:nth-of-type(3) span{
-    width: 120px;
+tr td:nth-of-type(3) {
+    width: 20%;
   } 
- tr td:nth-of-type(4) span{
-    width: 250px;
+ tr td:nth-of-type(4) {
+    width: 40%;
  } 
  tr span {
      height: 23px;

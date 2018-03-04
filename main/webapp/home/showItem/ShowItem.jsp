@@ -19,9 +19,16 @@
 
 <title>Shelver</title>
 <script type="text/javascript">
-$(window).readry(function() {
+$(window).ready(function() {
  
-	alert(jsessionID)
+		var pageNow = $('.hidden_pageNow').val();
+		$('.controlPage a').each(function() {
+			if ($(this).text().trim() == pageNow) {
+				$(this).css({
+					'text-decoration' : 'underline'
+				})
+			}
+		})
 })
 </script>
 </head>
@@ -63,20 +70,20 @@ $(window).readry(function() {
 		<div class="controlPage">
 			<c:if test="${pageNow > 0}">
 				<div class="controlPage">
-
+					<input type="hidden" class="hidden_pageNow" value="${pageNow}">
 					<c:if test="${pageNow ==1 }">
-						<a href="ShowItem?itid=${itid}&pageNow=${pageNow }"> PREV <</a>
+						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow }"> PREV <</a>
 					</c:if>
 
 					<c:if test="${pageNow >1 }">
-						<a href="ShowItem?itid=${itid}&pageNow=${pageNow -1}">PREV <</a>
+						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow -1}">PREV <</a>
 					</c:if>
 
 
 
 					<c:if test="${totalPage <5}">
 						<c:forEach var="x" begin="1" end="${totalPage}">
-							<a href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
+							<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
 						</c:forEach>
 					</c:if>
 
@@ -84,32 +91,32 @@ $(window).readry(function() {
 						<c:if test="${pageNow > 3}">
 							<c:if test="${totalPage - pageNow > 2}">
 								<c:forEach var="x" begin="${pageNow-2 }" end="${pageNow+2 }">
-									<a href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
+									<a  class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
 								</c:forEach>
 							</c:if>
 
 							<c:if test="${totalPage - pageNow < 3}">
 								<c:forEach var="x" begin="${totalPage-4 }" end="${totalPage }">
-									<a href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
+									<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
 								</c:forEach>
 							</c:if>
 						</c:if>
 						<c:if test="${pageNow < 4}">
 							<c:forEach var="x" begin="1" end="5">
-								<a href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
+								<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
 							</c:forEach>
 						</c:if>
 					</c:if>
 
 
 					<c:if test="${pageNow==totalPage}">
-						<a href="ShowItem?itid=${itid}&pageNow=${pageNow }"> >NEXT</a>
+						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow }"> >NEXT</a>
 					</c:if>
 					<c:if test="${pageNow <totalPage }">
-						<a href="ShowItem?itid=${itid}&pageNow=${pageNow +1}"> >NEXT</a>
+						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow +1}"> >NEXT</a>
 					</c:if>
 					<c:if test="${totalPage ==0 }">
-						<a href="ShowItem?itid=${itid}&pageNow=${pageNow}"> >NEXT</a>
+						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow}"> >NEXT</a>
 
 					</c:if>
 				</div>

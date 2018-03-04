@@ -99,16 +99,18 @@ $(window).ready(function() {
 						
 						<c:if test="${x.isFeedBack eq true}">
 						<c:if test="${type eq 3}">
-							<input class="comment" name="${x.itemHeader}" type="button"
-								value="評價">
+							<span class="comment customButton customButtonFix" name="${x.itemHeader}">評價</span>
+<%-- 							<input class="comment" name="${x.itemHeader}" type="button" value="評價"> --%>
 						</c:if> 
 						<c:if test="${type ne 3}">
-							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled" style="color:gray;">
+						<span class="customButton customButtonFix" name="${x.itemHeader}" style="color:gray;">評價</span>
+<%-- 							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled" style="color:gray;"> --%>
 						</c:if>
 						</c:if>
-						
+						 
 						<c:if test="${x.isFeedBack eq false }">
-							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled" style="color:gray;">
+							<span class="customButton customButtonFix" name="${x.itemHeader}" style="color:gray;">評價</span>
+<%-- 							<input class="comment" name="${x.itemHeader}" type="button" value="評價" disabled="disabled" style="color:gray;"> --%>
 						</c:if>
 						
 						</td>

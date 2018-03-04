@@ -49,6 +49,9 @@ public class GlobalService {
 	public final static int member_ord_PageSize = 5; // 會員-訂單-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index/index.jsp";
 	public final static String mangerIndex = "/Belle_Rever/manager/itemManager/ItemManager.jsp";
+	public final static int feedBackLaud=30;
+	public final static short laudReward=30; 
+	public final static long Month_ms=2592000000L;
 	public static String getStaticRoute_itemImg() {
 		return staticRoute_itemImg;
 	}

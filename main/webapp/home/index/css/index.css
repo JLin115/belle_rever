@@ -17,6 +17,25 @@ body {
 	position: relative;
 	overflow-y: scroll;
 }
+.customButton{
+	display: inline-block;
+	width: 100px;
+	border: 1px solid black;
+	border-radius: 8px;
+	height: 32px;
+	line-height: 32px;
+	background: rgb(77, 63, 48);
+	color: white;
+	text-align: center;
+	bottom: 5px;	
+}
+.customButtonFix{
+	width: 70px;
+}
+
+.customButton:hover{
+	cursor: pointer;
+}
 
 .nav_ul {
 	width: 100%;
@@ -304,4 +323,7 @@ body {
 	list-style: none;
 	margin-top: 8px;
 	/* border: 1px solid black; */
+}
+.controlPage_a_color{
+	color:black;
 }

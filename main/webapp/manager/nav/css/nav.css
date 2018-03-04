@@ -54,18 +54,23 @@
 
 .manager_navList {
 	margin: 0 auto;
-	background-color: transparent;
 	width: 57%;
 	height: 30px;
 	line-height: 30px;
 	font-family: '微軟正黑體';
 	font-size: 18px;
 }
-
+.manager_navList_div{
+	background-color: #604747; 
+}
+.manager_navList>li>a{
+	color:white;
+} 
 .manager_navList li {
 	text-align: center;
 	width: 15%;
 	position:relative;
+	color:white;
 	float: left;
 }
 .itemManager_a:hover{

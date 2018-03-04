@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 var x = ${gson};
 $(window).ready(function() {
-	var length = x.length;
+<!-- 	var length = x.length; -->
 	var color = new Set();
 	
 	x.forEach(item => {
@@ -100,6 +100,47 @@ $(window).ready(function() {
    			})
 	}
 	
+	
+	
+	$('.icon-heart').on('click',function(){
+ 		var mId = $(this.previousSibling).val();
+ 		var itemId = $(this.previousSibling).attr('name');
+<!-- 		alert(mId+"+"+itemId) -->
+		var queryS="mId="+mId+"&itemId="+itemId
+		$.ajax({
+   			'type':'Get',
+   			'url':'/Belle_Rever/member/FeedBack?'+queryS,
+   			'cache': false,
+<!--    			'data':{"mId":mId , "itemId":itemId}, -->
+   			'datatype':'application/json;charset=utf-8',
+   			'headers':{"X-Requested-With": "XmlHttpRequest"},
+   			success:function(data){
+<!--    			alert(data) -->
+   			console.log(data)
+   			location.reload();
+   			 
+   			},error:function(data){ 
+   			console.log(data)
+   			 if(data.responseJSON.status == "toLogin"){
+   			  	console.log(data)
+       			$('.loginB').trigger('click')
+       			return 
+   				}
+   			 if(data.responseJSON.error == "er1"){
+   			 alert("已經送過愛心了喔~!")
+   			 location.reload();
+   			 	return 
+   			 }
+   				
+   				
+   			}
+   			
+   			
+   		})
+	})
+	
+	
+
 	
 	
 	

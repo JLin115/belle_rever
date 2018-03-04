@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
+import home.purchase.model.CouponBean;
+import member.model.FeedBackBean;
+
 public interface ItemDAO {
 	
 	public long getTotalRecords();
@@ -19,5 +22,12 @@ public interface ItemDAO {
 	public void deleteItemVal(int itemId);
 	public void setItemBean(ItemBean ib);
 	public void setItemValBean (List<ItemValBean> ibvList ,int id);
-
+	
+	public  List<FeedBackBean> getItemFeedBack(Integer itemId);
+	public  FeedBackBean getAFeedBack(Integer itemId,String mId);
+	
+	public void updateFeedBack(FeedBackBean fbb);
+	public void insertCP(CouponBean cb);
+	
+	
 }

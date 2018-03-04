@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemDAOImpl;
 import manager.itemManager.model.ItemValBean;
+import member.model.FeedBackBean;
 
 /**
  * Servlet implementation class ShowSingleItem_home
@@ -40,11 +41,12 @@ public class ShowSingleItem_home extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		request.setCharacterEncoding("utf-8");
-		HttpSession s = request.getSession(false);
-		System.out.println(s.getId());
+		HttpSession s = request.getSession();
+//		System.out.println(s.getId());
 		ItemDAOImpl dao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		boolean b = true;
 		ItemBean ib = null;
+		List<FeedBackBean> feedBackList = null;
 		int itemId = 0;
 		try {
 			itemId = Integer.valueOf(request.getParameter("itemId"));
@@ -54,6 +56,7 @@ public class ShowSingleItem_home extends HttpServlet {
 		}
 		if (b) {
 			ib = dao.getItem(itemId);
+			feedBackList = dao.getItemFeedBack(itemId);
 		}
 
 			if (ib != null) {
@@ -93,16 +96,16 @@ public class ShowSingleItem_home extends HttpServlet {
 //				String ssss = g.toJson(ivbList, listType);
 //				System.out.println(ssss);
 				
-				Gson objGson = new GsonBuilder().setPrettyPrinting().create();
+				Gson objGson = new Gson();
 				String json = objGson.toJson(ivbList);
 //				System.out.println(json);
 				s.setAttribute("ib", ib);
-				s.setAttribute("ivbList", ivbList);
+				request.setAttribute("ivbList", ivbList);
 				s.setAttribute("gson", json);
-				
-			 
+				request.setAttribute("faadBack", feedBackList);
 				RequestDispatcher rd = request.getRequestDispatcher("SingleItem.jsp");
 				rd.forward(request, response);
+				return;
 			} else {
 				response.sendRedirect("ShowItem.jsp");
 				return;

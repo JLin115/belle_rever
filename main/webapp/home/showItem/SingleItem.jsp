@@ -28,8 +28,7 @@
 <link rel="stylesheet" href="css/SingleItem.css">
 <script src=' <c:url value="js/SingleItem.jsp"/> '></script>
 </head>
-<body>
-
+<body> 
 	<jsp:include page="${initParam['header']}"></jsp:include>
 	<!-- 	<div class="div"></div> -->
 	<!-- 	<div class="div2"></div> -->
@@ -41,9 +40,7 @@
 	<!-- 		<input type="button" name="Cart" value="加入購物車" />	 -->
 	<!-- 	</div> -->
 
-
-
-
+ 
 	<!-- 外框 -->
 	<div class="singleitem_content">
 
@@ -155,7 +152,16 @@
 						<p>內容-3</p>
 					</div>
 					<div class="tab-content-4">
-						<p>內容-4</p>
+						<div class="comment_content">
+							<c:forEach var="x" items="${faadBack}">
+								<ul>
+									<li><img src="${initParam['commemtImgRoute']}${x.feedBackPic}"></li>
+									<li><div>${x.feedBackVal}</div></li>
+									<li class="clear_commemt"><input type="hidden" name="${x.itemId}" value="${x.mId}"><span class="icon-heart" style="color:red;"> </span>&nbsp;</li>
+									 
+								</ul> 
+							</c:forEach>
+						</div>
 					</div>
 				</div>
 			</div>

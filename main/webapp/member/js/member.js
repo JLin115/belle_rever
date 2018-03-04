@@ -37,7 +37,7 @@ $(window).ready(function () {
 				 				'<a href="OrdDetail?ordId='+value.ordId+'">'+
 				 					'<div class="ordlist_content">'+
 				 						'<div>'+
-				 							'<span>訂單編號</span><span>:'+value.ordId+'</span>'+
+				 							'<span style="color:red; font-weight:bolder;">訂單編號</span><span style="color:red; font-weight:bolder;">:'+value.ordId+'</span>'+
 											'<span>訂單狀態</span><span>:'+status+'</span>'+
 											'<span>訂單金額</span><span>:'+value.ordTotal+'</span>'+
 										'</div>'+

@@ -23,7 +23,7 @@ import com.google.gson.GsonBuilder;
 import _init.GlobalService;
 import home.register.model.Dao;
 import home.register.model.MemberBean;
-import member.model.CommemtBean;
+import member.model.FeedBackBean;
 
 @WebServlet("/member/InsertCommemt")
 @MultipartConfig
@@ -49,7 +49,7 @@ public class InsertComment extends HttpServlet {
 		request.setAttribute("errorMsg", errorMsg);
 		HttpSession session = request.getSession(false);
 		Dao dao = null;
-		CommemtBean cb =null;
+		FeedBackBean cb =null;
 		Integer ordId=null;
 		Short ordSern = null;
 		if (session != null) {
@@ -59,7 +59,7 @@ public class InsertComment extends HttpServlet {
 				MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
 				ordId = Integer.valueOf(request.getParameter("ordId"));
 				ordSern = Short.valueOf(request.getParameter("ordSern"));
-				cb = new CommemtBean();
+				cb = new FeedBackBean();
 				cb.setmId(mb.getMid());
 				cb.setItemId(itemId);
 

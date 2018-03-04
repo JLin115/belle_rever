@@ -69,6 +69,17 @@ $(window).ready(function () {
 		})
    
     
+		 
+		var osid = $('.osidH').val();
+		$('.ordStatus li').each(function () {
+			console.log(this) 
+			if($(this).attr('name') == osid){ 
+				$(this).css({
+					'text-decoration' : 'underline'
+				})
+			}
+		
+		}) 
     
  
 })

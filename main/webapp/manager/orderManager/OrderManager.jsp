@@ -13,6 +13,7 @@
 <title>Shelver</title>
 </head>
 <body>
+	<input type="hidden" value="${osId}" class="osidH">
 	<%@include file="../nav/Nav.jsp"%>
 
 	<div class="maneger_index_show">
@@ -21,7 +22,7 @@
 			<div class="content">
 				<ul class="ordStatus">
 					<c:forEach var="x" items="${ordStat}">
-						<li><a href="OrdList?type=${x.key}&pageNow=1">${x.value}</a></li>
+						<li name="${x.key}"><a href="OrdList?type=${x.key}&pageNow=1" >${x.value}</a></li>
 					</c:forEach>
 				</ul>
 				<table>

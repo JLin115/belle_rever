@@ -1,21 +1,26 @@
 package member.model;
 
-public class CommemtBean {
+public class FeedBackBean {
 private Integer itemId;
 private String mId;
 private String feedBackVal;
 private String feedBackPic;
 private Integer feedBackLaud;
+private String feedBackFrom;
 
-public CommemtBean(){}
+public FeedBackBean(){
+	feedBackFrom="";
+}
 
-public CommemtBean(Integer itemId, String mId, String feedBackVal, String feedBackPic, Integer feedBackLaud) {
+public FeedBackBean(Integer itemId, String mId, String feedBackVal, String feedBackPic, Integer feedBackLaud,
+		String feedBackFrom) {
 	super();
 	this.itemId = itemId;
 	this.mId = mId;
 	this.feedBackVal = feedBackVal;
 	this.feedBackPic = feedBackPic;
 	this.feedBackLaud = feedBackLaud;
+	this.feedBackFrom = feedBackFrom;
 }
 
 public Integer getItemId() {
@@ -57,6 +62,15 @@ public Integer getFeedBackLaud() {
 public void setFeedBackLaud(Integer feedBackLaud) {
 	this.feedBackLaud = feedBackLaud;
 }
+
+public String getFeedBackFrom() {
+	return feedBackFrom;
+}
+
+public void setFeedBackFrom(String feedBackFrom) {
+	this.feedBackFrom = feedBackFrom;
+}
+
 
 	
 	

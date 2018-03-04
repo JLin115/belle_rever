@@ -165,12 +165,13 @@
 
 .controlPage{
 	text-align: center;
+
 }
 .controlPage a{
-	
 	font-size: 17px;
 	padding:0 5px;
 }
+ 
 
 /*member.jsp*/
 .member_center {

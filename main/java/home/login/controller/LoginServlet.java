@@ -143,15 +143,21 @@ public class LoginServlet extends HttpServlet {
 			return;
 		} else {
 			String str = (String) session.getAttribute("target");
+			String qs = (String) session.getAttribute("qs");
 			if(str == null || str.equals("")){
 				str  =GlobalService.index;
 			}
 			if(mb.getMpid() == 999){
 				str=GlobalService.mangerIndex;
 			}
-			
+			String url="";
 			System.out.println(str);
-			String url ="{\"url\" :\""+str+"\"}";
+			if(qs!=null){
+			 url ="{\"url\" :\""+str+"?"+qs+"\"}";
+			}else{
+			 url ="{\"url\" :\""+str+"\"}";
+				
+			}
 			System.out.println(url);
 			response.getWriter().write(url);
 			return; 

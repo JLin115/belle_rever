@@ -41,7 +41,8 @@ $(window).ready(function() {
 			<span>生日:</span><input type="text" name="bd" value="${LoginOK.mbday}"><span class="errorMsg">${errorMsg.bderror}</span><br>
 			<span>電話:</span><input type="text" name="phone" value="${LoginOK.mphone}"><span class="errorMsg">${errorMsg.phoneError}</span><br> 
 			<span>信箱:</span><input type="text" name="email" value="${LoginOK.memail}"><span class="errorMsg">${errorMsg.emailError}</span><br><br>
-			<input type="submit" value="確認送出">
+			<span class="customButton" onclick="$('form[action=MemberModifyServlet]').submit();">確認送出</span>
+
 		</div>
 	</form>
 	</div>
@@ -51,7 +52,7 @@ $(window).ready(function() {
 		<div>
 			<span>修改密碼:</span><input type="password" name="pas"><span class="errorMsg">${errorMsg.paswordError}</span><br>
 			<span>密碼確認:</span><input type="password" name="pasc"><span class="errorMsg">${errorMsg.paswordError2}</span><br>
-			<br> <input type="submit" value="確認送出">
+			<br><span class="customButton" onclick="$('form[action=PasswordModifyServlet]').submit();">確認送出</span>
 		</div>
 	</form>
 	</div>

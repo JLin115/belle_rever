@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 
 import _init.GlobalService;
 import home.purchase.model.OrderBean;
-import member.model.CommemtBean;
+import member.model.FeedBackBean;
 
 @Component("MemberDAOImpl")
 public class MemberDAOImpl implements Dao {
@@ -204,7 +204,7 @@ public class MemberDAOImpl implements Dao {
 	}
 
 	@Override
-	public void insertCommemt(CommemtBean cb) {
+	public void insertCommemt(FeedBackBean cb) {
 	 String sql = "Insert into feedback (itemId,mId,feedBackVal,feedBackPic,feedBackLaud) values(?,?,?,?,?)";
 	 template.update(sql,cb.getItemId(),cb.getmId(),cb.getFeedBackVal(),cb.getFeedBackPic(),cb.getFeedBackLaud());
 	}

@@ -46,18 +46,23 @@ public class OrdList extends HttpServlet {
 			response.sendRedirect("OrderManager.jsp");
 			return;
 		} 
+		System.out.println(dao.getTotalPage());
+		
 		if (pageNow <= dao.getTotalPage()&b) {
 			List<OrderBean> obList = dao.getOrd(osId);
 			request.setAttribute("osId", osId);
 			request.setAttribute("allOrder", obList);
 			request.setAttribute("pageNow", dao.getPageNow());
 			request.setAttribute("totalPage", dao.getTotalPage());
+	 
 			RequestDispatcher rd = request.getRequestDispatcher("OrderManager.jsp");
 			rd.forward(request, response);
 			return;
 		} else {
+			request.setAttribute("osId", osId);
 			System.out.println("正在導回主頁");
-			response.sendRedirect("OrderManager.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("OrderManager.jsp");
+			rd.forward(request, response);
 			return;
 //			RequestDispatcher rd = request.getRequestDispatcher("ItemManager.jsp");
 //			rd.forward(request, response);

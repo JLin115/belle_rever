@@ -4,10 +4,7 @@ $(window).ready(function () {
 	
 	$('.icon-search').on('click', function(){
 		alert()
-		
-		
-		
-		
+		 
 	})
 
 	
@@ -94,11 +91,19 @@ $(window).ready(function () {
     			datatype:'JSON',
     			success:function(data){
     				alert("登入成功")
-    				alert(data.url)
+//    				alert(data.url)
+    				if(data.url.startsWith("/Belle_Rever/member/FeedBack?")){
+    					$('.newlo').trigger('click');
+    					$('.icon-heart').trigger('click');
+//    					alert()
+    					return
+    				}else{
+    					window.location.assign(data.url); 
+    	    			return
+    				}
 //    				window.location.replace(data.url);
 //    				window.location.href=data.url;
-    				window.location.assign(data.url); 
-    			return
+    				
     			
     			},error:function(data){
     				console.log(data)

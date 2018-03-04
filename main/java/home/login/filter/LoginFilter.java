@@ -92,6 +92,7 @@ public class LoginFilter implements Filter {
 						return;
 						}
 					}
+					session.setAttribute("qs",req.getQueryString());
 					session.setAttribute("target", req.getRequestURI());
 					 System.out.println("需要登入，還未登入");
 					
@@ -118,8 +119,7 @@ public class LoginFilter implements Filter {
 	}
 
 	// 讀入起始參數
-	public void init(FilterConfig fConfig) throws ServletException {
-
+	public void init(FilterConfig fConfig) throws ServletException { 
 		Enumeration<String> e = fConfig.getInitParameterNames();
 		while (e.hasMoreElements()) {
 			String name = e.nextElement();

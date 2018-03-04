@@ -1,6 +1,7 @@
 package manager.memberManager.controller;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,7 +41,7 @@ public class ShowAllMemeber extends HttpServlet {
 		String mid = request.getParameter("account");
 		MemberBean mb =dao.getMember(mid);
 	
-
+		 
 		if (mid == null || mid.equals("")|| mb==null) {
 			if(pageNow>dao.getTotalPage()){
 				pageNow=1;

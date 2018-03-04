@@ -70,7 +70,9 @@ public class ShowOrdList extends HttpServlet {
 					rd.forward(request, response);
 					return;
 				} else {
-					response.sendRedirect("OrdList.jsp");
+					request.setAttribute("osId", osId);
+					RequestDispatcher rd = request.getRequestDispatcher("OrdList.jsp");
+					rd.forward(request, response);
 					return;
 				}
 
