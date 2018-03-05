@@ -141,7 +141,7 @@
 					
 					
 					<li><div style="border-bottom: 1px solid black; display: inline-block; padding-bottom: 0px; line-height: 30px; margin-left: 110%;">
-					<span class="icon-search" /><input type="text" class="coustom_text" placeholder="Search"></div></li>
+					<span class="icon-search"></span><input type="text" class="coustom_text" placeholder="Search"></div></li>
 				</ul>
 
 			</div>

@@ -48,6 +48,7 @@
 	<context:component-scan base-package="home.purchase.model"></context:component-scan>
 	<context:component-scan base-package="manager.orderManager.model"></context:component-scan>
 	<context:component-scan base-package="_init.model"></context:component-scan>
+	<context:component-scan base-package="home.search.model"></context:component-scan>
 <!-- 	<context:component-scan base-package="SpringMVCTest"></context:component-scan> -->
 
 </beans>

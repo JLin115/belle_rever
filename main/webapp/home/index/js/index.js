@@ -3,8 +3,9 @@ $(window).ready(function () {
 	
 	
 	$('.icon-search').on('click', function(){
-		alert()
-		 
+	 var val = "?val="+$('.coustom_text').val()+"&pageNow=1"
+	 var url = "/Belle_Rever/home/search/Searcher"+val
+	 window.location.assign(url);
 	})
 
 	

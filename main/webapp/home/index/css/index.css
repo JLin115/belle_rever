@@ -139,6 +139,9 @@ body {
 	position: absolute;
 	bottom: 5px;
 }
+.cartButton:hover{
+	cursor: pointer;
+}
 
 .cart {
 	padding: 10px 5px 5px 5px;
