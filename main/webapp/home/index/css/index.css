@@ -32,7 +32,11 @@ body {
 .customButtonFix{
 	width: 70px;
 }
-
+.customButtonFix2{
+	width: 60px;
+	height: 23px;
+	line-height: 23px;
+	padding:0px;}
 .customButton:hover{
 	cursor: pointer;
 }

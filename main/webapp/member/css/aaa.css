@@ -29,10 +29,7 @@
 	font-size: 11px;
 }
 
-.ordlist_show a{
-	 text-decoration: none;
  
-}
 
 .ordlist_content {
 	width: 70%;
@@ -147,7 +144,7 @@
 }
 
 .ordlist_title {
-	width: 20%;
+	width: 26%;
 	/* border:1px solid black; */
 }
 

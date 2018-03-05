@@ -21,8 +21,7 @@
 
 <script type="text/javascript">
 	$(window).ready(function (){
-	
-		 
+	 
 				var pageNow = $('.hidden_pageNow').val();
 				var controllBar_a = $('.controlPage a');
 				$('.member_title_img').attr('src', "${initParam['showImgRoute']}ord_top.png")
@@ -33,9 +32,7 @@
 						})
 					}
 				})
-				
-				
-				
+				  
 				var osid = $('.osidH').val();
 				$('.ordStatus li').each(function () {
 				console.log(this) 
@@ -43,12 +40,8 @@
 					$(this).css({
 						'text-decoration' : 'underline'
 					})
-				}
-		
-			}) 
-    
-				
-				
+				} 
+			})  	 
 })
 </script>
 
@@ -68,23 +61,22 @@
 		</ul>
 		<div class="ordlist_show">
 			<c:forEach var="x" items="${ordList}">
-				<a href="OrdDetail?ordId=${x.ordId}">
+				<a href="OrdDetail?ordId=${x.ordId}" style=" text-decoration: none; ">
 					<div class="ordlist_content">
 						<div>
-							<span style="color:red; font-weight:bolder;">訂單編號</span><span style="color:red; font-weight:bolder;">:${x.ordId}</span>
+							<span style="color:red; font-weight:bolder;">訂單編號</span><span style="color:red; font-weight:bolder;">：${x.ordId}</span>
 
 							<c:forEach var="y" items="${ordStat}">
 								<c:if test="${y.key == x.osId }">
-									<span>訂單狀態</span>
-									<span>:${y.value}</span>
+									<span>訂單狀態</span><span>：${y.value}</span>
 								</c:if>
 							</c:forEach>
-							<span>訂單金額</span><span>:${x.ordTotal}</span>
+							<span>訂單金額</span><span>：${x.ordTotal}</span>
 						</div>
 						<div>
-							<span>訂購日期</span><span>:${x.orderDate}</span>
+							<span>訂購日期</span><span>：${x.orderDate}</span>
 							
-							 <span>出貨日期</span><span>:
+							 <span>出貨日期</span><span>：	
 							 
 								<c:if test="${x.shipDate eq '1990-01-01 00:00:00.0'}"></c:if>
 								<c:if test="${x.shipDate ne '1990-01-01 00:00:00.0'}">

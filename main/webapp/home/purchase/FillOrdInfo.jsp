@@ -32,12 +32,12 @@
         <div class="sType">
             <form class="form_Purchase"action="Purchase" name="form" method="get">
                 <div class="FillOrdInfo_type1">
-                    <span class="shipping">宅配貨到付款</span><span>全館消費滿 NT.699元可享免運。</span><span style="color:red;">(「貨到付款」服務僅限台灣本島)</span>
+                    <span class="shipping customButton customButtonFix2" style="">宅配貨到付款</span>&nbsp;<span>全館消費滿 NT.699元可享免運。</span><span style="color:red;">(「貨到付款」服務僅限台灣本島)</span>
                     <span class="errorMsg">${errorMsg.typeError }</span>
                 </div>
 
                 <div class="FillOrdInfo_type2">
-                    <span class="convient">超商取貨</span><span>全館消費滿 NT.699元可享免運。</span><span class="errorMsg">${errorMsg.typeError }</span>
+                    <span class="convient customButton customButtonFix2" style=" ">超商取貨</span>&nbsp;<span>全館消費滿 NT.699元可享免運。</span><span class="errorMsg">${errorMsg.typeError }</span>
                 </div>
 
                 <input type="hidden" name="stype" value="${param.webtemp}">
@@ -56,10 +56,10 @@
                     </c:if>
                 </div>
                 
-				<div class="FillOrdInfo_cp"><span>折價券:</span><input type="text" name="coupon" style=" width: 15%; background:transparent;"><span class="errorMsg">${errorMsg.couponError }</span></div><br>
+				<div class="FillOrdInfo_cp"><span>折價券:</span>&nbsp;<input type="text" name="coupon" style=" width: 15%; background:transparent;"><span class="errorMsg">${errorMsg.couponError }</span></div><br>
                 <!-- ${errorMsg.couponError} -->
             </form>
-        </div>
+        </div>  
        
         <hr style="border:solid 0.5px; color:#d6d1d1; height:0.05%; margin-bottom:0.5%">
        

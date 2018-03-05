@@ -79,8 +79,8 @@ public class FeedBack extends HttpServlet {
 						cb.setCpQty(1);
 						cb.setCpDes("商品:" + itemId + "-達成贊數折價券");
 						cb.setmId(mId);
-						cb.setInvalid(vt);
-						cb.setValid(invt);
+						cb.setInvalid(invt);
+						cb.setValid(vt);
 						cb.setCpVal(GlobalService.laudReward);
 						// 寫回折價券
 						dao.insertCP(cb);

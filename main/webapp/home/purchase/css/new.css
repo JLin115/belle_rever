@@ -23,7 +23,7 @@
 
 .sType span {
 	font-family: 微軟正黑體;
-	padding-top: 1%;
+	margin-top: 1%;
 	/* border: 1px solid black; */
 }
 .sType div span:NTH-OF-TYPE(1){

@@ -37,13 +37,13 @@ $(window).ready(function () {
 				 				'<a href="OrdDetail?ordId='+value.ordId+'">'+
 				 					'<div class="ordlist_content">'+
 				 						'<div>'+
-				 							'<span style="color:red; font-weight:bolder;">訂單編號</span><span style="color:red; font-weight:bolder;">:'+value.ordId+'</span>'+
-											'<span>訂單狀態</span><span>:'+status+'</span>'+
-											'<span>訂單金額</span><span>:'+value.ordTotal+'</span>'+
+				 							'<span style="color:red; font-weight:bolder;">訂單編號</span><span style="color:red; font-weight:bolder;">：'+value.ordId+'</span>'+
+											'<span>訂單狀態</span><span>：'+status+'</span>'+
+											'<span>訂單金額</span><span>：'+value.ordTotal+'</span>'+
 										'</div>'+
 										'<div>'+
-				 							'<span>訂購日期</span><span>:'+d+'</span>'+
-				 							'<span>出貨日期</span><span>:</span>'+
+				 							'<span>訂購日期</span><span>：'+d+'</span>'+
+				 							'<span>出貨日期</span><span>：</span>'+
 				 						'</div>'+
 				 					'</div>'+
 				 				'</a>'+

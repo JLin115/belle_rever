@@ -36,11 +36,11 @@ $(window).ready(function() {
 	<div class="MemberModify_content_left">
 	<form method="post" name="form" action="MemberModifyServlet" >
 		<div>
-			<span>會員帳號:</span><span>${LoginOK.mid}</span><br>
-			<span>會員姓名:</span><input type="text" name="name" value="${LoginOK.mname}"><span class="errorMsg">${errorMsg.nameError}</span><br> 
-			<span>生日:</span><input type="text" name="bd" value="${LoginOK.mbday}"><span class="errorMsg">${errorMsg.bderror}</span><br>
-			<span>電話:</span><input type="text" name="phone" value="${LoginOK.mphone}"><span class="errorMsg">${errorMsg.phoneError}</span><br> 
-			<span>信箱:</span><input type="text" name="email" value="${LoginOK.memail}"><span class="errorMsg">${errorMsg.emailError}</span><br><br>
+			<span>會員帳號</span>：<span>${LoginOK.mid}</span><br>
+			<span>會員姓名</span>：<input type="text" name="name" value="${LoginOK.mname}"><span class="errorMsg">${errorMsg.nameError}</span><br> 
+			<span>生日</span>：<input type="text" name="bd" value="${LoginOK.mbday}"><span class="errorMsg">${errorMsg.bderror}</span><br>
+			<span>電話</span>：<input type="text" name="phone" value="${LoginOK.mphone}"><span class="errorMsg">${errorMsg.phoneError}</span><br> 
+			<span>信箱</span>：<input type="text" name="email" value="${LoginOK.memail}"><span class="errorMsg">${errorMsg.emailError}</span><br><br>
 			<span class="customButton" onclick="$('form[action=MemberModifyServlet]').submit();">確認送出</span>
 
 		</div>
@@ -50,8 +50,8 @@ $(window).ready(function() {
 	<div class="MemberModify_content_right" >
 	<form method="post" name="form" action="PasswordModifyServlet">
 		<div>
-			<span>修改密碼:</span><input type="password" name="pas"><span class="errorMsg">${errorMsg.paswordError}</span><br>
-			<span>密碼確認:</span><input type="password" name="pasc"><span class="errorMsg">${errorMsg.paswordError2}</span><br>
+			<span>修改密碼</span>：<input type="password" name="pas"><span class="errorMsg">${errorMsg.paswordError}</span><br>
+			<span>密碼確認</span>：<input type="password" name="pasc"><span class="errorMsg">${errorMsg.paswordError2}</span><br>
 			<br><span class="customButton" onclick="$('form[action=PasswordModifyServlet]').submit();">確認送出</span>
 		</div>
 	</form>

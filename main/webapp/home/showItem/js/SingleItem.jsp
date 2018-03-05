@@ -116,6 +116,8 @@ $(window).ready(function() {
    			'headers':{"X-Requested-With": "XmlHttpRequest"},
    			success:function(data){
 <!--    			alert(data) -->
+ 
+			alert(data.success)
    			console.log(data)
    			location.reload();
    			 

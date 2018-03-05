@@ -41,10 +41,10 @@ $(window).ready(function() {
 	<div class="ordlist_show">
 		<div class="orderdetail_ord">
 			<div>
-				<span class="ordlist_title">訂單編號</span><span class="ordlist_value">:${ob.ordId}</span><br>
-				<span class="ordlist_title">訂單人</span><span class="ordlist_value">:${ob.mId}</span><br>
-				<span class="ordlist_title">訂購日期</span><span class="ordlist_value">:<fmt:formatDate value="${ob.orderDate}" pattern="yyyy-MM-dd" /></span><br> 
-				<span class="ordlist_title">出貨日期</span><span class="ordlist_value">:
+				<span class="ordlist_title">訂單編號</span><span class="ordlist_value">：${ob.ordId}</span><br>
+				<span class="ordlist_title">訂單人</span><span class="ordlist_value">：${ob.mId}</span><br>
+				<span class="ordlist_title">訂購日期</span><span class="ordlist_value">：<fmt:formatDate value="${ob.orderDate}" pattern="yyyy-MM-dd" /></span><br> 
+				<span class="ordlist_title">出貨日期</span><span class="ordlist_value">：
 				
 					<c:if test="${ob.shipDate eq '1990-01-01 00:00:00.0'}"></c:if>
 					<c:if test="${ob.shipDate ne '1990-01-01 00:00:00.0'}">
@@ -53,17 +53,17 @@ $(window).ready(function() {
 				
 				</span><br>
 				 
-				<span class="ordlist_title">折價券編號</span><span class="ordlist_value">:${ob.cpId}</span><br>
+				<span class="ordlist_title">折價券編號</span><span class="ordlist_value">：${ob.cpId}</span><br>
 			</div>
 			<div>
-				<span class="ordlist_title">運送方式 </span><span class="ordlist_value">:${ob.shipType}</span><br>
-				<span class="ordlist_title">訂單總價</span><span class="ordlist_value">:${ob.ordTotal}</span><br>
-				<span class="ordlist_title">訂單狀態</span><span class="ordlist_value">:<c:forEach
+				<span class="ordlist_title">運送方式 </span><span class="ordlist_value">：${ob.shipType}</span><br>
+				<span class="ordlist_title">訂單總價</span><span class="ordlist_value">：${ob.ordTotal}</span><br>
+				<span class="ordlist_title">訂單狀態</span><span class="ordlist_value">：<c:forEach
 						var="y" items="${ordStat}">
 						<c:if test="${y.key == ob.osId }">${y.value}</c:if>
 					</c:forEach>
 				</span><br> <span class="ordlist_title">運送地址</span><span
-					class="ordlist_value">:${ob.shipAddr}</span><br>
+					class="ordlist_value">：${ob.shipAddr}</span><br>
 				<c:forEach var="y" items="${ordStat}">
 					<c:if test="${y.key == x.osId }">
 								${y.value}
