@@ -7,13 +7,14 @@ private String feedBackVal;
 private String feedBackPic;
 private Integer feedBackLaud;
 private String feedBackFrom;
+private Integer fbkey;
 
 public FeedBackBean(){
 	feedBackFrom="";
 }
 
 public FeedBackBean(Integer itemId, String mId, String feedBackVal, String feedBackPic, Integer feedBackLaud,
-		String feedBackFrom) {
+		String feedBackFrom, Integer fbkey) {
 	super();
 	this.itemId = itemId;
 	this.mId = mId;
@@ -21,6 +22,7 @@ public FeedBackBean(Integer itemId, String mId, String feedBackVal, String feedB
 	this.feedBackPic = feedBackPic;
 	this.feedBackLaud = feedBackLaud;
 	this.feedBackFrom = feedBackFrom;
+	this.fbkey = fbkey;
 }
 
 public Integer getItemId() {
@@ -71,7 +73,12 @@ public void setFeedBackFrom(String feedBackFrom) {
 	this.feedBackFrom = feedBackFrom;
 }
 
+public Integer getFbkey() {
+	return fbkey;
+}
 
-	
+public void setFbkey(Integer fbkey) {
+	this.fbkey = fbkey;
+}
 	
 }

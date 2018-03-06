@@ -105,8 +105,10 @@ $(window).ready(function() {
 	$('.icon-heart').on('click',function(){
  		var mId = $(this.previousSibling).val();
  		var itemId = $(this.previousSibling).attr('name');
+ 		var fbkey = $(this.previousSibling).attr('class');
+ 		alert(fbkey)
 <!-- 		alert(mId+"+"+itemId) -->
-		var queryS="mId="+mId+"&itemId="+itemId
+		var queryS="mId="+mId+"&itemId="+itemId+"&fbkey="+fbkey
 		$.ajax({
    			'type':'Get',
    			'url':'/Belle_Rever/member/FeedBack?'+queryS,

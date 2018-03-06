@@ -17,7 +17,7 @@ public class SearchDaoImpl implements SearchDao {
 	@Resource(name="template")
 	JdbcTemplate template;
 	private int pageNow = -1;// 目前第幾頁 預設第一頁
-	private int pageSize = 5;
+	private int pageSize = GlobalService.manage_feedback_PageSize;
 	private int totalPage = 0; // 總共幾頁
 	private String itemheader="";
 	@Override
@@ -92,7 +92,7 @@ public class SearchDaoImpl implements SearchDao {
 	
 	@Override
 	public List<FeedBackBean> getFeedBack(Integer itid) {
-		String sql = "SELECT f.itemid , f.mid ,  f.feedbackval , f.feedbackpic , f.feedbacklaud , f.feedbackfrom FROM feedback  f JOIN item  i   ON  f.itemid= i.itemid WHERE itid  = ? ORDER BY itemid DESC LIMIT ?,?";
+		String sql = "SELECT f.itemid , f.mid ,  f.feedbackval , f.feedbackpic , f.feedbacklaud , f.feedbackfrom ,f.fbkey FROM feedback  f JOIN item  i   ON  f.itemid= i.itemid WHERE itid  = ? ORDER BY itemid DESC LIMIT ?,?";
 		int startRecordNo = (pageNow - 1) * pageSize;
 		List<FeedBackBean> list = new ArrayList<>();
 		list = template.query(sql, new Object[] { itid,startRecordNo,pageSize}, new BeanPropertyRowMapper<FeedBackBean>(FeedBackBean.class));
@@ -104,9 +104,9 @@ public class SearchDaoImpl implements SearchDao {
 		}
 	}
 	@Override
-	public void deleteFeedBack(Integer itemId , String mid) {
-		 String sql = "delete from feedback where itemid=? and mid = ?";
-		 template.update(sql , new Object[]{itemId, mid});
+	public void deleteFeedBack(Integer itemId , String mid,Integer fbkey) {
+		 String sql = "delete from feedback where itemid=? and mid = ? and fbkey=?";
+		 template.update(sql , new Object[]{itemId, mid,fbkey});
 	}
 	
 

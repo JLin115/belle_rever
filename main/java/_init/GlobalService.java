@@ -47,6 +47,7 @@ public class GlobalService {
 	public final static int memberPageSize = 40; // 管理員-會員管理-每頁幾筆
 	public final static int manager_ord_PageSize = 8; // 管理員-訂單管理-每頁幾筆
 	public final static int member_ord_PageSize = 5; // 會員-訂單-每頁幾筆
+	public final static int manage_feedback_PageSize = 6; // 會員-訂單-每頁幾筆
 	public final static String index = "/Belle_Rever/home/index/index.jsp";
 	public final static String mangerIndex = "/Belle_Rever/manager/itemManager/ItemManager.jsp";
 	public final static int feedBackLaud=30;

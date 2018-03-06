@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Bellefair');
 
 * {
-	font-family: 'Bellefair', serif;
+	
 	list-style: none;
+}
+
+.EN_font_family{
+	font-family: 'Bellefair', serif;
+	
+}
+.CH_font_family{
+	 font-family:'微軟正黑體';
 }
 
 html {
@@ -17,6 +25,7 @@ body {
 	position: relative;
 	overflow-y: scroll;
 }
+
 .customButton{
 	display: inline-block;
 	width: 100px;
@@ -96,7 +105,7 @@ body {
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
-	font-size: 19px;
+	font-size: 17px;
 }
 
 .log_content div, .reg_content div {

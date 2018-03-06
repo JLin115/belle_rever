@@ -34,10 +34,10 @@
 		</div>
 
 		<div class="maneger_index_show_right">
-			<input type="hidden" class="res" value="${res}"> <input
-				type="hidden" class="pageNow" value="${pageNow}"> <input
-				type="hidden" class="totalPage" value="${totalPage}"> <input
-				type="hidden" class="itid" value="${itid}">
+			<input type="hidden" class="res" value="${res}"> 
+			<input type="hidden" class="pageNow" value="${pageNow}"> 
+			<input type="hidden" class="totalPage" value="${totalPage}"> 
+			<input type="hidden" class="itid" value="${itid}">
 			<div class="show_content_feedBack">
 
 
@@ -56,6 +56,11 @@
 						
 					</tbody> 
 				</table>
+				
+					<div class="controlPage">
+		
+		
+					</div>
 
 			</div>
 

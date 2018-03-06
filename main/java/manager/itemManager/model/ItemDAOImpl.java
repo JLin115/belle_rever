@@ -471,10 +471,10 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public FeedBackBean getAFeedBack(Integer itemId, String mId) {
-		String sql = "Select * from feedback where itemId = ? and mId= ?";
+	public FeedBackBean getAFeedBack(Integer itemId, String mId,Integer fbkey) {
+		String sql = "Select * from feedback where itemId = ? and mId= ? and fbkey=?";
 		List<FeedBackBean> feedBackList = new ArrayList<>();
-		feedBackList = template.query(sql, new Object[] { itemId, mId },
+		feedBackList = template.query(sql, new Object[] { itemId, mId ,fbkey},
 				new BeanPropertyRowMapper<FeedBackBean>(FeedBackBean.class));
 		if (feedBackList.size() > 0) {
 			return feedBackList.get(0);
@@ -485,8 +485,8 @@ public class ItemDAOImpl implements ItemDAO {
 
 	@Override
 	public void updateFeedBack(FeedBackBean fbb) {
-		String sql = "update feedback set feedBackLaud = ? , feedBackFrom=? where itemId = ? and mid = ?";
-		template.update(sql , new Object[]{fbb.getFeedBackLaud() ,  fbb.getFeedBackFrom() , fbb.getItemId() , fbb.getmId()});
+		String sql = "update feedback set feedBackLaud = ? , feedBackFrom=? where itemId = ? and mid = ? and fbkey=?";
+		template.update(sql , new Object[]{fbb.getFeedBackLaud() ,  fbb.getFeedBackFrom() , fbb.getItemId() , fbb.getmId(),fbb.getFbkey()});
 
 	}
 

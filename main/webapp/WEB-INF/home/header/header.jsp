@@ -66,7 +66,7 @@
 </div>
 
 <!--title-->
-<nav class="navbar navbar-default bgcolor">
+<nav class="navbar navbar-default bgcolor EN_font_family">
 	<div class="container-fluid header_fix">
 		<!-- Brand and toggle get grouped for better mobile display 
           <div class="navbar-header">
@@ -102,13 +102,13 @@
 	<!-- /.container-fluid -->
 </nav>
 <!--頁首-->
-<div class="page-header page_header">
+<div class="page-header page_header EN_font_family">
 	<span ><a class="header_title" href="<c:url value="${initParam['index']}" />">Belle_Rêver</a></span>
 </div>
 
 
 <!--頁首導覽-->
-<nav class="navbar navbar-default coustom_navbar"
+<nav class="navbar navbar-default coustom_navbar EN_font_family"
 	style="padding: 0; margin: 0;">
 	<div class="container-fluid ">
 		<!-- Collect the nav links, forms, and other content for toggling -->

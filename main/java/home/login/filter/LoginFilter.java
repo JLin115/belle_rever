@@ -81,7 +81,7 @@ public class LoginFilter implements Filter {
 						}
 					}
 					
-			
+					System.out.println(req.getRequestURI());
 					
 					chain.doFilter(request, response);
  					

@@ -24,7 +24,7 @@ public interface ItemDAO {
 	public void setItemValBean (List<ItemValBean> ibvList ,int id);
 	
 	public  List<FeedBackBean> getItemFeedBack(Integer itemId);
-	public  FeedBackBean getAFeedBack(Integer itemId,String mId);
+	public  FeedBackBean getAFeedBack(Integer itemId,String mId,Integer fbkey);
 	
 	public void updateFeedBack(FeedBackBean fbb);
 	public void insertCP(CouponBean cb);

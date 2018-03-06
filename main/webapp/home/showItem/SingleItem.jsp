@@ -157,7 +157,7 @@
 								<ul>
 									<li><img src="${initParam['commemtImgRoute']}${x.feedBackPic}"></li>
 									<li><div>${x.feedBackVal}</div></li>
-									<li class="clear_commemt"><input type="hidden" name="${x.itemId}" value="${x.mId}"><span class="icon-heart" style="color:red;"> </span>&nbsp;</li>
+									<li class="clear_commemt"><input type="hidden" name="${x.itemId}" value="${x.mId}" class="${x.fbkey}"><span class="icon-heart" style="color:red;"> </span>&nbsp;</li>
 									 
 								</ul> 
 							</c:forEach>

@@ -14,5 +14,5 @@ public interface SearchDao {
 	public int getPageNow() ; 
 	public int getTotalPageFeedBack(Integer itid);
 	public List<FeedBackBean> getFeedBack(Integer itid);
-	public void deleteFeedBack(Integer itemId , String mid );
+	public void deleteFeedBack(Integer itemId , String mid,Integer fbkey );
 }

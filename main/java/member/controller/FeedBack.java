@@ -40,20 +40,18 @@ public class FeedBack extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("application/json");
 		try {
-			String itemIdS = request.getParameter("itemId");
-			System.out.println(itemIdS);
-			Integer itemId = Integer.valueOf(itemIdS);
-			
+			Integer itemId = Integer.valueOf(request.getParameter("itemId"));
+			Integer fbkey = Integer.valueOf(request.getParameter("fbkey"));
 			String mId = request.getParameter("mId").trim();
 
 			if (session != null) {
 	 
 				ItemDAO dao = (ItemDAO) wctx.getBean("ItemDAOImpl");
 				MemberBean mb = (MemberBean) session.getAttribute("LoginOK");
-				FeedBackBean fbb = dao.getAFeedBack(itemId, mId);
+				FeedBackBean fbb = dao.getAFeedBack(itemId, mId,fbkey);
 				String backFrom = fbb.getFeedBackFrom();
-				System.out.println(backFrom);
-				System.err.println(mb.getMid());
+//				System.out.println(backFrom);
+//				System.err.println(mb.getMid());
 				if (backFrom.contains(mb.getMid())) {
 					// 有評論過 回傳 失敗
 					String msg= "{\"error\":\"er1\"}";

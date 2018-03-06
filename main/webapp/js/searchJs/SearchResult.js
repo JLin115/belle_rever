@@ -3,8 +3,9 @@ $(window).ready(function() {
 	var totalPage = parseInt($('.totalPage').val());
 	var pageNow = parseInt($('.pageNow').val());
 	var val = $('.val').val();
-	page()
 	
+	if(x!=-1){
+	page()
 		for(var c in x){
 			if(x[c].itemdiscount <1){
 			$('.toShow').append(
@@ -29,12 +30,13 @@ $(window).ready(function() {
 				)	
 			}
 		}
- 
- 
-		
-	function page() {
-		
 	
+	}else{
+		$('.res_0').html('查無結果')
+		
+	}
+ 
+	function page() {
 		if(pageNow >1){ 
 			var pgn = pageNow-1
 			$('.controlPage').append(

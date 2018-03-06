@@ -5,13 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Belle_Rever</title>
-<link rel="stylesheet"
-	href="/Belle_Rever/home/index/bootstrap/animate.css">
-<link rel="stylesheet"
-	href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
+<link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
 <script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
-<link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css"
-	rel="stylesheet">
+<link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
  	
 <!-- 頁首頁尾 -->
 <link href="${initParam['header_footer_css']}" rel="stylesheet">
@@ -29,12 +26,16 @@ var x = ${res}
 		<input type="hidden" value="${totalPage}" class="totalPage"> 
 		<input type="hidden" value="${pageNow}" class="pageNow">
 		<input type="hidden" value="${val}" class="val">
+		
+		<div class="res_0 CH_font_family" style="text-align: center;margin-top: 5%;font-size: 25px;">
+		
+		
+		</div>
 
-
-		<ul class="toShow">
+		<ul class="toShow CH_font_family">
 				 
 		</ul>
-		<div class="controlPage">
+		<div class="controlPage CH_font_family">
 		
 		
 		</div>

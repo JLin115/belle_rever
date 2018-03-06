@@ -31,7 +31,7 @@ public class Searcher_mvc {
 	@RequestMapping(value="/home/search/Searcher" , method=RequestMethod.GET)
 	public String search() throws UnsupportedEncodingException{
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-//	    HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
+	    HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
 	    request.setCharacterEncoding("utf-8");
 	    WebApplicationContext ctx =WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 	    SearchDao dao =(SearchDao) ctx.getBean("SearchDaoImpl");
@@ -42,17 +42,15 @@ public class Searcher_mvc {
 	    	  dao.setPageNow(pageNow);
 	    	  dao.setItemheader(val);
 	    	    List<ItemBean> list=dao.searchItem(val);
-	    	    
+	    	    if(dao.getTotalPageSearch()>0){
 	    	    Gson  g = new Gson();
-	    	    System.out.println(g.toJson(list).toString());
-	    	    
 	    		request.setAttribute("res", g.toJson(list).toString());
 	    		request.setAttribute("pageNow", dao.getPageNow());
 	    		request.setAttribute("totalPage", dao.getTotalPageSearch());	    		
 	    		request.setAttribute("val", val);
-	    		
-	    		
-	    	 
+	    		}else{
+	    		request.setAttribute("res", "-1");	 
+	    		}
 	    }catch (Exception e) {
 			 e.printStackTrace();
 			 
@@ -65,12 +63,9 @@ public class Searcher_mvc {
 	@RequestMapping(value="/manager/feedBackManager/manager_feebBack_search" , method=RequestMethod.GET)
 	public String manager_feebBack_search() throws UnsupportedEncodingException{
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-//	    HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
 	    request.setCharacterEncoding("utf-8");
 	    WebApplicationContext ctx =WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 	    SearchDao dao =(SearchDao) ctx.getBean("SearchDaoImpl");
-	     
-	    
 	    Integer itid = null;
 	    Integer pageNow = null;
 	    try{
@@ -93,25 +88,25 @@ public class Searcher_mvc {
 	
 	
 	@RequestMapping(value="/manager/feedBackManager/manager_feebBack_delete" , method=RequestMethod.GET)
-	public @ResponseBody Map<String, Object> manager_feebBack_delete() throws UnsupportedEncodingException{
+	@ResponseBody
+	public  String  manager_feebBack_delete() throws UnsupportedEncodingException{
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-	    HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
 	    request.setCharacterEncoding("utf-8");
 	    WebApplicationContext ctx =WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 	    SearchDao dao =(SearchDao) ctx.getBean("SearchDaoImpl");
 	    Integer itemId = null;
 	    String mId = null;
+	    Integer fbkey = null;
 	    try{
 	    	itemId  =  Integer.valueOf(request.getParameter("itemId"));
 	    	mId  = request.getParameter("mId");
-	    	dao.deleteFeedBack(itemId,mId);
-	    	
+	    	fbkey = Integer.valueOf(request.getParameter("fbkey"));
+	    	dao.deleteFeedBack(itemId,mId,fbkey);
 	    	System.out.println("delete");
-	    	response.getWriter().write("33456");
-	    	return  (Map<String, Object>) new HashMap<>().put("delete","true");
+	    	return  "true";
 	    }catch (Exception e) {
 			 e.printStackTrace();
-			 return  (Map<String, Object>) new HashMap<>().put("delete","false");
+			 return  "false";
 		} 
 //		return  (Map<String, Object>) new HashMap<>().put("delete","delete");
 	}
