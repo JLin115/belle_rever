@@ -118,6 +118,7 @@ public class InsertComment extends HttpServlet {
 		}else{
 			response.setContentType("text/html");
 			response.getWriter().write("評價成功");
+			System.out.println(cb.getFeedBackFrom());
 			dao.insertCommemt(cb);
 			dao.setIsFeedBack(ordId, ordSern);
 			return;

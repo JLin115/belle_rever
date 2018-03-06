@@ -86,8 +86,7 @@ $(window).ready(function () {
     			cache: false,
     			headers:{"X-Requested-With": "XmlHttpRequest"},
     		    contentType: 'application/x-www-form-urlencoded;charset=utf-8',
-// async: false,
-    		    echo:true,
+    		    // async: false,
     			data:"userId="+userId+"&pswd="+pswd,
     			datatype:'JSON',
     			success:function(data){

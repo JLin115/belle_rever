@@ -205,8 +205,8 @@ public class MemberDAOImpl implements Dao {
 
 	@Override
 	public void insertCommemt(FeedBackBean cb) {
-	 String sql = "Insert into feedback (itemId,mId,feedBackVal,feedBackPic,feedBackLaud) values(?,?,?,?,?)";
-	 template.update(sql,cb.getItemId(),cb.getmId(),cb.getFeedBackVal(),cb.getFeedBackPic(),cb.getFeedBackLaud());
+	 String sql = "Insert into feedback (itemId,mId,feedBackVal,feedBackPic,feedBackFrom) values(?,?,?,?,?)";
+	 template.update(sql,cb.getItemId(),cb.getmId(),cb.getFeedBackVal(),cb.getFeedBackPic(),cb.getFeedBackFrom());
 	}
 
 	@Override

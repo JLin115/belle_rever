@@ -14,7 +14,7 @@
 			</div></li>
 			<li><a href="${pageContext.request.contextPath}/manager/orderManager/OrderManager.jsp">訂單管理</a></li>
 			<li><a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1">會員管理</a></li>
-			<li><a href="#">評論管理</a></li>
+			<li><a href="${pageContext.request.contextPath}/manager/feedBackManager/FeedBackManager.jsp">評論管理</a></li>
 			<li><a href="#">折價券管理</a></li>
 			<li class="manager_navList_li"><a href="#">銷售分析</a></li>
 		</ul>

@@ -5,28 +5,6 @@
 	font-size: 18px;
 }
 
-.sidebar a {
-	text-decoration: none;
-}
-
-.sidebar a:hover {
-	color: #058471;
-}
-
-.sidebar {
-	background-color: white;
-	text-align: center;
-	width: 100%;
-	float: left;
-}
-
-.sidebar li {
-	padding: 15px 0 15px 0;
-}
-
-.sidebar input[type="text"] {
-	width: 100px;
-}
 
 .controlPage {
 	text-align: center;

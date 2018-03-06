@@ -1,75 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Web Application from Archetype for Servlet 3.1</display-name>
-  <welcome-file-list>
-    <welcome-file>home/index/index.jsp</welcome-file>
-  </welcome-file-list>
-  <context-param>
-    <param-name>applicationContext</param-name>
-    <param-value>/WEB-INF/applicationContext.xml</param-value>
-  </context-param>
-  <filter>
-    <filter-name>HiddenHttpMethodFilter</filter-name>
-    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>HiddenHttpMethodFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-  <context-param>
-    <param-name>showImgRoute</param-name>
-    <param-value>/bimg/showImg/</param-value>
-  </context-param>
-  <context-param>
-    <param-name>itemImgRoute</param-name>
-    <param-value>/bimg/itemImg/</param-value>
-  </context-param>
-  <context-param>
-    <param-name>commemtImgRoute</param-name>
-    <param-value>/bimg/commemtImg/</param-value>
-  </context-param>
-  <context-param>
-    <param-name>header_footer_js</param-name>
-    <param-value>/Belle_Rever/home/index/js/index.js</param-value>
-  </context-param>
-  <context-param>
-    <param-name>header_footer_css</param-name>
-    <param-value>/Belle_Rever/home/index/css/index.css</param-value>
-  </context-param>
-  <context-param>
-    <param-name>header</param-name>
-    <param-value>/WEB-INF/home/header/header.jsp</param-value>
-  </context-param>
-  <context-param>
-    <param-name>footer</param-name>
-    <param-value>/WEB-INF/home/footer/footer.jsp</param-value>
-  </context-param>
-  <context-param>
-    <param-name>member_header</param-name>
-    <param-value>/WEB-INF/member/header/member_header.jsp</param-value>
-  </context-param>
-  <context-param>
-    <param-name>member_footer</param-name>
-    <param-value>/WEB-INF/member/footer/member_footer.jsp</param-value>
-  </context-param>
-  <context-param>
-    <param-name>index</param-name>
-    <param-value>/home/index/index.jsp</param-value>
-  </context-param>
-  <servlet>
-    <servlet-name>springDispatcherServlet</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>/WEB-INF/SpringMVC.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>springDispatcherServlet</servlet-name>
-    <url-pattern>/</url-pattern>
-  </servlet-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Web Application from Archetype for Servlet 3.1</display-name>
+	<welcome-file-list>
+		<welcome-file>home/index/index.jsp</welcome-file>
+	</welcome-file-list>
+	<context-param>
+		<param-name>applicationContext</param-name>
+		<param-value>/WEB-INF/applicationContext.xml</param-value>
+	</context-param>
+	<filter>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>HiddenHttpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>showImgRoute</param-name>
+		<param-value>/bimg/showImg/</param-value>
+	</context-param>
+	<context-param>
+		<param-name>itemImgRoute</param-name>
+		<param-value>/bimg/itemImg/</param-value>
+	</context-param>
+	<context-param>
+		<param-name>commemtImgRoute</param-name>
+		<param-value>/bimg/commemtImg/</param-value>
+	</context-param>
+	<context-param>
+		<param-name>header_footer_js</param-name>
+		<param-value>/Belle_Rever/home/index/js/index.js</param-value>
+	</context-param>
+	<context-param>
+		<param-name>header_footer_css</param-name>
+		<param-value>/Belle_Rever/home/index/css/index.css</param-value>
+	</context-param>
+	<context-param>
+		<param-name>header</param-name>
+		<param-value>/WEB-INF/home/header/header.jsp</param-value>
+	</context-param>
+	<context-param>
+		<param-name>footer</param-name>
+		<param-value>/WEB-INF/home/footer/footer.jsp</param-value>
+	</context-param>
+	<context-param>
+		<param-name>member_header</param-name>
+		<param-value>/WEB-INF/member/header/member_header.jsp</param-value>
+	</context-param>
+	<context-param>
+		<param-name>member_footer</param-name>
+		<param-value>/WEB-INF/member/footer/member_footer.jsp</param-value>
+	</context-param>
+	<context-param>
+		<param-name>index</param-name>
+		<param-value>/home/index/index.jsp</param-value>
+	</context-param>
+	<servlet>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/SpringMVC.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springDispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+
+
+<!-- 	<filter> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
+<!-- 	</filter> -->
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<url-pattern>/*</url-pattern> -->
+<!-- 	</filter-mapping> -->
+
+<!-- 	<context-param> -->
+<!-- 		<param-name>contextConfigLocation</param-name> -->
+<!-- 		<param-value> -->
+<!--            /WEB-INF/application-security.xml -->
+<!--           </param-value> -->
+<!-- 	</context-param> -->
+
+
+
 </web-app>

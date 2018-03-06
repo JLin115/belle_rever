@@ -10,13 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import _init.GlobalService;
 import manager.itemManager.model.ItemBean;
+import member.model.FeedBackBean;
 @Component("SearchDaoImpl")
 @Transactional
 public class SearchDaoImpl implements SearchDao {
 	@Resource(name="template")
 	JdbcTemplate template;
 	private int pageNow = -1;// 目前第幾頁 預設第一頁
-	private int pageSize = 1;
+	private int pageSize = 5;
 	private int totalPage = 0; // 總共幾頁
 	private String itemheader="";
 	@Override
@@ -52,28 +53,27 @@ public class SearchDaoImpl implements SearchDao {
 		this.pageSize = pageSize;
 	}
 
-	public void setTotalPage(int totalPage) {
-		this.totalPage = totalPage;
-	}
-	
-	
-	
+
 	@Override
-	public long getTotalRecords() {
+	public int getTotalPageSearch() {
 		String sql = "select count(*) from item where itemheader  like ? or itemdes like ?";
 		Long count = 0L;
 		count = template.queryForObject(sql, new Object[] {"%"+this.itemheader+"%","%"+this.itemheader+"%"}, Long.class);
- 
-		return count;
-	}
-	@Override
-	public int getTotalPage() {
-		totalPage = (int) (Math.ceil(getTotalRecords() / (double) pageSize));
+		totalPage = (int) (Math.ceil(count / (double) pageSize));
 		return totalPage;
 	}
-
-
 	
+	@Override
+	public int getTotalPageFeedBack(Integer itid) {
+		String sql = "SELECT count(*) FROM feedback  f JOIN item  i   ON  f.itemid= i.itemid WHERE itid  = ?  ";
+		Long count = 0L;
+		count = template.queryForObject(sql, new Object[] {itid}, Long.class); 
+		totalPage = (int) (Math.ceil(count / (double) pageSize));
+		return totalPage;
+	}
+	
+	
+ 
 	
 	@Override
 	public List<ItemBean> searchItem(String itemheader) {
@@ -89,6 +89,26 @@ public class SearchDaoImpl implements SearchDao {
 
 		}
 	}
+	
+	@Override
+	public List<FeedBackBean> getFeedBack(Integer itid) {
+		String sql = "SELECT f.itemid , f.mid ,  f.feedbackval , f.feedbackpic , f.feedbacklaud , f.feedbackfrom FROM feedback  f JOIN item  i   ON  f.itemid= i.itemid WHERE itid  = ? ORDER BY itemid DESC LIMIT ?,?";
+		int startRecordNo = (pageNow - 1) * pageSize;
+		List<FeedBackBean> list = new ArrayList<>();
+		list = template.query(sql, new Object[] { itid,startRecordNo,pageSize}, new BeanPropertyRowMapper<FeedBackBean>(FeedBackBean.class));
+		if (list.size() == 0) {
+			return null; 
+		} else {
+			return list;
+
+		}
+	}
+	@Override
+	public void deleteFeedBack(Integer itemId , String mid) {
+		 String sql = "delete from feedback where itemid=? and mid = ?";
+		 template.update(sql , new Object[]{itemId, mid});
+	}
+	
 
 }
 //
