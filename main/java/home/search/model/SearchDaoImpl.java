@@ -79,6 +79,7 @@ public class SearchDaoImpl implements SearchDao {
 		totalPage = (int) (Math.ceil(count / (double) pageSize));
 		return totalPage;
 	}
+
 	@Override
 	public int getTotalPageCoupon() {
 		String sql = "select count(*) from coupon";
@@ -87,6 +88,7 @@ public class SearchDaoImpl implements SearchDao {
 		totalPage = (int) (Math.ceil(count / (double) pageSize));
 		return totalPage;
 	}
+
 	@Override
 	public List<ItemBean> searchItem(String itemheader) {
 		String sql = "select * from item where itemheader  like ? or itemdes like ? order by itemid DESC LIMIT ?,?";
@@ -126,23 +128,33 @@ public class SearchDaoImpl implements SearchDao {
 
 	@Override
 	public List<CouponBean> showCoupon() {
-	String  sql = "select * from coupon ";
-	List<CouponBean> cplist= template.query(sql ,new Object[]{},new BeanPropertyRowMapper<CouponBean>(CouponBean.class));
-	if(cplist.isEmpty()){
-		return null;
-	}else{
-		return cplist;
-	}
+		String sql = "select * from coupon ";
+		List<CouponBean> cplist = template.query(sql, new Object[] {},
+				new BeanPropertyRowMapper<CouponBean>(CouponBean.class));
+		if (cplist.isEmpty()) {
+			return null;
+		} else {
+			return cplist;
+		}
 	}
 
 	@Override
 	public int deleteCoupon(String cpid) {
-		String  sql = "delete from coupon where cpid = ? ";
-		return template.update(sql ,new Object[]{cpid} ); 
-		
+		String sql = "delete from coupon where cpid = ? ";
+		return template.update(sql, new Object[] { cpid });
+
 	}
 
-	
+	@Override
+	public CouponBean getSingCP(String cpid) {
+		String  sql = "select *  from coupon where cpid = ? ";
+		List<CouponBean> l = template.query(sql ,new Object[]{cpid} , new BeanPropertyRowMapper<CouponBean>(CouponBean.class));
+		if(l != null){
+		return l.get(0);	
+		}else{	
+		return null;
+		}
+	}
 
 }
 //

@@ -8,7 +8,7 @@ $(window).ready(function () {
 		
 	 
 		$('.insertContent').append(
-				 '<tr><td><a href="#">'+res[d].cpId+'</a></td>'+
+				 '<tr><td><a href="/Belle_Rever/manager/couponManager/getSingleCP?cpid='+res[d].cpId+'">'+res[d].cpId+'</a></td>'+
 				 '<td>'+res[d].cpDes+'</td>'+
 				 '<td>'+res[d].cpVal+'</td>'+
 				 '<td>'+res[d].cpQty+'</td>'+

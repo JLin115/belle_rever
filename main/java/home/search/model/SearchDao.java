@@ -19,6 +19,7 @@ public interface SearchDao {
 	public void deleteFeedBack(Integer itemId , String mid,Integer fbkey ); 
 	public List<CouponBean> showCoupon();
 	public int deleteCoupon(String cpid );
+	public CouponBean getSingCP(String cpid);
 }
 
 

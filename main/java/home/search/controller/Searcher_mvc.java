@@ -160,4 +160,25 @@ public class Searcher_mvc {
 		}
 
 	}
+	
+	@RequestMapping(value = "/manager/couponManager/getSingleCP", method = RequestMethod.GET)
+	public String  getSingleCP() throws UnsupportedEncodingException {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getResponse();
+		request.setCharacterEncoding("utf-8"); 
+		String cpid = request.getParameter("cpid").trim();
+		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl"); 
+		CouponBean cpb = dao.getSingCP(cpid);
+		if(cpb != null ){
+			request.setAttribute("cpb",cpb);
+			System.out.println("true");
+		}	
+		
+		 return "/manager/couponManager/ModifyCoupon";
+	}
+	
+	
 }

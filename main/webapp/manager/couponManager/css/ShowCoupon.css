@@ -4,6 +4,38 @@
 	margin:1% auto;
 	
 }
+
+/*modifycp*/
+.modifycp{
+	width:50%;
+	margin: 5% auto;
+	border:1px solid black; 	
+}
+
+.modifycp span{
+	display: inline-block;
+	width: 18%; 
+	margin-left: 15.5%;
+	margin-top: 1%;
+}
+.modifycp input[type=text]{
+	width:50%;
+	margin-top: 1%;		 
+}
+.buttion_c{
+	width:80px;
+	float: right;
+	margin:5% 20%;
+		
+
+}
+
+.modifycp:after{
+content: '';
+display: block;
+clear: both;	
+	
+}
  
 .searchForcp input{
 	float:right; 
@@ -14,8 +46,6 @@
 	display:block;
 	clear:both;
 }
-
- 
 
 .cpList table {
 	width: 100%;
