@@ -156,5 +156,20 @@ public class SearchDaoImpl implements SearchDao {
 		}
 	}
 
+	@Override
+	public int checkMember(String mId) {
+		 String sql = "select count(*) from member where mId = ?";
+		return template.queryForObject(sql, new Object[]{mId},Integer.class);
+	}
+
+	@Override
+	public int modifyCoupon(CouponBean cb) {
+		String sql = " update coupon set "
+				+ " cpid = ? , cpdes = ? , cpval= ? , cpqty = ? , valid=? ,invalid =? , mid =? where cpid = ?";
+		return template.update(sql,cb.getCpId(),cb.getCpDes(),cb.getCpVal(),cb.getCpQty(),cb.getValid(),cb.getInvalid()
+				,cb.getmId(),cb.getCpId()
+				);
+	}
+
 }
 //

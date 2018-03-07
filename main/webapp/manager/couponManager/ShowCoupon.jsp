@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../nav/js/nav.js"></script>
 <script type="text/javascript" src="js/ShowCoupon.js"></script>
 <script type="text/javascript">
-	var res = ${cplist}
+	var res =${cplist}   
 </script>
 </head>
 <body>
@@ -22,15 +22,15 @@
 	<input type="hidden" class="totalPage" value="${totalPage}">
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>
 	<div class="maneger_index_show">
-		<div class="maneger_index_show_title_img"><img src=""></div>
-		<div class="maneger_index_show_right" style="width: 80%; margin-left: 10%;">
-		
-		<div class="searchForcp">
-		<input type="text">
-		 
+		<div class="maneger_index_show_title_img">
+			<img src="">
 		</div>
-		<div class="cpList">
-		
+		<div class="maneger_index_show_right"
+			style="width: 80%; margin-left: 10%;"> 
+			<div class="searchForcp">
+				<input type="text"> 
+			</div>
+			<div class="cpList"> 
 				<table>
 					<thead>
 						<tr>
@@ -44,30 +44,19 @@
 						</tr>
 					</thead>
 					<tbody class="insertContent">
-						  <tr>
-						  <td><a href="#">65464</a></td>
-						  <td>2sdsf</td>
-						  <td>3000</td>
-						  <td>1992/02/18</td>
-						  <td>1992/02/18</td>
-						  <td>6</td> 
-						  <td></td> 
-						  </tr>
-						  
-						
-					</tbody> 
+						<tr>
+							<td><a href="#">65464</a></td>
+							<td>2sdsf</td>
+							<td>3000</td>
+							<td>1992/02/18</td>
+							<td>1992/02/18</td>
+							<td>6</td>
+							<td></td>
+						</tr>
+					</tbody>
 				</table>
-				
-					<div class="controlPage">
-		
-		
-					</div>
-		
-		
-		</div>
-		
-		
-		
+				<div class="controlPage"></div>
+			</div>
 		</div>
 	</div>
 

@@ -2,8 +2,10 @@ $(window).ready(function () {
 	
 	var pageNow = $('.pageNow').val()
 	var totalPage = $('.totalPage').val()
+ 
+	if(totalPage>0){
 	page()
-	
+	}
 	for(var d in res){
 		
 	 
@@ -48,6 +50,9 @@ $(window).ready(function () {
 		
 		
 	})
+	
+	
+	
 	
 	
 	

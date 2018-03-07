@@ -2,6 +2,10 @@ package home.search.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -119,7 +123,7 @@ public class Searcher_mvc {
 		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getResponse();
 		request.setCharacterEncoding("utf-8");
-		Integer pageNow = null;
+		Integer pageNow = 1;
 		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
 		List<CouponBean> cplist = dao.showCoupon();
 		try {
@@ -142,43 +146,161 @@ public class Searcher_mvc {
 
 	@RequestMapping(value = "/manager/couponManager/deleteCoupon", method = RequestMethod.GET)
 	@ResponseBody
-	public String  deleteCoupon() throws UnsupportedEncodingException {
+	public String deleteCoupon() throws UnsupportedEncodingException {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getResponse();
-		request.setCharacterEncoding("utf-8"); 
+		request.setCharacterEncoding("utf-8");
 		String cpid = request.getParameter("cpid");
-		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl"); 
+		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
 		int i = dao.deleteCoupon(cpid);
-		
+
 		if (i == 0) {
-			 return "false";
+			return "false";
 		} else {
 			return "true";
 		}
 
 	}
-	
+
 	@RequestMapping(value = "/manager/couponManager/getSingleCP", method = RequestMethod.GET)
-	public String  getSingleCP() throws UnsupportedEncodingException {
+	public String getSingleCP() throws UnsupportedEncodingException {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getResponse();
-		request.setCharacterEncoding("utf-8"); 
-		String cpid = request.getParameter("cpid").trim();
-		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl"); 
+		request.setCharacterEncoding("utf-8");
+		String cpid = request.getParameter("cpid");
+		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
 		CouponBean cpb = dao.getSingCP(cpid);
-		if(cpb != null ){
-			request.setAttribute("cpb",cpb);
+		if (cpb != null) {
+			request.setAttribute("cpb", cpb);
 			System.out.println("true");
-		}	
-		
-		 return "/manager/couponManager/ModifyCoupon";
+		}
+
+		return "/manager/couponManager/ModifyCoupon";
 	}
-	
-	
+
+	@RequestMapping(value = "/manager/couponManager/ModifyCP", method = RequestMethod.GET)
+	@ResponseBody
+	public String ModifyCP() throws UnsupportedEncodingException {
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
+		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
+		HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getResponse();
+		request.setCharacterEncoding("utf-8");
+		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
+		Map<String, String> errorMsg = new HashMap<>();
+		request.setAttribute("errorMsg", errorMsg);
+		CouponBean cpb = new CouponBean();
+
+		String cpId = request.getParameter("cpId");
+		if (cpId == null || cpId.equals("")) {
+			errorMsg.put("cpIdError", "請輸入折價券編號");
+		} else {
+			if (cpId.length() > 30) {
+				errorMsg.put("cpIdError", "字數超過");
+			} else {
+			cpb.setCpId(cpId);
+			}
+		}
+
+		String cpDes = request.getParameter("cpDes");
+		if (cpDes == null || cpDes.equals("")) {
+			errorMsg.put("cpDesError", "請輸入折價券編號");
+		} else {
+			if (cpDes.length() > 30) {
+				errorMsg.put("cpDesError", "字數超過");
+			} else {
+				cpb.setCpDes(cpDes);
+			}
+		}
+
+		String cpVal = request.getParameter("cpVal");
+		if (cpVal == null || cpVal.equals("")) {
+			errorMsg.put("cpValError", "請輸入折價券面額");
+		} else {
+			try {
+				cpb.setCpVal(Short.valueOf(cpVal));
+			} catch (Exception e) {
+				errorMsg.put("cpValError", "請輸入數字");
+			}
+
+		}
+
+		String cpQty = request.getParameter("cpQty");
+		if (cpQty == null || cpQty.equals("")) {
+			errorMsg.put("cpQtyError", "請輸入折價券數量");
+		} else {
+			try {
+				cpb.setCpQty(Integer.valueOf(cpQty));
+			} catch (Exception e) {
+				errorMsg.put("cpQtyError", "請輸入數字");
+			}
+
+		}
+
+		String valid = request.getParameter("valid");
+		if (valid == null || valid.equals("")) {
+			errorMsg.put("validError", "請輸入有效日期");
+		} else {
+			SimpleDateFormat sdf = null;
+			Timestamp ts = null;
+			try {
+				if (valid.contains("-")) {
+					sdf = new SimpleDateFormat("yyyy-MM-dd");
+					ts = new Timestamp(sdf.parse(valid).getTime());
+					cpb.setValid(ts);
+				} else {
+					sdf = new SimpleDateFormat("yyyy/MM/dd");
+					ts = new Timestamp(sdf.parse(valid).getTime());
+					cpb.setValid(ts);
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
+				errorMsg.put("validError", "格式有誤");
+			}
+		}
+
+		String invalid = request.getParameter("invalid");
+		if (invalid == null || invalid.equals("")) {
+			errorMsg.put("invalidError", "請輸入失效日期");
+		} else {
+			SimpleDateFormat sdf = null;
+			Timestamp ts = null;
+			try {
+				if (invalid.contains("-")) {
+					sdf = new SimpleDateFormat("yyyy-MM-dd");
+					ts = new Timestamp(sdf.parse(invalid).getTime());
+					cpb.setValid(ts);
+				} else {
+					sdf = new SimpleDateFormat("yyyy/MM/dd");
+					ts = new Timestamp(sdf.parse(invalid).getTime());
+					cpb.setValid(ts);
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
+				errorMsg.put("invalidError", "格式有誤");
+			}
+		}
+
+		String mId = request.getParameter("mId");
+		if (mId != null || mId!="") {
+			if (dao.checkMember(mId) != 1) {
+				errorMsg.put("mIdError", "會員不存在");
+			}
+		}
+		System.out.println(errorMsg.size());
+		if(errorMsg.size()>0){
+			return "false";
+		}else{
+			dao.modifyCoupon(cpb);
+			return "true";	
+		}
+	}
+
 }

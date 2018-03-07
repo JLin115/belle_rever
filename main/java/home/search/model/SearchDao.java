@@ -20,6 +20,8 @@ public interface SearchDao {
 	public List<CouponBean> showCoupon();
 	public int deleteCoupon(String cpid );
 	public CouponBean getSingCP(String cpid);
+	public int checkMember(String mId);
+	public int modifyCoupon(CouponBean cb);
 }
 
 
