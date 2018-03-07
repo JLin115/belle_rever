@@ -66,7 +66,7 @@ public class FeedBack extends HttpServlet {
 					// 此處設計不好 但是改動太大暫時不改 (讚數達成後 判斷是否送過問題)
 					if (fbb.getFeedBackLaud() == GlobalService.feedBackLaud) {
 						CouponBean cb = new CouponBean();
-						String cpid = itemId + mId + mb.getMid() + (int) (Math.random() * 1000000);
+						String cpid = String.valueOf(itemId+""+(long)(Math.random() * 1000000000));
 						if (cpid.length() > 58) {
 							cpid = cpid.substring(cpid.length() - 59, cpid.length() - 1);
 						}

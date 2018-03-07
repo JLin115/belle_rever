@@ -61,7 +61,7 @@
 	font-size: 18px;
 }
 .manager_navList_div{
-	background-color: #604747; 
+	background-color: #4f4747; 
 }
 .manager_navList>li>a{
 	color:white;
@@ -89,6 +89,7 @@
 
 .manager_navList li a:hover {
 	color: #058471;
+	cursor: pointer;;
 }
 
 

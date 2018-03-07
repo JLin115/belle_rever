@@ -22,9 +22,6 @@ $(window).ready(function () {
 					'display':'block'
 				})
   }) 
-  
-  
-  
 		$('.itemManager_a').on('mouseleave',function(){
 			$(this.nextSibling).on('mouseleave',function(){
 				$(this).unbind();
@@ -80,6 +77,11 @@ $(window).ready(function () {
 			}
 		
 		}) 
+		
+		
+		
+		
+		
     
  
 })
