@@ -23,7 +23,7 @@
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>
 	<div class="maneger_index_show">
 		<div class="maneger_index_show_title_img">
-			<img src="">
+			<img src="${initParam['showImgRoute']}coupon-manage.png">
 		</div>
 		<div class="maneger_index_show_right"
 			style="width: 80%; margin-left: 10%;"> 
@@ -44,18 +44,18 @@
 						</tr>
 					</thead>
 					<tbody class="insertContent">
-						<tr>
-							<td><a href="#">65464</a></td>
-							<td>2sdsf</td>
-							<td>3000</td>
-							<td>1992/02/18</td>
-							<td>1992/02/18</td>
-							<td>6</td>
-							<td></td>
-						</tr>
+<!-- 						<tr> -->
+<!-- 							<td><a href="#">65464</a></td> -->
+<!-- 							<td>2sdsf</td> -->
+<!-- 							<td>3000</td> -->
+<!-- 							<td>1992/02/18</td> -->
+<!-- 							<td>1992/02/18</td> -->
+<!-- 							<td>6</td> -->
+<!-- 							<td></td> -->
+<!-- 						</tr> -->
 					</tbody>
 				</table>
-				<div class="controlPage"></div>
+				<div class="controlPage" style="margin-top:30px;"></div>
 			</div>
 		</div>
 	</div>

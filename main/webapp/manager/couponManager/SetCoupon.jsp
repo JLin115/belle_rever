@@ -17,7 +17,7 @@
 <body>
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>
 			<div class="maneger_index_show">
-			<div class="maneger_index_show_title_img"></div>
+			<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute']}coupon-manage.png"></div>
 			<div class="maneger_index_show_left"></div> 
 			<div class="maneger_index_show_right"></div>
 		</div>

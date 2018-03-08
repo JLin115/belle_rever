@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 var x = ${gson};
+traceIH  = '';
 $(window).ready(function() {
 <!-- 	var length = x.length; -->
 	var color = new Set();
@@ -102,18 +103,20 @@ $(window).ready(function() {
 	
 	
 	
-	$('.icon-heart').on('click',function(){
+	$('.icon-heart,.icon-heart[class^="ih"]').on('click',function(){
  		var mId = $(this.previousSibling).val();
  		var itemId = $(this.previousSibling).attr('name');
  		var fbkey = $(this.previousSibling).attr('class');
- 		alert(fbkey)
+<!--  		alert(fbkey) -->
+ 		traceIH = 'ih'+fbkey
 <!-- 		alert(mId+"+"+itemId) -->
 		var queryS="mId="+mId+"&itemId="+itemId+"&fbkey="+fbkey
+		console.log($(this))
 		$.ajax({
    			'type':'Get',
    			'url':'/Belle_Rever/member/FeedBack?'+queryS,
    			'cache': false,
-<!--    			'data':{"mId":mId , "itemId":itemId}, -->
+<!--    	 'data':{"mId":mId , "itemId":itemId}, -->
    			'datatype':'application/json;charset=utf-8',
    			'headers':{"X-Requested-With": "XmlHttpRequest"},
    			success:function(data){

@@ -1,6 +1,6 @@
 .searchForcp,.cpList{
 	width:80%;
-	border:1px solid black;
+ 
 	margin:1% auto;
 	
 }
@@ -9,24 +9,26 @@
 .modifycp{
 	width:50%;
 	margin: 5% auto;
-	border:1px solid black; 	
+	border: 2px solid #d8d0d0;
+	padding :3% 0 3% 3%;
+	 	
 }
 
 .modifycp span{
 	display: inline-block;
 	width: 18%; 
-	margin-left: 15.5%;
+	margin-left: 5%;
 	margin-top: 1%;
 }
 .modifycp input[type=text]{
-	width:50%;
+	width:46%;
 	margin-top: 1%;		 
 }
 .buttion_c{
 	width:80px;
 	float: right;
 	margin:5% 20%;
-		
+	margin-right: 32%;	
 
 }
 
@@ -107,3 +109,10 @@ line-height: 25px;
 	width: 4%;
 	text-align: center;
 } 
+.error{	
+	 
+	background:yellow; 
+	margin-left:1%!important;
+	font-size: 10px;
+	color:red;
+}

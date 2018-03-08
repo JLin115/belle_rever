@@ -16,8 +16,9 @@
    
 <script type="text/javascript">
 	$(window).ready(function () {
-		$('.modifycp').on('submit',function(){ 
-	 
+		$('.buttion_c').on('click',function(){ 
+			$('.error').text(' ')
+	 	alert( $('.cpId').val() )
 			 $.ajax({
 					'type':'GET',
 					'url':'/Belle_Rever/manager/couponManager/ModifyCP',
@@ -29,15 +30,25 @@
 						"cpQty":$('.cpQty').val(),
 						"valid":$('.valid').val(),
 						"invalid":$('.invalid').val(),
-						"mId":$('.mId').val()
+						"mId":$('.mId').val(),
+						"oldId":$('.oldId').val()
 					},
 					'headers':{"X-Requested-With": "XmlHttpRequest"}, 
 					success:function(data){
+						if(data[0].status=="true"){
+						alert('修改成功')
 						location.href="/Belle_Rever/manager/couponManager/ShowCoupon?pageNow=1";
+						}else if(data[0].status=="false"){
+						erm = data[1]
+						$.each(erm, function(D) {
+							$("."+D+"").text(erm[D])
+						})  
+						
+						}
 						 
+					 
 					},error:function(data){
-						alert(data)
-						 
+						alert(data) 
 					}
 					})
 			
@@ -49,20 +60,21 @@
 <body>
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>
 	<div class="maneger_index_show">
-		<div class="maneger_index_show_title_img"><img src="#"></div>
+		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute']}coupon-manage.png"></div>
 
 		<div class="maneger_index_show_right"
-			style="width: 70%; margin-left: 15%; border: 1px solid black;">
+			style="width: 70%; margin-left: 15%; ">
 
 			<form  class="modifycp">
-				<span>折價券編號</span>：<input type="text" name="cpId" value="${cpb.cpId}"><span class="error">${errorMsg.cpId}</span><br> 
-				<span>描述</span>：<input type="text" name="cpDes" value="${cpb.cpDes}"><span class="error">${errorMsg.cpDes}</span><br> 
-				<span>折價券價值</span>：<input type="text" name="cpVal" value="${cpb.cpVal}"><span class="error">${errorMsg.cpVal}</span><br> 
-				<span>折價券數量</span>：<input type="text" name="cpQty" value="${cpb.cpQty}"><span class="error">${errorMsg.cpQty}</span><br> 
-				<span>有效日期</span>：<input type="text" name="valid" value="<fmt:formatDate value="${cpb.valid}" pattern="yyyy-MM-dd"/>"><span class="error">${errorMsg.valid}</span><br> 
-				<span>失效日期</span>：<input type="text" name="invalid" value="<fmt:formatDate value="${cpb.invalid}" pattern="yyyy-MM-dd"/>"><span class="error">${errorMsg.invalid}</span><br>
-				<span>會員ID</span>：<input type="text" name="mId" value="${cpb.mId}"><span class="error">${errorMsg.mId}</span><br> 
-				 <input type="submit" value="送出" class="buttion_c">  
+			<input type="hidden" class="oldId" value="${cpb.cpId}">
+				<span>折價券編號</span>：<input type="text" class="cpId" value="${cpb.cpId}"><span class="cpIdError error"></span><br> 
+				<span>描述</span>：<input type="text" class="cpDes" value="${cpb.cpDes}"><span class="cpDesError error"></span><br> 
+				<span>折價券價值</span>：<input type="text" class="cpVal" value="${cpb.cpVal}"><span class="cpValError error"></span><br> 
+				<span>折價券數量</span>：<input type="text" class="cpQty" value="${cpb.cpQty}"><span class="cpQtyError error"></span><br> 
+				<span>有效日期</span>：<input type="text" class="valid" value="<fmt:formatDate value="${cpb.valid}" pattern="yyyy-MM-dd"/>"><span class="validError error"></span><br> 
+				<span>失效日期</span>：<input type="text" class="invalid" value="<fmt:formatDate value="${cpb.invalid}" pattern="yyyy-MM-dd"/>"><span class="invalidError error"></span><br>
+				<span>會員ID</span>：<input type="text" class="mId" value="${cpb.mId}"><span class="mIdError error"></span><br> 
+				 <input type="button" value="送出" class="buttion_c">  
 			</form>
 
 		</div>

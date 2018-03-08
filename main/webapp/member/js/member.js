@@ -31,7 +31,7 @@ $(window).ready(function () {
 			 }else if(status ==3){
 				 status =  "已出貨" 
 			 }
-			 var d = formatDAte(value.orderDate)
+			 var d = formatDate(value.orderDate)
 			 
 			 var content = '<div class="ordlist_show">'+
 				 				'<a href="OrdDetail?ordId='+value.ordId+'">'+
@@ -56,7 +56,7 @@ $(window).ready(function () {
 	 
 	 
 	 
-	 function formatDAte(date) {
+	 function formatDate(date) {
 		 date =  date.replace(',','').split(' ');
 		 if(date[1].length<2){
 			 date[1]  = '0'+date[1]

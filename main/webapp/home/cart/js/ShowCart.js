@@ -65,11 +65,11 @@ $(window).ready(function() {
    			datatype:'JSON',
    			headers:{"X-Requested-With": "XmlHttpRequest"},
    			success:function(data){
-   				alert(data)
+//   				alert(data)
    				 window.location.href="/Belle_Rever/home/purchase/FillOrdInfo.jsp"
    			    return	
    			},error:function(data){
-   				alert("false")
+//   				alert("false")
    				 if(data.responseJSON.status == "toLogin"){
    				 $('.loginB').trigger('click')
    				 return

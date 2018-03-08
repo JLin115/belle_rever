@@ -163,11 +163,11 @@ public class SearchDaoImpl implements SearchDao {
 	}
 
 	@Override
-	public int modifyCoupon(CouponBean cb) {
+	public int modifyCoupon(CouponBean cb,String oldCpid) {
 		String sql = " update coupon set "
 				+ " cpid = ? , cpdes = ? , cpval= ? , cpqty = ? , valid=? ,invalid =? , mid =? where cpid = ?";
 		return template.update(sql,cb.getCpId(),cb.getCpDes(),cb.getCpVal(),cb.getCpQty(),cb.getValid(),cb.getInvalid()
-				,cb.getmId(),cb.getCpId()
+				,cb.getmId(),oldCpid
 				);
 	}
 

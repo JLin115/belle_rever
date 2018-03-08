@@ -21,7 +21,7 @@ public interface SearchDao {
 	public int deleteCoupon(String cpid );
 	public CouponBean getSingCP(String cpid);
 	public int checkMember(String mId);
-	public int modifyCoupon(CouponBean cb);
+	public int modifyCoupon(CouponBean cb,String oldCpid);
 }
 
 

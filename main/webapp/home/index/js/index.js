@@ -1,7 +1,37 @@
 $(window).ready(function () {
+	/*輪撥比例*/
+	
+	reSz()
+	$(window).on('resize',function(){
+		reSz()
+	})
+	
+	
+	
+	function reSz() {
+		w = $(window).width()
+		h = $(window).height()
+		
+	 
+		var bodyW=$(document.body).width()
+		
+ 
+//		alert(marginL)
+		var singleImg = bodyW*0.8880/4
+//		alert(singleImg)s
+//		alert(singleImg)
+//		alert(w +"_"+h)
+		$('.item').css({
+			'width':singleImg+'px' 	
+//			'height':h*0.5	+'px' 
+		})
+	}
+	
+	
+	
+	
 /*search*/
-	
-	
+ 
 	$('.icon-search').on('click', function(){
 	 var val = "?val="+$('.coustom_text').val()+"&pageNow=1"
 	 var url = "/Belle_Rever/home/search/Searcher"+val
@@ -94,7 +124,8 @@ $(window).ready(function () {
 //    				alert(data.url)
     				if(data.url.startsWith("/Belle_Rever/member/FeedBack?")){
     					$('.newlo').trigger('click');
-    					$('.icon-heart').trigger('click');
+    				 
+    					$('.'+traceIH).trigger('click');
 //    					alert()
     					return
     				}else{
@@ -294,7 +325,7 @@ $(window).ready(function () {
        			datatype:'JSON',
        			headers:{"X-Requested-With": "XmlHttpRequest"},
        			success:function(data){
-       				alert(data)
+       			 
        				 
        			window.location.href='/Belle_Rever/member/Member.jsp'; 
        			    return	

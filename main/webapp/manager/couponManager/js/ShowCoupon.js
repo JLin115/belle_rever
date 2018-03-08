@@ -7,15 +7,15 @@ $(window).ready(function () {
 	page()
 	}
 	for(var d in res){
-		
-	 
+		var vd =formatDate(res[d].valid)
+		var id =formatDate(res[d].invalid)
 		$('.insertContent').append(
 				 '<tr><td><a href="/Belle_Rever/manager/couponManager/getSingleCP?cpid='+res[d].cpId+'">'+res[d].cpId+'</a></td>'+
 				 '<td>'+res[d].cpDes+'</td>'+
 				 '<td>'+res[d].cpVal+'</td>'+
 				 '<td>'+res[d].cpQty+'</td>'+
-				 '<td>'+res[d].valid+'</td>'+
-				 '<td>'+res[d].invalid+'</td>'+
+				 '<td>'+vd+'</td>'+
+				 '<td>'+id+'</td>'+
 				 '<td><span class="icon-trash-o delete_c"></span></td>'+
 				 '</tr>' 
 		)
@@ -103,7 +103,39 @@ $(window).ready(function () {
 		})
 	}
 	
-	
+	function formatDate(date) {
+		 date =  date.replace(',','').split(' ');
+		 if(date[1].length<2){
+			 date[1]  = '0'+date[1]
+		 }
+		 if(date[0] == 'Jan'){
+			 return date[2] + ' -01- ' +date[1]   ; 
+		 }else if(date[0] == 'Feb'){
+			 return date[2] + '-02-' +date[1]  
+		 }else if(date[0] == 'Mar'){ 
+			 return date[2] + '-03-' +date[1]  
+		 }else if(date[0] == 'Apr'){
+			 return date[2] + '-04-' +date[1]  
+		 }else if(date[0] == 'May'){
+			 return date[2] + '-05-' +date[1]  
+		 }else if(date[0] == 'Jun'){
+			 return date[2] + '-06-' +date[1]  
+		 }else if(date[0] == 'Jul'){
+			 return date[2] + '-07-' +date[1] 
+		 }else if(date[0] == 'Aug'){
+			 return date[2] + '-08-' +date[1]  
+		 }else if(date[0] == 'Sep'){
+			 return date[2] + '-09-' +date[1]  
+		 }else if(date[0] == 'Oct'){
+			 return date[2] + '-10-' +date[1]  
+		 }else if(date[0] == 'Nov'){
+			 return date[2] + '-11-' +date[1]  
+		 }else if(date[0] == 'Dec'){ 
+			 return date[2] + '-12-' +date[1]  
+		 }
+		 
+		
+	}
 	
 	
 })

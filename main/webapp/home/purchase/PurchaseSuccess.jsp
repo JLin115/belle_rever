@@ -25,9 +25,9 @@
 		<hr>     
 		<span>THANK YOU!</span>
 		<hr> 
-		<div>感謝您的訂購，查看訂單詳情請至訂單查詢頁面</div>
+		<div>感謝您的訂購，查看訂單詳情請至會員中心</div>
 		<div style="text-align: center;margin-top:1%;">
-			<a href="/Belle_Rever/member/OrdList.jsp?type=1&pageNow=1" style="padding: 6px; background-color: rgb(193, 191, 191); color: black;   font-weight: bold;">訂單詳情</a>
+			<a href="/Belle_Rever/member/Member.jsp" style="padding: 6px; background-color: rgb(193, 191, 191); color: black;   font-weight: bold;">會員中心</a>
 		</div>  
 	</div>
 
