@@ -168,24 +168,25 @@ public class Searcher_mvc {
 
 	@RequestMapping(value = "/manager/couponManager/getSingleCP", method = RequestMethod.GET)
 	public String getSingleCP() throws UnsupportedEncodingException {
-		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+				.getRequest();
 		WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
 		request.setCharacterEncoding("utf-8");
 		String cpid = request.getParameter("cpid");
-		CouponBean cpb =null;
+		CouponBean cpb = null;
 		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
-		if(cpid!=null || cpid!=""){
-		 cpb = dao.getSingCP(cpid.trim());}
+		if (cpid != null || cpid != "") {
+			cpb = dao.getSingCP(cpid.trim());
+		}
 		if (cpb != null) {
 			request.setAttribute("cpb", cpb);
 			System.out.println("true");
-		} 
+		}
 		return "/manager/couponManager/ModifyCoupon";
 	}
-	
-	
 
-	@RequestMapping(value = "/manager/couponManager/ModifyCP", method = RequestMethod.GET,produces=MediaType.APPLICATION_JSON_VALUE+";charset=utf-8")
+	@RequestMapping(value = "/manager/couponManager/ModifyCP", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE
+			+ ";charset=utf-8")
 	@ResponseBody
 	public String ModifyCP() throws UnsupportedEncodingException {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
@@ -207,10 +208,10 @@ public class Searcher_mvc {
 			if (cpId.length() > 30) {
 				errorMsg.put("cpIdError", "字數超過");
 			} else {
-			
-			cpb.setCpId(cpId);
+
+				cpb.setCpId(cpId);
 			}
-		} 
+		}
 		String cpDes = request.getParameter("cpDes");
 		if (cpDes == null || cpDes.equals("")) {
 			errorMsg.put("cpDesError", "請輸入編號");
@@ -220,7 +221,7 @@ public class Searcher_mvc {
 			} else {
 				cpb.setCpDes(cpDes);
 			}
-		} 
+		}
 		String cpVal = request.getParameter("cpVal");
 		if (cpVal == null || cpVal.equals("")) {
 			errorMsg.put("cpValError", "請輸入面額");
@@ -229,8 +230,8 @@ public class Searcher_mvc {
 				cpb.setCpVal(Short.valueOf(cpVal));
 			} catch (Exception e) {
 				errorMsg.put("cpValError", "請輸入數字");
-			} 
-		} 
+			}
+		}
 		String cpQty = request.getParameter("cpQty");
 		if (cpQty == null || cpQty.equals("")) {
 			errorMsg.put("cpQtyError", "請輸入數量");
@@ -239,84 +240,87 @@ public class Searcher_mvc {
 				cpb.setCpQty(Integer.valueOf(cpQty));
 			} catch (Exception e) {
 				errorMsg.put("cpQtyError", "請輸入數字");
-			} 
-		} 
+			}
+		}
 		String regd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|(0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))"
 				+ "|^((19)|2[0|1])[0-9]{2}(\\-)(((1[02]|(0?[13578]))(\\-)(10|20|3[01]|[012]?[1-9]))|(0?2(\\-)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))";
-		
+
 		String valid = request.getParameter("valid");
-		
+		System.out.println(valid);
 		if (valid == null || valid.equals("")) {
 			errorMsg.put("validError", "請輸入有效日期");
 		} else {
 			SimpleDateFormat sdf = null;
 			Timestamp ts = null;
-			if(valid.matches(regd)){
-			try {
-				if (valid.contains("-")) {
-					sdf = new SimpleDateFormat("yyyy-MM-dd");
-					ts = new Timestamp(sdf.parse(valid).getTime());
-					cpb.setValid(ts);
-				} else {
-					sdf = new SimpleDateFormat("yyyy/MM/dd");
-					ts = new Timestamp(sdf.parse(valid).getTime());
-					cpb.setValid(ts);
+			if (valid.matches(regd)) {
+				try {
+					if (valid.contains("-")) {
+						sdf = new SimpleDateFormat("yyyy-MM-dd");
+						ts = new Timestamp(sdf.parse(valid).getTime());
+						cpb.setValid(ts);
+					} else {
+						sdf = new SimpleDateFormat("yyyy/MM/dd");
+						ts = new Timestamp(sdf.parse(valid).getTime());
+						cpb.setValid(ts);
+					}
+				} catch (ParseException e) {
+					e.printStackTrace();
+					errorMsg.put("validError", "格式有誤");
 				}
-			} catch (ParseException e) {
-				e.printStackTrace();
+			} else {
 				errorMsg.put("validError", "格式有誤");
-			}}else{
-				errorMsg.put("validError", "格式有誤");
-				
+
 			}
 		}
 
 		String invalid = request.getParameter("invalid");
+		System.out.println(invalid);
 		if (invalid == null || invalid.equals("")) {
 			errorMsg.put("invalidError", "請輸入失效日期");
 		} else {
 			SimpleDateFormat sdf = null;
 			Timestamp ts = null;
-			if(invalid.matches(regd)){
-			try {
-				if (invalid.contains("-")) {
-					sdf = new SimpleDateFormat("yyyy-MM-dd");
-					ts = new Timestamp(sdf.parse(invalid).getTime());
-					cpb.setValid(ts);
-				} else {
-					sdf = new SimpleDateFormat("yyyy/MM/dd");
-					ts = new Timestamp(sdf.parse(invalid).getTime());
-					cpb.setValid(ts);
+			if (invalid.matches(regd)) {
+				try {
+					if (invalid.contains("-")) {
+						sdf = new SimpleDateFormat("yyyy-MM-dd");
+						ts = new Timestamp(sdf.parse(invalid).getTime());
+						cpb.setValid(ts);
+					} else {
+						sdf = new SimpleDateFormat("yyyy/MM/dd");
+						ts = new Timestamp(sdf.parse(invalid).getTime());
+						cpb.setValid(ts);
+					}
+				} catch (ParseException e) {
+					e.printStackTrace();
+					errorMsg.put("invalidError", "格式有誤");
 				}
-			} catch (ParseException e) {
-				e.printStackTrace();
-				errorMsg.put("invalidError", "格式有誤");
-			}}else{
+			} else {
 				errorMsg.put("invalidError", "格式有誤");
 			}
 		}
 
 		String mId = request.getParameter("mId");
- 
-		if (mId != null &!"".equals(mId)) {
+
+		if (mId != null & !"".equals(mId)) {
 			System.out.println(mId);
 			System.out.println(dao.checkMember(mId));
 			if (dao.checkMember(mId) != 1) {
 				errorMsg.put("mIdError", "會員不存在");
 			}
 		}
-		
-			String s ;
-			System.out.println(errorMsg.size()+"er");
-		if(errorMsg.size()>0){ 
+
+		String s;
+		System.out.println(errorMsg.size() + "er");
+		if (errorMsg.size() > 0) {
 			Gson g = new Gson();
-			System.out.println(g.toJson(errorMsg).toString()); 
-			 s = "[{\"status\":\"false\"},"+g.toJson(errorMsg).toString()+"]";
+			System.out.println(g.toJson(errorMsg).toString());
+			s = "[{\"status\":\"false\"}," + g.toJson(errorMsg).toString() + "]";
 			return s;
-		}else{
-			dao.modifyCoupon(cpb,oldId);
-			 s = "[{\"status\":\"true\"}]";
-			return s;	
+		} else {
+			dao.modifyCoupon(cpb, oldId);
+			s = "[{\"status\":\"true\"}]";
+			return s;
 		}
 	}
 

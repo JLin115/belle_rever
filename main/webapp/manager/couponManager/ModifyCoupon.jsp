@@ -18,7 +18,8 @@
 	$(window).ready(function () {
 		$('.buttion_c').on('click',function(){ 
 			$('.error').text(' ')
-	 	alert( $('.cpId').val() )
+		
+ 
 			 $.ajax({
 					'type':'GET',
 					'url':'/Belle_Rever/manager/couponManager/ModifyCP',

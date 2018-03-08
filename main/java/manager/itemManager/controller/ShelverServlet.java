@@ -307,7 +307,8 @@ public class ShelverServlet extends HttpServlet {
 		} else {
 			id.setItemBean(ib);
 			id.setItemValBean(itemvals, ib.getItemID());
-			
+			response.sendRedirect("ItemManager.jsp");
+			return;
 			
 			
 		}

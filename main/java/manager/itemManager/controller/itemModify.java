@@ -72,11 +72,11 @@ public class ItemModify extends HttpServlet {
 		if (parts != null) {
 			for (Part p : parts) {
 				String name = p.getName();
-				String value = request.getParameter(name);
-
+				
+				
 				if (p.getContentType() == null) {// 抓一般輸入
 					// itemBean部分
-
+					String   value = new String(request.getParameter(name).getBytes("ISO-8859-1"),"utf-8");
 					if (name.equals("id")) {
 						boolean isExist=false;
 						
@@ -326,6 +326,8 @@ public class ItemModify extends HttpServlet {
 //			s.removeAttribute("ivbList");
 			//拿掉可以上ㄧ頁
 			//不拿上ㄧ頁送出會爆掉
+			response.sendRedirect("ItemManager.jsp");
+			return;
 			
 		}
 		

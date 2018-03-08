@@ -59,13 +59,13 @@ public class ShowOrdList extends HttpServlet {
 					response.sendRedirect("OrdList.jsp");
 					return;
 				}
-
-				if (pageNow <= dao.getTotalPage() & b) {
+ 
+				if (pageNow <= dao.getTotalPage(mb.getMid()) & b) {
 					List<OrderBean> ordList = dao.getOrd(osId, mb.getMid());
 					request.setAttribute("osId", osId);
 					request.setAttribute("ordList", ordList);
 					request.setAttribute("pageNow", dao.getPageNow());
-					request.setAttribute("totalPage", dao.getTotalPage());
+					request.setAttribute("totalPage", dao.getTotalPage(mb.getMid()));
 					RequestDispatcher rd = request.getRequestDispatcher("OrdList.jsp");
 					rd.forward(request, response);
 					return;

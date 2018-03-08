@@ -101,17 +101,19 @@ public class MemberDAOImpl implements Dao {
 	
 	
 	@Override
-	public long getTotalRecords() {
-		String sql = "select count(*) from ord where osid= ?";
+	public long getTotalRecords(String mId) {
+		String sql = "select count(*) from ord where osid= ? and mId = ?";
 		Long count = 0L;
-		count=template.queryForObject(sql , new Object[]{osid} ,  Long.class );
+		count=template.queryForObject(sql , new Object[]{osid,mId} ,  Long.class );
+		System.out.println(osid);
+		System.out.println(count);
 		return count;
 
 	}
 	
 	@Override
-	public int getTotalPage() {
-		totalPage = (int) (Math.ceil(getTotalRecords() / (double) pageSize));
+	public int getTotalPage(String mId) {
+		totalPage = (int) (Math.ceil(getTotalRecords(mId) / (double) pageSize));
 		return totalPage;
 	}
 	

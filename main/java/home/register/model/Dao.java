@@ -18,8 +18,8 @@ public interface Dao {
 	
 	public void setIsFeedBack(Integer ordId,Short ordSern);
 
-	public int getTotalPage();
-	public long getTotalRecords();
+	public int getTotalPage(String mId);
+	public long getTotalRecords(String mId);
 	public void setPageNow(int pageNow);
 	public int getPageNow();
 	public void setOsid(short osid);
