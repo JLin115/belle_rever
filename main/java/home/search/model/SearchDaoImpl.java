@@ -171,5 +171,11 @@ public class SearchDaoImpl implements SearchDao {
 				);
 	}
 
+	@Override
+	public int insertCoupon(CouponBean cb) {
+		String sql = " insert into coupon values (?,?,?,?,?,?,?)" ; 
+		return template.update(sql,cb.getCpId(),cb.getCpDes(),cb.getCpVal(),cb.getCpQty(),cb.getValid(),cb.getInvalid(),cb.getmId());
+	}
+
 }
 //

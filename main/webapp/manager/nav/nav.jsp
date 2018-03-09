@@ -16,7 +16,7 @@
 			<li><a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1">會員管理</a></li>
 			<li><a href="${pageContext.request.contextPath}/manager/feedBackManager/FeedBackManager.jsp">評論管理</a></li>
 			<li><a class="itemManager_a" >折價券管理</a><div class="itemManager_a_bar">
-			<div><a href="">新建折價券</a></div> 
+			<div><a href="${pageContext.request.contextPath}/manager/couponManager/SetCoupon.jsp">新建折價券</a></div> 
 			<div><a href="${pageContext.request.contextPath}/manager/couponManager/ShowCoupon?pageNow=1">查看折價券</a></div>
 			</div></li>
 			

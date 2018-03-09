@@ -17,12 +17,12 @@ $(window).ready(function () {
 		
  
 //		alert(marginL)
-		var singleImg = bodyW*0.8880/4
+		var singleImg = bodyW*0.95	/4
 //		alert(singleImg)s
 //		alert(singleImg)
 //		alert(w +"_"+h)
 		$('.item').css({
-			'width':singleImg+'px' 	
+			'width':'100%'
 //			'height':h*0.5	+'px' 
 		})
 	}

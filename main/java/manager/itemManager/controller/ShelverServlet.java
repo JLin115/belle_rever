@@ -258,8 +258,7 @@ public class ShelverServlet extends HttpServlet {
 							}
 						}
 						}
-					if (name.equals("pic5")) {
-						
+					if (name.equals("pic5")) { 
 						if (!"".equals(GlobalService.getFileName(p))) {
 							if (p.getContentType().equals("image/jpeg") || p.getContentType().equals("image/png")) {
 								if(errorMsg.isEmpty()){

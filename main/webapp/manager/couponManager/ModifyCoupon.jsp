@@ -14,49 +14,50 @@
 <script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
 <script type="text/javascript" src="../nav/js/nav.js"></script>
    
-<script type="text/javascript">
-	$(window).ready(function () {
-		$('.buttion_c').on('click',function(){ 
-			$('.error').text(' ')
+<!-- <script type="text/javascript"> -->
+<!-- // 	$(window).ready(function () { -->
+<!-- // 		$('.buttion_c').on('click',function(){  -->
+<!-- // 			$('.error').text(' ') -->
 		
  
-			 $.ajax({
-					'type':'GET',
-					'url':'/Belle_Rever/manager/couponManager/ModifyCP',
-					'cache': false,
-					'data':{
-						"cpId":$('.cpId').val(),
-						"cpDes":$('.cpDes').val(),
-						"cpVal":$('.cpVal').val(),
-						"cpQty":$('.cpQty').val(),
-						"valid":$('.valid').val(),
-						"invalid":$('.invalid').val(),
-						"mId":$('.mId').val(),
-						"oldId":$('.oldId').val()
-					},
-					'headers':{"X-Requested-With": "XmlHttpRequest"}, 
-					success:function(data){
-						if(data[0].status=="true"){
-						alert('修改成功')
-						location.href="/Belle_Rever/manager/couponManager/ShowCoupon?pageNow=1";
-						}else if(data[0].status=="false"){
-						erm = data[1]
-						$.each(erm, function(D) {
-							$("."+D+"").text(erm[D])
-						})  
+<!-- // 			 $.ajax({ -->
+<!-- // 					'type':'GET', -->
+<!-- // 					'url':'/Belle_Rever/manager/couponManager/ModifyCP', -->
+<!-- // 					'cache': false, -->
+<!-- // 					'data':{ -->
+<!-- // 						"cpId":$('.cpId').val(), -->
+<!-- // 						"cpDes":$('.cpDes').val(), -->
+<!-- // 						"cpVal":$('.cpVal').val(), -->
+<!-- // 						"cpQty":$('.cpQty').val(), -->
+<!-- // 						"valid":$('.valid').val(), -->
+<!-- // 						"invalid":$('.invalid').val(), -->
+<!-- // 						"mId":$('.mId').val(), -->
+<!-- // 						"oldId":$('.oldId').val() -->
+<!-- // 					}, -->
+<!-- // 					'headers':{"X-Requested-With": "XmlHttpRequest"},  -->
+<!-- // 					success:function(data){ -->
+<!-- // 						if(data[0].status=="true"){ -->
+<!-- // 						alert('修改成功') -->
+<!-- // 						location.href="/Belle_Rever/manager/couponManager/ShowCoupon?pageNow=1"; -->
+<!-- // 						}else if(data[0].status=="false"){ -->
+<!-- // 						erm = data[1] -->
+<!-- // 						$.each(erm, function(D) { -->
+<!-- // 							$("."+D+"").text(erm[D]) -->
+<!-- // 						})   -->
 						
-						}
+<!-- // 						} -->
 						 
 					 
-					},error:function(data){
-						alert(data) 
-					}
-					})
+<!-- // 					},error:function(data){ -->
+<!-- // 						alert(data)  -->
+<!-- // 					} -->
+<!-- // 					}) -->
 			
 			
-		})
-	})
-</script>
+<!-- // 		}) -->
+<!-- // 	}) -->
+<!-- </script> -->
+<script type="text/javascript" src="js/ShowCoupon.js"></script>
 </head>
 <body>
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>
@@ -68,6 +69,7 @@
 
 			<form  class="modifycp">
 			<input type="hidden" class="oldId" value="${cpb.cpId}">
+						<input type="hidden" class="status" value="mod">
 				<span>折價券編號</span>：<input type="text" class="cpId" value="${cpb.cpId}"><span class="cpIdError error"></span><br> 
 				<span>描述</span>：<input type="text" class="cpDes" value="${cpb.cpDes}"><span class="cpDesError error"></span><br> 
 				<span>折價券價值</span>：<input type="text" class="cpVal" value="${cpb.cpVal}"><span class="cpValError error"></span><br> 

@@ -129,7 +129,7 @@ height:100px;
 
 .maneger_index_show_right{
 	overflow-y:auto;
-/* 	border:1px solid  black; */
+	border:1px solid  black;
 	width:80%;
 	height: 82%;
 	float: left;

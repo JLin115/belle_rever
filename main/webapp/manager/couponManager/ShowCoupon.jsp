@@ -13,11 +13,14 @@
 <script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>
 <script type="text/javascript" src="../nav/js/nav.js"></script>
 <script type="text/javascript" src="js/ShowCoupon.js"></script>
-<script type="text/javascript">
-	var res =${cplist}   
-</script>
+
 </head>
 <body>
+<script type="text/javascript">
+	var res =${cplist}   
+
+</script>
+	<input type="hidden" class="nowP" value="ShowCoupon">
 	<input type="hidden" class="pageNow" value="${pageNow}">
 	<input type="hidden" class="totalPage" value="${totalPage}">
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>

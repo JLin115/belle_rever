@@ -359,15 +359,16 @@ public class GlobalService {
 //		sd.setTimeZone(TimeZone.getTimeZone("GMT+8"));
 //		String s =sd.format(System.currentTimeMillis());
 //		System.out.println(s);
-		String x = "%A4%E5%A4%73%A4%5B%B1%64%A9%B1";
-		String s="";
-		try {
-			 s = java.net.URLDecoder.decode(x,"big5");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(s);
+//		String x = "%A4%E5%A4%73%A4%5B%B1%64%A9%B1";
+//		String s="";
+//		try {
+//			 s = java.net.URLDecoder.decode(x,"big5");
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println(s);
+		System.out.println("x"=="" ? "a":"b");
 		
 	}
 

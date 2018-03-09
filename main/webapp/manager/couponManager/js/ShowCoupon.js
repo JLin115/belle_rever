@@ -2,10 +2,12 @@ $(window).ready(function () {
 	
 	var pageNow = $('.pageNow').val()
 	var totalPage = $('.totalPage').val()
- 
+
 	if(totalPage>0){
 	page()
 	}
+ 
+ if($('.nowP').val() == 'ShowCoupon'){
 	for(var d in res){
 		var vd =formatDate(res[d].valid)
 		var id =formatDate(res[d].invalid)
@@ -18,17 +20,13 @@ $(window).ready(function () {
 				 '<td>'+id+'</td>'+
 				 '<td><span class="icon-trash-o delete_c"></span></td>'+
 				 '</tr>' 
-		)
-		
-		
-		
-		
+		)	
 	}
-	
+ }
 	
 	
 	$('.delete_c').on('click',function(){
-		
+	
 		var cpid = $(this.parentNode.parentNode.firstChild.firstChild).text();
 	 
 		 $.ajax({
@@ -39,7 +37,12 @@ $(window).ready(function () {
 				'headers':{"X-Requested-With": "XmlHttpRequest"},
 				 'contentType': 'application/x-www-form-urlencoded;charset=utf-8',
 				success:function(data){
-					alert(data)
+					
+					if(data == 'true'){
+						alert('刪除成功') 
+					}else{
+						alert('異常')
+					}
 					location.reload()
 				return
 				},error:function(data){
@@ -50,7 +53,43 @@ $(window).ready(function () {
 		
 		
 	})
-	
+	$('.buttion_c').on('click',function(){ 
+			$('.error').text(' ')
+			 $.ajax({
+					'type':'GET',
+					'url':'/Belle_Rever/manager/couponManager/ModifyCP',
+					'cache': false,
+					'data':{
+						"cpId":$('.cpId').val(),
+						"cpDes":$('.cpDes').val(),
+						"cpVal":$('.cpVal').val(),
+						"cpQty":$('.cpQty').val(),
+						"valid":$('.valid').val(),
+						"invalid":$('.invalid').val(),
+						"mId":$('.mId').val(),
+						"oldId":$('.oldId').val(),
+						"status":$('.status').val()
+					},
+					'headers':{"X-Requested-With": "XmlHttpRequest"}, 
+					success:function(data){
+						if(data[0].status=="true"){
+							if($('.status').val() =='set'){
+								alert('新建成功') 
+							}else if($('.status').val() =='mod'){ 
+								alert('修改成功')		 
+							} 
+						location.href="/Belle_Rever/manager/couponManager/ShowCoupon?pageNow=1";
+						}else if(data[0].status=="false"){
+						erm = data[1]
+						$.each(erm, function(D) {
+							$("."+D+"").text(erm[D])
+						})  
+						}
+					},error:function(data){
+						alert(data) 
+					}
+					})
+		})
 	
 	
 	

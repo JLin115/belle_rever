@@ -194,7 +194,7 @@ public class MemberDAOImpl implements Dao {
 	@Override
 	
 	public List<OrderBean> getOrd(Short osId,String mid) {
-		String sql = "SELECT * FROM ORD WHERE osid = ? and mid = ? ORDER BY orderdate ASC LIMIT ? ,?";
+		String sql = "SELECT * FROM ORD WHERE osid = ? and mid = ? ORDER BY orderdate DESC LIMIT ? ,?";
 		List<OrderBean> obList = new ArrayList<>();
 		int startRecordNo = (pageNow - 1) * pageSize;
 		obList = template.query(sql, new Object[] { osId,mid,startRecordNo,pageSize}, new BeanPropertyRowMapper<OrderBean>(OrderBean.class));

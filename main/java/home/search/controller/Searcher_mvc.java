@@ -196,23 +196,160 @@ public class Searcher_mvc {
 				.getResponse();
 		request.setCharacterEncoding("utf-8");
 		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
-		Map<String, String> errorMsg = new HashMap<>();
-		request.setAttribute("errorMsg", errorMsg);
-		CouponBean cpb = new CouponBean();
-
+		Map<String, String> errorMsg =null; 
+		CouponBean cpb = new CouponBean(); 
 		String oldId = request.getParameter("oldId");
-		String cpId = request.getParameter("cpId");
+		String status = request.getParameter("status");
+		System.out.println(status);
+		System.out.println(request.getParameter("invalid"));
+		errorMsg=checkCPValue(
+				request.getParameter("cpId"),
+				request.getParameter("cpDes"),
+				request.getParameter("cpVal"),
+				request.getParameter("cpQty"),
+				request.getParameter("valid"),
+				request.getParameter("invalid"),
+				cpb
+	 );
+//		String cpId = request.getParameter("cpId");
+//		if (cpId == null || cpId.equals("")) {
+//			errorMsg.put("cpIdError", "請輸入編號");
+//		} else {
+//			if (cpId.length() > 30) {
+//				errorMsg.put("cpIdError", "字數超過");
+//			} else {
+//
+//				cpb.setCpId(cpId);
+//			}
+//		}
+//		String cpDes = request.getParameter("cpDes");
+//		if (cpDes == null || cpDes.equals("")) {
+//			errorMsg.put("cpDesError", "請輸入編號");
+//		} else {
+//			if (cpDes.length() > 30) {
+//				errorMsg.put("cpDesError", "字數超過");
+//			} else {
+//				cpb.setCpDes(cpDes);
+//			}
+//		}
+//		String cpVal = request.getParameter("cpVal");
+//		if (cpVal == null || cpVal.equals("")) {
+//			errorMsg.put("cpValError", "請輸入面額");
+//		} else {
+//			try {
+//				cpb.setCpVal(Short.valueOf(cpVal));
+//			} catch (Exception e) {
+//				errorMsg.put("cpValError", "請輸入數字");
+//			}
+//		}
+//		String cpQty = request.getParameter("cpQty");
+//		if (cpQty == null || cpQty.equals("")) {
+//			errorMsg.put("cpQtyError", "請輸入數量");
+//		} else {
+//			try {
+//				cpb.setCpQty(Integer.valueOf(cpQty));
+//			} catch (Exception e) {
+//				errorMsg.put("cpQtyError", "請輸入數字");
+//			}
+//		}
+//		String regd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|(0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))"
+//				+ "|^((19)|2[0|1])[0-9]{2}(\\-)(((1[02]|(0?[13578]))(\\-)(10|20|3[01]|[012]?[1-9]))|(0?2(\\-)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))";
+//
+//		String valid = request.getParameter("valid");
+//		System.out.println(valid);
+//		if (valid == null || valid.equals("")) {
+//			errorMsg.put("validError", "請輸入有效日期");
+//		} else {
+//			SimpleDateFormat sdf = null;
+//			Timestamp ts = null;
+//			if (valid.matches(regd)) {
+//				try {
+//					if (valid.contains("-")) {
+//						sdf = new SimpleDateFormat("yyyy-MM-dd");
+//						ts = new Timestamp(sdf.parse(valid).getTime());
+//						cpb.setValid(ts);
+//					} else {
+//						sdf = new SimpleDateFormat("yyyy/MM/dd");
+//						ts = new Timestamp(sdf.parse(valid).getTime());
+//						cpb.setValid(ts);
+//					}
+//				} catch (ParseException e) {
+//					e.printStackTrace();
+//					errorMsg.put("validError", "格式有誤");
+//				}
+//			} else {
+//				errorMsg.put("validError", "格式有誤");
+//
+//			}
+//		}
+//
+//		String invalid = request.getParameter("invalid");
+//		System.out.println(invalid);
+//		if (invalid == null || invalid.equals("")) {
+//			errorMsg.put("invalidError", "請輸入失效日期");
+//		} else {
+//			SimpleDateFormat sdf = null;
+//			Timestamp ts = null;
+//			if (invalid.matches(regd)) {
+//				try {
+//					if (invalid.contains("-")) {
+//						sdf = new SimpleDateFormat("yyyy-MM-dd");
+//						ts = new Timestamp(sdf.parse(invalid).getTime());
+//						cpb.setInvalid(ts);
+//					} else {
+//						sdf = new SimpleDateFormat("yyyy/MM/dd");
+//						ts = new Timestamp(sdf.parse(invalid).getTime());
+//						cpb.setInvalid(ts);
+//					}
+//				} catch (ParseException e) {
+//					e.printStackTrace();
+//					errorMsg.put("invalidError", "格式有誤");
+//				}
+//			} else {
+//				errorMsg.put("invalidError", "格式有誤");
+//			}
+//		}
+
+		String mId = request.getParameter("mId"); 
+		if (mId != null & !"".equals(mId)) {
+			System.out.println(mId);
+			System.out.println(dao.checkMember(mId));
+			if (dao.checkMember(mId) != 1) {
+				errorMsg.put("mIdError", "會員不存在");
+			}
+		}
+
+		String s;
+		request.setAttribute("errorMsg", errorMsg);
+		if (errorMsg.size() > 0) {
+			Gson g = new Gson();
+			System.out.println(g.toJson(errorMsg).toString());
+			s = "[{\"status\":\"false\"}," + g.toJson(errorMsg).toString() + "]";
+			return s;
+		} else {
+			if(status.equals("set")){
+				dao.insertCoupon(cpb);
+			}else{
+				dao.modifyCoupon(cpb, oldId);	
+			} 
+			s = "[{\"status\":\"true\"}]";
+			return s;
+		}
+	}
+	
+	
+	
+	private Map<String, String> checkCPValue(String cpId,String cpDes,String cpVal,String cpQty,String valid,String invalid,CouponBean cpb){
+		Map<String, String> errorMsg = new HashMap<>();
 		if (cpId == null || cpId.equals("")) {
 			errorMsg.put("cpIdError", "請輸入編號");
 		} else {
 			if (cpId.length() > 30) {
 				errorMsg.put("cpIdError", "字數超過");
-			} else {
-
+			} else { 
 				cpb.setCpId(cpId);
 			}
-		}
-		String cpDes = request.getParameter("cpDes");
+		} 
 		if (cpDes == null || cpDes.equals("")) {
 			errorMsg.put("cpDesError", "請輸入編號");
 		} else {
@@ -222,7 +359,7 @@ public class Searcher_mvc {
 				cpb.setCpDes(cpDes);
 			}
 		}
-		String cpVal = request.getParameter("cpVal");
+		
 		if (cpVal == null || cpVal.equals("")) {
 			errorMsg.put("cpValError", "請輸入面額");
 		} else {
@@ -231,8 +368,7 @@ public class Searcher_mvc {
 			} catch (Exception e) {
 				errorMsg.put("cpValError", "請輸入數字");
 			}
-		}
-		String cpQty = request.getParameter("cpQty");
+		} 
 		if (cpQty == null || cpQty.equals("")) {
 			errorMsg.put("cpQtyError", "請輸入數量");
 		} else {
@@ -243,15 +379,16 @@ public class Searcher_mvc {
 			}
 		}
 		String regd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|(0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))"
-				+ "|^((19)|2[0|1])[0-9]{2}(\\-)(((1[02]|(0?[13578]))(\\-)(10|20|3[01]|[012]?[1-9]))|(0?2(\\-)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))";
+				+ "|^((19)|2[0|1])[0-9]{2}(\\-)(((1[02]|(0?[13578]))(\\-)(10|20|3[01]|[012]?[1-9]))|(0?2(\\-)(10|20|[012]?[1-9]))|((0?[469]|11)(\\-)(10|20|30|[012]?[1-9])))";
 
-		String valid = request.getParameter("valid");
+
 		System.out.println(valid);
 		if (valid == null || valid.equals("")) {
 			errorMsg.put("validError", "請輸入有效日期");
 		} else {
 			SimpleDateFormat sdf = null;
 			Timestamp ts = null;
+			valid= valid.trim();
 			if (valid.matches(regd)) {
 				try {
 					if (valid.contains("-")) {
@@ -269,27 +406,25 @@ public class Searcher_mvc {
 				}
 			} else {
 				errorMsg.put("validError", "格式有誤");
-
 			}
 		}
-
-		String invalid = request.getParameter("invalid");
 		System.out.println(invalid);
 		if (invalid == null || invalid.equals("")) {
 			errorMsg.put("invalidError", "請輸入失效日期");
 		} else {
 			SimpleDateFormat sdf = null;
 			Timestamp ts = null;
+			invalid= invalid.trim();
 			if (invalid.matches(regd)) {
 				try {
 					if (invalid.contains("-")) {
 						sdf = new SimpleDateFormat("yyyy-MM-dd");
 						ts = new Timestamp(sdf.parse(invalid).getTime());
-						cpb.setValid(ts);
+						cpb.setInvalid(ts);
 					} else {
 						sdf = new SimpleDateFormat("yyyy/MM/dd");
 						ts = new Timestamp(sdf.parse(invalid).getTime());
-						cpb.setValid(ts);
+						cpb.setInvalid(ts);
 					}
 				} catch (ParseException e) {
 					e.printStackTrace();
@@ -299,29 +434,9 @@ public class Searcher_mvc {
 				errorMsg.put("invalidError", "格式有誤");
 			}
 		}
-
-		String mId = request.getParameter("mId");
-
-		if (mId != null & !"".equals(mId)) {
-			System.out.println(mId);
-			System.out.println(dao.checkMember(mId));
-			if (dao.checkMember(mId) != 1) {
-				errorMsg.put("mIdError", "會員不存在");
-			}
-		}
-
-		String s;
-		System.out.println(errorMsg.size() + "er");
-		if (errorMsg.size() > 0) {
-			Gson g = new Gson();
-			System.out.println(g.toJson(errorMsg).toString());
-			s = "[{\"status\":\"false\"}," + g.toJson(errorMsg).toString() + "]";
-			return s;
-		} else {
-			dao.modifyCoupon(cpb, oldId);
-			s = "[{\"status\":\"true\"}]";
-			return s;
-		}
+		return errorMsg;
 	}
+	 
+	
 
 }

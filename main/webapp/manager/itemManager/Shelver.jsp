@@ -1,12 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+ <%
+ String id = request.getParameter("id");
+ String price = request.getParameter("price");
+ String title = request.getParameter("title");
+ String des = request.getParameter("des");
+ id= new String (id.getBytes("ISO-8859-1"),"utf-8") != null? new String (id.getBytes("ISO-8859-1"),"utf-8"):"" ;
+ price= new String (price.getBytes("ISO-8859-1"),"utf-8") != null? new String (price.getBytes("ISO-8859-1"),"utf-8"):"" ;
+ title= new String (title.getBytes("ISO-8859-1"),"utf-8") != null? new String (title.getBytes("ISO-8859-1"),"utf-8"):"" ;
+ des= new String (des.getBytes("ISO-8859-1"),"utf-8") != null? new String (des.getBytes("ISO-8859-1"),"utf-8"):"" ;
+ %>
+ 
+<%@taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
 	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
 	crossorigin="anonymous"></script>
@@ -23,18 +33,15 @@
 	<div class="maneger_index_show">
 
 		<div class="maneger_index_show_title_img"><img src="${initParam['showImgRoute'] }manage_product.png"/></div>
-		<div class="maneger_index_show_right" style="width:90%; margin-left:5%; ">
-
-
-
+		<div class="maneger_index_show_right" style="width:90%; margin-left:5%; "> 
 	<form enctype="multipart/form-data" name="form"method="POST" action="ShelverServlet" >
 		<div class="content"> 
-			<div class="d1">
-				<span>編號：</span><input type="text" name='id' value="${param.id }" /><p>${errorMsg.idError}</p><br> 
-				<span>價格：</span><input type="text" name='price' value="${param.price }"/><p>${errorMsg.priceError}</p><br> 
+			<div class="d1"> 
+				<span>編號：</span><input type="text" name='id' value="<%out.write(id);%>" /><p>${errorMsg.idError}</p><br> 
+				<span>價格：</span><input type="text" name='price' value="<%out.write(price);%>"/><p>${errorMsg.priceError}</p><br> 
 				<span>折扣：</span><input type="text" name='discount' value="1.0" /><p>${errorMsg.discountError}</p><br>  
-				<span>標頭：</span><input type="text" name='title' value="${param.title}"/><p>${errorMsg.titleError}</p><br> 
-				<span>描述：</span><textarea class="des" name='des' maxlength='100'>${param.des }</textarea><p class="areap">${errorMsg.desError}</p><br> 
+				<span>標頭：</span><input type="text" name='title' value="<%out.write(title);%>"/><p>${errorMsg.titleError}</p><br> 
+				<span>描述：</span><textarea class="des" name='des' maxlength='100'><%out.write(des);%></textarea><p class="areap">${errorMsg.desError}</p><br> 
 				<span>類型：</span><select name = "type">
 					<option value="0">請選擇類別</option>
 					<c:forEach var="x" items="${itemType}">
