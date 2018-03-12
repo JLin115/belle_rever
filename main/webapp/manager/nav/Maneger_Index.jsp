@@ -12,14 +12,23 @@
 <script type="text/javascript" src="../nav/js/nav.js"></script>
 <title>Shelver</title>
 </head>
-<body>
+<body >
 	<jsp:include page="../nav/Nav.jsp"></jsp:include>
-
-		<div class="maneger_index_show">
-			<div class="maneger_index_show_title_img"></div>
-			<div class="maneger_index_show_left"></div> 
-			<div class="maneger_index_show_right"></div>
-		</div>
+ 
+		 
+			<div class="maneger_index_show_right" style="height:770px; margin:0 auto;margin-left:10%;width:80%; ">
+			<div class="index_img">
+			<a href="${pageContext.request.contextPath}/manager/orderManager/OrderManager.jsp"><img alt="" src="${initParam['showImgRoute']}products.png"></a>
+			<a href="${pageContext.request.contextPath}/manager/orderManager/OrderManager.jsp"><img alt="" src="${initParam['showImgRoute']}orderlist.png"></a>
+			<a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1"><img alt="" src="${initParam['showImgRoute']}members.png">  </a>  
+			<br>  
+			<a href="${pageContext.request.contextPath}/manager/feedBackManager/FeedBackManager.jsp"><img alt="" src="${initParam['showImgRoute']}like.png"></a>
+			<a href="${pageContext.request.contextPath}/manager/couponManager/ShowCoupon?pageNow=1"><img alt="" src="${initParam['showImgRoute']}coupon.png"></a>
+			<a href=""><img alt="" src="${initParam['showImgRoute']}service.png"></a>
+			<a href="${pageContext.request.contextPath}/manager/analysis/analysis.jsp"><img alt="" src="${initParam['showImgRoute']}chart.png"></a>
+			</div> 
+			</div>
+		   
 
  
 </body>

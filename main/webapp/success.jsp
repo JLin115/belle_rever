@@ -7,13 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<a href="/Belle_Rever/testSpring?aaa=11">test</a>
-<a href="/Belle_Rever/testSpring2/11">test2</a>
-<form action="/Belle_Rever/testPOJO">
-<input type="text" name="name">
-<input type="text" name="age">
-<input type="submit">
-</form>
+success
 </body>
 </html>

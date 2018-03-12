@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import _init.GlobalService;
 import home.purchase.model.CouponBean;
+import manager.analysis.model.MonthAnalysis;
+import manager.analysis.model.SingleMonthandItem;
 import manager.itemManager.model.ItemBean;
 import member.model.FeedBackBean;
 
@@ -175,6 +177,30 @@ public class SearchDaoImpl implements SearchDao {
 	public int insertCoupon(CouponBean cb) {
 		String sql = " insert into coupon values (?,?,?,?,?,?,?)" ; 
 		return template.update(sql,cb.getCpId(),cb.getCpDes(),cb.getCpVal(),cb.getCpQty(),cb.getValid(),cb.getInvalid(),cb.getmId());
+	}
+
+	@Override
+	public List<MonthAnalysis> getMonthAna(String year) {
+		String sql = " SELECT MONTH(orderdate) month,SUM(ordtotal) total FROM ORD where YEAR(orderdate) = ? GROUP BY MONTH(orderdate) " ; 
+		List<MonthAnalysis> list =template.query(sql ,new Object[]{year},new BeanPropertyRowMapper<MonthAnalysis>(MonthAnalysis.class));
+		 
+		return list;
+	}
+
+	@Override
+	public List<String> getAllYear() {
+		 String sql ="SELECT YEAR(orderdate) YEAR FROM ORD GROUP BY YEAR(orderdate) ";
+		 List<String > list = template.queryForList(sql,String.class);
+		return list;
+	}
+
+	@Override
+	public List<SingleMonthandItem> getSingleMon(String year, String mon) {
+		 String sql =" SELECT iv.itemtype type,SUM(i.itemprice*ov.ordqty*i.itemdiscount) total FROM ord_val ov JOIN ORD o ON o.ordid = ov.ordid "+
+				 " JOIN item i ON i.itemid = ov.itemid JOIN item_type iv ON i.itid = iv.itid WHERE MONTH(o.orderdate)=? AND YEAR(o.orderdate) =? GROUP BY  i.itid ";
+		 List<SingleMonthandItem > list = template.query(sql,new Object[]{mon,year},new BeanPropertyRowMapper<SingleMonthandItem>(SingleMonthandItem.class));
+		
+		return list;
 	}
 
 }

@@ -7,7 +7,7 @@ $(window).ready(function () {
         var nextSiblingwidth = $(this.nextSibling).width()
  
         var w=( objW/2)-nextSiblingwidth/2	;
-        var h = $(this).outerHeight()+2;
+        var h = $(this).outerHeight()+4;
    
 		 $(this.nextSibling).on('mouseenter', function(){
 			 $(this).css({

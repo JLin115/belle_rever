@@ -26,11 +26,17 @@ public class test1 {
 	public String test2(){
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 	    HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
-		
 	    String s = request.getParameter("aaa");
 	    System.out.println(s);
-		System.out.println("success");
-		
+		System.out.println("success"); 
 		return "success";
 	}
+	
+	@RequestMapping("/testPOJO")
+	public String test4(testtt t)
+	{
+		System.out.println(t.toString());
+		return "success";
+	}
+	
 }

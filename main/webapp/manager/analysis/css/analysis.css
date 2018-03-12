@@ -1,0 +1,12 @@
+.anaUl,.choose{
+/* 	border:1px solid black; */
+	text-align: center;;
+	
+}
+.anaUl li,.choose li{
+/* 	border:1px solid black; */
+	padding:10px; 
+}
+.anaUl li:hover{
+	cursor: pointer;;
+}

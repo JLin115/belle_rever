@@ -25,6 +25,14 @@ body {
 	position: relative;
 	overflow-y: scroll;
 }
+a{
+	text-decoration: none;
+	color: black;;	
+}
+a:hover{
+	color: black;;
+		text-decoration: none;
+}
 
 .customButton{
 	display: inline-block;

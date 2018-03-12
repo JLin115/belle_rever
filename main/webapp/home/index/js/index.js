@@ -1,11 +1,11 @@
 $(window).ready(function () {
 	/*輪撥比例*/
-	
-	reSz()
-	$(window).on('resize',function(){
-		reSz()
-	})
-	
+//	
+//	reSz()
+//	$(window).on('resize',function(){
+//		reSz()
+//	})
+//	
 	
 	
 	function reSz() {

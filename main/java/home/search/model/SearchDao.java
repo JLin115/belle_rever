@@ -3,6 +3,8 @@ package home.search.model;
 import java.util.List;
 
 import home.purchase.model.CouponBean;
+import manager.analysis.model.MonthAnalysis;
+import manager.analysis.model.SingleMonthandItem;
 import manager.itemManager.model.ItemBean;
 import member.model.FeedBackBean;
 
@@ -23,6 +25,11 @@ public interface SearchDao {
 	public int checkMember(String mId);
 	public int modifyCoupon(CouponBean cb,String oldCpid);
 	public int insertCoupon(CouponBean cb);
+	
+	public List<MonthAnalysis> getMonthAna(String year);
+	public List<String> getAllYear();
+	public List<SingleMonthandItem> getSingleMon(String year,String mon);
+	
 }
 
 

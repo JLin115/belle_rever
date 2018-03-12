@@ -3,7 +3,7 @@
 
 <div class="manager_nav">
 	<div class="nav">
-		<a class="manager_navA" href="#">Belle_Rever網站管理</a> 
+		<a class="manager_navA" href="${pageContext.request.contextPath}/manager/nav/Maneger_Index.jsp">Belle_Rever網站管理</a> 
 		<span class="manager_logoutSpan"><span class="icon-login"></span></span>
 	</div>
 	<div class="manager_navList_div">
@@ -19,9 +19,9 @@
 			<div><a href="${pageContext.request.contextPath}/manager/couponManager/SetCoupon.jsp">新建折價券</a></div> 
 			<div><a href="${pageContext.request.contextPath}/manager/couponManager/ShowCoupon?pageNow=1">查看折價券</a></div>
 			</div></li>
+		
 			
-			
-			<li class="manager_navList_li">銷售分析</li>
+			<li class="manager_navList_li"><a href="${pageContext.request.contextPath}/manager/analysis/analysis.jsp">銷售分析</a></li>
 		</ul>
 	</div>
 </div>
