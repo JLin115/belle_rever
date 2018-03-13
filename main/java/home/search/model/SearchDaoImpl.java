@@ -169,8 +169,7 @@ public class SearchDaoImpl implements SearchDao {
 		String sql = " update coupon set "
 				+ " cpid = ? , cpdes = ? , cpval= ? , cpqty = ? , valid=? ,invalid =? , mid =? where cpid = ?";
 		return template.update(sql,cb.getCpId(),cb.getCpDes(),cb.getCpVal(),cb.getCpQty(),cb.getValid(),cb.getInvalid()
-				,cb.getmId(),oldCpid
-				);
+				,cb.getmId(),oldCpid);
 	}
 
 	@Override
@@ -183,7 +182,6 @@ public class SearchDaoImpl implements SearchDao {
 	public List<MonthAnalysis> getMonthAna(String year) {
 		String sql = " SELECT MONTH(orderdate) month,SUM(ordtotal) total FROM ORD where YEAR(orderdate) = ? GROUP BY MONTH(orderdate) " ; 
 		List<MonthAnalysis> list =template.query(sql ,new Object[]{year},new BeanPropertyRowMapper<MonthAnalysis>(MonthAnalysis.class));
-		 
 		return list;
 	}
 
@@ -199,7 +197,6 @@ public class SearchDaoImpl implements SearchDao {
 		 String sql =" SELECT iv.itemtype type,SUM(i.itemprice*ov.ordqty*i.itemdiscount) total FROM ord_val ov JOIN ORD o ON o.ordid = ov.ordid "+
 				 " JOIN item i ON i.itemid = ov.itemid JOIN item_type iv ON i.itid = iv.itid WHERE MONTH(o.orderdate)=? AND YEAR(o.orderdate) =? GROUP BY  i.itid ";
 		 List<SingleMonthandItem > list = template.query(sql,new Object[]{mon,year},new BeanPropertyRowMapper<SingleMonthandItem>(SingleMonthandItem.class));
-		
 		return list;
 	}
 

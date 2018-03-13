@@ -147,6 +147,7 @@ $(window).load(function() {
 			}
 		}
 		
+		
 	var chart = new CanvasJS.Chart("chartContainer", {
 		theme : "light", // "light2", "dark1", "dark2"
 		animationEnabled : false, // change to true
