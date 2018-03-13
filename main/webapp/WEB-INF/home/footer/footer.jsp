@@ -6,7 +6,7 @@
             <ul>
                 <li style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-weight:bolder;padding-bottom:5px">STORE INFORMATION</li>
                 <li>10:00~12:00 13:00~19:00 / Mon - Fri (例假日除外)</li>
-                <li>台灣客服專線 + 886-2-2880-7708</li>
+                <li>台灣客服專線 + 886-2-2771-2171</li>
                 <li>Service@Belle_Rêver.com.tw</li>
             </ul>
             <ul >
