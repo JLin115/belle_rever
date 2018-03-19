@@ -107,6 +107,14 @@
 										</c:forEach>
 								</select></td>
 							</c:if>
+							<c:if test="${x.itemQty == 0 }">
+							<td>  
+							<select>
+							<option value="1" selected="selected">1</option>
+							</select>
+							</td>
+							</c:if>
+							
 							<td>${x.itemPrice}</td>
 							<td>${x.itemPrice * x.itemDiscount}</td>
 							<td class="singlePrice" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>

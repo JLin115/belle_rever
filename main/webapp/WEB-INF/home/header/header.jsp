@@ -105,8 +105,6 @@
 <div class="page-header page_header EN_font_family">
 	<span ><a class="header_title" href="<c:url value="${initParam['index']}" />">Belle_Rêver</a></span>
 </div>
-
-
 <!--頁首導覽-->
 <nav class="navbar navbar-default coustom_navbar EN_font_family"
 	style="padding: 0; margin: 0;">
@@ -116,34 +114,22 @@
 			<div class="collapse navbar-collapse coustom_navbar_div"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav nav_ul coustom_navbar_js coustom_navbar_li">
-
 					<li><a class="header_NewIn" style="padding: 0; margin: 0; line-height: 30px;">NEW IN</a></li>
-
-
 					<li><a class="header_Clothes" style="padding: 0; margin: 0; line-height: 30px;">Clothes</a><div class="header_clothes_inner">
 						<ul style="padding: 0;">
 						<c:forEach var="x" items="${itemType}">
 							<li  ><a href="  <c:url  value="/home/showItem/ShowItem?itid=${x.key }&pageNow=1" />  ">${x.value}</a></li>
 						</c:forEach>
 						</ul>
-						
-						
 						</div>
 					</li>
-					
 					<li><a class="header_Shoes" style="padding: 0; margin: 0; line-height: 30px;">Shoes</a><div class="header_Shoes_inner"></div></li>
-
 					<li><a class="header_Accessories" style="padding: 0; margin: 0; line-height: 30px;">Accessories</a><div class="header_Accessories_inner"></div></li>
-
 					<li><a class="header_Bags" style="padding: 0; margin: 0; line-height: 30px;">Bags</a><div class="header_Bags_inner"></div></li>
-
 					<li><a class="header_Sale" style="padding: 0; margin: 0; line-height: 30px; color: red;">Sale</a></li>
-					
-					
 					<li><div style="border-bottom: 1px solid black; display: inline-block; padding-bottom: 0px; line-height: 30px; margin-left: 110%;">
 					<span class="icon-search"></span><input type="text" class="coustom_text" placeholder="Search"></div></li>
 				</ul>
-
 			</div>
 			<!-- /.navbar-collapse -->
 		</center>

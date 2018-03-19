@@ -9,18 +9,16 @@
 	
 <link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/animate.css">
 <link rel="stylesheet" href="/Belle_Rever/home/index/bootstrap/bootstrap.min.css">
-<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>	
-	
+<script src='/Belle_Rever/js/jquery-2.2.4.min.js'></script>	 
 <!--icon    -->
 <link href="https://file.myfontastic.com/q7vPAHfyZAb68aTYyhnm4S/icons.css" rel="stylesheet">
 <!-- 頁首頁尾 -->
-<link href="${initParam['header_footer_css']}" rel="stylesheet">
-<link rel="stylesheet" href="css/ShowItem.css" />
 
+<link rel="stylesheet" href="css/ShowItem.css" /> 
+<link href="${initParam['header_footer_css']}" rel="stylesheet">
 <title>Shelver</title>
 <script type="text/javascript">
 $(window).ready(function() {
- 
 		var pageNow = $('.hidden_pageNow').val();
 		$('.controlPage a').each(function() {
 			if ($(this).text().trim() == pageNow) {
@@ -33,8 +31,6 @@ $(window).ready(function() {
 </script>
 </head>
 <body>
- 
- 
 <!-- 	<ul class="sidebar"> -->
 <!-- 		<li><form><input type="text"><input type="submit"></form></li> -->
 		
@@ -44,6 +40,7 @@ $(window).ready(function() {
 <!-- 	</ul> -->
 
 <jsp:include page="${initParam['header']}"></jsp:include>
+
 	<div class="ShowItem_show">
 		<ul>
 			<c:forEach var="items" items="${allItem}">
@@ -78,15 +75,11 @@ $(window).ready(function() {
 					<c:if test="${pageNow >1 }">
 						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow -1}">PREV <</a>
 					</c:if>
-
-
-
 					<c:if test="${totalPage <5}">
 						<c:forEach var="x" begin="1" end="${totalPage}">
 							<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${x}">${x}</a>
 						</c:forEach>
 					</c:if>
-
 					<c:if test="${totalPage > 5}">
 						<c:if test="${pageNow > 3}">
 							<c:if test="${totalPage - pageNow > 2}">
@@ -107,8 +100,6 @@ $(window).ready(function() {
 							</c:forEach>
 						</c:if>
 					</c:if>
-
-
 					<c:if test="${pageNow==totalPage}">
 						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow }"> >NEXT</a>
 					</c:if>
@@ -117,7 +108,6 @@ $(window).ready(function() {
 					</c:if>
 					<c:if test="${totalPage ==0 }">
 						<a class="controlPage_a_color" href="ShowItem?itid=${itid}&pageNow=${pageNow}"> >NEXT</a>
-
 					</c:if>
 				</div>
 			</c:if>
@@ -128,11 +118,9 @@ $(window).ready(function() {
 	</div>
 	
 	<jsp:include page="${initParam['footer']}"></jsp:include>
-	
-	
-	<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
+	<script src="${initParam['header_footer_js']}"></script>
 	<script src="/Belle_Rever/home/index/bootstrap/bootstrap.js"></script>
 	<!-- 頁首頁尾js -->
-	<script src="${initParam['header_footer_js']}"></script>
+
 </body>
 </html>

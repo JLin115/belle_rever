@@ -5,10 +5,12 @@
  String price = request.getParameter("price");
  String title = request.getParameter("title");
  String des = request.getParameter("des");
- id= new String (id.getBytes("ISO-8859-1"),"utf-8") != null? new String (id.getBytes("ISO-8859-1"),"utf-8"):"" ;
- price= new String (price.getBytes("ISO-8859-1"),"utf-8") != null? new String (price.getBytes("ISO-8859-1"),"utf-8"):"" ;
- title= new String (title.getBytes("ISO-8859-1"),"utf-8") != null? new String (title.getBytes("ISO-8859-1"),"utf-8"):"" ;
- des= new String (des.getBytes("ISO-8859-1"),"utf-8") != null? new String (des.getBytes("ISO-8859-1"),"utf-8"):"" ;
+ 
+ if(id!=null){id= new String (id.getBytes("ISO-8859-1"),"utf-8") != null? new String (id.getBytes("ISO-8859-1"),"utf-8"):"" ;}else{id="";}
+ if(price!=null){price= new String (price.getBytes("ISO-8859-1"),"utf-8") != null? new String (price.getBytes("ISO-8859-1"),"utf-8"):"" ;}else{price="";}
+ if(title!=null){title= new String (title.getBytes("ISO-8859-1"),"utf-8") != null? new String (title.getBytes("ISO-8859-1"),"utf-8"):"" ;}else{title="";}
+ if(des!=null){des= new String (des.getBytes("ISO-8859-1"),"utf-8") != null? new String (des.getBytes("ISO-8859-1"),"utf-8"):"" ;}else{des="";}
+ 
  %>
  
 <%@taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt" %>
