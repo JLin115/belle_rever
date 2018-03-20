@@ -115,17 +115,54 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav nav_ul coustom_navbar_js coustom_navbar_li">
 					<li><a class="header_NewIn" style="padding: 0; margin: 0; line-height: 30px;">NEW IN</a></li>
-					<li><a class="header_Clothes" style="padding: 0; margin: 0; line-height: 30px;">Clothes</a><div class="header_clothes_inner">
-						<ul style="padding: 0;">
-						<c:forEach var="x" items="${itemType}">
-							<li  ><a href="  <c:url  value="/home/showItem/ShowItem?itid=${x.key }&pageNow=1" />  ">${x.value}</a></li>
-						</c:forEach>
-						</ul>
+					<li><a class="header_Clothes" style="padding: 0; margin: 0; line-height: 30px;">Clothes</a><div class="header_clothes_inner CH_font_family" style="width:400px">
+<!-- 						<ul style="padding: 0;"> -->
+<%-- 						<c:forEach var="x" items="${itemType}"> --%>
+<%-- 							<li  ><a href="  <c:url  value="/home/showItem/ShowItem?itid=${x.key }&pageNow=1" />  ">${x.value}</a></li> --%>
+<%-- 						</c:forEach> --%>
+						
+						<div>
+							<div style="font-size: 24px;font-weight: bolder; padding: 10px 0;">洋裝</div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=1&pageNow=1" />">無袖洋裝</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=2&pageNow=1" />">七分袖洋裝</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=3}&pageNow=1" />">長袖洋裝</a></div>
 						</div>
+						
+						<div>
+							<div style="font-size: 24px ;font-weight: bolder;padding: 10px 0;">上衣</div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=4&pageNow=1" />">內著</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=5&pageNow=1" />">上衣</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=6&pageNow=1" />">襯衫</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=7&pageNow=1" />">針織/毛衣</a></div>
+						</div>
+						
+
+						<div>
+							<div style="font-size: 24px ;font-weight: bolder;padding: 10px 0;">下著</div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=8&pageNow=1" />">裙類</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=9&pageNow=1" />">褲類</a></div>
+						</div>
+						
+
+						<div>
+							<div style="font-size: 24px; font-weight: bolder;padding: 10px 0;">外套</div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=10&pageNow=1" />">外套/罩衫</a></div>
+						</div> 
+						
+						</div>
+<!-- 						</ul> -->
 					</li>
-					<li><a class="header_Shoes" style="padding: 0; margin: 0; line-height: 30px;">Shoes</a><div class="header_Shoes_inner"></div></li>
-					<li><a class="header_Accessories" style="padding: 0; margin: 0; line-height: 30px;">Accessories</a><div class="header_Accessories_inner"></div></li>
-					<li><a class="header_Bags" style="padding: 0; margin: 0; line-height: 30px;">Bags</a><div class="header_Bags_inner"></div></li>
+					<li><a class="header_Shoes" style="padding: 0; margin: 0; line-height: 30px;">Shoes</a><div class="header_Shoes_inner" style="width:">
+						<div>
+							<div style="font-size: 24px ;font-weight: bolder;padding: 10px 0;">女鞋</div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=11&pageNow=1" />">長靴</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=12&pageNow=1" />">中筒靴</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=13&pageNow=1" />">短靴</a></div>
+						</div>
+					
+					</div></li>
+					<li><a class="header_Accessories" style="padding: 0; margin: 0; line-height: 30px;">Accessories</a></li>
+					<li><a class="header_Bags" style="padding: 0; margin: 0; line-height: 30px;">Bags</a></li>
 					<li><a class="header_Sale" style="padding: 0; margin: 0; line-height: 30px; color: red;">Sale</a></li>
 					<li><div style="border-bottom: 1px solid black; display: inline-block; padding-bottom: 0px; line-height: 30px; margin-left: 110%;">
 					<span class="icon-search"></span><input type="text" class="coustom_text" placeholder="Search"></div></li>

@@ -235,17 +235,27 @@ a:hover{
 	display: none;
 	position: absolute;
 	min-width: 200px;
-	height: 250px;
+	height: 180px;
 	border: 1px solid black;
 	background: white;
 	z-index: 50;
 }
-
+.header_clothes_inner>div {
+	width:24%;
+	display:inline-block;
+	vertical-align: top;;
+ 
+/* 	border: 1px solid black;  */
+}
+.header_clothes_inner>div>div,.header_Shoes_inner>div>div {
+	padding: 3px;
+}
+ 
 .header_Shoes_inner {
 	display: none;
 	position: absolute;
-	min-width: 200px;
-	height: 300px;
+	min-width: 150px;
+	height: 150px;
 	border: 1px solid black;
 	background: white;
 	z-index: 50;
@@ -255,7 +265,7 @@ a:hover{
 	display: none;
 	position: absolute;
 	min-width: 200px;
-	height: 300px;
+	height: 150px;
 	border: 1px solid black;
 	background: white;
 	z-index: 50;
@@ -265,7 +275,7 @@ a:hover{
 	display: none;
 	position: absolute;
 	min-width: 200px;
-	height: 300px;
+	height: 150px;
 	border: 1px solid black;
 	background: white;
 	z-index: 50;
