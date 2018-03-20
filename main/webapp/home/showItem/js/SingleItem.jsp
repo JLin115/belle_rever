@@ -68,6 +68,7 @@ $(window).ready(function() {
 			if(type=='Cart'){
 			window.location.reload();
 			}else if(type=='Purchase'){
+			window.location.href="/Belle_Rever/home/cart/ShowCart.jsp"
 			toFillOrdInfo()
 			 }
 			    }
@@ -99,6 +100,9 @@ $(window).ready(function() {
       			}
    			}
    			})
+   			
+   			
+   			
 	}
 	
 	

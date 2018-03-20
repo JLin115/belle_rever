@@ -11,13 +11,16 @@
 .showCart td:nth-of-type(1) {  
     width: 300px;
 
-}.showCart td:nth-of-type(1) img{  
+}.showCart td:nth-of-type(1) img{ 
+	width:20%;
     height: 80px;
     float:left; 
     
 }
-.showCart td:nth-of-type(1) span{  
-   
+.showCart td:nth-of-type(1) span{
+	width:79%;
+	padding-left:5px;
+   line-height:80px;
     float:left;
 }
 .showCart td:nth-of-type(1) span::after{  

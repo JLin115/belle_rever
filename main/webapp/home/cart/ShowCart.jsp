@@ -47,7 +47,9 @@
 										<option value="${y}" selected="selected">${y}</option>
 									</c:when>
 									<c:otherwise>
+									<c:if test="${y<11 }">
 										<option value="${y}">${y}</option>
+										</c:if>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -56,7 +58,7 @@
 				<td>${x.itemPrice}</td>
 				<td>${x.itemPrice * x.itemDiscount}</td>
 				<td class="singlePrice2" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
-				<td><img class="delete" name="${x.ordSerialNumber}" height="20px" src="/bimg/itemImg/1.jpg"></td>
+				<td><span class="icon-trash-o delete" name="${x.ordSerialNumber}" style="padding-left:20%;"></span></td>
 			</tr>
 
 		</c:forEach>
