@@ -125,7 +125,7 @@
 							<div style="font-size: 24px;font-weight: bolder; padding: 10px 0;">洋裝</div>
 							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=1&pageNow=1" />">無袖洋裝</a></div>
 							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=2&pageNow=1" />">七分袖洋裝</a></div>
-							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=3}&pageNow=1" />">長袖洋裝</a></div>
+							<div><a href="<c:url  value="/home/showItem/ShowItem?itid=3&pageNow=1" />">長袖洋裝</a></div>
 						</div>
 						
 						<div>

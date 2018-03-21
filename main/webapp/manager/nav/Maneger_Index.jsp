@@ -18,7 +18,7 @@
 		 
 			<div class="maneger_index_show_right" style="height:770px; margin:0 auto;margin-left:10%;width:80%; ">
 			<div class="index_img">
-			<a href="${pageContext.request.contextPath}/manager/orderManager/OrderManager.jsp"><img alt="" src="${initParam['showImgRoute']}products.png"></a>
+			<a href="${pageContext.request.contextPath}/manager/itemManager/ItemManager.jsp"><img alt="" src="${initParam['showImgRoute']}products.png"></a>
 			<a href="${pageContext.request.contextPath}/manager/orderManager/OrderManager.jsp"><img alt="" src="${initParam['showImgRoute']}orderlist.png"></a>
 			<a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1"><img alt="" src="${initParam['showImgRoute']}members.png">  </a>  
 			<br>  

@@ -118,7 +118,7 @@
 				</div>
 				<div class="singleitempurchase_button">
 					<span class="singleitempurchase_addCart" name="Cart">加入購物車</span> 
-					<span class="singleitempurchase_purchase" name="Purchase">確認</span>
+					<span class="singleitempurchase_purchase" name="Purchase">購買</span>
 				
 				</div>
 			</div>
@@ -133,23 +133,23 @@
 						<li><a href="#tab-1">商品資訊</a></li>
 						<li><a href="#tab-2">MODEL資訊</a></li>
 						<li><a href="#tab-3">尺寸表</a></li>
-						<li><a href="#tab-4">試穿報告</a></li>
+						<li><a href="#tab-4">寶貝評價</a></li>
 					</ul>
-					<!-- 頁籤的內容區塊 -->
+					<!-- 頁籤的內容區塊 --> 
 					<div class="tab-content-1">
-						<p>網路獨家 材質:滌綸65% 氨綸35% 產地:中國 彈性:無 內裡:有 透光度:不透 ※
-							顏色請參考單品圖片較為接近，但因圖檔顏色會因個人電腦螢幕設定差異略有不同，請以實際商品顏色為準。</p>
+						<p>網路獨家 材質:滌綸65% 氨綸35%<br>產地:中國<br>彈性:無 <br>內裡:有 <br>透光度:不透 <br> 
+							備註:顏色請參考單品圖片較為接近，但因圖檔顏色會因個人電腦螢幕設定差異略有不同，請以實際商品顏色為準。</p>
 					</div>
 					<div class="tab-content-2">
-						<p>‧Ring 身高172cm／胸圍Bust：32 
-							 腰圍Wais：24／臀圍hips：34
-						        ‧試穿報告：模特兒平日穿S號，此款版型正常 ‧
-							Alina 身高172cm／胸圍Bust：32
-							腰圍Waist：23／臀圍hips：33 ‧
+						<p>Ring 身高172cm／胸圍Bust：32<br> 	
+						       腰圍Wais：24／臀圍hips：34<br>
+						       試穿報告：模特兒平日穿S號，此款版型正常<br><br>
+					       Alina 身高172cm／胸圍Bust：32<br>
+							腰圍Waist：23／臀圍hips：33<br> 
 							試穿報告：模特兒平日穿S號，此款版型正常</p>
 					</div>
 					<div class="tab-content-3">
-						<p>內容-3</p>
+						<p></p>
 					</div>
 					<div class="tab-content-4">
 						<div class="comment_content">

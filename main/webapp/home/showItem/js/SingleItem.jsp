@@ -25,9 +25,9 @@ $(window).ready(function() {
 			if(item.itemColor == temp){
 	
 				if(item.itemQty>0){
-				$(".div2").append('<span class="size"><input type="radio"  name="size" value="'+item.itemSize+ '"/>'+item.itemSize+'</span>&nbsp;');
+				$(".div2").append('<span class="size"><input type="radio"  name="size" value="'+item.itemSize+ '"/>'+item.itemSize+'&nbsp;</span>');
 				}else{
-				$(".div2").append('<span class="size"><input type="radio"  name="size" disabled value="'+item.itemSize+ '"/>'+item.itemSize+'</span>&nbsp;');
+				$(".div2").append('<span class="size"><input type="radio"  name="size" disabled value="'+item.itemSize+ '"/>'+item.itemSize+'&nbsp;</span>');
 				}
 			}
 		})
