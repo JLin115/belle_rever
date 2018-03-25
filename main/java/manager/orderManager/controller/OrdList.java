@@ -42,11 +42,11 @@ public class OrdList extends HttpServlet {
 			dao.setOsid(osId);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("正在導回主頁");
+//			System.out.println("正在導回主頁");
 			response.sendRedirect("OrderManager.jsp");
 			return;
 		} 
-		System.out.println(dao.getTotalPage());
+//		System.out.println(dao.getTotalPage());
 		
 		if (pageNow <= dao.getTotalPage()&b) {
 			List<OrderBean> obList = dao.getOrd(osId);
@@ -60,7 +60,7 @@ public class OrdList extends HttpServlet {
 			return;
 		} else {
 			request.setAttribute("osId", osId);
-			System.out.println("正在導回主頁");
+//			System.out.println("正在導回主頁");
 			RequestDispatcher rd = request.getRequestDispatcher("OrderManager.jsp");
 			rd.forward(request, response);
 			return;

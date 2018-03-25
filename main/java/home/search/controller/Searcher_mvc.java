@@ -108,7 +108,7 @@ public class Searcher_mvc {
 			mId = request.getParameter("mId");
 			fbkey = Integer.valueOf(request.getParameter("fbkey"));
 			dao.deleteFeedBack(itemId, mId, fbkey);
-			System.out.println("delete");
+//			System.out.println("delete");
 			return "true";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -138,12 +138,12 @@ public class Searcher_mvc {
 		if (cplist == null) {
 
 		} else {
-			System.out.println(pageNow);
+//			System.out.println(pageNow);
 			request.setAttribute("pageNow", pageNow);
 			request.setAttribute("totalPage", dao.getTotalPageCoupon());
 			request.setAttribute("cplist", new Gson().toJson(cplist));
 		}
-		System.out.println(new Gson().toJson(cplist));
+//		System.out.println(new Gson().toJson(cplist));
 		return "/manager/couponManager/ShowCoupon";
 	}
 
@@ -182,7 +182,7 @@ public class Searcher_mvc {
 		}
 		if (cpb != null) {
 			request.setAttribute("cpb", cpb);
-			System.out.println("true");
+//			System.out.println("true");
 		}
 		return "/manager/couponManager/ModifyCoupon";
 	}
@@ -202,8 +202,8 @@ public class Searcher_mvc {
 		CouponBean cpb = new CouponBean();
 		String oldId = request.getParameter("oldId");
 		String status = request.getParameter("status");
-		System.out.println(status);
-		System.out.println(request.getParameter("invalid"));
+//		System.out.println(status);
+//		System.out.println(request.getParameter("invalid"));
 		errorMsg = checkCPValue(request.getParameter("cpId"), request.getParameter("cpDes"),
 				request.getParameter("cpVal"), request.getParameter("cpQty"), request.getParameter("valid"),
 				request.getParameter("invalid"), cpb);
@@ -310,8 +310,8 @@ public class Searcher_mvc {
 
 		String mId = request.getParameter("mId");
 		if (mId != null & !"".equals(mId)) {
-			System.out.println(mId);
-			System.out.println(dao.checkMember(mId));
+//			System.out.println(mId);
+//			System.out.println(dao.checkMember(mId));
 			if (dao.checkMember(mId) != 1) {
 				errorMsg.put("mIdError", "會員不存在");
 			}
@@ -321,7 +321,7 @@ public class Searcher_mvc {
 		request.setAttribute("errorMsg", errorMsg);
 		if (errorMsg.size() > 0) {
 			Gson g = new Gson();
-			System.out.println(g.toJson(errorMsg).toString());
+//			System.out.println(g.toJson(errorMsg).toString());
 			s = "[{\"status\":\"false\"}," + g.toJson(errorMsg).toString() + "]";
 			return s;
 		} else {
@@ -378,7 +378,7 @@ public class Searcher_mvc {
 		String regd = "^((19)|2[0|1])[0-9]{2}(\\/)(((1[02]|(0?[13578]))(\\/)(10|20|3[01]|[012]?[1-9]))|(0?2(\\/)(10|20|[012]?[1-9]))|((0?[469]|11)(\\/)(10|20|30|[012]?[1-9])))"
 				+ "|^((19)|2[0|1])[0-9]{2}(\\-)(((1[02]|(0?[13578]))(\\-)(10|20|3[01]|[012]?[1-9]))|(0?2(\\-)(10|20|[012]?[1-9]))|((0?[469]|11)(\\-)(10|20|30|[012]?[1-9])))";
 
-		System.out.println(valid);
+//		System.out.println(valid);
 		if (valid == null || valid.equals("")) {
 			errorMsg.put("validError", "請輸入有效日期");
 		} else {
@@ -404,7 +404,7 @@ public class Searcher_mvc {
 				errorMsg.put("validError", "格式有誤");
 			}
 		}
-		System.out.println(invalid);
+//		System.out.println(invalid);
 		if (invalid == null || invalid.equals("")) {
 			errorMsg.put("invalidError", "請輸入失效日期");
 		} else {
@@ -445,7 +445,7 @@ public class Searcher_mvc {
 		String year = request.getParameter("year");
 		List<MonthAnalysis> list = dao.getMonthAna(year);
 		Gson g = new Gson();
-		System.out.println(g.toJson(list));
+//		System.out.println(g.toJson(list));
 		return g.toJson(list);
 	}
 
@@ -460,7 +460,7 @@ public class Searcher_mvc {
 		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
 		List<String> list = dao.getAllYear();
 		Gson g = new Gson();
-		System.out.println(g.toJson(list));
+//		System.out.println(g.toJson(list));
 		return g.toJson(list);
 	}
 
@@ -477,7 +477,7 @@ public class Searcher_mvc {
 		SearchDao dao = (SearchDao) ctx.getBean("SearchDaoImpl");
 		List<SingleMonthandItem> list = dao.getSingleMon(year, mon);
 		Gson g = new Gson();
-		System.out.println(g.toJson(list));
+//		System.out.println(g.toJson(list));
 		return g.toJson(list);
 	
 	}

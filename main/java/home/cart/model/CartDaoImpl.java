@@ -8,11 +8,13 @@ import javax.annotation.Resource;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import home.purchase.model.OrderValBean;
 import manager.itemManager.model.ItemBean;
 import manager.itemManager.model.ItemValBean;
 
+@Transactional
 @Component("CartDao")
 public class CartDaoImpl implements CartDao {
 @Resource(name="template")

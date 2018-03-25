@@ -55,13 +55,13 @@ public class ShowItem extends HttpServlet {
 				b = false;
 			}	
 		} catch (Exception e) {
-			System.out.println("輸入有誤導回管理主頁");
+//			System.out.println("輸入有誤導回管理主頁");
 			b = false;
 		}
 		if (b) {
 			idao.setItid(itid);
 		}
-		System.out.println(itemType.size());
+//		System.out.println(itemType.size());
 		
 		if (pageNow <= idao.getTotalPage()&itemType.containsKey(String.valueOf(itid))&b) {
 
@@ -78,7 +78,7 @@ public class ShowItem extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		} else {
-			System.out.println("正在導回主頁");
+//			System.out.println("正在導回主頁");
 			
 			response.sendRedirect("ShowItem.jsp");
 			return;

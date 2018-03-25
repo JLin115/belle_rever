@@ -10,7 +10,8 @@ public class test {
 //		String s = "ssssddssss";
 //		System.out.println(s.contains("dd"));
 		// 
-		System.out.println((int)(Math.random()*10000));
+//		System.out.println((int)(Math.random()*10000));
+		System.out.println(AMS(93084));
 	}
 
 	static public int test1(int n) {
@@ -44,6 +45,25 @@ public class test {
 			}
 		}
 		return count;
+	}
+	
+	
+	static Integer AMS(int int1){
+ 
+		String []  str  =  String.valueOf(int1).split("");
+		Long res = 0L;
+		for(String s :str){
+			Long temp=Long.valueOf(s);
+			res+=temp*temp*temp*temp*temp;
+ 
+		}
+		System.out.println(res);
+		if(res ==  int1){ 
+			return int1;
+		}else{
+			return null;
+			
+		}
 	}
 
 }

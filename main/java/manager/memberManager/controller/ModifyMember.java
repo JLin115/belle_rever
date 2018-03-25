@@ -162,7 +162,7 @@ public class ModifyMember extends HttpServlet {
 
 		} else {
 			// 若是mb ==null 表示網頁出問題了 直接導回會員管理首頁
-			System.out.println("mb為空,導回會員管理首頁");
+//			System.out.println("mb為空,導回會員管理首頁");
 			response.sendRedirect("ShowAllMemeber?pageNow=1");
 			return;
 		}

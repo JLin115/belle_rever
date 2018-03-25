@@ -74,7 +74,7 @@ public class ModifyItem extends HttpServlet {
 				}
 
 			} catch (Exception e) {//查詢字串輸入有誤
-				System.out.println("ModifyItem Error");
+//				System.out.println("ModifyItem Error");
 				response.setContentType("text/html;charset=UTF-8");
 				response.getWriter().write("修改失敗");
 			}

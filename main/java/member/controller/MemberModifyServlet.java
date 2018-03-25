@@ -51,7 +51,7 @@ public class MemberModifyServlet extends HttpServlet {
 		MemberBean mb =(MemberBean) session.getAttribute("LoginOK");
 		//得到名子並驗證
 				String mname =new String(request.getParameter("name").getBytes("ISO-8859-1"),"utf-8");
-				System.out.println(mname);
+//				System.out.println(mname);
 				if (mname != null && !"".equals(mname)   ) {
 					if (GlobalService.judgeInputSpecialSymbol(mname)) {
 						mb.setMname(mname);

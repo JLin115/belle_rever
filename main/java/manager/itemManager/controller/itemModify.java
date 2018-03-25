@@ -202,9 +202,9 @@ public class ItemModify extends HttpServlet {
 						}
 						
 						//流水號取得
-						System.out.println("name="+name);
+//						System.out.println("name="+name);
 						ivb.setItemSerialNumber(n1);
-						System.out.println("n1="+n1);
+//						System.out.println("n1="+n1);
 						
 
 					}
@@ -220,7 +220,7 @@ public class ItemModify extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic1(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic1Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -240,7 +240,7 @@ public class ItemModify extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic2(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic2Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -258,7 +258,7 @@ public class ItemModify extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic3(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic3Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -276,7 +276,7 @@ public class ItemModify extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic4(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic4Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -294,7 +294,7 @@ public class ItemModify extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic5(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic5Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -317,10 +317,9 @@ public class ItemModify extends HttpServlet {
 //		response.sendRedirect("itemModify.jsp");
 //		return;
 		}else{	
-			for(ItemValBean ss :itemvals){
-				
-				System.out.println("最後"+ss.getItemSerialNumber());
-			}
+//			for(ItemValBean ss :itemvals){ 
+//				System.out.println("最後"+ss.getItemSerialNumber());
+//			}
 			idao.modifyItem(ib, itemvals, ib.getItemID(), beforeIb.getItemID());
 //			s.removeAttribute("ib");
 //			s.removeAttribute("ivbList");

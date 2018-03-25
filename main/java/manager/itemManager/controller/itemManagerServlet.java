@@ -35,7 +35,7 @@ public class ItemManagerServlet extends HttpServlet {
 		WebApplicationContext wctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 		ItemDAOImpl idao = (ItemDAOImpl) wctx.getBean("ItemDAOImpl");
 		Map<String, String> itemType = (Map<String, String>) request.getServletContext().getAttribute("itemType");
-		System.out.println(request.getContextPath()+","+request.getServletPath());
+//		System.out.println(request.getContextPath()+","+request.getServletPath());
 		if(request.getServletPath().equals("/manager/itemManager/ItemManagerServlet")){
 			idao.setPageSize(GlobalService.getPagesize());
 		}
@@ -49,7 +49,7 @@ public class ItemManagerServlet extends HttpServlet {
 				b = false;
 			}
 		} catch (Exception e) {
-			System.out.println("輸入有誤導回管理主頁");
+//			System.out.println("輸入有誤導回管理主頁");
 			b = false;
 		}
 		
@@ -72,7 +72,7 @@ public class ItemManagerServlet extends HttpServlet {
 			rd.forward(request, response);
 			return;
 		} else {
-			System.out.println("正在導回主頁");
+//			System.out.println("正在導回主頁");
 			response.sendRedirect("ItemManager.jsp");
 			return;
 //			RequestDispatcher rd = request.getRequestDispatcher("ItemManager.jsp");

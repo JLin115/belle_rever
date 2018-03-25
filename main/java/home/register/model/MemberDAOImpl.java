@@ -16,11 +16,13 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import _init.GlobalService;
 import home.purchase.model.OrderBean;
 import member.model.FeedBackBean;
 
+@Transactional
 @Component("MemberDAOImpl")
 public class MemberDAOImpl implements Dao {
 	@Resource(name = "template")

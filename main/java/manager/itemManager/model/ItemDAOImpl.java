@@ -23,11 +23,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import _init.GlobalService;
 import home.purchase.model.CouponBean;
 import member.model.FeedBackBean;
-
+@Transactional
 @Component("ItemDAOImpl")
 public class ItemDAOImpl implements ItemDAO {
 

@@ -28,7 +28,7 @@ import home.register.model.*;;
 
 //@WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f1", value = "/register/*") })
 @WebFilter(urlPatterns = { "/*" }, initParams = { @WebInitParam(name = "f2", value = "/home/purchase/*"),
-												  @WebInitParam(name = "f3", value = "/member/*") })
+												  @WebInitParam(name = "f3", value = "/member/*")})
 
 public class LoginFilter implements Filter {
 	Collection<String> url = new ArrayList<String>();
@@ -81,7 +81,7 @@ public class LoginFilter implements Filter {
 						}
 					}
 					
-					System.out.println(req.getRequestURI());
+//					System.out.println(req.getRequestURI());
 					
 					chain.doFilter(request, response);
  					
@@ -94,7 +94,7 @@ public class LoginFilter implements Filter {
 					}
 					session.setAttribute("qs",req.getQueryString());
 					session.setAttribute("target", req.getRequestURI());
-					 System.out.println("需要登入，還未登入");
+//					 System.out.println("需要登入，還未登入");
 					
 					String str = "{\"status\":\"toLogin\"}";
 					res.setStatus(401);
@@ -117,7 +117,6 @@ public class LoginFilter implements Filter {
 			
 		}
 	}
-
 	// 讀入起始參數
 	public void init(FilterConfig fConfig) throws ServletException { 
 		Enumeration<String> e = fConfig.getInitParameterNames();
@@ -126,7 +125,6 @@ public class LoginFilter implements Filter {
 			url.add(fConfig.getInitParameter(name));
 		}
 	}
-
 	private boolean mustLogin(String servletPath) {
 		boolean login = false;
 		for (String sURL : url) {

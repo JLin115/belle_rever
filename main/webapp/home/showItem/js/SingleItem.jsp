@@ -69,7 +69,7 @@ $(window).ready(function() {
 			window.location.reload();
 			}else if(type=='Purchase'){
 			window.location.href="/Belle_Rever/home/cart/ShowCart.jsp"
-			toFillOrdInfo()
+<!-- 			toFillOrdInfo() -->
 			 }
 			    }
 		 	 })

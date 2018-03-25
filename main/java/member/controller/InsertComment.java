@@ -90,7 +90,7 @@ public class InsertComment extends HttpServlet {
 										String imgName = GlobalService.imgName(request.getServletContext(), p);
 										GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_commemtImg());
 										cb.setFeedBackPic(imgName);
-										System.out.println("存放完畢");
+//										System.out.println("存放完畢");
 										}
 									} else {
 										errorMsg.put("picError", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -111,14 +111,14 @@ public class InsertComment extends HttpServlet {
 		if(errorMsg.size()>0){	response.setContentType("application/json");
 			Gson gson = new Gson();
 	        String json = gson.toJson(errorMsg);
-			System.out.println("InsertComment_error");
+//			System.out.println("InsertComment_error");
 			response.getWriter().write(json);
 			response.setStatus(400);
 			return;
 		}else{
 			response.setContentType("text/html");
 			response.getWriter().write("評價成功");
-			System.out.println(cb.getFeedBackFrom());
+//			System.out.println(cb.getFeedBackFrom());
 			dao.insertCommemt(cb);
 			dao.setIsFeedBack(ordId, ordSern);
 			return;

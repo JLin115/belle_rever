@@ -35,7 +35,7 @@ public class ShowAllMemeber extends HttpServlet {
 		try {
 			pageNow = Integer.valueOf(request.getParameter("pageNow"));
 		} catch (Exception e) {
-			System.out.println("輸入錯誤  /或者未輸入PageNow");
+//			System.out.println("輸入錯誤  /或者未輸入PageNow");
 			pageNow = 1;
 		}
 		String mid = request.getParameter("account");

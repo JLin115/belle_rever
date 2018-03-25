@@ -60,7 +60,7 @@ public class ShowSingleItem_home extends HttpServlet {
 		}
 
 			if (ib != null) {
-				System.out.println("sdfsdf");
+//				System.out.println("sdfsdf");
 				List<ItemValBean> ivbList = dao.getItemVal(itemId);
 				
 //				//================================================================================

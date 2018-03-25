@@ -71,7 +71,7 @@ public class ShelverServlet extends HttpServlet {
 				}catch (Exception e) {
 					
 				}
-				System.out.println(value);
+//				System.out.println(value);
 				if (p.getContentType() == null) {// 抓一般輸入
 					// itemBean部分
 
@@ -182,7 +182,7 @@ public class ShelverServlet extends HttpServlet {
 						
 						//流水號取得
 						ivb.setItemSerialNumber(n1);
-						System.out.println(n1);
+//						System.out.println(n1);
 
 					}
 
@@ -195,7 +195,7 @@ public class ShelverServlet extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic1(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic1Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -214,7 +214,7 @@ public class ShelverServlet extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic2(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic2Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -233,7 +233,7 @@ public class ShelverServlet extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic3(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic3Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -251,7 +251,7 @@ public class ShelverServlet extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic4(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic4Error", "圖片格式錯誤請確認是PNG、JPG檔");
@@ -265,7 +265,7 @@ public class ShelverServlet extends HttpServlet {
 								String imgName = GlobalService.imgName(request.getServletContext(), p);
 								GlobalService.saveImgtofile(imgName, p.getInputStream(),GlobalService.getStaticRoute_itemImg());
 								ib.setItemPic5(imgName);
-								System.out.println("存放完畢");
+//								System.out.println("存放完畢");
 								}
 							} else {
 								errorMsg.put("pic5Error", "圖片格式錯誤請確認是PNG、JPG檔");

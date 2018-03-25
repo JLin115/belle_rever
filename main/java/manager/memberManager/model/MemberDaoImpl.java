@@ -14,6 +14,7 @@ import _init.GlobalService;
 import home.register.model.MemberBean;
 
 @Repository("MemberDaoImpl")
+@Transactional
 public class MemberDaoImpl implements MemberDao {
 	@Resource(name="template")
 	JdbcTemplate template ;

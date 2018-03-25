@@ -50,10 +50,10 @@ autoplayHoverPause:true
     <div class="col-md-12 owl-carousel owl-theme  "   >
         <div class="item" style="max-width: 421px;"><a href="#1"><img   src="${initParam['showImgRoute']}15.jpg"></a></div>
         <div class="item" style="max-width: 421px;"><a href="#2"><img   src="${initParam['showImgRoute']}16.jpg"></a></div>
-        <div class="item" style="max-width: 421px;"><a href="#4"><img   src="${initParam['showImgRoute']}18.jpg"></a></div>
-        <div class="item" style="max-width: 421px;"><a href="#5"><img   src="${initParam['showImgRoute']}16.jpg"></a></div>
-        <div class="item" style="max-width: 421px;"><a href="#6"><img   src="${initParam['showImgRoute']}17.jpg"></a></div>
-        <div class="item" style="max-width: 421px;"><a href="#7"><img   src="${initParam['showImgRoute']}18.jpg"></a></div>
+        <div class="item" style="max-width: 421px;"><a href="#4"><img   src="${initParam['showImgRoute']}17.jpg"></a></div>
+        <div class="item" style="max-width: 421px;"><a href="#5"><img   src="${initParam['showImgRoute']}18.jpg"></a></div>
+        <div class="item" style="max-width: 421px;"><a href="#6"><img   src="${initParam['showImgRoute']}19.jpg"></a></div>
+        <div class="item" style="max-width: 421px;"><a href="#7"><img   src="${initParam['showImgRoute']}20.jpg"></a></div>
      </div>
     </div>
  

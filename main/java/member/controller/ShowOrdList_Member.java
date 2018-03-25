@@ -42,7 +42,7 @@ public class ShowOrdList_Member extends HttpServlet {
 				List<OrderBean> ordList=dao.getOrdMember(mb.getMid());
 				Gson gson =  new Gson();
 				response.getWriter().write(gson.toJson(ordList));
-				System.out.println(gson.toJson(ordList));
+//				System.out.println(gson.toJson(ordList));
 				return;
 			} catch (Exception e) {
 				String error =  "{\"error\" : \"error\"}";

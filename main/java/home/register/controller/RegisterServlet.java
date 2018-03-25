@@ -202,7 +202,7 @@ public class RegisterServlet extends HttpServlet {
 //			rd.forward(request, response);
 			Gson gson = new Gson();
 			String errorMsgJson = gson.toJson(errorMsg);
-			System.out.println(errorMsgJson);
+//			System.out.println(errorMsgJson);
 			response.setStatus(401);
 			response.getWriter().write(errorMsgJson);
 			
@@ -218,9 +218,9 @@ public class RegisterServlet extends HttpServlet {
 			if(str == null || str.equals("")){
 				str  =GlobalService.index;
 			}
-			System.out.println(str);
+//			System.out.println(str);
 			String url ="{\"url\" :\""+str+"\"}";
-			System.out.println(url);
+//			System.out.println(url);
 			response.getWriter().write(url);
 			return; 
 			

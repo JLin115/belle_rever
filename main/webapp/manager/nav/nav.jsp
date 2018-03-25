@@ -12,7 +12,7 @@
 			<div><a href="${pageContext.request.contextPath}/manager/itemManager/ItemManager.jsp">管理</a></div>
 			</div>
 			</li>
-			<li><a href="${pageContext.request.contextPath}/manager/orderManager/OrderManager.jsp">訂單管理</a></li>
+			<li><a href="${pageContext.request.contextPath}/manager/orderManager/OrdList?type=1&pageNow=1">訂單管理</a></li>
 			<li><a href="${pageContext.request.contextPath}/manager/memberManager/ShowAllMemeber?pageNow=1">會員管理</a></li>
 			<li><a href="${pageContext.request.contextPath}/manager/feedBackManager/FeedBackManager.jsp">評論管理</a></li>
 			<li><a class="itemManager_a" >折價券管理</a><div class="itemManager_a_bar">

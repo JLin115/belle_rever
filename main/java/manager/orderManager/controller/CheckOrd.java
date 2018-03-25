@@ -62,7 +62,7 @@ public class CheckOrd extends HttpServlet {
 		if (osb.containsKey(request.getParameter("stat"))) {
 			osId = Short.valueOf(request.getParameter("stat"));
 			ob.setOsId(osId);
-			System.out.println(osId);
+//			System.out.println(osId);
 		} else {
 			errorMsg.put("osIdError", "osIdError");
 		}
