@@ -52,11 +52,13 @@ public class ModifyItem extends HttpServlet {
 					Integer total = 0;
 					for (OrderValBean o : ovbL) {
 						if (o.getOrdSerialNumber() == ordSerN) {
-							total = (int) (qty * o.getItemPrice() * o.getItemDiscount().doubleValue());
+							total += (int) (qty * o.getItemPrice() * o.getItemDiscount().doubleValue());
 						} else {
-							total = (int) (o.getOrdQty() * o.getItemPrice() * o.getItemDiscount().doubleValue());
+							total += (int) (o.getOrdQty() * o.getItemPrice() * o.getItemDiscount().doubleValue());
 						}
 					}
+					System.out.println(ovbL.size());
+					System.out.println(total);
 
 					if (qty < ovb.getItemQty()) {
 						dao.upadteOrdValQty(ordId, ordSerN, qty);
