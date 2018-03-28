@@ -17,12 +17,12 @@ public class LogAspect {
 	@Pointcut("execution(* home.cart.model.*.*(..))")
 	public void pointcut(){}
  
-	@Before("")
+	@Before("pointcut()")
 	public void logBefore(JoinPoint point){
 //		Logger logger =Logger.getLogger(clazz)
 		System.out.println("aop");
 	}
-	@After("pointcut()")
+	@After("")
 	public void testAfter(){
 		System.out.println("aop");
 	}

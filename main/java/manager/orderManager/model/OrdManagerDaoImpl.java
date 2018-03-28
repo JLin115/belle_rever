@@ -93,8 +93,7 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 		obList = template.query(sql, new Object[] { osId,startRecordNo,pageSize }, new BeanPropertyRowMapper<OrderBean>(OrderBean.class));
 		if (obList.isEmpty()) {
 			return null;
-		}
-
+		} 
 		return obList;
 	}
 
@@ -131,18 +130,15 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 
 	@Override
 	public void upadteOrdValQty(Integer ordId, Short ordSerN, Short qty) {
-		String sql = "Update ord_val set ordQty = ?  where ordid = ? and ordSerialNumber =?";
-		template.update(sql, qty, ordId, ordSerN);
-
+		String sql = "Update ord_val set ordQty = ? where ordid = ? and ordSerialNumber =?";
+		template.update(sql, qty, ordId, ordSerN); 
 	}
 
 	@Override
 	public void updateOrdTotal(Integer ordId, Integer ordTotal) {
 		String sql = "Update ord  set ordTotal = ?  where ordid = ? ";
 		template.update(sql, ordTotal, ordId);
-
-	}
-
+	} 
 	@Override
 	public void deleteOV(Integer ordid, Short ordSerialNumber) {
 		String sql = "Delete from ord_val  where ordid = ? and ordSerialNumber= ? ";
@@ -153,10 +149,10 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 	public void upadteOrdValSern(List<OrderValBean> ovbL) {
 		String sql = "Delete from ord_val where ordid = ?  ";
 		template.update(sql,ovbL.get(0).getOrdId());
-		sql = "insert into ord_val (Ordid,OrdSerialNumber,Itemid,Ordqty,itemSerialNumber,Itemcolor,Itemprice,Itemsize,Itemheader,Itempic1) "
-				+ " values (?,?,?,?,?,?,?,?,?,?);";
+		sql = "insert into ord_val (Ordid,OrdSerialNumber,Itemid,Ordqty,itemSerialNumber) "
+				+ " values (?,?,?,?,?);";
 		for(OrderValBean o :ovbL){
-			template.update(sql,ovbL.get(0).getOrdId(),o.getOrdSerialNumber(),o.getItemId(),o.getOrdQty(),o.getItemSerialNumber(),o.getItemColor(),o.getItemPrice(),o.getItemSize(),o.getItemHeader(),o.getItemPic1());
+			template.update(sql,ovbL.get(0).getOrdId(),o.getOrdSerialNumber(),o.getItemId(),o.getOrdQty(),o.getItemSerialNumber());
 		}
 	}
 
@@ -179,7 +175,7 @@ public class OrdManagerDaoImpl implements OrdManagerDao {
 		deleteOV( updateItemQty.getOrdId(),updateItemQty.getOrdSerialNumber() );
 		upadteOrdValSern(ovbL);
 		updateItemQty(updateItemQty);
-		System.out.println(ordTotal);
+//		System.out.println(ordTotal);
 		updateOrdTotal(updateItemQty.getOrdId(), ordTotal);
 	}
 

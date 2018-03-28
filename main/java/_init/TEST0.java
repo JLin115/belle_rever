@@ -17,14 +17,12 @@ public class TEST0 {
 		ArrayList<String> arrWord = new ArrayList<String>();
 		HashMap hm = new HashMap();
 		for (String st : word) {
-
 			if (st != null && st.length() > 0) {
 				arrWord.add(0, st);
 				if (!hm.containsKey(st)) {
 					hm.put(st, st);
 				}
 			}
-			
 		}
 		System.out.println("Reversed String=");
 		for (String st : arrWord) {
@@ -45,16 +43,21 @@ public class TEST0 {
 		String[] ch =stInp.replace(",", " ").replace(".", " ").split("");
 		Set<String> s = new HashSet<String>();
 		Map<String, Integer> map = new HashMap<>();
+		
+		
 		int len = word.length;
 		StringBuilder sb = new StringBuilder();
-		for(String str:word){
+		for(String str:word){ //重新排序
 			len--;
 			sb.insert(0, str); 
-			if(len>0){
+			if(len>0 && !str.equals("")){
 			sb.insert(0, " ");}
 		}
+		Hashtable<String , String > ht = new Hashtable<>();
+		
+		
 		for (String str : ch) {
-			if (!str.equals("")) { //重新排序
+			if (!str.equals("")) {
 				if (!map.containsKey(str)) { //第一次
 					map.put(str, 1);
 				}
@@ -65,6 +68,22 @@ public class TEST0 {
 				}
 			}
 		}
+		
+		//=======================================
+		Stack<String> sta= new Stack<>();
+		for(String str:word){
+			sta.push(str);		
+		}
+		while(sta.size()>0){
+			String str = sta.pop();
+			if(!str.equals("")){
+			System.out.print(str+" ");}
+		}
+		//=======================================
+		
+		
+		System.out.println();
+		
 		 Set set= map.keySet();
 		 Iterator it = set.iterator();
 		 System.out.println("不重複字元");
@@ -78,20 +97,25 @@ public class TEST0 {
 		System.out.println(sb.toString());
 	}
 	
-
-	
-
 	/* You can test your program here */
 	public static void main(String[] args) {
 		// TEST0.execute("I, Jimmy, saw a saw saw a saw");
+<<<<<<< HEAD
 //		TEST0.execute2("I, Jimmy, saw a saw saw a saw");
 		
 
+=======
+		TEST0.execute2("l text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, ");
+		TEST0 T =  new TEST0(){
+			@Override
+			public String toString() {
+		        return "無聊的語法示範而已";
+		    }
+		};
+		System.out.println(T.toString());
+>>>>>>> 78bc18b85e74f8ac0a6834da9a2a32b9f3b9bd2d
 	}
 	
-	
-	
-
 	@Override
 	public String toString() {
 		return "TEST0 [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()

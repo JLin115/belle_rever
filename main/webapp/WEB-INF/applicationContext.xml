@@ -31,6 +31,7 @@
 	</bean>
 
 	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" order="0"/>
+	<aop:aspectj-autoproxy/> 
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSourceC3P0"></property>
@@ -46,9 +47,10 @@
 	<context:component-scan base-package="home.purchase.model"/>
 	<context:component-scan base-package="manager.orderManager.model"/>
 	<context:component-scan base-package="_init.model"/>
-	<context:component-scan base-package="_init.aop4log"/>
 	<context:component-scan base-package="home.search.model"/>
-	<aop:aspectj-autoproxy  /> 
+	
+	
+		
 	<!-- <context:component-scan base-package="SpringMVCTest"></context:component-scan> -->
  
 </beans>

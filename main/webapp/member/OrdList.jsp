@@ -73,11 +73,10 @@
 							</c:forEach>
 							<span>訂單金額</span><span>：${x.ordTotal}</span>
 						</div>
-						<div>
-							<span>訂購日期</span><span>：${x.orderDate}</span>
+						<div> 
+							<span>訂購日期</span><span>：<fmt:formatDate value="${x.orderDate}" pattern="yyyy-MM-dd" /> </span>
 							
-							 <span>出貨日期</span><span>：	
-							 
+							 <span>出貨日期</span><span>：	 
 								<c:if test="${x.shipDate eq '1990-01-01 00:00:00.0'}"></c:if>
 								<c:if test="${x.shipDate ne '1990-01-01 00:00:00.0'}">
 								<fmt:formatDate value="${x.orderDate}" pattern="yyyy-MM-dd" /> 
