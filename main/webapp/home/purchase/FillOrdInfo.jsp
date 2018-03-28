@@ -41,7 +41,7 @@
                 </div>
 
                 <input type="hidden" name="stype" value="${param.webtemp}">
-               
+               <input type="hidden" name="ip" value="<%=request.getRemoteAddr()%>">
                 <div class="inputType">
                     <!-- ${errorMsg.typeError} -->
                     <c:if test="${ not empty param.webtemp }">

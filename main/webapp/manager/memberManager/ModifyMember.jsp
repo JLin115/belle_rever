@@ -19,6 +19,12 @@ margin:50px auto;
 border:1px solid black;
  padding: 3% 0% 3% 3%;
 }	
+.error{
+color:red;
+font-size: 10px;
+margin-top:10px;
+
+}
 .ModifyMember_form span{
 display:inline-block;
 width:80px;
@@ -30,11 +36,7 @@ margin-top:10px;
 margin-left:200px;
 margin-bottom:10px;
 }
-.error{
-color:red;
-font-size: 10px;
-margin-top:10px;
-}
+
 </style>
 </head>
 <body>
@@ -45,10 +47,10 @@ margin-top:10px;
 	<form class="ModifyMember_form" method="post" name="form" action="modifyMember" enctype="multipart/form-data">
 		<div style="border:2px solid #d8d0d0;">
 			<span>帳號:</span><input type="text" name="account" value="${mb.mid}"  readonly><br>
-			<span>姓名:</span><input type="text" name="name" value="${mb.mname} "><span class="error">${errorMsg.nameError}</span><br>
-			<span>生日:</span><input type="text" name="bd" value="${mb.mbday }"><span class="error"> ${errorMsg.bderror}</span><br>
-			<span>電話:</span><input type="text" name="phone" value="${mb.mphone} "><span class="error">${errorMsg.phoneError}</span><br> 
-			<span>信箱:</span><input type="text"name="email" value="${mb.memail} "><span class="error">${errorMsg.emailError}</span><br>
+			<span>姓名:</span><input type="text" name="name" value="${mb.mname} "><span class="error" style="width:120px;">${errorMsg.nameError}</span><br>
+			<span>生日:</span><input type="text" name="bd" value="${mb.mbday }"><span class="error" style="width:120px;"> ${errorMsg.bderror}</span><br>
+			<span>電話:</span><input type="text" name="phone" value="${mb.mphone} "><span class="error" style="width:120px;">${errorMsg.phoneError}</span><br> 
+			<span>信箱:</span><input type="text"name="email" value="${mb.memail} "><span class="error" style="width:120px;">${errorMsg.emailError}</span><br>
 			<span>註冊日期:</span><input type="text"name="mregisterday" value="<fmt:formatDate value="${mb.mregisterday}" pattern="yyyy-MM-dd" />" readonly><br>
 			<span>權限:</span><select name="status">
 								<c:if test="${mb.mpid ==1 }">
