@@ -84,14 +84,8 @@ public class TEST0 {
 	/* You can test your program here */
 	public static void main(String[] args) {
 		// TEST0.execute("I, Jimmy, saw a saw saw a saw");
-		TEST0.execute2("I, Jimmy, saw a saw saw a saw");
+//		TEST0.execute2("I, Jimmy, saw a saw saw a saw");
 		
-		TEST0 T =  new TEST0(){
-			public String toString() {
-		        return "無聊的語法示範而已";
-		    }
-		};
-		System.out.println(T.toString());
 
 	}
 	
@@ -103,6 +97,7 @@ public class TEST0 {
 		return "TEST0 [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
 				+ "]";
 	}
+	
 	
 
 }
