@@ -100,11 +100,7 @@ public class TEST0 {
 	/* You can test your program here */
 	public static void main(String[] args) {
 		// TEST0.execute("I, Jimmy, saw a saw saw a saw");
-<<<<<<< HEAD
-//		TEST0.execute2("I, Jimmy, saw a saw saw a saw");
-		
 
-=======
 		TEST0.execute2("l text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, ");
 		TEST0 T =  new TEST0(){
 			@Override
@@ -113,7 +109,7 @@ public class TEST0 {
 		    }
 		};
 		System.out.println(T.toString());
->>>>>>> 78bc18b85e74f8ac0a6834da9a2a32b9f3b9bd2d
+
 	}
 	
 	@Override

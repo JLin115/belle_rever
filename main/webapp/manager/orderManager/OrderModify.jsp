@@ -119,8 +119,7 @@
 							<td>${x.itemPrice * x.itemDiscount}</td>
 							<td class="singlePrice" name="singlePrice">${x.itemPrice * x.itemDiscount * x.ordQty}</td>
 							<td><input type="hidden" name="${x.ordSerialNumber}"
-								value="${x.ordId}" /><img class="delete" height="20px"
-								src="/bimg/1.jpg"></td>
+								value="${x.ordId}" /><span class="icon-trash-o delete" class="delete" style="padding-left: 5px;"></span></td>
 
 						</tr>
 
