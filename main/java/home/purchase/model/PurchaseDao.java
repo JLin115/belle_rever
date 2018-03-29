@@ -6,9 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface PurchaseDao {
 public CouponBean getCoupon(String cpid);
-public void setOrder(OrderBean ord,List<OrderValBean> ovb);
+public void setOrder(OrderBean ord,List<OrderValBean> ovb,CouponBean cp);
 public void checkSetQty(List<OrderValBean> ovb);
 public void setOrd(OrderBean ord);
-public void setOrdVal(List<OrderValBean> ovb,Integer ordId);
-
+public void setOrdVal(List<OrderValBean> ovb,Integer ordId); 
+public void changeCP(CouponBean cp);
 }

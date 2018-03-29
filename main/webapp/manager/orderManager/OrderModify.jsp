@@ -30,11 +30,8 @@
 					<div>
 						<span class="title">訂單編號</span><span class="value">：${ob.ordId}</span><br>
 						<span class="title">訂單人</span><span class="value">：${ob.mId}</span><br>
-						<span class="title">訂購日期</span><span class="value">：<fmt:formatDate
-								value="${ob.orderDate}" pattern="yyyy-MM-dd" /></span><br> <span
-							class="title">出貨日期 </span><span class="value">：<input
-							type="text" class="sd"
-							value="<fmt:formatDate value="${ob.shipDate }" pattern="yyyy-MM-dd"/>">${errorMsg.shipDateError }</span><br>
+						<span class="title">訂購日期</span><span class="value">：<fmt:formatDate value="${ob.orderDate}" pattern="yyyy-MM-dd" /></span><br> 
+						<span class="title">出貨日期 </span><span class="value">：<input type="text" class="sd" value="<fmt:formatDate value="${ob.shipDate }" pattern="yyyy-MM-dd"/>"></span><span class="error">${errorMsg.shipDateError }</span><br>
 						<span class="title">運送方式 </span><span class="value">：${ob.shipType}</span><br>
 					</div>
 
@@ -42,7 +39,7 @@
 
 						<span class="title">運送地址</span><span class="value">：${ob.shipAddr}</span><br>
 						<span class="title">折價券編號</span><span class="value">：<input
-							type="text" class="cp" value="${ob.cpId}">${errorMsg.CouponError }</span><br>
+							type="text" class="cp" value="${ob.cpId}"></span><span class="error">${errorMsg.CouponError }</span><br>
 						<span class="title">訂單狀態</span><span class="value">：<select
 							class="stat">
 								<c:forEach var="x" items="${ordStat}">
