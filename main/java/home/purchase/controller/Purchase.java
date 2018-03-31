@@ -76,7 +76,7 @@ public class Purchase extends HttpServlet {
 					
 					CouponBean cb = dao.getCoupon(coupon);
 					if (cb != null) {
-						if (GlobalService.cpIsValid(cb).equals(true)) {
+						if (GlobalService.cpIsValid(cb).equals("true")) {
 							ob.setCpId(coupon);
 							ob.setOrdTotal(total - cb.getCpVal());
 						} else {
