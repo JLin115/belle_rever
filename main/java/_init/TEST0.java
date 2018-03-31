@@ -100,20 +100,22 @@ public class TEST0 {
 	/* You can test your program here */
 	public static void main(String[] args) {
 		// TEST0.execute("I, Jimmy, saw a saw saw a saw");
-<<<<<<< HEAD
-//		TEST0.execute2("I, Jimmy, saw a saw saw a saw");
+
+//		TEST0.EXECUTE2("L TEXT, AND A SEARCH FOR 'LOREM IPSUM' WILL UNCOVER MANY WEB SITES STILL IN THEIR INFANCY. VARIOUS VERSIONS HAVE EVOLVED OVER THE YEARS, SOMETIMES BY ACCIDENT, ");
+//		TEST0 T =  NEW TEST0(){
+//			@OVERRIDE
+//			PUBLIC STRING TOSTRING() {
+//		        RETURN "無聊的語法示範而已";
+//		    }
+//		};
+//		SYSTEM.OUT.PRINTLN(T.TOSTRING());
+		
+		int x = 0 ;
+		for(;x<=20;x+=2){
+			System.out.println(x);
+		}
 		
 
-=======
-		TEST0.execute2("l text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, ");
-		TEST0 T =  new TEST0(){
-			@Override
-			public String toString() {
-		        return "無聊的語法示範而已";
-		    }
-		};
-		System.out.println(T.toString());
->>>>>>> 78bc18b85e74f8ac0a6834da9a2a32b9f3b9bd2d
 	}
 	
 	@Override

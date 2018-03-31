@@ -43,11 +43,18 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		return cbList.get(0);
 	}
 	@Override
-	public void setOrder(OrderBean ord, List<OrderValBean> ovb) {
+	public void setOrder(OrderBean ord, List<OrderValBean> ovb,CouponBean cp) {
 		checkSetQty( ovb);
 		setOrd(ord);
 		setOrdVal(ovb,ord.getOrdId());
+		changeCP(cp);
 
+	}
+	@Override
+	public void changeCP(CouponBean cp) {
+		String sql ="Update coupon set cpqty = ? where cpid = ?";
+		template.update(sql ,new Object[]{cp.getCpQty()-1,cp.getCpId()});
+		
 	}
 	
 	@Override //傳入商品細項  把商品細項內的東西 從資料庫抓一份出來比對 商品數量大於訂單數量 就寫入
@@ -87,6 +94,7 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		
 		
 	}
+
 
 //	@Override
 //	public void setOrdVal(List<OrderValBean> ovb,Integer ordId) {

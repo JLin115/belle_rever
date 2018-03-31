@@ -37,6 +37,7 @@ public class Purchase extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -55,45 +56,54 @@ public class Purchase extends HttpServlet {
 				for (OrderValBean o : ordList) {
 					total += o.getItemPrice() * o.getItemDiscount().doubleValue() * o.getOrdQty();
 				}
-				
+
 				String shipAddr = request.getParameter("st_addr");
 				String shipType = request.getParameter("stype");
 				String coupon = request.getParameter("coupon");
 
-				
-				if (shipType!=null & !shipType.equals("")) {
+				if (shipType != null & !shipType.equals("")) {
 					if (shipType.equals("convenience")) {
 						shipAddr = shipAddr + "/" + shipType;
 					}
 				} else {
-					errorMsg.put("typeError","請選擇運送方式");
+					errorMsg.put("typeError", "請選擇運送方式");
 				}
 
-				
+				CouponBean cb = null;
 				OrderBean ob = new OrderBean();
 				ob.setOrdTotal(total);
-				if (coupon!=null &!coupon.equals("")) {
-					
-					CouponBean cb = dao.getCoupon(coupon);
+				if (coupon != null & !coupon.equals("")) {
+
+					cb = dao.getCoupon(coupon);
 					if (cb != null) {
+<<<<<<< HEAD
 						if (GlobalService.cpIsValid(cb).equals("true")) {
 							ob.setCpId(coupon);
 							ob.setOrdTotal(total - cb.getCpVal());
+=======
+						if (cb.getCpQty() > 0) {
+							if (GlobalService.cpIsValid(cb).equals("true")) {
+								ob.setCpId(coupon);
+								ob.setOrdTotal(total - cb.getCpVal());
+							} else {
+								errorMsg.put("couponError", GlobalService.cpIsValid(cb));
+							}
+>>>>>>> 39cce2a9717b824ec5db160064f5caa646a6d0ab
 						} else {
-							errorMsg.put("couponError", GlobalService.cpIsValid(cb));
+							errorMsg.put("couponError", "折價券已用完");
 						}
+
 					} else {
 						errorMsg.put("couponError", "錯誤折價券");
 					}
 				}
-				
-				if(errorMsg.size()>0){
-				RequestDispatcher rd = request.getRequestDispatcher("FillOrdInfo.jsp");
-				rd.forward(request, response);
-				return;
-			
-				
-				}else{
+
+				if (errorMsg.size() > 0) {
+					RequestDispatcher rd = request.getRequestDispatcher("FillOrdInfo.jsp");
+					rd.forward(request, response);
+					return;
+
+				} else {
 					String s = new Timestamp(System.currentTimeMillis()).toString().replace(" ", "").replace(":", "")
 							.replace("-", "").substring(8, 12);
 					ob.setOrdId((int) (Math.random() * 89999999 + 10000000));
@@ -101,17 +111,17 @@ public class Purchase extends HttpServlet {
 					ob.setShipAddr(shipAddr);
 					ob.setShipType(shipType);
 					ob.setOrderDate(new Timestamp(System.currentTimeMillis()));
-					try{
-						dao.setOrder(ob, ordList); 
+					try {
+						dao.setOrder(ob, ordList, cb);
 					} catch (Exception e) {
-					e.printStackTrace();
-					} 
+						e.printStackTrace();
+					}
 					session.removeAttribute("Cart");
 					response.sendRedirect("PurchaseSuccess.jsp");
 					return;
-					
+
 				}
-				
+
 			} else {
 				// ordlist為空 送回首頁
 				response.sendRedirect(GlobalService.index);

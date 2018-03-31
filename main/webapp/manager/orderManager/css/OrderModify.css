@@ -143,3 +143,8 @@ table {
 	display: block;
 	clear: both;
 }
+.error{
+	color:red;
+	font-size: 10px;
+	
+}
