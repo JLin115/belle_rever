@@ -76,11 +76,11 @@ public class Purchase extends HttpServlet {
 
 					cb = dao.getCoupon(coupon);
 					if (cb != null) {
-<<<<<<< HEAD
-						if (GlobalService.cpIsValid(cb).equals("true")) {
-							ob.setCpId(coupon);
-							ob.setOrdTotal(total - cb.getCpVal());
-=======
+
+//						if (GlobalService.cpIsValid(cb).equals("true")) {
+//							ob.setCpId(coupon);
+//							ob.setOrdTotal(total - cb.getCpVal());
+
 						if (cb.getCpQty() > 0) {
 							if (GlobalService.cpIsValid(cb).equals("true")) {
 								ob.setCpId(coupon);
@@ -88,7 +88,7 @@ public class Purchase extends HttpServlet {
 							} else {
 								errorMsg.put("couponError", GlobalService.cpIsValid(cb));
 							}
->>>>>>> 39cce2a9717b824ec5db160064f5caa646a6d0ab
+
 						} else {
 							errorMsg.put("couponError", "折價券已用完");
 						}
